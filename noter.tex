@@ -1,0 +1,1819 @@
+\documentclass[a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[danish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{listings}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+\usepackage{ulem} % \sout for strikeout
+
+\usepackage[comma,authoryear]{natbib}
+
+\usepackage[danish, status=draft]{fixme}
+%\fxusetheme{color}
+
+\usepackage[all,cmtip]{xy}
+\entrymodifiers={+!!<0pt,\fontdimen22\textfont2>}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Sætning}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Korollar}
+\newtheorem*{conjecture}{Formodning}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Eksempel}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Bemærk}
+
+\newcommand{\ip}[2]{\left< #1, #2 \right>}
+\newcommand{\size}[1]{\left| #1 \right|}
+
+\let\O\undefined
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\A}{\mathcal{A}}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\U}{U}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\O}{O}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\GS}{GS}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\spa}{span}
+\DeclareMathOperator{\inv}{inv}
+
+\newcommand{\closure}[2][3]{{}\mkern#1mu\overline{\mkern-#1mu#2}}
+
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\com}[1]{\left[#1,#1\right]}
+
+\newcommand{\lie}[1]{\left[ #1 \right]}
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\newcommand{\e}{\epsilon}
+\renewcommand{\d}{\delta}
+\renewcommand{\l}{\lambda}
+
+\begin{document}
+\title{Noter} \author{Simon Stoltze} \date{\today}
+\maketitle
+
+Bemærk at alt det følgende er komplekst. Specielt er
+\begin{align*}
+  D &= \set{ \lambda \in \C \mid \size{\lambda} < 1} \\
+  D^2 &= \set{ \l_1,\l_2 \in \C^2 \mid \size{(\l_1,\l_2)} < 1 }
+\end{align*}
+
+og for at lette notationen sættes
+\[ D^{*2} = D^2 \cap \C^*\times \C^* \]
+
+\section{Kohomologi af flag-mangfoldigheder}
+
+Vi betragter rummene
+\[ X_n^m = \left\{ (v_1,\dots,v_n)\in \C^m \Biggm\vert \begin{array}{l}
+    \text{Alle } m \text{ på hinanden følgende vektorer i} \\
+    (e_1,\dots,e_m,v_1,\dots,v_n,e_1,\dots,e_m) \\
+    \text{er lineært uafhængige}
+  \end{array}
+\right\} \]
+som også betegnes $X_{m,n}$. Bemærk at identitetsmatricerne kunne
+udskiftes med $A,B\in \GL_n(\C)$
+og så ville man få et tilsvarende rum $X_n^m(A,B)$ med $X_n^m(I,I) =
+X_n^m$. Vi bekymrer os kun om lineær uafhængighed imellem vektorerne i
+$X_n^m(A,B)$ så valget af matricer er ligegyldigt op til de flag $A$
+og $B$ udspænder fra hhv. højre og venstre. Dvs. vi kun er
+interesseret i 
+\[ F_R(A) = \spa(a_n) < \spa(a_{n-1},a_n) < \dots < \C^m \] 
+og
+\[ F_L(B) = \spa(b_1) < \spa(b_1,b_2) < \dots < \C^m \]
+
+Ved at gange med $A^{-1}$ på alle vektorer i $X^m_n(A,B)$ (fra
+venstre) kan vi altid lave rummet om til $X^m_n(I,B')$ for et
+$B'\in\GL_n(\C)$. For ikke at ændre flaget for $I$ kan vi gange dette
+rum med nedre trekantsmatricer.
+
+\subsection{n=m=3}
+
+Betragt rummet $X = X_3^3$, det vil sige rummet af $3\times 3$
+matricer
+
+\[ \left(
+  \begin{array}{ccc}
+    a & d & g \\
+    b & e & h \\
+    c & f & i
+  \end{array}
+\right) \]
+der opfylder følgende ligninger
+\begin{align*}
+  a \neq 0 \\
+  ae-bd \neq 0 \\
+  aei+bfg+cdh-afh-bdi-ceg \neq 0 \\
+  ei-fh \neq 0 \\
+  i \neq 0
+\end{align*}
+
+Fra $X$ har vi projektioner på koordinater, benævnt ved
+\[ a,b,c,d,e,f,g,h,i : X \to \C \]
+
+og vi ser især på projektionen
+\[ \pi = (g,h) : X \to \C^2 \]
+
+Denne fører til underrummene
+\begin{align*}
+  U &= \pi^{-1}(\C^* \times \C^*) \\
+  V &= \pi^{-1}(\C^2 - 0)
+\end{align*}
+
+og vi vil gerne udregne kohomologien af $X$, $(X,U)$, $(X,V)$ og
+$(V,U)$. Dette gøres ved den lange eksakte følge for triplen
+$(X,V,U)$.
+
+\fxnote{Muligvis bør man bruge $\mu/2$ for at sikre åbenhed, men dette
+  burde være ligegyldigt} Da $X$ er åben har vi desuden en funktion
+\[ \mu : X \to (0, 1] \] således at $\mu(A)$ er det største tal så
+\[A + t (\lambda_g I_g + \lambda_h I_h) \in X \quad \forall \, t \leq
+\mu(A),(\lambda_g,\lambda_h)\in D^2\]
+
+\subsection{Symmetrier}
+
+Rummet $X$ har forskellige symmetrier. Eksempelvis er transponering en
+homeomorfi fra $X$ til $X$, da
+\[ A^T =
+\begin{pmatrix}
+  a & b & c \\
+  d & e & f \\
+  g & h & i
+\end{pmatrix} \]
+og denne matrix opfylder betingelserne for at tilhøre $X$ siden
+matricerne 
+\begin{equation*}
+  \begin{pmatrix}
+    a
+  \end{pmatrix},
+  \begin{pmatrix}
+    a & b \\
+    d & e
+  \end{pmatrix},
+  \begin{pmatrix}
+    a & b & c \\
+    d & e & f \\
+    g & h & i
+  \end{pmatrix},
+  \begin{pmatrix}
+    e & f \\
+    h & i
+  \end{pmatrix},
+  \begin{pmatrix}
+    i
+  \end{pmatrix}
+\end{equation*}
+alle er invertible. På samme måde er spejling i antidiagonalen en
+homeomorfi fra $X$ til $X$ da
+\[ S(A) =
+\begin{pmatrix}
+  i & f & c \\
+  h & e & b \\
+  g & d & a
+\end{pmatrix} \] 
+har undermatricerne
+\[
+\begin{pmatrix}
+  i
+\end{pmatrix},
+\begin{pmatrix}
+  i & f \\
+  h & e
+\end{pmatrix},
+\begin{pmatrix}
+  i & f & c \\
+  h & e & b \\
+  g & d & a
+\end{pmatrix},
+\begin{pmatrix}
+  e & b \\
+  d & a
+\end{pmatrix},
+\begin{pmatrix}
+  a
+\end{pmatrix} \]
+og determinanterne af disse er numerisk som de tilsvarende for $A$ da
+de fremkommer ved en ombytning af rækker og søjler.
+
+Der er også mange virkninger af $\C^*$ på $X$. Der er tre betegnet
+\[ l_1,l_2,l_3 : X \times \C^* \to X \]
+givet ved multiplikation af række 1, 2 og 3 med et element fra
+$\C^*$. Dette giver specielt at
+\[ U \cong \pi^{-1}(1,1) \times \C^* \times \C^* \] 
+ved brug af $l_1$ og $l_2$.
+Men samtidig kan man også gange søjlevist uden at ændre på lineær
+uafhængighed hvilket giver flere virkninger.
+
+\subsection{Kohomologien af (X,V)}
+
+Først bemærker vi at hvis $Y$ er en vilkårlig (åben) mængde der
+indeholder $\pi^{-1}(0,0)$ så er
+\[ H^*(X,V) \cong H^*(Y, Y\cap V) \]
+pr. excision. Vi kan derfor tage
+\[ Y = \pi^{-1}(0,0) \times D^2 \] 
+indlejret i $X$ ved
+\[ (A,\lambda_g,\lambda_h) \mapsto A + \mu(A) ( \lambda_g I_g +
+\lambda_h I_h ) \]
+
+Denne mængde er åben da vi kan variere hver koordinat en smule,
+ligemeget hvilket element vi vælger i mængden (da $\mu$ er kontinuert
+og $GL$ er åben). Dermed er
+\[ H^*(X,V) \cong H^*(\pi^{-1}(0,0)\times (D^2,D^2-0)) \]
+
+Fra K\"{u}nneth er
+\begin{align*}
+  H^n(\pi^{-1}(0,0) \times (D^2,D^2-0)) &\cong
+  H^n(\pi^{-1}(0,0))\otimes H^0(D^2,D^2-0) \\
+  & \quad \oplus
+  H^{n-4}(\pi^{-1}(0,0) \otimes H^4(D^2,D^2-0) \\
+  &\cong H^{n-4}(\pi^{-1}(0,0)))\otimes \Z
+\end{align*}
+da $(D^2-0) \simeq S^3$ og den lange eksakte følge for parret $(D^2,D^2-0)$
+giver så at $H^k(D^2,D^2-0) \cong \widetilde{H}^{k-1}(S^3)$
+
+Dermed er
+\[ H^n(X,V) \cong H^{n-4}(\pi^{-1}(0,0)) \quad \forall\, n \geq 1 \]
+
+\subsection{Kohomologien af (V,U)}
+
+Som tidligere siger excision at det er nok at udregne
+\[ H^*(Z,Z\cap U) \]
+hvor $Z$ er en omegn af $\pi^{-1}(0\times \C^* \cup \C^* \times 0)$.
+
+Denne omegn kan vi vælge til at være
+\begin{align*}
+  Z &= Z_1 \cup Z_2 \\
+  Z_1 &= \bigcup_{A \in \pi^{-1}(0\times \C^*} A + \min(h(A),\mu(A)) D I_g \\
+  Z_2 &= \bigcup_{A \in \pi^{-1}(\C^* \times 0} A + \min(g(A),\mu(A)) D I_h \\
+\end{align*}
+
+Da $A \in Z_1$ opfylder at $g(A) < h(A)$ og den modsatte ulighed gælder for
+$Z_2$ vil kohomologigrupperne dele op i en direkte sum. Derudover er
+\begin{align*}
+  Z_1 &\cong \pi^{-1}(0\times \C^*) \times D \\
+  Z_2 &\cong \pi^{-1}(\C^* \times 0) \times D
+\end{align*}
+
+Så ved brug af excision og disse isomorfier får vi at
+\begin{align*}
+  H^*(V,U) &\cong H^*(Z,Z\cap U) \\
+  &\cong H^*(Z_1\times (D,D-0)) \oplus H^*(Z_2\times (D,D-0)) \\
+  &\cong H^*(\pi^{-1}(0\times \C^*) \times (D,D-0)) \oplus
+  H^*(\pi^{-1}(\C^*\times 0)\times (D,D-0))
+\end{align*}
+
+Og ved brug af den lange eksakte følge for $(D,D-0)$ og K\"{u}nneth får man
+
+\[ H^n(V,U) \cong H^{n-2}(\pi^{-1}(0\times \C^*)) \oplus
+H^{n-2}(\pi^{-1}(\C^*\times 0)) \]
+
+\subsection{Randafbildninger}
+
+Vi har et kommutativt diagram
+\[ \xymatrix{
+  (V,U) \ar[r]^i & (X,U) \ar[r]^j & (X,V) \\
+  \pi^{-1}(0,0) \times (D^2-0, D^{*2}) \ar[u]^f \ar[r]^i & \pi^{-1}(0,0) \times
+  (D^2,D^{*2}) \ar[u]^f \ar[r]^j & \pi^{-1}(0,0)\times(D^2,D^2-0) \ar[u]^f } \]
+hvor
+\[ f : \pi^{-1}(0,0) \times (D^2,D^2-0,D^{*2}) \to (X,V,U) \]
+er indlejringen fra før.
+
+Dette giver et diagram i kohomologi, hvor $P = \pi^{-1}(0,0)$
+\[ \xymatrix{ H^*(X,V) \ar[r]^{j^*} \ar[d]^{f^*}_\simeq & H^*(X,U) \ar[d]^{f^*}
+  \ar[r]^{i^*} &
+  H^*(V,U) \ar[d]^{f^*} \ar@/_2pc/[ll]_\delta \\
+  H^*(P \times (D^2,D^2-0)) \ar[r]^{j^*} & H^*(P\times (D^2,D^{*2}))
+  \ar[r]^>>>>>{i^*} & H^*(P\times(D^2-0,D^{*2})) \ar@/^2pc/[ll]^\delta } \]
+
+Vi vil forsøge at udregne randafbildningen
+\[ \delta : H^n(V,U) \to H^{n+1}(X,V) \]
+
+Dette gøres ved ovenstående diagram. Siden $f^*$ er en isomorfi i venstre side
+får vi at $\delta$ kan udregnes som
+\[ \xymatrix{ H^n(V,U) \ar[r]^>>>>{f^*} & H^n(P\times (D^2-0,D^{*2}))
+  \ar[r]^>>>>>\delta & H^{n+1}(P\times (D^2,D^2-0)) \cong H^{n+1}(X,V) } \]
+
+\subsubsection{$\d$}
+$\delta$ er randafbildningen i den lange eksakte følge for triplen
+\[ P\times (D^2,D^2-0,D^{*2}) \]
+
+Da $P$-komponenten ikke ændrer sig ved inklusion bidrager den ikke til den lange
+eksakte følge. Dermed bliver $\d$ bare randafbildningen for triplen
+\[ (D^2,D^2-0,D^{*2}) \]
+
+Den lange eksakte følge giver følgende diagram
+\[
+\begin{array}{c|ccc}
+  n & H^n(D^2,D^2-0) & H^n(D^2,D^{*2}) & H^n(D^2-0,D^{*2}) \\
+  \hline
+  5 & 0 & 0 & 0 \\
+  4 & \Z & 0 & 0 \\
+  3 & 0 & \Z & \Z^2 \\
+  2 & 0 & \Z ^2 & \Z^2 \\
+  1 & 0 & 0 & 0 \\
+  0 & 0 & 0 & 0
+\end{array} \]
+
+Dermed ser vi at det eneste sted hvor $\d\neq 0$ er fra $H^3$ til
+$H^4$, hvor den fjerner et $\Z$. \fxnote{Hvilket $\Z$?}
+Alle disse grupper er udregnet ved at se på den lange eksakte følge
+for parret der indgår og bruge at $D^2 \simeq *$ (eller
+lignende). Bemærk at $H^1$ altid giver 0 for parrene da rummene der
+indgår er sammenhængende hvilket giver
+\[ H^0(A) \cong H^0(B) \implies H^1(A,B) \subset H^1(A) = 0 \]
+i alle tilfældene.
+
+\subsubsection{$f^*$}
+Dette kræver mere information at udregne. Men vi kan finde ud af
+hvilken information vi har brug for.
+
+Fra tidligere afsnit er
+\[ H^*(V,U) \cong H^*(\pi^{-1}(\C^*\times 0) \times (D,D-0)) \oplus
+H^*(\pi^{-1}(0\times \C^*)\times(D,D-0)) \]
+
+Og ved brug af excision er
+\[ (D^2-0,D^{*2}) \simeq (W_1\cup W_2, \widetilde{W_1}\cup
+\widetilde{W_2}) \]
+hvor
+\begin{align*}
+  W_1 &= \set{\l_1,\l_2 \mid \size{\l_1} < \size{\l_2} < 1} \\
+  \widetilde{W_1} &= \set{ \l_1,\l_2 \mid 0 < \size{\l_1}<\size{\l_2}
+    < 1} \\
+  W_2 &= \set{\l_1,\l_2 \mid \size{\l_2} < \size{\l_1} < 1} \\
+  \widetilde{W_2} &= \set{ \l_1,\l_2 \mid 0 < \size{\l_2}<\size{\l_1}
+    < 1}
+\end{align*}
+
+Dette giver at
+\[ H^*(P \times (D^2-0,D^{*2})) \cong H^*(P\times
+(W_1,\widetilde{W_1})) \oplus H^*(P\times (W_2,\widetilde{W_2})) \]
+og det er derfor nok at udregne $f^*$ projiceret til hver af disse
+faktorer.
+
+Samtidig kan vi bruge gruppevirkningen på den anden del og få
+\[ H^*(\pi^{-1}(0\times\C^*) \times (D,D-0)) \cong
+H^*(\pi^{-1}(0,1)\times \C^* \times (D,D-0)) \] og tilsvarende for den
+anden gruppe. 
+
+Ved brug af K\"{u}nneth skal vi udregne
+\[ \xymatrix{ H^*(\pi^{-1}(0,1)\times\C^*) \ar[r]^\pr & H^*(V,U)
+  \ar[r]^{f^*} & H^*(P\times W_2) } \]
+
+Men da billedet af $P\times W_2$ under $f$ ender i noget der kan
+trækkes sammen til $\pi^{-1}(1,0)\times\C^*$ (da $\l_2 \simeq 0$ i
+$W_2$) er denne 0. Tilsvarende for $\pi^{-1}(1,0)$ og $W_1$.  De
+eneste interessante afbildninger er derfor
+\[ \xymatrix{ H^*(\pi^{-1}(0,1) \times \C^* \times (D,D-0)) \ar[r] &
+  H^*(P\times W_1) \\
+  H^*(\pi^{-1}(1,0) \times \C^* \times (D,D-0)) \ar[r] & H^*(P\times
+  W_2) } \]
+
+Dette kan forsimples endnu mere ved at bemærke at projektionen til
+$\C^*\times D$ giver samme resultat som projektionen til $W_i$,
+muligvis med en faktor $\mu(A)$ på den ene koordinat. Dermed er dette
+identiteten i kohomologi og det eneste interessante er derfor hvad der
+sker med den sidste koordinat, $\pi^{-1}(0,1)$. Men dette er givet ved
+indlejringen 
+\[ \pi^{-1}(0,0) \to \pi^{-1}(0,1) \times \C^*\]
+hvor man indsætter $\mu(A)$ på den ene koordinat og derefter bruger
+gruppevirkningen.
+
+For at udregne $f^*$ skal vi altså bruge gruppevirkningen og denne
+indlejring.
+
+\subsection{Ikke-reducerede grupper}
+
+På $X = X_3^3$ har vi 4 underrum,
+\begin{align*}
+  X_{001} &= \pi^{-1}(0,0) \\
+  X_{101} &= \pi^{-1}(\C^* \times 0) \\
+  X_{011} &= \pi^{-1}(0\times \C^*) \\
+  X_{111} &= \pi^{-1}(\C^* \times \C^*)
+\end{align*}
+
+Vi vil her udregne deres kohomologi.
+
+\subsubsection{$X_{001}$}
+
+Ved rækkereduktion og brug af gruppevirkningen får man en homeomorfi
+\begin{align*}
+  X_{001} &\to (\C^*)^3\times\C^2\times\set{(b,c)\in\C^2 \mid bc\neq
+    1} \\
+  \begin{pmatrix}
+    a & b & 0 \\
+    c & d & 0 \\
+    e & f & i
+  \end{pmatrix} &\mapsto
+  (a,d,i,\frac{e}{i},\frac{f}{i},\frac{b}{a},\frac{c}{d})
+\end{align*}
+med invers
+\begin{align*}
+  (\C^*)^3\times\C^2\times\set{(b,c)\in\C^2 \mid bc\neq 1} &\to
+  X_{001} \\
+  (a,d,i,e,f,b,c) &\mapsto
+  \begin{pmatrix}
+    a & ab & 0 \\
+    dc & d & 0 \\
+    ei & fi & i 
+  \end{pmatrix} 
+\end{align*}
+Rummet der ikke er en torus vil blive betegnet
+\[ Y = \set{(b,c) \in \C^2 \mid bc\neq 1} \]
+Ved at bruge Alexander-dualitet kan vi udregne
+\[ H^k(Y) =
+\begin{cases}
+  \Z & k=0 \\
+  \Z & k=1 \\
+  \Z & k = 2 \\
+  0 & \text{ellers}
+\end{cases} \]
+% Gør dette her
+
+Betragt rummet $Y^C = \set{(b,c)\in C^2 \mid bc = 1} \cup \set{\infty}
+\subset S^4$. Dette er en kopi af $b\in\C^*$ da $c = b^{-1}$, men den er
+limet sammen med $\infty$ i 0 (da tæt på 0 er $c$ stor) og
+selvfølgelig også for $b$ stor. Dermed er $Y^C$ homotopi-ækvivalent
+til $S^2 \vee S^1$. Ved at bruge Alexander-dualitet er
+\[ \widetilde{H}_i(Y) \cong \widetilde{H}^{3-i}(Y^C) =
+\begin{cases}
+  0 & i = 0,3 \\
+  \Z & i = 1,2
+\end{cases} \]
+Altså har $Y$ homologi (og dermed kohomologi) som $S^1\vee S^2$.
+
+Bemærk at i grad 1 er kohomologien for $Y$ frembragt af cirklen $1-bc
+\neq 0$, da vi har afbildninger
+\[ \xymatrix{Y \ar@/^/[r]^{1-bc} & \C^* \ar@/^/[l]^{(1-\l,1)} } \]
+og sammensætningen $\C^* \to \C^*$ er identiteten. Dermed er
+afbildningen
+\[ H^1(Y) \to H^1(\C^*) \]
+surjektiv, hvilket betyder at det er en isomorfi.
+
+Dermed får vi at
+\[ H^k(X_{001}) =
+\begin{cases}
+  \Z & k=0 \\
+  \Z^4 & k=1 \\
+  \Z^7 & k=2 \\
+  \Z^7 & k=3 \\
+  \Z^4 & k=4 \\
+  \Z & k=5
+\end{cases} \]
+
+\subsubsection{$X_{101}$}
+
+På samme måde er
+\begin{align*}
+  X_{101} &\to (\C^*)^5\times \C \times Y \\
+  \begin{pmatrix}
+    a & b & g \\
+    c & d & 0 \\
+    e & f & i 
+  \end{pmatrix} &\mapsto
+  (\frac{a}{g},d,i,g,1+\frac{gcf}{adi}
+  -\frac{ge}{ai}-\frac{bc}{ad},\frac{f}{i},\frac{b}{a},\frac{c}{d})
+\end{align*}
+med invers
+\begin{align*}
+  (\C^*)^5\times \C \times Y &\to
+  X_{101} \\
+  (a,d,i,g,e,f,b,c) &\mapsto
+  \begin{pmatrix}
+    ag & bag & g \\
+    dc & d & 0 \\
+    (1-e-bc+\frac{fc}{a})ai & fi & i
+  \end{pmatrix} 
+\end{align*}
+og kohomologien er
+\[ H^k(X_{101}) =
+\begin{cases}
+  \Z & k=0 \\
+  \Z^6 & k=1 \\
+  \Z^{16} & k=2 \\
+  \Z^{25} & k=3 \\
+  \Z^{25} & k=4 \\
+  \Z^{16} & k=5 \\
+  \Z^6 & k=6 \\
+  \Z & k=7
+\end{cases} \]
+
+\subsubsection{$X_{011}$}
+
+Her er homeomorfien
+\begin{align*}
+  X_{011} &\to (\C^*)^5\times \C\times Y \\
+  \begin{pmatrix}
+    a & b & 0 \\
+    c & d & h \\
+    e & f & i
+  \end{pmatrix} & \mapsto
+  (a,i,h,\frac{d}{h}-\frac{f}{i},\frac{d}{h}-\frac{bc}{ah},\frac{e}{i},
+  \frac{bhi}{a(id-fh)},\frac{c}{h}-\frac{e}{i})
+\end{align*}
+og invers
+\[ (a,i,h,f,d,e,b,c) \mapsto
+\begin{pmatrix}
+  a & baf & 0 \\
+  (c+e)h & h(d+b(c+e)f) & h \\
+  ei & (d+b(c+e)f-f)i & i
+\end{pmatrix} \]
+Hvis disse koordinater skal bruges bør man nok regne dem
+efter. Generelt homotoperer vi $e$ til 0, så det er ikke så vigtigt.
+
+Vi kan nu gøre som før og få
+\[ H^k(X_{011}) =
+\begin{cases}
+  \Z & k=0 \\
+  \Z^6 & k=1 \\
+  \Z^{16} & k=2 \\
+  \Z^{25} & k=3 \\
+  \Z^{25} & k=4 \\
+  \Z^{16} & k=5 \\
+  \Z^6 & k=6 \\
+  \Z & k=7
+\end{cases} \]
+
+\subsubsection{$X_{111}$}
+
+Dette er mere besværligt. Ved at bruge nedenstående får vi en
+homeomorfi, og ved at analysere billedet er
+
+\[ H^k(X_{111}) =
+\begin{cases}
+  \Z & k=0 \\
+  \Z^7 & k=1 \\
+  \Z^{22} & k=2 \\
+  \Z^{42} & k=3 \\
+  \Z^{56} & k=4 \\
+  \Z^{56} & k=5 \\
+  \Z^{42} & k=6 \\
+  \Z^{22} & k=7 \\
+  \Z^7 & k=8 \\
+  \Z & k=9
+\end{cases} \] 
+
+Homeomorfien er
+\begin{align*}
+  X_{111} &\to (\C^*)^7\times \set{(x,y,z)\in\C \mid y - z - xyz = 1 }
+  \\
+  \begin{pmatrix}
+    a & b & g \\
+    c & d & h \\
+    e & f & i
+  \end{pmatrix} \mapsto&
+  (g,h,i,\frac{a}{g},\frac{f}{i}-\frac{d}{h},d'=\frac{ad-bc}{ah},
+  c'=\frac{c}{h}-\frac{a}{g}+\frac{cdi-deh}{fh^2-dih} +
+  \frac{beh-bci}{fgh-dgi}, \\
+  & (\frac{bc'}{ad'},\frac{c}{hc'}-\frac{a}{gc'},
+  \frac{d'}{c'}\frac{eh-ci}{fh-di}))
+\end{align*}
+Koordinaterne $d'$ svarer til en modificeret version af determinanten
+$ad-bc$ og $c'$ svarer til en modificeret version af determinanten for
+hele matricen.
+Den inverse er
+\[
+  (g,h,i,a,f,d,c,x,y,z) \mapsto
+  \begin{pmatrix}
+    ga & \frac{xdga}{c} & g \\
+    yhc+ah & dh + yhxd + \frac{ahxd}{c} & h \\
+    \frac{zcfi}{d} + yci + ai & fi + di + yxdi + \frac{axdi}{c} & i
+  \end{pmatrix}
+\]
+hvilket kan tjekkes med Sage (full\_simplify er en fordel).
+
+Kohomologien af
+$Z=\set{(x,y,z)}$ er den samme som $S^2$. Dette er svært at se direkte
+men man kan få det ved at se på $(\C^*)^2\times Z$ hvilket er rummet
+\[ \set{b,c,d,e \mid d\neq bc, c\neq de} \]
+og bruge Alexander-dualitet. 
+
+Se på komplementet i $S^8$. Dette er
+\[ \set{b,c,d,e \mid d = bc} \cup \set{(b,c,d,e) \mid c = de} \cup
+\infty \]
+Kald de to rum $Y_1$ og $Y_2$. Så er $Y_1\cap Y_2$ rummet 
+\begin{align*}
+  \set{d=bc,c=de} &= \set{d=bde,c=de}\\
+  &\cong \set{b,d,e \mid d=bde} \\
+  &=\set{b,d,e \mid 0= (be-1)d} \\
+  &= \set{d=0}\cup \set{be=1}
+\end{align*}
+Disse rum kan vi udregne kohomologien for.
+\[ \set{d=0} = \set{b,0,0,e} = S^4 \]
+\[ \set{be=1} = \set{b,de,d,\frac{1}{b}} = (\C\times \C^*)^+ = S^2
+\wedge (S^2\vee S^2) = S^3\vee S^4 \]
+For snittet af de to rum får vi
+\[ \set{d=0,be=1} = \set{b,0,0,\frac{1}{b}} = (\C^*)^+ = S^1\vee S^2\]
+
+Dermed får vi diagrammet
+\[\xymatrix{
+  S^1\vee S^2 \ar[r] \ar[d] & S^3\vee S^4 \ar[d]\\
+  S^4 \ar[r] & Y_1\cap Y_2
+}\]
+Ved at bruge Mayer-Vietoris på dette får vi at afbildningen fra den
+direkte sum er 0 (når graden er større end 0), da snittet ikke har
+elementer i de rigtige grader. Ved at benytte at grupperne er frie til
+at lave en splitning af de korte eksakte følger får vi (for $k\geq 2$) 
+\[ H^k(Y_1\cap Y_2) \cong H^k(S^4)\oplus H^k(S^3\vee S^4) \oplus
+H^{k-1}(S^1\vee S^2) =
+\begin{cases}
+  \Z & k=0\\
+  0 & k=1\\
+  \Z & k=2\\
+  \Z^2 & k=3\\
+  \Z^2 & k=4
+\end{cases}
+\]
+For $k=0$ er rummet sammenhængende og for $k=1$ giver MV at gruppen er
+0 (Bare skriv det ud).
+Hvis vi ser på $Y_1$ og $Y_2$ får vi at disse begge er $S^6$, da vi
+kan smide en af koordinaterne væk. Dermed får vi igen et diagram med
+\[ \xymatrix{ 
+Y_1\cap Y_2 \ar[r]\ar[d] & S^6\ar[d]\\
+S^6 \ar[r] & Y_1\cup Y_2\cup\infty
+}\]
+og igen kan vi bruge MV til at få
+\[ H^k(Y_1\cup Y_2\cup\infty) =
+\begin{cases}
+  \Z & k=0\\
+  0 & k=1,2 \\
+  \Z & k=3\\
+  \Z^2 & k=4\\
+  \Z^2 & k=5\\
+  \Z^2 & k=6
+\end{cases} \]
+Nu kan vi bruge Alexander dualitet og få
+\[ \widetilde{H}^k((\C^*)^2\times Z) \cong
+\widetilde{H}_k((\C^*)^2\times Z) \cong
+\widetilde{H}^{7-k}(Y_1\cup Y_2\cup\infty) =
+\begin{cases}
+  0 & k=0\\
+  \Z^2 & k=1\\
+  \Z^2 & k=2\\
+  \Z^2 & k=3\\
+  \Z & k=4
+\end{cases} \]
+Vi ved at vi kan spalte en torus fra dette pr. Künneth. Dermed får vi
+\[ H^k(Z) =
+\begin{cases}
+  \Z & k=0,2 \\
+  0 & k=1
+\end{cases} \]
+
+Bemærk at $Z$ er en glat mangfoldighed da de partielt afledte
+\begin{align*} 
+  f_x &= -zy  \\
+  f_y &= 1 - xz \\
+  f_z &= -1 - xy
+\end{align*}
+ikke alle kan være 0 samtidig ($f_x = 0$ betyder at $z$ eller $y$ er
+0, hvilket giver at $f_y$ eller $f_z$ er $\pm 1$.)
+
+Som man kan se er kohomologien frembragt i grad 1 og 2, og det ville
+derfor være rart med en frembringer for (ko)homologien i grad 2 der
+ikke kommer fra produkter af $\C^*$. Denne
+får man ved det (lukkede!) delrum
+\[ R = \set{ (x,y,z) \in \R^3 \mid x > 0, y<0, xy<-1,z =
+  \frac{y-1}{1+xy} >0} \subset Z \]
+For at se dette, se på (en delmængde af) normalbundtet $NR$ til $R$ i
+$TZ$, hvorpå eksponential-afbildningen er en diffeomorfi til
+$NR\subset Z$. Dette er et
+orienterbart delbundt i det orienterede bundt $TZ$, og vi kan opskrive
+et diagram
+\[ \xymatrix{
+  H^2(NR,NR_0) & H^2(Z,Z-R) \ar[l]_\cong \ar[r] & H^2(Z)
+} \]
+Isomorfien kommer fra exicsion, da $Z = NR \cup Z-R$. Siden $R \cong
+\R^2$ er $NR \cong \R^2\times\R^2$ og $NR_0\cong \R^2\times S^1$,
+hvilket giver $H^2(NR,NR_0)\cong \Z$ og vi får dermed en klasse i
+$H^2(Z)$ ved at afbilde denne frembringer over. For at se at det er
+frembringeren vi får ud skal vi betragte en torus
+\[ T = \set{ x,y \mid \size{x} = \size{y} = 2} \subset Z \]
+
+Denne snitter $R$ i præcist et punkt, nemlig $p=(2,-2,1)$. Ved at
+snitte med $T$ og tage inklusion får vi diagrammet
+\[ \xymatrix{
+  H^2(NR,NR_0) \ar[d] & H^2(Z,Z-R) \ar[l]_\cong \ar[r] \ar[d] & H^2(Z)
+  \ar[d]\\
+  H^2(p\times (D,D-0)) & H^2(T,T-p) \ar[l]_\cong \ar[r]^\cong & H^2(T)
+} \]
+
+Den venstre inklusion er en isomorfi, da vi har en homotopiækvivalens
+\[ (NR,NR_0) \cong R\times (D,D-0) \]
+så kohomologien i begge grupper kommer fra parret $(D,D-0)$ som ikke
+ændrer sig ved inklusionen. Siden diagrammet kommuterer er alle
+afbildningerne der indgår isomorfier, og dermed giver $R$ en
+frembringer for $H^2(Z)$. Samtidig ser vi at man kan udregne
+(ko?)homologi-klassen for en cykel ved at tage snittet med $R$, da
+(ko?)homologien kommer fra $(Z,Z-R)$ (ved at homotopere en cykel der
+snitter $R$ endeligt mange gange kan vi sørge for at den snitter $R$ i
+endeligt mange forskellige punkter, og hver af disse vil give $\pm 1$
+til cyklens klasse i (ko?)homologi, afhængig af orientering).
+
+Et tilsvarende argument kan laves med
+\[ R = \set{(b,c) \in \R^2 \mid b > 0, c > 0, bc > 1} \subset Y \]
+og den samme torus, hvilket giver at (ko)homologien for $Y$ i grad 2
+kan udregnes ved sammensætning med inklusionen af torussen.
+
+
+\subsection{Inklusioner af disse rum}
+
+Siden $X$ er åbent kan vi ved at at vælge koordinaterne små nok
+indlejre $X_{001}\times D-0$ i $X_{101}$ osv. Det lader til at være
+vigtigt hvad denne inklusion gør i kohomologi. Da kohomologien er
+frembragt af elementer af grad 1 og 2 kan vi nøjes med at udregne
+afbildningen på disse.
+
+I det nedenstående vil der indgå lidt forskellig notation. Jeg vil fra
+nu af forsøge at holde mig til at indeksere frembringere for
+kohomologi med e.g. $_{11}$ hvis man tilhører $H^*(X_{111})$ og et
+bogstav der angiver hvilken determinant man tilhører. Dermed bliver
+\begin{align*}
+  H^*(X_{001}) &= \Lambda[a_{00},d_{00},i_{00}]\otimes H^*(Y) \\
+  H^*(X_{101}) &= \Lambda[a_{10},d_{10},i_{10},f_{10},g_{10}]\otimes
+  H^*(Y) \\
+  H^*(X_{011}) &= \Lambda[a_{01},d_{01},i_{01},f_{01},g_{01}]\otimes
+  H^*(Y) \\
+  H^*(X_{111}) &=
+  \Lambda[a_{11},d_{11},i_{11},fh_{11},g_{11},C_{11},D_{11}]\otimes
+  H^*(Y) \\
+\end{align*}
+hvor de store bogtaver $C_{11}$ og $D_{11}$ angiver en determinant der
+ikke er så let at finde i den oprindelige matrix.
+Derudover er
+\[ H^*(Y) = \Z \oplus \Z y_{ij,1} \oplus \Z y_{ij,2} \]
+hvor $i,j$ er 0 eller 1 afhængig af hvilket rum vi er en faktor i og
+graden er $\size{y_{ij,k}} = k$.
+
+\subsubsection{$X_{001} \to X_{101}$}
+I koordinater er afbildningen
+\begin{align*}
+  (\C^*)^3 \times Y \times D-0 &\to (\C^*)^5 \times Y \\
+  (a,d,i,b,c,g) &\mapsto
+  (\frac{a}{g},d,i,g,1-bc,b,c)
+\end{align*}
+hvor koordinaterne i $\C^k$ er homotoperet til 0. For at ramme en kocykel i
+$H^*(X_{001}\times D-0)$ skal vi bare
+tage den tilsvarende cocykel i $H^*(X_{101})$.
+
+Mere eksplicit kan vi udregne afbildningen på frembringere ved at
+dualisere til homologi og sende cirkler i $X_{001}$ til $X_{101}$ og
+se hvordan de opfører sig. Gør man dette får man
+\begin{align*}
+  a_{10} &\mapsto a_{00} - g_{00} \\
+  d_{10} &\mapsto d_{00} \\
+  i_{10} & \mapsto i_{00} \\
+  g_{10} &\mapsto g_{00} \\
+  f_{10} &\mapsto y_{00,1}\\
+  y_{10,1} &\mapsto y_{00,1} \\
+  y_{10,2} &\mapsto y_{00,2}
+\end{align*}
+hvor $g_{00} \in H^*(D-0)$ er den ekstra faktor.
+
+\subsubsection{$X_{001} \to X_{011}$}
+
+I koordinater:
+\begin{align*}
+  (\C^*)^3 \times Y \times D-0 &\to (\C^*)^5 \times Y \\
+  (a,d,i,b,c,h) &\mapsto (a,i,h,\frac{d}{h},
+  \frac{d}{h}(1-bc), \frac{bh}{d},\frac{dc}{h})
+\end{align*}
+
+Igen kan vi nedskrive den eksplicit ved at dualisere og vi får
+\begin{align*}
+  a_{01} &\mapsto a_{00} \\
+  d_{01} &\mapsto d_{00}-h_{00} + y_{00,1} \\
+  i_{01} & \mapsto i_{00} \\
+  h_{01} &\mapsto h_{00} \\
+  f_{01} &\mapsto d_{00} - h_{00} \\
+  y_{01,1} &\mapsto y_{00,1} \\
+  y_{01,2} &\mapsto y_{00,2} - d_{00}y_{00,1} + h_{00}y_{00,1}
+\end{align*}
+hvor $h_{00} \in H^*(D-0)$ er den ekstra faktor. Bemærk at den sidste
+formel kommer fra samme trick som ovenfor hvor man snitter
+med $R$ for at finde antallet af snit.
+
+Dette gøres kort her. Vi kan se at kun $d,h,b,c$ indgår og at $b=c=0$
+ikke snitter. Dermed er der kun mulighederne $(d,1-bc),(h,1-bc)$ og
+$(b,c)$. Disse afprøves enkeltvis.
+
+\subsubsection{$\size{b}=\size{c}=2$}
+
+Afbildningen er
+\[ b,c\mapsto (b\epsilon,\frac{c}{\epsilon}) \]
+Dermed skal $b=2$ og $c=2$ for at vi skærer, og dette punkt overholder
+reglen $bc>1$.
+
+\subsubsection{$(d,1-bc)$}
+
+Vi sætter $c=1,b=1-\l$. Så er afbildningen
+\[ (d,1-\l) \mapsto (\frac{(1-\l)\e}{d},\frac{d}{\e}) \]
+hvilket giver $d=1$ og $\l=-1$.
+
+\subsubsection{$(1-bc,h)$}
+
+Vi sætter igen $c=1,b=1-\l$ og får
+\[ (h,1-\l) \mapsto (1-\l)h,h^{-1} \]
+hvilket giver $h=\epsilon$ og $\l = -1$.
+
+Altså skærer vi i disse tre torusser.
+Fortegnene i sidste formel får man ved at tjekke orienteringer,
+hvilket er gjort i ``orientation.sage''.
+
+\subsubsection{$X_{101} \to X_{111}$}
+
+De to resterende er mere besværlige. I koordinater får vi
+\begin{align*}
+  (\C^*)^5\times Y \times (D-0) &\to (\C^*)^7\times Z \\
+  (a,d,f,g,i,b,c,h) \mapsto &
+  (g,h,i,a,-\frac{d}{h},\\
+  & d'=\frac{d}{h}(1-bc), \\
+  & c'= -af-\frac{a^2bh}{d}+\frac{a^2bhf}{d}+\frac{a^2b^2ch}{d}, \\
+  & \frac{bc'}{d'}, \frac{cd}{hc'}-\frac{a}{c'},
+  \frac{cd'}{c'}-\frac{ahd'}{dc'}+\frac{afhd'}{dc'}+\frac{abchd'}{dc'}
+\end{align*}
+
+Ved at projektiere til de forskellige
+koordinater og tage cirkler i $X_{101}$ får vi
+\begin{align*}
+  f^* : H^1(X_{111}) &\to H^1(X_{101}\times D-0) \\
+  a_{11} & \mapsto a_{10} \\
+  d_{11} &\mapsto d_{10} - h_{10} \\
+  g_{11} &\mapsto g_{10} \\
+  h_{11} &\mapsto h_{10} \\
+  i_{11} &\mapsto i_{10} \\
+  D_{11} &\mapsto d_{10} + y_{10,1} - h_{10} \\
+  C_{11} &\mapsto f_{10} + a_{10} \\
+  z_{11} &\mapsto (a_{10}-d_{10}+f_{10}+h_{10})y_{10,1} + y_{10,2}
+\end{align*}
+
+Udregningen på $z_{11}$ er vist nedenfor. For at se dette skal
+vi bruge tricket beskrevet ovenfor med
+delmangfoldigheden $R \subset Z$. Vi skal derfor udvælge en torus i
+$X_{101}$ og se hvor mange gange denne snitter $R$.
+
+Bemærk først at hvis $b=0$ så kan vi ikke ramme $R$ da vi så får
+$x=0$. Dermed skal rummet $Y$ indgå i udregningen. Vi tjekker
+mulighederne en for en. I torusserne hvor $1-bc$ indgår sætter vi
+\[ 1-bc=\l \implies bc=1-\l \]
+og for at gøre $c'$ pænere sættes $b=1,c=1-\l$.
+
+\paragraph{$a$:}
+Hvis vi varierer $a$ og fastholder de andre som 1 (eller $\epsilon$)
+får vi
+\[ c' = a^2(1-\lambda)\epsilon-a \]
+\[ (a,\lambda) \mapsto \frac{\epsilon c'}{\lambda}, \frac{1-\lambda -
+  a\epsilon}{\epsilon c'},\frac{\lambda(1-\lambda)}{\epsilon c'}
+(1+a\epsilon) \]
+
+Vi udregner
+\[ xy+1 = \frac{1-a\epsilon}{\lambda} \implies \lambda =
+\frac{1-a\epsilon}{1+xy} = r(1-a\epsilon) \]
+Dette giver
+\[ xz = 1-\lambda + \epsilon a - \lambda \epsilon a = 1- r + a\epsilon
++r\epsilon^2a^2 \]
+
+Dermed opfylder $a$ ligningen
+\[ a^2 + \frac{1}{r\epsilon}a+\frac{1-r-xz}{r\epsilon^2} = 0 \]
+Koefficienterne er reelle, så hvis $a$ er kompleks skal 
+\[\pm 2\Re{a} = \pm( a + \overline{a}) = \frac{1}{r\epsilon} \]
+Ved at vurdere på $r = \frac{1}{1+xy}$ får man at denne er i
+intervallet $[-2,\frac{-2}{3}]$.
+Dermed er $\Re a = O(\epsilon^{-1})$ så for $\epsilon$ lille er
+$a\not\in S^1$. Dette er umuligt, så $a \in \R$. Så er $\lambda \in
+\R$ og ved at tjekke de reelle muligheder får man kun det ene
+skæringspunkt vi allerede kender.
+
+\paragraph{$d$:}
+
+Afbildingen er
+\[ c' = -1 + \frac{(1-\lambda)\epsilon}{d} \]
+\[ (d,\lambda) \mapsto \frac{\epsilon
+  c'}{d\lambda},\frac{(1-\lambda)d-\epsilon}{\epsilon c'},
+\frac{(1-\lambda)\lambda d}{\epsilon c'} +
+\frac{(1-\lambda)\lambda}{c'} \]
+
+Ved udregning er
+\[ 1+xy = \frac{d-\epsilon}{d\lambda} \implies \lambda =
+\frac{d-\epsilon}{rd} \]
+
+Og dette giver som før
+\[ xz =
+1-\frac{d-\epsilon}{dr}+\frac{\epsilon}{d}-
+\frac{\epsilon(d-\epsilon)}{d^2r} =
+1-\frac{1}{r}+\frac{\epsilon}{d}+\frac{\epsilon^2}{d^2r} \]
+Hvis vi indfører $D = \frac{1}{d}$ er dette
+\[ D^2+D\frac{r}{\epsilon}+ \frac{x(y-z-xyz)}{\epsilon^2} = D^2 +
+D\frac{r}{\epsilon}+\frac{x}{\epsilon^2} = 0 \]
+
+Ved at vurdere på $x$ får vi $\size{\frac{x}{\epsilon^2}} \in
+[\frac{1}{\epsilon}-2,\frac{1}{\epsilon}+2]$ hvilket igen giver at for
+$D$ kompleks er $\size{D}^2=O(\epsilon^{-1})$, hvilket er
+umuligt. Altså er $d$ og $\lambda$ reelle og vi får igen det ene
+skæringspunkt vi kender.
+
+\paragraph{$f$:}
+
+Afbildning:
+\[ c' = -f+f\epsilon-\lambda\epsilon \]
+\[ (f,\lambda)\mapsto \frac{\epsilon
+  c'}{\lambda},\frac{1-\lambda-\epsilon}{\epsilon
+  c'},\frac{(1-\lambda)\lambda}{\epsilon c'} + \frac{\lambda f -
+  \lambda^2}{c'} \]
+og man får
+\[ \lambda(1+xy) = 1-\epsilon \implies \lambda \in \R \implies c' \in
+\R \implies f\in\R \]
+
+Igen ved at tjekke reelle skæringspunkter får man det ene fra før.
+
+\paragraph{$h$:}
+
+Afbildning:
+\[ c' = -1+h-h\lambda \]
+\[ (\lambda,h) \mapsto \frac{c'
+  h}{\lambda},\frac{1-\lambda-h}{hc'},\frac{(1-\lambda)\lambda}{hc'} +
+\frac{(1-\lambda)\lambda}{c'} \]
+og som sædvanlig er
+\[ \lambda =\frac{1-h}{1+xy} \]
+\[ xz = 1-\lambda + h - \lambda h =
+\frac{xy}{1+xy}+h+\frac{h^2}{1+xy} \]
+hvilket giver at $h$ løser
+\[ h^2+(1+xy)h+x = 0 \]
+Diskriminanten for denne ligning er
+\[ D = (1+xy)^2- 4x \]
+Da $\size{x} \in [\epsilon-2\epsilon^2,\epsilon+2\epsilon^2]$ og
+\[ \size{1+xy} = \size{1-\epsilon} = 1-\epsilon \]
+er diskriminanten positiv og tæt på 1 hvis $\epsilon$ er lille
+(eks. $\epsilon < 42^{-1}$). Dermed er der kun reelle løsninger og vi
+får kun den ene løsning vi kender.
+
+\paragraph{$T$:}
+
+Se på $\size{b}=\size{c}=2$. Så er afbildningen
+\[ b,c\mapsto \frac{\e b(b^2c\e-1)}{1-bc},\frac{c-\e}{b^2c\e^2-\e}, 
+(c-bc\e)\frac{1-bc}{b^2c\e^2-\e} \]
+Vi kan regne og få
+\[ xz = bc-b^2c\e \]
+\[ xy = \frac{bc-b\e}{1-bc} \]
+\[ 1+xy = \frac{1-b\e}{1-bc} \]
+Dermed bliver
+\[ bc= 1-\frac{1-b\e}{1+xy} \]
+\[ xz = bc(1-b\e) = \left(1-\frac{1-b\e}{1+xy}\right)(1-b\e)  \]
+Dette giver at $b$ er rod i polynomiet
+\[ b^2 + \frac{xy-1}{\e}b + \frac{(1+xy)xz\e-1-xy}{\e^2} \]
+Ved at analysere på dette får vi at hvis $b$ er kompleks så skal
+\[2\mathrm{Re} b =  b+\overline b = \pm \frac{xy-1}{\e} \]
+Men da vi ved hvad $x$ og $y$ er kan vi vurdere
+\[ \size{xy-1} \in \left[\frac{7-2\e}{5},\frac{9+2\e}{3}\right] \]
+Dermed vil $\mathrm{Re} b$ vokse som $\e^{-1}$, men dette kan ikke
+lade sig gøre da $\size{b}=2$. Altså er $b$ reel og derfor også $c$
+reel. Ved at tjekke alle mulighederne får man et skæringspunkt i
+$(2,2)$ og ikke i andre.
+
+
+Sætter vi alt dette sammen er
+\[ f^*(z_{11}) = (a_{10}-d_{10}+f_{10}+h_{10})y_{10,1} + y_{10,2} \]
+hvor fortegnene igen er tjekket i ``orientation.sage''.
+
+\subsubsection{$X_{011}\to X_{111}$}
+
+Afbildnigen er
+\begin{align*}
+  (\C^*)^5\times Y \times (D-0) &\to (\C^*)^7\times Z \\
+  (a,d,f,h,i,b,c,g) \mapsto &
+  (g,h,i,\frac{a}{g},-f,d,c' =
+  c-\frac{a}{g}-\frac{cd}{f}-bc^2+\frac{abc}{g}, \\
+  & \frac{bfc'}{d},\frac{c}{c'}-\frac{a}{g c'},-\frac{cd}{fc'}) 
+\end{align*}
+
+Som før kan man tage projektioner af cirkler i $X_{011}$ og få
+
+\begin{align*}
+  f^* : H^1(X_{111}) &\to H^1(X_{011}\times D-0) \\
+  a_{11} & \mapsto a_{01} - g_{01} \\
+  d_{11} &\mapsto f_{01} \\
+  g_{11} &\mapsto g_{01} \\
+  h_{11} &\mapsto h_{01} \\
+  i_{11} &\mapsto i_{01} \\
+  D_{11} &\mapsto d_{01} \\
+  C_{11} &\mapsto a_{01} - g_{01} + y_{01,1} \\
+  z_{11} &\mapsto y_{01,2} + (a_{01}-d_{01}+f_{01}-g_{01})y_{01,1}
+\end{align*}
+
+Igen ser vi på grad 2 ved at snitte med $R$. Hvis $b=c=0$ bliver
+afbildningen konstant (0,1,0), hvilket ikke skærer $R$. Derfor skal
+kohomologien for $Y$ indgå. Bare ved at se på koordinaterne kan vi
+slutte at $i$ og $h$ koordinaten i $X_{011}$ ikke betyder noget, så vi
+kan ignorere disse. Derudover ser vi at $b=0$ betyder $x=0$ så
+kohomologien for $Y$ skal indgå i udregningen. Hvis $1-bc$ indgår i
+udregningen sætter vi $c=1,b=1-\l$ da dette giver
+\[ 1-bc = 1-(1-\l) = \l \]
+
+\paragraph{$a$:}
+
+Afbildningen bliver
+\[ a,\l \mapsto (1-\l)c', \frac{1}{c'}-\frac{a}{\e c'},\frac{1}{c'} \]
+hvor $c' = -1-\frac{a\l}{\e}$.
+Vi får $c'\in \R$ fra $z$ hvilket giver $\l\in\R$ og $a\in \R$ fra $x$
+og $y$. Dermed skal $\l = -1$ for at få $x>0$ og dette tvinger (igen
+ved at se på $x$) $a = 1$. Skæringspunktet bliver
+\[ \frac{2-2\e}{\e},-1,\frac{\e}{1-\e} \]
+
+\paragraph{$d$:}
+
+Afbildningen er i dette tilfælde
+\[ d,\l \mapsto \frac{(1-\l)c'}{d},\frac{\e-1}{\e c'},\frac{d}{c'} \]
+og fra dette får vi $c'\in\R_{>0}$ fra $y<0$ hvilket giver $d=1$
+fra $z$ og $\l = -1$ fra $x$. Altså er skæringspunktet det samme som i
+$a,\l$-torussen.
+
+\paragraph{$f$:}
+
+Her får vi
+\[ f,\l \mapsto (1-\l)fc',\frac{\e-1}{\e c'}, \frac{1}{fc'} \]
+hvilket straks giver $c'>0$, $f =1$ og $\l = -1$. Dermed får vi samme
+skæringspunkt som før.
+
+\paragraph{$g$:}
+
+Igen
+\[ \l,g \mapsto (1-\l)c',\frac{g-1}{gc'},\frac{1}{c'} \]
+hvilket giver $c'>0,\l = -1$ og $g<0$ så vi får samme skæringspunkt
+som de andre.
+
+\paragraph{$T$:}
+
+Vi ser på torussen $\set{\size{b}=\size{c}=2}$ og sætter alle andre
+koordinater til 1 (og $\e$). Dette giver afbildningen
+\[ b,c\mapsto bc',\frac{c}{c'}-\frac{1}{\e c'}, \frac{c}{c'} \]
+hvor $c' = -bc^2-\frac{1-bc}{\e}$. Vi får
+\[ xz = bc > 0 \]
+og 
+\[y \in \R,z\in \R \implies \e (z-y) = (c')^{-1}\in \R \implies
+c=zc'\in \R\]
+Så begge koordinater skal være reelle. Derudover skal
+\[ xy = bc-\frac{b}{\e} < 0 \implies b > 0 \]
+da $bc>0$. Altså skal $b=c=2$. Ved at regne giver dette et
+skæringspunkt
+\[ \frac{6-16\e}{\e}, \frac{2\e-1}{3-8\e}, \frac{2\e}{3-8\e} \]
+og dermed indgår denne torus.
+
+Orienteringen i formlen er tjekket med ``orientation.sage''.
+
+\subsection{Spektralfølgen}
+
+Vi vil nu forsøge at udregne kohomologien for $X=X^3_3$ ved at bruge
+spektralfølgen for filtreringen
+\[ U = X_{111} \subset V = U\cup X_{101}\cup X_{011} \subset X \]
+
+Dette er besværligt at gøre i hånden. De fleste af udregningerne er
+derfor lavet i ``rand.sage.'' Denne oversætter de to randafbildninger
+til lineære afbildninger mellem frie abelske grupper
+\[ \xymatrix{
+H^k(U) \ar[r]^\partial & H^{k+1}(V,U) \ar[r]^\partial & H^{k+2}(X,V)
+} \]
+og derefter kan Sage udregne kerner og kokerner næsten automatisk. I
+alt får man at $E_2$-siden ser ud på følgende måde
+\[ \xymatrix{
+  \Z & 0 & 0 \\
+  \Z^5 & 0 & 0 \\
+  \Z^{11} & 0 & 0 \\
+  \Z^{15} & \Z & 0 \\
+  \Z^{16} & \Z^3 & 0 \\
+  \Z^{16} & \Z^3 & 0 \\
+  \Z^{15} & \Z & 0 \\
+  \Z^{11} & 0 & 0 \\
+  \Z^5 & 0 & 0 \\
+  \Z & 0 & 0
+} \]
+Her er konventionen at $E_1^{p,q} = H^{p+q}(X_p,X_{p-1})$ hvor $X_0 =
+U,X_1=V,X_2=X$. Vi kan se at da differentialet $d_2$ har grad $(2,-1)$
+vil det gå to pladser til højre og dermed altid gå til eller fra en
+0-gruppe. Dermed er $E_2=E_\infty$. Da alle grupperne er frie kan vi
+udregne $H^k(X)$ direkte fra dette ved 
+\[ H^k(X) \cong \bigoplus_i E_2^{i,k-i} = E^{0,k}_2\oplus E^{1,k-1}_2 \]
+og får at
+\[ H^k(X) =
+\begin{cases}
+  \Z & k=9\\
+  \Z^{5} & k=8\\
+  \Z^{12} & k=7\\
+  \Z^{18} & k=6\\
+  \Z^{19} & k=5\\
+  \Z^{17} & k=4\\
+  \Z^{15} & k=3\\
+  \Z^{11} & k=2\\
+  \Z^{5} & k=1\\
+  \Z & k=0
+\end{cases} \]
+
+Vi kan gøre det lidt bedre og finde en afbildning der giver
+frembringerne for $H^1(X)$. Dette gøres ved
+\begin{align*}
+  T^5 &\to X^3_3 \\
+  (d_1,d_2,d_3,d_4,d_5) &\mapsto
+  \begin{pmatrix}
+    d_1 & \frac{d_1d_4-d_3}{d_5} & 0 \\
+    1 & \frac{d_1d_4+d_2d_5-d_3}{d_1d_5} & 1 \\
+    0 & \frac{d_2d_5-d_3}{d_5} & d_5
+  \end{pmatrix}
+\end{align*}
+Ved at tage de 5 underdeterminanter får man en afbildning $X_3^3 \to
+T^5$ med sammensætning lig identiteten. Dermed er afbildningen
+beskrevet ovenfor surjektiv i kohomologi og i grad 1 går den fra
+$\Z^5$ til $\Z^5$ og må derfor være en isomorfi. Desværre lader det
+ikke til at man kan bruge gruppevirkningerne af $\C^*$ til at få en
+afbildning med denne egenskab, så vi kan ikke faktorisere en 5-torus
+ud af $X$.
+
+\subsection{Afbildninger}
+
+Marcels ide er at vi nu kigger på afbildninger ind i de direkte limes
+over de to forskellige koordinater
+\[ X_3^3 \to X^\infty_3 \]
+\[ X_3^3 \to X_\infty^3 \]
+Specielt mener han at kunne vise at (en af de?) direkte
+limes er $\Omega(U/T)$, så vi kan prøve at afbilde kohomologien for
+dette rum til $X^3_3$ og se om det giver noget nyttig information.
+
+Vælg en fast vektor $w\in\C^3$ med alle indgange $\neq 0$. Så er
+rummet $\set{(v_1,\dots,v_k,w)\in X^3_{k+1}}$ homeomorft til
+$X^3_k$ ved
+afbildningen $L$ (afhængig af $w$) beskrevet i næste afsnit. Dermed
+får vi en afbildning
+\[ \varphi_{k,k+1} : X^3_k \to X^3_{k+1} \]
+Hvis vi havde valgt $w'$ med samme egenskab, så kunne vi forbinde $w$
+og $w'$ med en sti i $(\C^*)^3$ hvilket ville give os en homotopi
+mellem de to afbildninger. Det giver at vores specifikke valg ikke
+er vigtigt.
+Vi kan selvfølgelig gentage processen og får dermed afbildninger
+\[ \varphi_{k,k+r} : X^3_k \to X^3_{k+r} \]
+for alle $k,r\in\N$, som igen ikke afhænger af det specifikke valg af
+$w$. Dermed kan vi tage limes og få
+\[ X_\infty^3 = \varinjlim_k X_k^3 \]
+Bare så jeg kan huske det senere: Den underliggende mængde er
+\[ X_\infty^3 = \coprod_k X_k^3 / \sim \]
+hvor vi identificerer $x\in X^3_i$ og $y\in X^3_j$ hvis der findes $k$
+så
+\[ \varphi_{i,k}(x) = \varphi_{j,k}(y) \]
+Vi har afbildninger induceret af inklusionerne
+\[\varphi_k : X^3_k \to X^3_\infty \]
+og topologien på $X^3_\infty$ er givet ved at $U$ er åben hvis
+\[ \varphi_k^{-1}(U) \subset X^3_k \]
+er åben for alle $k$.
+
+For et punkt $(v_1,\dots,v_k)\in X^3_k$ får vi en løkke i
+$\GL_3(\C)$ ved at se punktet som følgen
+\[ \Id \to [e_2,e_3,v_1] \to \dots \to [v_k,e_1,e_2] \to \Id \]
+Dette virker dog ikke helt. Den gamle ide er beskrevet i en kommentar
+i tex-filen. I stedet skal vi bruge vores gruppe-virkning på
+søjlerne til at gange med determinanter. Dette giver os en følge
+\[ \Id \to \left[e_2,e_3,\frac{v_1}{D_1}\right] \to
+\left[e_3,\frac{v_1}{D_1},\frac{D_1v_2}{D_2}\right] \to \dots \]
+hvor vi hele tiden sørger for at $3\times 3$ undermatricerne har
+determinant 1. For $X_3^3$ får vi
+\begin{align*} 
+  \Id &\to \left[ e_2,e_3,\frac{v_1}{D_1}\right]\to \left[
+    e_3,\frac{v_1}{D_1},\frac{D_1v_2}{D_2}\right]\to \left[
+    \frac{v_1}{D_1},\frac{D_1v_2}{D_2},\frac{D_2v_3}{D_3}\right] \\
+  &\to \left[ \frac{D_1v_2}{D_2},\frac{D_2v_3}{D_3},
+    \frac{D_3e_1}{D_1D_4}\right]\to \left[ \frac{D_2v_3}{D_3},
+    \frac{D_3e_1}{D_1D_4}, \frac{D_1D_4e_2}{D_2D_5}\right] \\
+  &\to \left[ \frac{D_3e_1}{D_1D_4},
+    \frac{D_1D_4e_2}{D_2D_5},\frac{D_2D_5e_3}{D_3}\right]
+\end{align*}
+
+Dette er dog ikke helt hvad Marcel vil have. I stedet vælger vi for
+hver permutations-matrix på formen $(1\,2\,\dots\,m)^i$ en sti fra
+denne til $\Id$ og sender så $v_1,v_2,v_3$ til stien
+
+\begin{align*} 
+  \Id &\to \left[ \frac{v_1}{D_1},e_2,e_3\right]\to \left[
+    \frac{v_1}{D_1},\frac{D_1v_2}{D_2},e_3\right]\to \left[
+    \frac{v_1}{D_1},\frac{D_1v_2}{D_2},\frac{D_2v_3}{D_3}\right] \\
+  &\to \left[ \frac{D_3e_1}{D_1D_4},\frac{D_1v_2}{D_2},
+    \frac{D_2v_3}{D_3}\right] \to \left[ \frac{D_3e_1}{D_1D_4},
+    \frac{D_1D_4e_2}{D_2D_5}, \frac{D_2v_3}{D_3}\right] \\
+  &\to \left[ \frac{D_3e_1}{D_1D_4},
+    \frac{D_1D_4e_2}{D_2D_5},\frac{D_2D_5e_3}{D_3}\right]
+\end{align*}
+
+For højere $n$ gør man det samme men slutter så af med stien fra
+permutationen $(\lambda_i e_i, \dots, \lambda_{i-1}e_{i-1})$ man
+slutter med til $(\lambda_1e_1\dots,\lambda_me_m)$.
+ 
+Dette giver os en løkke i $\GL_3/T^3$ (faktisk i $\SL_3/T^2$ da alle
+determinanterne er 1). Vi vil gerne se hvad denne afbildning gør på
+$H_1$. Men ifølge Grbi\'c og Terzi\'c er $H_1(\Omega SU/T)$ givet ved
+$H_1(T)$ og afbildningen til torussen burde være at vi løfter
+elementet $[\g(1)]$ til torussen. Dermed kan vi se at afbildningen er
+\[X_3^3 \ni (v_1,v_2,v_3) \mapsto
+\left(\frac{D_3}{D_1D_4},\frac{D_1D_4}{D_2D_5}\right)\in (\C^*)^2 \]
+
+At afbildningen er givet ved løftet får vi ved at se på
+\[ T^2 \to \Omega\SL_3/T^2 \]
+givet ved at tage stien $\Id \to t$ og modulere ud med torussen. Da en
+løkke i $\Omega\SL_3/T^2$ har et entydigt (op til homotopi) løft til
+$\Omega\SL_3$ får vi en afbildning
+\[ \Omega\SL_3/T^2 \to T^2 \]
+ved at evaluere i endepunktet og sammensætningen bliver
+identiteten. Dermed får vi i kohomologi at den første afbildning
+inducerer en surjektion mellem frie abelske grupper som har samme rang
+i grad 1 og dermed er det en isomorfi.
+
+
+\fxnote{Det følgende om stabilisering er nok forkert.}
+Hvis vi stabiliserer ændrer vi ikke på under-determinanterne. Altså
+får vi stien
+\begin{align*}
+  \Id &\to \left[ e_2,e_3,\frac{L^{-1}v_1}{D_1}\right]\to \left[
+    e_3,\frac{L^{-1}v_1}{D_1},\frac{D_1L^{-1}v_2}{D_2}\right]\to \left[
+    \frac{L^{-1}v_1}{D_1},\frac{D_1L^{-1}v_2}{D_2},
+    \frac{D_2L^{-1}v_3}{D_3}\right] \\
+  &\to \left[ \frac{D_1L^{-1}v_2}{D_2},\frac{D_2L^{-1}v_3}{D_3},
+    \frac{D_3w}{D_1D_4}\right]\to \left[ \frac{D_2L^{-1}v_3}{D_3},
+    \frac{D_3w}{D_1D_4}, \frac{D_1D_4e_1}{D_2D_5}\right] \\
+  &\to \left[ \frac{D_3w}{D_1D_4},
+    \frac{D_1D_4e_1}{D_2D_5},\frac{D_2D_5e_2}{D_3}\right] \to
+  \left[ \frac{D_1D_4e_1}{D_2D_5},\frac{D_2D_5e_2}{D_3},
+    \frac{D_3}{D_1D_4}e_3\right]
+\end{align*}
+hvor vi har permuteret de sidste koordinater men ikke ændret dem.
+
+\subsection{Hopf-algebra}
+
+Løkkerum er en Hopf-algebra. Vi er derfor interesseret i at udregne
+komultiplikationen
+\[ \Delta : H^*(\Omega SU/T) \to H^*(\Omega SU/T) \otimes H^*(\Omega
+SU/T) \]
+Bemærk her konventionen for evaluering af tensor-produkter:
+\[ \langle\alpha\otimes \beta,x\otimes y\rangle =
+(-1)^{\size{\beta}\size{x}} \langle \alpha, x \rangle\langle
+\beta,y\rangle \]
+Fortegnet er med da vi flytter $\beta$ og $x$ forbi hinanden.
+
+Dette kræver først og fremmest at vi vælger nogle frembringere for
+kohomologien. Vi bruger at homologi-grupperne er frie og vælger duale
+frembringere i $H^1$.
+\[ t_i = x_i^* \]
+For de højere vælger vi frembringere der trækker tilbage til de duale
+$\sigma_i^*$
+\[ f^*b_i = \sigma_i^* \in H^{2i}(\Omega SU/T) \]
+hvor $\sigma_i$ er det $i$'te Newton-polynomie i $y_i$'erne,
+\[ \sigma_k = \sum_{i=1}^{k-1} (-1)^{i-1} \sigma_{i}y_i + (-1)^{k-1} k
+y_k \]
+Bemærk at vi kan ændre $b_i$ ved at addere produkter af $t_i$'er da
+disse trækker tilbage til 0.
+Dette giver (åbenbart?)\fxnote{Hvorfor giver dette frembringere?}
+algebra-frembringere for kohomologigrupperne. Vi udregner:
+\begin{align*}
+  \Delta t_i &= 1\otimes t_i + t_i \otimes 1 \\
+  \Delta b_1 &= 1\otimes b_1 + b_1 \otimes 1 - \sum_{i=1}^n
+  \sum_{j=1}^n t_i \otimes t_j
+\end{align*}
+Her har vi valgt en bestemt frembringer $b_1$, da vi umiddelbart får
+\[ \Delta b_1 = 1\otimes b_1 + b_1 \otimes 1 - \sum_{i=1}^n
+  \sum_{j=1}^n \lambda_{ij}t_i \otimes t_j \]
+og det eneste vi ved er at
+\[ 2 = \langle \Delta b_1, x_i \otimes x_j + x_j \otimes x_i\rangle =
+\langle \Delta b_1, x_i^2 \rangle \]
+Dette giver relationerne
+\[ 2 = -\lambda_{ij}-\lambda_{ji} = -\lambda_{kk} \]
+og ved at ændre til $\tilde{b_1} = b_1 + t_it_j$ får vi
+\[2 = \langle\Delta \tilde{b_1},x_i\otimes x_j + x_j \otimes
+x_i\rangle = -(\lambda_{ij}+1)-(\lambda_{ji}-1) \]
+så ved at gøre dette et par gange kan vi få
+$\lambda_{ij}=\lambda_{ji} = -1$.
+
+
+% For at komme fra en matrix til en anden bruger vi følgende metode.
+% En invertibel matrix $A\in\GL_3(\C)$ kan faktoriseres som en
+% øvre-triangulær konjugeret med en unitær.
+% \[ A = U T U^* \]
+% Hvis $D$ er diagonal-matricen med samme diagonalindgange som $T$ kan
+% vi lave en sti
+% \[ t\mapsto U\left(D + (1-t)T - (1-t)D\right)U^* \]
+% Derefter kan vi dreje alle indgangene i $D$ til 1 (drej med uret og
+% træk sammen for at undgå 0) 
+% \[ t \mapsto U\mathrm{diag}\left( r_1e^{i(1-t)\theta_1}-t\size{r_1-1},
+%   \dots,r_3e^{i(1-t)\theta_3}-t\size{r_3-1} \right)U^* \]
+% hvilket giver os en sti til $\Id = UU^*$. Ved at gøre det tilsvarende
+% baglæns kan vi forbinde $A$ og $B$ i $\GL_n$ med en sti. Når vi sætter
+% alle disse stier sammen får vi en sti fra $\Id$ til $\Id$ i
+% $\GL_3(\C)$. Altså har vi en afbildning
+% \[ X^3_k \to \Omega(\GL_3(\C)) \]
+% Betragt nu
+% \[ w =
+% \begin{pmatrix}
+%   w_1 \\ w_2 \\ w_3
+% \end{pmatrix} \]
+% Så er
+% \[ \phi_{k,k+1}(v_1,\dots,v_k) = (L^{-1}v_1,\dots,L^{-1}v_k,w) \]
+% hvor $L$ er afbildningen
+% \[ L =
+% \begin{pmatrix}
+%   1 & 0 & 0 \\
+%   -\frac{w_2}{w_1} & 1 & 0 \\
+%   0 & -\frac{w_3}{w_2} & 1 
+% \end{pmatrix} \]
+% og den inverse (som er den vi bruger) er
+% \[ L^{-1} =
+% \begin{pmatrix}
+%   1 & 0 & 0 \\
+%   \frac{w_2}{w_1} & 1 & 0 \\
+%   \frac{w_3}{w_1} & \frac{w_3}{w_2} & 1 
+% \end{pmatrix} \]
+% Denne opfylder
+% \[ Lw = w_1 e_1 \in \mathrm{span}(e_1) \]
+% men
+% \[ L^{-1}w =
+% \begin{pmatrix}
+%   w_1 \\ 2w_2 \\ 3w_3
+% \end{pmatrix} \]
+% hvilket er et problem da vi gerne vil have denne i
+% $\mathrm{span}\set{e_1,e_2}$, da dette er næstsidste vektor i
+% $\varphi_{k,k+3}$. Tilsvarende er den tredjesidste vektor i samme
+% afbildning
+% \[ L^{-2}w =
+% \begin{pmatrix}
+%   w_1 \\ 3w_2 \\ 6w_3
+% \end{pmatrix} \not\in \mathrm{span}\set{e_1}\]
+% DETTE SKAL FIKSES.
+
+% Ved at bruge Gram-Schmidt punktvist kan vi gøre dette til en
+% afbildning
+% \[ X^3_k \to \Omega(\mathrm{U}(3)) \]
+% %hvor $T$ er diagonal-torussen i $U(3)$.
+% Hvis vi ser på matricen $[e_2,e_3,v_1]$ så kan vi bruge GS til at lave
+% en unitær matrix
+% \[ [e_2,e_3,v'_1] \]
+% hvor
+% \[ v'_1 =
+% \begin{pmatrix}
+%   \frac{(v_1)_1}{\size{(v_1)_1}} \\ 0 \\ 0
+% \end{pmatrix} \]
+% Den næste matrix er $[e_3,v_1,v_2]$ som vi på tilsvarende måde
+% gør til $[e_3,\tilde{v}_1,v'_2]$ med
+% \[ \tilde{v}_1 =
+% \begin{pmatrix}
+%   \frac{(v_1)_1}{\size{(v_1)_1}^2 + \size{(v_1)_2}^2} \\
+%   \frac{(v_1)_2}{\size{(v_1)_1}^2 + \size{(v_1)_2}^2} \\ 0 
+% \end{pmatrix} \]
+% etc. De sidste er på formen
+% \[ \left[\frac{v_{k-1}}{\size{v_{k-1}}}, \frac{v_k-
+%     \mathrm{proj}_{v_{k-1}}(v_{k})}{\size{v_k- \mathrm{proj}_{v_{k-1}}
+%       (v_{k})}},
+%   \frac{e_1-\frac{(v_{k-1})_1}{\size{v_{k-1}}^2}v_{k-1}-
+%     \frac{(v_k)_1}{\size{v_k}^2}v_k}{\size{\dots}} \right] \] 
+
+% Alternativt kunne man få en løkke i $\SL_3(\C)$ ved at gange $v_1$ med
+% $(v_1)_1^{-1}$ og fortsætte (så $v_2$ skulle ganges med
+% $\det(e_3,(v_1)_1^{-1}\cdot v_1, v_2)^{-1}$) Dette giver så en løkke i
+% $\SL_3/T$. Alternativt kan vi trække sammen med GS og få en løkke i
+% $\SU(3)$ (måske mod $T$?).
+
+% \textbf{Problemer lige nu:}
+% \begin{itemize}
+% \item  Respekterer denne afbildning $X_k^3 \to \Omega$ inklusionerne i
+%   systemet $X_k^3 \to X_{k+1}^3$? Ifølge Marcel burde det være nok at
+%   se at indsætte tre vektorer er (homotop til) at indsætte
+%   identiteten.
+  
+% \item Kan vi få $\varphi_{k,k+3}$ til at være (homotop til)
+%   indsættelse af identiteten på de sidste pladser?
+
+% \item Hvorfor $U/T$? Burde følge fra GS. Men i det ovenstående ender
+%   vi i $\Id$ ligemeget hvad så der er ikke brug for $T$.
+
+% \item Afbildningen til løkkerummet beskrevet overfor er homotop til
+%   den konstante afbildning, siden vi hele tiden løber tilbage til
+%   identiteten langs den kurve vi forlod den. Muligvis kan vi ændre
+%   denne afbildning til at løbe mere direkte $A\to B$ uden at gå forbi
+%   identiteten først.
+%   \begin{align*}
+%     A = U_AT_AU_A^* \to U_AD_AU_A^* \to^? U_BD_BU_B^* \to
+%     U_BT_BU_B^* = B
+%   \end{align*}
+%   Afbildningen markeret med ? skulle være noget i retning af at
+%   forbinde $U_A$ og $U_B$ til hinanden ved at gøre som beskrevet
+%   ovenfor, altså
+%   \[ U_A = UDU^* \to UU^* \to U'TU'^* = U_B \]
+%   og samtidig dreje $D_A$ over på $D_B$. Denne ville (måske) ikke være
+%   homotop til en konstant løkke.
+% \end{itemize}
+
+\section{Coxeter-grupper}
+
+Følgende er mest taget fra \citep[kapitel 1 og
+2]{bjornercombinatorics}.
+
+En Coxeter-gruppe er en gruppe $W$ sammen med en endelig mængde
+frembringere $S=\left\{ s_1,\dots,s_k \mid s_i^2 = e
+\right\}$. Frembringerne har ingen relationer ud over ting af formen
+\[ (s s')^{m(s,s')} = e, \quad m(s,s')\in \N\cup\left\{\infty\right\} \]
+Gruppen er også givet ved en Coxeter-matrix, hvor man nedfælder
+funktionen
+\[ m : S\times S \to \N\cup \left\{ \infty \right\} \]
+eller en Coxeter-graf hvor man laver en knude for hvert $s\in S$ og
+forbinder elementer med $m(s,s')\geq 3$ og giver kanten vægt $m(s,s')$
+hvis $m(s,s')\geq 4$.
+
+En vigtig egenskab ved Coxeter-grupper er at alle elementer kan
+skrives som et \textit{reduceret produkt} af frembringere, altså
+\[ w = s_1s_2\dots s_k \]
+hvor $k = \ell(w)$ er minimal. En større sætning siger at alle
+reducerede produkter for $w$ er relaterede ved \textit{flette-træk},
+dvs. ombytninger der kommer fra relationen
+\[ (ss')^{m(s,s')} = e \]
+der får navnet af at de kan skrives som
+\[ ss'ss's\dots = s'ss'ss'\dots \]
+hvor hver side indeholder $m(s,s')$ elementer.
+
+En anden vigtig sætning om reducerede produkter er at ethvert produkt
+af frembringere der giver $w$ indeholder et reduceret produkt for $w$
+som et del-ord der fremkommer ved at slette et lige antal frembringere
+fra ordet. Mere generelt kan man kun lave om på produkter af
+frembringere ved at bruge flette-træk og slette ens frembringere ved
+siden af hinanden \citep[sætning 3.3.1]{bjornercombinatorics}.
+
+Derudover gælder at hvis $w = s_1\dots s_k$ er reduceret, $s\in S$ og
+$\ell(sw) < \ell(w)$ så er $sw = s_1 \dots \hat{s_i} \dots s_k$.
+
+Disse to egenskaber er hver især ækvivalente med at være en
+Coxeter-gruppe og med hinanden for en vilkårlig gruppe $W$ med et
+system af frembringere $S$ af orden 2.
+
+\subsection{Bruhat-ordning}
+
+Bruhat-ordningen på gruppen $(W,S)$ er givet ved den transitive
+lukning af relationen
+\[ u \rightarrow w \iff \ell(u)<\ell(w),\, u^{-1}w \in T \]
+hvor
+\[ T = \bigcup_{w\in W} w S w^{-1} \]
+er \textit{reflektionerne} i $W$ ($S\subset T$ kaldes de \textit{simple
+  reflektioner}).
+
+\subsection{På $GL(n,\C)$}
+
+Her er $W=S_n$ med de sædvanlige frembringere, og ved udregning kan man
+faktorisere en matrix $A\in\GL(n,\C)$ som
+\[ A = B_1 w B_2 \]
+hvor $w\in S_n$ er en permutationsmatrix og $B_i$ er øvre
+triangulær. Måden man finder faktoriseringen er ved først at bruge
+søjleoperationer på $A$ (ved at gange med øvre triangulære matricer
+fra højre) indtil der er 0'er til venstre for alle pivoter og derefter
+bruge $w$ til at ombytte søjler for at gøre det til en øvre triangulær
+matrix. 
+
+Der gælder at hvis $B^U$ er rummet af øvre triangulære matricer så er
+\[ \GL(n,\C) = \coprod_{w\in S_n} BwB \]
+For et bevis, se \citep[sætning 4.5 og 4.6]{hillergeometry}.
+Derudover gælder at
+\[ \overline{BwB} \subset \overline{Bw'B} \iff w \leq w' \]
+Dette kan udvides til noget mere brugbart i vores tilfælde. Hvis
+$w_0\in S_n$ er det maksimale element i Bruhat-ordningen, givet ved
+\[ w_0(k) = n-k \]
+så er multiplikation med $w_0$ en ordens-inverterende afbildning fra
+$S_n$ til $S_n$. Dette kan man bruge til at se at
+\begin{align*}
+  \GL(n,\C) &= \bigcup_{\sigma \in S_n} B^U \sigma B^U \\
+  &= w_0 \bigcup_{\sigma \in S_n} B^L w_0 \sigma B^U
+\end{align*}
+og da multiplikation med $w_0$ er en bijektion fra $\GL(n,\C)$ til sig
+selv giver dette at en vilkårlig invertibel matrix kan faktoriseres som
+\[ A = L \sigma U \]
+hvor $L$ er nedre triangulær og $U$ er øvre triangulær. Samtidig
+gælder at 
+\begin{align*}
+  \overline{B^L\sigma B^U} \subset \overline{B^L \sigma' B^U} &\iff
+  \forall L, U \exists L_k,U_k: L_k\sigma'U_k \to L\sigma U \\
+  &\iff w_0L_k\sigma'U_k \to w_0L\sigma U \\
+  &\iff U'_kw_0\sigma ' U_k \to U'w_0\sigma U \\
+  &\iff \overline{B^U w_0\sigma B^U} \subset \overline{B^U w_0\sigma'
+    B^U} \\
+  &\iff w_0\sigma \leq w_0 \sigma' \\
+  &\iff \sigma' \leq \sigma
+\end{align*}
+så man kan tjekke om to elementer i Coxeter-gruppen er mindre end
+hinanden ved at tjekke en inklusion af celler.
+
+\subsection{Kazhdan-Lusztig polynomier}
+
+For en Coxeter-gruppe $(W,S)$ er der nogle polynomier i $\Z[q]$ der giver
+informationer om gruppen. Disse er givet ud fra nogle andre polynomier, nemlig
+$R$-polynomierne som er defineret på følgende måde:
+
+\begin{definition}
+  Der er en entydig familie af polynomier $\{ R_{u,v}(q) \}_{u,v\in W}$ i
+  $\Z[q]$ givet ved følgende formler.
+  \begin{itemize}
+  \item $R_{u,v}(q) = 0$ hvis $u \nleq v$.
+  \item $R_{u,v}(q) = 1$ hvis $u = v$.
+  \item Hvis $\ell(vs) < \ell(v)$ så er
+    \[ R_{u,v}(q) = \begin{cases}
+      R_{us,vs}(q) & \text{ hvis } \ell(us) < \ell(u) \\
+      q R_{us,vs}(q) + (q-1) R_{u,vs}(q) & \text{ ellers}
+    \end{cases} \]
+  \end{itemize}
+\end{definition}
+
+Med disse man kan udregne Kazhdan-Lustig polynomierne som følger:
+\begin{definition}
+  Kazhdan-Lustig polynomierne er de entydige polynomier $\{ P_{u,v}(q)
+  \}_{u,v\in W}$ i $\Z[q]$ der opfylder
+  \begin{itemize}
+  \item $P_{u,v}(q) = 0$ \quad hvis $u \nleq v$
+  \item $P_{u,v}(q) = 1$ \quad hvis $u = v$
+  \item $\deg P_{u,v}(q) \leq \frac{\ell(v)-\ell(u)-1}{2}$ \quad hvis $u < v$
+  \item
+    \[ q^{\ell(v)-\ell(u)} P_{u,v}\left(\frac{1}{q}\right) = \sum_{a\in [u,v]}
+    R_{u,a}(q)P_{a,v}(q) \]
+  \end{itemize}
+\end{definition}
+
+
+\subsection{Bruhat-ordning og flag}
+
+Der lader til at være en sammenhæng mellem Bruhat-ordningen og nogle
+bestemte filtreringer af rummene $X_n^m$.
+
+Ved at virke med $(\C^*)^m$ kan vi lave $v_n$ om til en vektor der kun
+består af 0'er og 1-taller. Dermed kan vi bygge $X_n^m(\sigma)$ op fra
+rummene $X_{n-1}^m(\hat\sigma)$ hvor $\hat\sigma\in S_m$. Dette gøres
+på følgende måde.
+
+Givet $\sigma \in S_m \subset \GL(m,\C)$ så ved vi at $v_n$ er lineært
+uafhængig med $\sigma_1,\dots,\sigma_{m-1}$. Da søjlerne i $\sigma$
+kun har en enkelt indgang forskellig fra 0 ved vi at $v_n$ og
+$\sigma_m$ begge har indgangen $\sigma(m)$ forskellig fra 0. Ved at
+bruge $(\C^*)^m$-virkningen fra tidligere kan vi reducere til et punkt
+på formen
+\[ (I,v_1,\dots,v_{n-1},k,\sigma_1,\dots,\sigma_{m-1}) \]
+hvor $k\in \set{0,1}^n$ med $k_{\sigma(m)}=1$.
+Ved at gange med nedre trekantsmatricer kan vi få matricen
+\[ [k,\sigma_1,\dots,\sigma_{m-1}] \]
+på formen
+\[\hat\sigma T\]
+hvor $\hat\sigma\in S_m$ og $T$ er øvre triangulær. Dette kommer af
+den generelle Bruhat-dekomposition for $\GL(n,\C)$ (plus lidt ekstra
+for at få blandede øvre og nedre triangulære matricer.)
+Dette betyder at vi får informationer om $X_n^m(\sigma)$ ud fra hvilke
+elementer i den symmetriske gruppe man kan få når man tager
+afbildningen
+\[ S_m\times \mathbb{F}_2^{m-1} \ni (\sigma,k) \mapsto [\sigma_m +
+k,\sigma_1,\sigma_2,\dots,\sigma_{m-1}] \]
+
+Dermed har vi en mængde underrum der dækker $X_n^m(\sigma)$ og vi vil
+gerne kunne bruge dette til at udregne eks. kohomologi.
+
+Man kan lave en relativt simpel udregning der viser at $(\sigma,0)$
+svarer til 
+\[\sigma \cdot (m\; m-1)(m-1\; m-2)\cdot\dots\cdot (2\; 1) \]
+
+\subsubsection{Underlig opførsel?}
+
+Når man laver denne dekomponering kan man bemærke noget
+underligt. Nemlig at elementerne man får ud af forskellige valg af $k$
+er relateret i Bruhat-ordningen. Specielt lader det til at hvis to
+vektorer er ens bortset fra på en enkelt koordinat så er den med
+1-tallet på koordinaten mindre end den anden, men ikke nødvendigvis
+forskellig. For at illustrere dette kan man udregne tabeller for $S_3$
+og $S_4$.
+
+For $S_3$:
+\[
+\begin{array}{c|cccc}
+  \sigma & (\sigma,(1,1)) & (\sigma,(1,0)) & (\sigma,(0,1)) &
+  (\sigma,(0,0)) \\
+  \hline
+  e & e & (2 3) & (1 2) & (2 3)(1 2) \\
+  (1 2) & e & e & (1 2)(2 3) & (1 2)(2 3)(1 2) \\
+  (2 3) & e & e & (1 2) & (1 2) \\
+  (1 2)(2 3) & e & e & e & e \\
+  (2 3)(1 2) & (2 3) & (2 3) & (1 2)(2 3) & (1 2)(2 3) \\
+  (1 2)(2 3)(1 2) & (2 3) & (2 3) & (2 3) & (2 3)
+\end{array}
+\]
+
+Dette burde for eksempel give at alle de permutationer der fremkommer
+ved afbildningen er relateret til (og mindre end)
+\[ (\sigma,0) = \sigma \cdot (m\; m-1)\cdot\dots\cdot (2
+1) \]
+hvilket er nyttigt hvis $\sigma$ eksempelvis er inversen til dette,
+eller lignende.
+
+\sout{Indtil videre er dette givet som en formodning på formen}
+Dette er inkluderet i følgende lemma som forhåbentlig kan udvides til
+andre valg af vektorer.
+\begin{lemma}
+  For $i < \sigma(m)$ får man
+  $(\sigma,(0,\dots,0,\overbrace{1}^{i},0,\dots,0))$ fra
+  $(\sigma,0)$ ved at gange fra venstre med transpositionen $(i \;
+  \sigma(m))$. Dette sænker længden og $(\sigma,0)$ er dermed større
+  end $(\sigma,k)$ i Bruhat-ordningen.
+
+  Hvis $i \geq \sigma(m)$ er $(\sigma,e_i) = (\sigma, 0)$.
+\end{lemma}
+\begin{proof}
+  Dette er en udregning. Hvis permutationerne skrives op med matricer
+  skal man
+  foretage en rækkereduktion der trækker række $i$ fra række
+  $\sigma(m)$, hvilket giver en matrix
+  \[ (i\; \sigma(m)) \cdot \hat\sigma\cdot T \]
+  hvor $T$ er øvre triangulær.
+
+  For at udregne længden kan vi beregne antallet af inversioner af den
+  nye permutation $\tau = (i \; \sigma(m)) \hat\sigma$ ud fra antallet
+  af permutationer for $\hat\sigma = (\sigma,0)$. Lad $s$ være tallet
+  så $\hat\sigma(s)=i$. Først bemærkes at der kun røres ved par $(a,b),
+  a<b$ hvor $\set{a,b} \cap \set{1,s} \neq \emptyset$.
+
+  Parret $(1,s)$ er en inversion for $\hat\sigma$ da $\hat\sigma(s) =
+  i <  \sigma(m) = \hat\sigma(1)$. Derimod er det ikke en inversion
+  for $\tau$.
+
+  Lad $(a,b)$ være en inversion for $\tau$ men ikke for
+  $\hat\sigma$ og antag også at $(a,b) \neq (1,s)$. Så er
+  \begin{align*}
+    a &< b \\
+    \hat\sigma(a) &< \hat\sigma(b) \\
+    \tau(a) &> \tau(b)
+  \end{align*}
+
+  Hvis $a$ er 1 så er $\hat\sigma(1) = \sigma(m) < \hat\sigma(b)$ men
+  $\tau(a) = i > \tau(b) = \hat\sigma(b)$. Dette er umuligt.
+  
+  Hvis $b$ er $s$ så er $\hat\sigma(a) < i$ og $\hat\sigma(a) =
+  \tau(a) > \sigma(m) = \tau(b)$ hvilket igen er umuligt. Derudover
+  kan $b$ selvfølgelig ikke være 1 pr. den første ulighed.
+
+  Altså er de eneste nye inversioner for $\tau$ dem der kommer ved
+  $a = s$. Disse opfylder
+  \begin{align*}
+    s &< b \\
+    i = \hat\sigma(s) &< \hat\sigma(b) \\
+    \sigma(m) = \tau(s) &> \hat\sigma(b)
+  \end{align*}
+  og er altså indekseret ved tal $b > s$ så $\hat\sigma(b)$ er i intervallet
+  $(i, \sigma(m))$
+
+  Hvis $(a,b)$ er en inversion for $\hat\sigma$ men ikke for $\tau$
+  skal der gælde
+  \begin{align*}
+    a &< b \\
+    \hat\sigma(a) &> \hat\sigma(b) \\
+    \tau(a) &< \tau(b)
+  \end{align*}
+
+  Dette kan ikke lade sig gøre hvis $a=s$. For $a = 1$ opfylder de
+  \begin{align*}
+    1 &< b \\
+    \sigma(m) &> \hat\sigma(b) \\
+    i &< \hat\sigma(b)
+  \end{align*}
+  og er dermed indekseret ved tal $b > 1$ så $\hat\sigma(b)$ er i
+  intervallet $(i, \sigma(m))$. Allerede uden at betragte det sidste
+  tilfælde $b = s$ kan vi se at $\hat\sigma$ har flere inversioner end
+  $\tau$ og dermed er større i Bruhat-ordningen.
+\end{proof}
+
+\begin{remark}
+  Indtil videre har sage-programmet testet at $(\sigma, \underline{k})\leq
+  (\sigma, \underline{k'})$ for alle valg af $\underline{k'}$ der fremkommer fra
+  $\underline{k}$ ved at lave 1-taller om til 0-er for $\sigma$ i
+  $S_2,S_3,S_4,S_5$ og $S_6$. På $S_7$ løber den tør for memory efter 882
+  elementer.
+\end{remark}
+
+\begin{theorem}
+  Hvis $i<\sigma(m)$ er den sidste indgang i vektoren $\underline k$ der er
+  forskellig fra 0, så er
+  \[ (\sigma,\underline{k}) =
+  \begin{cases}
+    (i\; \sigma(m)) (\sigma,\underline{k}-e_i) & \text{hvis } \hat\sigma^{-1}(i) >
+      \hat\sigma^{-1}(j) \text{ for alle } j \text{ med } k_j \neq 0\\
+    (\sigma,\underline{k}-e_i) & \text{ellers}
+  \end{cases} \]
+  hvor $\hat\sigma=(\sigma,\underline{0})$.
+\end{theorem}
+\begin{proof}
+  Lad $s$ være $\hat\sigma^{-1}(i)$. Hvis der findes et $j$ med
+  $\hat\sigma^{-1}(j) > s$ betyder det at matricen man skal rækkereducere for at
+  finde $(\sigma,\underline{k})$ er på følgende form:
+  \[
+  \begin{pmatrix}
+    \vdots & \\
+    1 & \dots & \dots & 1 \\
+    \vdots \\
+    1 & \dots & 1 & \dots \\
+    \vdots & \\
+    1 & \dots & \dots \\
+    \vdots
+  \end{pmatrix} \]
+  Ved at gange med en nedre-triangulær matrix kan vi trække række $j$ fra række
+  $i$ og få
+  \[
+  \begin{pmatrix}
+    \vdots & \\
+    1 & \dots & \dots & \dots & 1 \\
+    \vdots \\
+    0 & \dots & 1 & \dots & -1 \\
+    \vdots & \\
+    1 & \dots & \dots  & \dots & \dots\\
+    \vdots
+  \end{pmatrix} \]
+
+  Da vi kun er interesseret i at lave en bestemt type rækkeoperationer for at
+  finde vores permutation kan vi fra nu af ignorere række $i$, da vi ikke kan
+  rykke 1-tallet i søjle $s$. Altså er
+  \[ (\sigma,\underline{k}) = (\sigma,\underline{k}-e_i) \]
+
+  Antag derimod at $s > \hat\sigma^{-1}(j)$ for alle $j$ med $k_j =
+  1$. Så kan vi foretage rækkeoperationer og få
+  \[ w U = L L_1 [k,\sigma] = L
+  \begin{pmatrix}
+    k' & \dots \\
+    1 & \dots & 1 & \dots \\
+    \vdots \\
+    0 & \dots & -1 & \dots \\
+    \vdots
+  \end{pmatrix}
+  \]
+  hvor $[k,\sigma]$ er matricen $\hat\sigma$ med $k$ indsat på første
+  række og $k' = k - e_s$. Ved at se på $L$ får man at
+  \begin{align*} L &=
+  \begin{pmatrix}
+    1 & 0 & \dots \\
+    * & 1 & 0 & \dots \\
+    \vdots \\
+    * & * & \dots & * & 1 & \dots \\
+    \vdots & & & 0 \\
+    0 & 0 & 0 & 0 & \dots & 0 & 1 & 0 \\
+    \vdots & & & 0
+  \end{pmatrix} \\
+  &= (s \; \sigma(m))
+  \begin{pmatrix}
+    1 & \dots \\
+    * & 1 & \dots \\
+    \vdots \\
+    0 & 0 & \dots & 1 & 0 & \dots \\
+    \vdots & & & 0 \\
+    * & * & \dots & 0 & \dots & 1 & 0 \\
+    \vdots & & & 0
+  \end{pmatrix} (s \; \sigma(m))
+  \end{align*}
+  hvor de angivne rækker er $s$ og $\sigma(m)$. Indsættes dette får
+  man
+  \[ (s \; \sigma(m))wU = \tilde{L}
+  \begin{pmatrix}
+    k' & \dots \\
+    0 & \dots & -1 & \dots \\
+    \vdots \\
+    1 & \dots & 1 & \dots \\
+    \vdots
+  \end{pmatrix} = \tilde{L}L' [k',\sigma] \]
+  hvor vi genkender matricen som $[k',\sigma]$ med en enkelt
+  rækkeoperation foretaget. Altså er
+  \[ (\sigma,k) = (s \; \sigma(m))(\sigma,k') \]
+  i dette tilfælde.
+\end{proof}
+
+\begin{corollary}
+  Alle $(\sigma,\underline{k})$ er givet som et produkt af transpositioner gange
+  $(\sigma,\underline{0})$. Disse afhænger kun af $\sigma$ og af hvilke indgange
+  i $\underline k$ der er lig 1. Specielt ser vi at $(\sigma,\underline{k})$
+  højest ændrer sin længde med 1 og at
+  \[ (\sigma,\underline{k}) = \sup\set{ (\sigma,\underline{k}') \mid \exists j :
+    k = k' + e_j } \]
+\end{corollary}
+
+\newpage \bibliographystyle{apalike} \bibliography{phdbooks}
+
+\end{document}

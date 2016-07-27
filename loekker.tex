@@ -1,0 +1,347 @@
+
+% Løkker!
+%% Hvis løkkerummet ikke er blevet præsenteret endnu, så start med
+%% dette.
+%% Hvis sætningerne fra Milnor ikke er blevet introduceret, så lav et
+%% kort afsnit om dem her.
+
+% Sætningen
+%% Med bevis.
+%% Variationer: \R og \H. Med bevis (måske mere med skitse hvor man
+%% overvejer hvor \H er forskellig fra \C. \R er det oplagte tilfælde
+%% at udelade for ikke at gøre det hele ensformigt. Måske en kort note
+%% om hvor sammenhæng af skalarerne spiller ind.
+
+% Stabiliserings-argumenter? 
+%% Måske kan det Marcel laver smides ind her for generelt m, ellers
+%% skal det gemmes til senere.
+
+%%%%% Previous
+\chapter{Loop spaces} 
+\fixme{Skal nok revideres en del. Derudover, sæt tegnsætning efter
+  formler.}
+
+We now return to the general case. We want to show that the space
+$X_{m,\infty}$ is equivalent to the space of loops in the flag
+manifold $\GLB{m}$.
+
+\begin{definition}
+  The loop space $\Omega = \Omega(\GLB{m})$ is the space
+  \[ \Omega = \set{\g : [0,1] \to \GLB{m} \mid \g(0) = \g(1) =
+    [\Id]} \]
+  with the compact-open topology. 
+\end{definition}
+
+\begin{remark}
+  Following \cite[Chapter 17]{milnor}, the compact-open topology is
+  also the topology given by the metric
+  \[ d(\g,\g') = \max_{t\in[0,1]} \widetilde d (\g(t),\g'(t)) \]
+  where $\widetilde d$ is a metric on $\GLB{m}$ induced from a
+  Riemannian metric. The space $\Omega$ is homotopy equivalent to the
+  space of piecewise smooth loops with a slightly modified metric, and
+  we will generally choose the most convenient model for our
+  arguments.
+\end{remark}
+
+\section{The map $X_{m,n}\to\Omega$}
+
+For $A = [a_1,\dots,a_n]\in X_{m,n}$ we
+can define a path $ \g_A$ in $\GL_m$ by starting with
+$\g_A(0) = \Id$. Since the matrix $[e_2,\dots,e_m,a_1]$ is
+invertible by the definition of $X_{m,n}$, we know that $a_1$ is linearly
+independent of $e_2,\dots,e_m$. Hence it can be written as
+\[ a_1 = \sum_{i=1}^m c_i e_i \]
+with $c_1 \neq 0$. Rewriting the expression leads to the formula
+\[  \frac{1}{c_1} a_1= e_1 + \frac{1}{c_1} \left(\sum_{i=2}^m c_i
+  e_i\right) \]
+This gives us a path in $\GL_m$ from the identity to
+$\left[\frac{1}{c_1} a_1,e_2,\dots,e_m\right]$:
+\[ [0,1]\ni t \mapsto \left[ e_1 + t\left(\sum_{i=2}^m
+    \frac{c_i}{c_1}e_i\right),e_2,\dots,e_m \right] \in \GL_m \]
+This process can be continued, since we can write
+\[ \frac{1}{d_2}a_2 = e_2 + \frac{1}{d_2}\left(\sum_{i=3}^m d_i
+  e_i\right) + \frac{d_1}{d_2c_1}a_1 \]
+and we get a path
+\[ t\mapsto \left[\frac{1}{c_1}a_1,e_2+t\left(\sum_{i=3}^m
+    \frac{d_i}{d_2}e_i +
+    \frac{d_1}{d_2c_1}a_1\right),e_3,\dots,e_m\right] \]
+that starts where the other path stopped. If we continue through the
+vectors in $A$, we will eventually end at a point
+\[ [\l_i e_i,\dots,\l_me_m,\l_1e_1,\dots,\l_{i-1}e_{i-1}]\in \GL_m \]
+which is diagonal, except the columns may have been
+permuted if $n$ is not divisible by $m$. Choosing a path in $\GL_m$
+from $[e_i,\dots,e_{i-1}]$ to $\Id$, scaling the columns and appending
+it to all the other paths then gives a path $ \g_A$ with
+\[  \g_A(0) = \Id, \qquad \g_A(1) =
+[\l_1e_1,\dots,\l_me_m] \]
+
+If we consider this as a path in $\GLB{m}$ we
+get a loop, since $\g_A(1)$ is a diagonal matrix. The
+assignment
+\[ f(A) = \g_A \in \Omega(\GLB{m}) \]
+defines a continuous function from $X_{m,n}$ to the loop space. Note that
+this function descends to the quotient space $X_{m,n}=X_{m,n}/\mathrm{T}^n$, since
+elements of $X_{m,n}$ that are equivalent under the $\mathrm{T}^n$-action gives
+paths in $\GL_m$ that are equivalent under the $\mathrm{B}_m$-action.
+
+The goal of this chapter is to prove the following theorem:
+
+\begin{theorem}
+  The map $f : X_{m,n} \to \Omega$ induces a map
+  \[ f : X_{m,\infty} \to \Omega \]
+  This is a (weak) homotopy equivalence.
+\end{theorem}
+
+Since the space $\Omega$ is relatively well-studied, this gives
+information about $X_{m,\infty}$. In particular, it allows us to
+calculate the homology and cohomology of this space.
+
+We want to show that the stabilization map
+\begin{align*}
+  s : X_{m,n} &\to X_{m,n+1} \\
+  A = (a_1,\dots,a_n) &\mapsto \left(La_1,\dots,La_n,
+    \begin{pmatrix}
+      1 \\
+      \vdots\\
+      1
+    \end{pmatrix} 
+\right) = (LA,Le_1)
+\end{align*}
+does not affect the map $f$, or more precisely that $f$ induces a
+well-defined map on $X_{m,\infty}$. To do this we will work with the
+subsequence $X_{m,nm}$ of the sequence $X_{m,n}$, as the two limits
+are isomorphic.
+
+We will show that the diagram
+\[ \xymatrix{ X_{m,nm} \ar[rr]^{s^m}\ar[dr]_f & & X_{m,(n+1)m} \ar[dl]^f \\
+  & \Omega & } \]
+commutes up to homotopy. This is done by showing that the map $s^m$ is
+homotopic to the map $\widetilde s$ that inserts the identity on the
+last $m$ columns of $A \in X_{m,nm}$:
+\[ \widetilde s (a_1,\dots,a_{nm}) = (a_1,\dots,a_{nm},e_1,\dots,e_m) \]
+If we connect $\Id$ and $L^{-m}$ by a path $\g$ in the space of
+invertible lower triangular matrices, we get a homotopy
+\[ s_t(A) = (\g(t)L^mA,
+\g(t)L^me_1,\g(t)L^{m-1}e_1,\dots,\g(t)Le_1) \]
+which goes from $s_0 = s^m$ to the map
+\[ s_1 : A \mapsto (A,e_1,L^{-1}e_1,\dots,L^{-m+1}e_1) \]
+The matrix $T = [e_1,L^{-1}e_1,\dots,L^{-m+1}e_1]$ is upper
+triangular with entries given by the formula:
+\[ T_{ij} = (L^{-j+1}e_1)_i = (-1)^{i-1}\binom{j-1}{i-1} \quad
+\text{when } i \leq j \]
+This is proven by considering negative powers of $L$ and showing the
+identity:
+\[ (L^{-j+1})_{ik} = (-1)^{i-k}\binom{j-1}{i-k} \]
+But since $T$ is an upper triangular matrix, it can be moved to the
+identity without affecting the linear independence.
+Hence the maps $s^m$ and $\widetilde s$ are homotopic. The composition
+$f\circ \widetilde s$ is the same as $f$, except that the loop
+$f\circ\widetilde s$ is stationary at the identity for a while before
+it terminates. Putting it all together shows the following:
+\begin{lemma}
+  The diagram
+  \[ \xymatrix{ X_{m,nm} \ar[rr]^{s^m}\ar[dr]_{f} & & \ar[dl]^f
+    X_{m,(n+1)m} \\
+    & \Omega & } \]
+  commutes up to homotopy and $f$ induces a map:
+  \[ f : X_{m,\infty} \to \Omega \]
+\end{lemma}
+
+\section{Homotopy equivalence}
+
+To show that the map $f : X_{m,\infty} \to \Omega$
+gives an isomorphism of homotopy groups, we will again follow
+\cite{milnor}. For each element $U$ of $\SUT{m}$, we can find a 
+geodesically convex open ball centered on $U$. Since $\SUT{m}$
+is compact, there is some $\e > 0$ such that any ball of radius $\e$
+or less is geodesically convex. By the same argument, we can also
+choose $\e$ so small that for any two points $A= [a_1,\dots, a_m]$ and
+$B=[b_1,\dots,b_m]$, with the distance from $A$ to $B$ less
+than $\e$, any $m$ subsequent vectors in the sequence
+$(a_1,\dots,a_m,b_1,\dots,b_m)$ are linearly independent.
+With this, we get an increasing sequence of open sets in $\Omega$,
+defined by requiring the loops to be piecewise contained in a ball of
+radius $\e$:
+\[ \Omega_k = \set{\g \in \Omega \delim \Big\vert\delim
+  \g_{\left|\left[ \frac{j-1}{2^k},\frac{j}{2^k} \right]\right.} \text{ is
+  contained in an $\e$-ball $\mathrm{B}_\e$} } \]
+By the choice of $\e$ made above, we can define a map
+\begin{align*}
+  \varphi_k : \Omega_k &\to X_{m,(2^k-1)m} \\
+  \g &\mapsto \left[ \g\left(\frac{1}{2^k}\right),
+    \g\left(\frac{2}{2^k}\right), \dots,
+    \g\left(\frac{2^k-1}{2^k}\right) \right]
+\end{align*}
+Note that $\g(t)$ is an element of $\SUT{m}$, so the notation
+$[\g(t),\dots]$ is shorthand for $[\g(t)e_1,\dots,\g(t)e_m,\dots]$.
+The map is continuous since two paths being close in $\Omega_k$ means
+that the maximum distance between them is small. But this translates
+to the vectors of the image being close together. The maps $\varphi_k$
+and $\varphi_{k+1}$ are related in the following fashion:
+
+\begin{lemma}
+  \label{lem:com}
+  The following diagram commutes up to homotopy:
+  \[ \xymatrix{\Omega_k \ar@{^(->}[r] \ar[d]^{\varphi_k} & \Omega_{k+1}
+  \ar[d]^{\varphi_{k+1}} \\
+  X_{m,(2^k-1)m} \ar[r]^{s} & X_{m,(2^{k+1}-1)m} } \]
+\end{lemma}
+\begin{proof}
+  The proof is by direct computation.
+  \begin{align*}
+    \varphi_{k+1} &= \left( \g \mapsto \left[
+        \g\left(\frac{1}{2^{k+1}}\right),
+        \g\left(\frac{2}{2^{k+1}}\right), \dots,
+        \g\left(\frac{2^{k+1}-1}{2^{k+1}}\right) \right]\right) \\
+    &\simeq \left(\g \mapsto \left[ \g\left(\frac{2}{2^{k+1}}\right),
+      \g\left(\frac{2}{2^{k+1}}\right),
+      \g\left(\frac{4}{2^{k+1}}\right), \dots,
+      \g\left(\frac{2^{k+1}}{2^{k+1}}\right) \right]\right) \\
+    &\simeq \left(\g\mapsto \left[ \g\left(\frac{1}{2^{k}}\right),
+      \g\left(\frac{2}{2^{k}}\right), \dots,
+      \g\left(\frac{2^k-1}{2^k}\right), \Id,\dots,\Id \right] \right)\\
+    &= s\circ \varphi_k
+  \end{align*}
+  The first homotopy is given by sliding along the minimal geodesic
+  between the points and gives an allowed path by our choice of
+  $\e$. The second homotopy is somewhat similar. If $(a_1,\dots,a_m)$
+  and $(b_1,\dots,b_m)$ are two elements of $\SUT{m}$ and we have an
+  element of $X_{m,n}$ of the form
+  \[ \left[ \dots, a_1,\dots,a_m,a_1,\dots,a_m,b_1,\dots,b_m,\dots
+  \right]\]
+  then we can change the middle columns one by one, as we did in
+  the construction of $f$, and get a path in $X_{m,n}$ that changes
+  the middle from $[a_1,\dots,a_m]$ to $[b_1,\dots,b_m]$:
+  \begin{align*}
+    \left[a_1,\dots,a_m,a_1,a_2,\dots,a_m,b_1,\dots,b_m \right] 
+    &\leadsto
+    \left[a_1,\dots,a_m,b_1,a_2,\dots,a_m,b_1,\dots,b_m\right] \\ 
+    &\leadsto
+    \left[a_1,\dots,a_m,b_1,b_2,\dots,a_m,b_1,\dots,b_m\right] \\  
+    &\leadsto
+    \left[a_1,\dots,a_m,b_1,b_2,\dots,b_m,b_1,\dots,b_m\right]  
+  \end{align*}
+  This allows us to take all the repetitions
+  $\left[\dots,\g(t),\g(t),\dots\right]$ and move them to the end as
+  diagonal matrices, which results in the stabilization map $s$.
+\end{proof}
+
+The above lemma shows that the maps $\varphi_k$ fit together to define
+a map from $\Omega$ to $X_{m,\infty}$.
+The idea is to use the maps $\varphi_k$ as homotopy inverses of the
+loop space map $f$. We are now ready to prove the result.
+
+\begin{theorem}
+  The map $f : X_{m,\infty} \to \Omega$ is a weak homotopy
+  equivalence, i.e. the map
+  \[f_* : \pi_i(X_{m,\infty}) \to \pi_i(\Omega)\]
+  is an isomorphism for all $i$.
+\end{theorem}
+
+\begin{proof}
+  We will start with surjectivity. Let
+  \[ g : W \to \Omega \]
+  be a finite cell complex in $\Omega$. We want to show that we can
+  construct a map $\widetilde g$ from $W$ to $X_{m,\infty}$ such that
+  the composition $f\circ \widetilde g$ is homotopic to $g$.
+  
+  The image of $g$ is compact and hence contained in $\Omega_k$ for
+  some $k$, since $\set{\Omega_k}$ is an open cover of
+  $\Omega$. Consider the map 
+  \[ \widetilde g = \varphi_k\circ g : W \to X_{m,(2^k-1)m} \]
+  Evaluating at a point $w\in W$ gives
+  \[ \widetilde g(w) = \varphi_k(\g_w) = \left[
+    \g_w\left(\frac{1}{2^k}\right),\dots,
+    \g_w\left(\frac{2^k-1}{2^k}\right) \right] \]
+  Evaluating $f$ on this gives a path connecting the points
+  $\g_w\left(\frac{j}{2^k}\right)$. But by our choice of $\e$, any
+  such path is homotopic to the path connecting these points with
+  minimal geodesics, so $f\circ\widetilde g \simeq g$.
+
+  To show injectivity, let
+  \[ g : W \to X_{m,\infty}\]
+  be a finite cell complex with $f\circ g$ null-homotopic. We want to
+  show that $g$ is null-homotopic in $X_{m,\infty}$. In the
+  direct limit, a compact set is contained in the image of $X_{m,n}$
+  for some $n$ (see \cite[Proposition~A.1]{hatcher} or
+  \cite[Chapter~9.4]{may}), so $g$ is represented by a map:
+  \[ g : W \to X_{m,n} \]
+  We will work with this representative. The map $f\circ
+  g$ is null-homotopic in $\Omega$ and the image is compact, so it is
+  contained in $\Omega_k$ for some $k$. By applying $\varphi_k$, we
+  get a function
+  \[ \varphi_k\circ f\circ g : W \to X_{m,(2^k-1)m} \]
+  Since $f\circ g$ is null-homotopic, this function is
+  null-homotopic. But by the same argument that was used in
+  Lemma \ref{lem:com}, the map
+  \[ \varphi_k(f(g(w))) = \left[
+    \g_w\left(\frac{1}{2^k}\right),\dots,\g_w\left(\frac{2^k-1}{2^k}
+    \right)\right] \] 
+  is homotopic to the stabilization map
+  \[ s(g(w)) = \left[g(w),\Id,\dots,\Id\right] \]
+  with the homotopy given by sliding along the path $\g_w=f(g(w))$.
+  So the map $g$ can be stabilized to a null-homotopic map, so it must
+  be null-homotopic in $X_{m,\infty}$. This shows that $f_*$ is
+  injective on homotopy groups.
+\end{proof}
+
+Since $f$ is a weak homotopy equivalence, it follows that $f_*$ is
+an isomorphism on homology and cohomology groups. The Pontrjagin
+homology ring of the loop space, with product given by loop
+concatenation, has been calculated in \cite[Theorem~4.1]{grbic} as
+\begin{align*}
+  H_*(\Omega(\SUT{m})) \cong T(x_1,\dots,x_{m-1}) \otimes
+  X_{m,n}[y_1,\dots,y_{m-1}]
+\end{align*}
+where $T(x_1,\dots,x_{m-1})$ is the tensor algebra generated by
+$x_1,\dots,x_{m-1}$. The product has the relation $x_k^2 =
+x_px_q+x_qx_p = 2y_1$ for $1\leq k,p,q\leq m-1$ and $p\neq q$. The
+degree of $x_i$ is 1 and the degree of $y_i$
+is $2i$. By the above result, this is also the homology of
+$X_{m,\infty}$. The groups are finitely generated and torsion free, so
+by the Universal Coefficient Theorem the homology and cohomology
+groups are isomorphic as abelian groups.
+
+
+\section{Future work}
+
+In the above, we showed that the space 
+\[ X_{m,\infty} = \varinjlim_n X_{m,n}/\mathrm{T}^n \]
+is equivalent to the loop space $\Omega(\SUT{m})$ and used this to
+calculate the homology and cohomology groups of the limit. The
+current aim of the project is to work with the spaces $X_{m,n}$
+directly and see what we can prove about these, in particular by using
+the stabilization map
+\[ s : X_{m,n} \to X_{m,n+1} \]
+The conjecture at the moment is the following:
+\begin{conjecture}
+  The induced maps on cohomology
+  \[ s^* : H^*(X_{m,n+1}) \to H^*(X_{m,n}) \]
+  are always surjective and the induced maps on homology
+  \[ s_* : H_*(X_{m,n}) \to H_*(X_{m,n+1}) \]
+  are always injective.
+\end{conjecture}
+The idea for a proof would be to use a spectral sequence argument like
+the one applied to $X_{3,3}$ by defining a filtration that is easier
+to work with and then proceeding by induction, using that the maps
+$s^*$ and $s_*$ induce maps of the spectral sequences.
+
+Another thing to consider is modifying the space $X_{m,n}$. One possible
+change could be to replace $X_{m,n}$ by a union:
+\[ X'_{m,n} = \bigcup_{A\in\GL_m} X_{m,n}(A,A) \]
+This would allow all sequences of vectors that start and end at the
+same matrix, and one would expect the space $X'_{m,\infty}$ to be
+equivalent to the free loop space, consisting of all
+maps from the circle $S^1$ to $\SUT{m}$.
+
+There is also the option of replacing the complex numbers $\C$ with
+some other space, like the reals or quaternions. The fact that $\R^*$
+is not connected would most likely make the space $X_{m,n}^{\R}$ quite
+different, but possibly the space $X_{m,n}^{\mathbb{H}}$ would behave in a
+similar manner to $X_{m,n}$, with some shifts in dimension.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 

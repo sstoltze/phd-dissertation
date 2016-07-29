@@ -238,11 +238,12 @@ spaces are non-empty as long as we are not in an obviously empty
 space. The exact meaning of ``obviously'' is given in the following
 lemma.
 
-\begin{lemma}
+\begin{theorem}
+  \label{thm:ikke-tom}
   The space $Y_{m,n}(\sigma)$ is empty if and only if there exists an
   $i \leq m$ such that
   \[ 1 + n + i \leq \sigma(i). \]
-\end{lemma}
+\end{theorem}
 \begin{proof}
   % Både dimensions-argumenter og stabiliserings-argumenter
   The exact condition is slightly strangely worded, but if there is
@@ -300,6 +301,10 @@ lemma.
   $Y_{m,n}(\sigma)$ is non-empty. So the spaces become non-empty as
   soon as there are ``enough'' columns.
 \end{remark}
+It will occasionally be nice to have an explicit element of
+$Y_{m,n}(\sigma)$, but to do this we will need a slight amount of
+setup. Hence it will be delayed until Theorem
+\ref{thm:eksplicit-element} in Section \ref{sec:rum-stabil}.
 
 \fixme{overvej ny sektion til gruppevirkning/kvotientrum}
 The spaces have quite a few symmetries that could be of interest.
@@ -749,8 +754,149 @@ following lemma.
   e.g. $\sigma_1 = e_{\sigma(1)}$.}
 
 \fixme{Fortsæt her med ikke-tom}
-This abstractly shows that the spaces $Y_{m,n}(\sigma)$ are non-empty,
-but it will occasionally be nice to have an explicit element of
+With the stabilisation map, we can now give explicit elements of
+$Y_{m,n}(\sigma)$, as was hinted at earlier.
+
+\begin{theorem}
+  \label{thm:eksplicit-element}
+  If the space $Y_{m,n}(\sigma)$ is non-empty, then the sequence of
+  vectors
+  \[ s^n(e_1) = \left(L^n e_1,\dots,Le_1\right) \]
+  belongs to $Y_{m,n}(\sigma)$.
+\end{theorem}
+\begin{proof}
+  For a discussion of then $Y_{m,n}(\sigma)$ is non-empty, consult
+  Theorem \ref{thm:ikke-tom}.
+  
+  We already know that the sequence
+  \[ \left(e_1,\dots,e_m,L^n e_1,\dots, Le_1 \right) \]
+  has all subsequent sequences of $m$ vectors linearly independent,
+  by the construction of the stabilisation map. So the thing to check
+  is whether the matrices
+  \[ \left(e_{k+n+1}, \dots, e_m,L^n e_1, \dots, Le_1, \sigma_1, \dots,
+  \sigma_{k}\right) \]
+  are invertible, for $k \in \set{1,\dots,m-1}$. If $n+k$ are greater
+  than or equal to $m$, we of course mean the matrices
+  \[ \left( L^{m-k}e_1,\dots,L e_1,\sigma_1,\dots,\sigma_k \right). \]
+  
+  Calculating the determinant of a matrix of this form by column
+  expansion, this is equivalent to choosing $s=m-k$ numbers
+  $i_1,\dots,i_s \in \set{1,\dots,m},$ with $i_j < i_{j+1},$ and checking that the matrix
+  \[
+  \begin{pmatrix}
+    \matrow{r_{i_1}} \\
+    \matrow{r_{i_2}} \\
+    & \hspace{-0.75em} \vdots & \\
+    \matrow{r_{i_s}}
+  \end{pmatrix}
+  \]
+  is invertible, where $r_{l}$ denotes the $l$'th row of the
+  matrix
+  \[ C= (L^{m-k}e_1,\dots,Le_1). \]
+  
+  Calculating this matrix by induction, we see that it is related to
+  Pascal's triangle,
+  \[ P =
+  \begin{pmatrix}
+    {m-k-1 \choose 0}\vspace{1em} & {m-k-2\choose 0} & \dots & {1\choose 0} & {0
+      \choose 0} \\
+    {m-k \choose 1} \vspace{0.5em} & {m-k-1 \choose 1} & \dots & {2 \choose 1} & {1
+      \choose 1} \\
+    \vdots \vspace{0.5em} & \vdots & \ddots & \vdots & \vdots\\
+    {2(m-k-1) \choose {m-k-1}} & {2(m-k-1)-1 \choose m-k-1} & \dots &
+    {m-k \choose m-k-1} & {m-k-1 \choose m-k-1}
+  \end{pmatrix}, \]
+  with the entry in the $i$'th row and $j$'th column given by the
+  formula
+  \[ p_{i,j} = { m-k-j+i-1 \choose i-1}. \] \fixme{Skriv beviset for
+    dette ud}
+  
+  In particular, by the standard formulas for binomial coefficients,
+  \[ p_{i,j} = p_{i-1,j} + p_{i,j+1}, \]
+  so the row $r_{j}$ can be calculated by taking the row
+  above,
+  $r_{j-1}$, and adding the row $\widehat{r}_j$ given by shifting
+  every entry of $r_j$ one to the left and adding a zero,
+  \[ r_j = r_{j-1} + \widehat{r}_j. \]
+  To illustrate, if $m-k$ is three, then $P$ is the matrix
+  \[ P = 
+  \begin{pmatrix}
+    1 &1 & 1 \\
+    3 &2 & 1 \\
+    6 & 3 & 1
+  \end{pmatrix} \]
+  and the third row is given by
+  \[
+  \begin{pmatrix}
+    6 &3 & 1
+  \end{pmatrix} = r_3 = r_2 + \widehat{r}_3 =
+  \begin{pmatrix}
+    3 & 2 & 1
+  \end{pmatrix} +
+  \begin{pmatrix}
+    3 & 1 & 0
+  \end{pmatrix} \]
+
+  We will prove that the matrix
+  \[ R = 
+  \begin{pmatrix}
+    \matrow{r_{i_1}} \\
+    \matrow{r_{i_2}} \\
+    & \hspace{-0.75em} \vdots & \\
+    \matrow{r_{i_s}}
+  \end{pmatrix}
+  \]
+  is invertible by induction on $s$. The exact statement we intend to
+  prove is that the determinant of $R$ is strictly positive if $s$ is
+  odd and strictly negative if $s$ is even.
+  For $s = 1$, $R$ is always the matrix $R = \left( 1 \right)$ and we
+  are done.
+  Assume the statement is correct for $s-1$. Since the determinant is
+  linear in each row, we have
+  \begin{align*}
+    \det{R} &= 
+              \det\begin{pmatrix}
+                \matrow{r_{i_1}} \\
+                \matrow{r_{i_2}} \\
+                & \hspace{-0.75em} \vdots & \\
+                \matrow{r_{i_{s-1}}} \\
+                \matrow{r_{i_s}}
+              \end{pmatrix} \\
+            &= 
+              \det\begin{pmatrix}
+                \matrow{r_{i_1}} \\
+                \matrow{r_{i_2}} \\
+                & \hspace{-0.75em} \vdots & \\
+                \matrow{r_{i_{s-1}}} \\
+                \matrow{r_{i_s-1}}
+              \end{pmatrix}+
+    \det\begin{pmatrix}
+      \matrow{r_{i_1}} \\
+      \matrow{r_{i_2}} \\
+      & \hspace{-0.75em} \vdots & \\
+      \matrow{r_{i_{s-1}}} \\
+      \matrow{\widehat{r}_{i_s}}
+    \end{pmatrix} \\
+            &=   \det\begin{pmatrix}
+              \matrow{r_{i_1}} \\
+              \matrow{r_{i_2}} \\
+              & \hspace{-0.75em} \vdots & \\
+              \matrow{r_{i_{s-1}}} \\
+              \matrow{r_{i_{s-1}}}
+            \end{pmatrix}
+    + \sum_{j=0}^{i_s-i_{s-1}-1} \det\begin{pmatrix}
+      \matrow{r_{i_1}} \\
+      \matrow{r_{i_2}} \\
+      & \hspace{-0.75em} \vdots & \\
+      \matrow{r_{i_{s-1}}} \\
+      \matrow{\widehat{r}_{i_s-j}} \end{pmatrix}
+  \end{align*}
+  The first determinant is zero, since the matrix has two equal rows,
+  so we are left with the sum. Doing the same thing for all the other
+  rows except for the first one gives us.
+\end{proof}
+
+
 \fixme{Noget afsluttende}
 
 \section{The limit space}

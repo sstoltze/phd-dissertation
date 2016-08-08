@@ -79,9 +79,9 @@ preimage of the open set $(\C^*)^{m+n-1}$ under the continuous map
 \begin{align*}
   \Det_{X,Y} : (\C^m)^n \to \C&^{m+n-1} \\
   \Det_{X,Y}(a_1,\dots,a_n) = (\det&(x_2,\dots,x_m,a_1),\\
-                               \det&(x_3,\dots,x_m,a_1,a_2), \\
-                               &\vdots\\
-                               \det&(a_n,y_1,\dots,y_{m-1})).
+  \det&(x_3,\dots,x_m,a_1,a_2), \\
+                              &\vdots\\
+  \det&(a_n,y_1,\dots,y_{m-1})).
 \end{align*}\fixme{Se om alignment kan blive bedre på pilen.}
 This shows that it is an open subset of $(\C^m)^n$. Another important
 feature of $Y_{m,n}(X,Y)$ is that it does not really depend on the
@@ -91,9 +91,9 @@ only on the two flags in $\C^{m}$
 defined from the columns: \fixme{Snak lidt om flag tidligere/i introen?}
 \begin{alignat*}{5}
   \mathrm{Fl_R}(X)\, &&= \Big(&\spa(x_m) &&\subset \spa(x_{m-1},x_m) &&\subset
-    \dots &&\subset \C^m\Big) \\
+  \dots &&\subset \C^m\Big) \\
   \mathrm{Fl_L}(Y)\, &&= \Big(&\spa(y_1) &&\subset \spa(y_1,y_2) &&\subset
-    \dots &&\subset \C^m\Big).
+  \dots &&\subset \C^m\Big).
 \end{alignat*}
 This is because we are considering linear independence of the vectors
 \[ (x_1,\dots,x_m,a_1,\dots,a_n,y_1,\dots,y_n), \]
@@ -184,12 +184,12 @@ we will now work with some simple examples.
 \begin{example}
   The space $Y_{3,2}$ is
   \[\set{
-  \begin{pmatrix}
-    a &b \\
-    c & d \\
-    e & f
-  \end{pmatrix} \delim\Bigg\vert\delim a \neq 0, f \neq 0, ad-bc \neq
-  0, cf-ed \neq 0}.
+    \begin{pmatrix}
+      a &b \\
+      c & d \\
+      e & f
+    \end{pmatrix} \delim\Bigg\vert\delim a \neq 0, f \neq 0, ad-bc \neq
+    0, cf-ed \neq 0}.
   \]
   This is homeomorphic to $(\C^*)^4\times \set{(x,y,z)\in\C^3 \mid
     y-z-xyz = 1}$, with the map given by
@@ -267,7 +267,7 @@ lemma.
     \mathrm{Fl_R}(\Id) &= (V_1 \subset V_2 \subset \dots \subset V_m),
     \\
     \mathrm{Fl_L}(\sigma) &= (W_1 \subset W_2 \subset \dots \subset
-    W_m).
+                            W_m).
   \end{align*}
   Assume that the condition on $\sigma$ and $n$ is satisfied, so for
   all $i \leq m$:
@@ -394,7 +394,7 @@ The above lemma is useful, since it oftens allows us to work with the
 unquotiented spaces and still gain information about the
 quotients. Note that in the definition of the homeomorphism
 \[ Y_{m,n}(X,Y) \cong X_{m,n}(X,Y) \times \T^n , \]
- we might as well have
+we might as well have
 used the first $n$ determinants instead of the last, and we will
 occasionally do this if it is easier for the arguments. \fixme{Tjek
   lige om vi faktisk gør dette, ellers så fjern det}
@@ -435,23 +435,23 @@ Consider an element $A=(a_1,\dots,a_{n+1})$ in $Y_{m,n+1}$ where
 the entries of $a_{n+1}$ are all equal to one:
 \fixme{Lav om på dette så det ser lidt bedre ud...}
 \[ A = 
-  \begin{pmatrix}
-    \vrule & \vrule & & \vrule & \vspace{-0.5em}
-                                 1 \\
-    a_1 & a_2 & \dots & a_{n} & \vdots \\
-    \vrule & \vrule & & \vrule & 1
-  \end{pmatrix}. \] 
+\begin{pmatrix}
+  \vrule & \vrule & & \vrule & \vspace{-0.5em}
+  1 \\
+  a_1 & a_2 & \dots & a_{n} & \vdots \\
+  \vrule & \vrule & & \vrule & 1
+\end{pmatrix}. \] 
 Then we can multiply through with the lower triangular, invertible
 matrix $L^{-1}$ with ones on the diagonal and negative ones just below,
 \fixme{Formuler bedre?}
 \[ L^{-1} =
 \begin{pmatrix}
-   1 &  0 & 0 & \dots & 0 & 0 \\
+  1 &  0 & 0 & \dots & 0 & 0 \\
   -1 &  1 & 0 & \dots & 0 &0 \\
-   0 & -1 & 1 & \dots & 0 & 0 \\
-   \vdots &  &  & \ddots & & \vdots \\
-   0 & 0 & & & 1 & 0 \\
-   0 & 0 & & & -1 & 1
+  0 & -1 & 1 & \dots & 0 & 0 \\
+  \vdots &  &  & \ddots & & \vdots \\
+  0 & 0 & & & 1 & 0 \\
+  0 & 0 & & & -1 & 1
 \end{pmatrix}. \]\fixme{Få det til at se godt ud}
 This reduces $A$ to
 \[ L^{-1}A =
@@ -542,7 +542,7 @@ following lemma.
   (\C^*)^{\size{I}}. \]
   If we define the permutation $\widehat \sigma = \sigma \cdot
   \big(m\; m-1\; \dots \; 1\big)$ and the indexing set is ${I = (i_1 <
-  \dots < i_k)}$, then $\varphi$ is given by
+    \dots < i_k)}$, then $\varphi$ is given by
   \[ \varphi\big(I,\sigma\big) = 
   \begin{cases}
     \begin{matrix} \widehat\sigma \end{matrix} & 
@@ -718,12 +718,12 @@ following lemma.
     0 & \dots & \dots & \dots & \dots & 1 & \dots \\
     \vdots
   \end{pmatrix},
-% \left(
-%   \begin{array}{c|c}
-%     L' & 0 \\
-%     \hline
-%     0 & \Id
-%  \end{array} \right)
+  % \left(
+  %   \begin{array}{c|c}
+        %         L' & 0 \\
+        %         \hline
+        %         0 & \Id
+                      %       \end{array} \right)
   \]
   where we once again write out row $i_k$ and $\sigma(m)$, and use the
   stars to indicate entries that may be non-zero but that are not
@@ -774,7 +774,7 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   by the construction of the stabilisation map. So the thing to check
   is whether the matrices
   \[ \left(e_{k+n+1}, \dots, e_m,L^n e_1, \dots, Le_1, \sigma_1, \dots,
-  \sigma_{k}\right) \]
+    \sigma_{k}\right) \]
   are invertible, for $k \in \set{1,\dots,m-1}$. If $n+k$ are greater
   than or equal to $m$, we of course mean the matrices
   \[ \left( L^{m-k}e_1,\dots,L e_1,\sigma_1,\dots,\sigma_k \right). \]
@@ -792,16 +792,20 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   \]
   is invertible, where $r_{l}$ denotes the $l$'th row of the
   matrix
-  \[ C= (L^{m-k}e_1,\dots,Le_1). \]
+  \[ P = (L^{m-k}e_1,\dots,Le_1). \]
   
   Calculating this matrix by induction, we see that it is related to
   Pascal's triangle,
   \[ P =
   \begin{pmatrix}
-    {m-k-1 \choose 0}\vspace{1em} & {m-k-2\choose 0} & \dots & {1\choose 0} & {0
-      \choose 0} \\
-    {m-k \choose 1} \vspace{0.5em} & {m-k-1 \choose 1} & \dots & {2 \choose 1} & {1
-      \choose 1} \\
+    p_{i,j}
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    {m-k-1 \choose 0}\vspace{1em} & {m-k-2\choose 0} & \dots &
+    {1\choose 0} & {0 \choose 0} \\
+    {m-k \choose 1} \vspace{0.5em} & {m-k-1 \choose 1} & \dots & {2
+      \choose 1} & {1 \choose 1} \\
     \vdots \vspace{0.5em} & \vdots & \ddots & \vdots & \vdots\\
     {2(m-k-1) \choose {m-k-1}} & {2(m-k-1)-1 \choose m-k-1} & \dots &
     {m-k \choose m-k-1} & {m-k-1 \choose m-k-1}
@@ -817,7 +821,10 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   above,
   $r_{j-1}$, and adding the row $\widehat{r}_j$ given by shifting
   every entry of $r_j$ one to the left and adding a zero,
-  \[ r_j = r_{j-1} + \widehat{r}_j. \]
+  \begin{equation}
+    \label{eq:rows}
+    r_j = r_{j-1} + \widehat{r}_j.
+  \end{equation}
   To illustrate, if $m-k$ is three, then $P$ is the matrix
   \[ P = 
   \begin{pmatrix}
@@ -836,7 +843,7 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   \begin{pmatrix}
     3 & 1 & 0
   \end{pmatrix} \]
-
+  
   We will prove that the matrix
   \[ R = 
   \begin{pmatrix}
@@ -847,12 +854,13 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   \end{pmatrix}
   \]
   is invertible by induction on $s$. The exact statement we intend to
-  prove is that the determinant of $R$ is strictly positive if $s$ is
-  odd and strictly negative if $s$ is even.
+  prove is that the determinant of $R$ is strictly positive if two
+  divides $s$ an even number of times and is strictly negative if $s$
+  two divides $s$ and odd number of times.
   For $s = 1$, $R$ is always the matrix $R = \left( 1 \right)$ and we
-  are done.
+  are done since 2 divides 1 zero times.
   Assume the statement is correct for $s-1$. Since the determinant is
-  linear in each row, we have
+  linear in each row, we can use Equation \ref{eq:rows} and get
   \begin{align*}
     \det{R} &= 
               \det\begin{pmatrix}
@@ -889,15 +897,53 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
       \matrow{r_{i_2}} \\
       & \hspace{-0.75em} \vdots & \\
       \matrow{r_{i_{s-1}}} \\
-      \matrow{\widehat{r}_{i_s-j}} \end{pmatrix}
+      \matrow{\widehat{r}_{i_s-j}} \end{pmatrix}.
   \end{align*}
   The first determinant is zero, since the matrix has two equal rows,
   so we are left with the sum. Doing the same thing for all the other
-  rows except for the first one gives us.
+  rows except for the first one gives us
+  \[ \det R = \sum_{j_1 = 0}^{i_2-i_1-1}\sum_{j_2 = 0}^{i_3-i_2-1}
+  \dots \sum_{j_{s-1}=0}^{i_s-i_{s-1}-1} \det
+  \begin{pmatrix}
+    \matrow{r_{i_1}} \\
+    \matrow{\widehat{r}_{i_2-j_1}} \\
+    & \hspace{-0.75em} \vdots & \\
+    \matrow{\widehat{r}_{i_{s-1}-j_{s-2}}} \\
+    \matrow{\widehat{r}_{i_s-j_{s-1}}}
+  \end{pmatrix}. \]
+
+  By considering the last column of one of these matrices, we see that
+  it has the form
+  \[
+  \begin{pmatrix}
+    1 \\
+    0 \\
+    \vdots \\
+    0
+  \end{pmatrix} \]
+  since we have shifted every row below the first one space to the
+  left. By expanding the determinant using this column, we remove it and
+  end up with
+  \[ \det R = \sum_{j_1 = 0}^{i_2-i_1-1}\sum_{j_2 = 0}^{i_3-i_2-1}
+  \dots \sum_{j_{s-1}=0}^{i_s-i_{s-1}-1} (-1)^{s-1} \det
+  \begin{pmatrix}
+    \matrow{\widetilde{r}_{i_2-j_1}} \\
+    & \hspace{-0.75em} \vdots & \\
+    \matrow{\widetilde{r}_{i_{s-1}-j_{s-2}}} \\
+    \matrow{\widetilde{r}_{i_s-j_{s-1}}}
+  \end{pmatrix}. \]
+  Here we use $\widetilde{r}_i$ to denote the $i$'th row of $P$ where we
+  have removed the leftmost entry. But we can now apply the induction
+  hypothesis. We see that all the determinants have the same sign and
+  that $\det R$ changes sign if $s-1$ is odd and otherwise has the
+  same sign. This exactly means that $\det R$ changes sign
+  when $s$ passes a multiple of two, as stated above. \fixme{Tjek lige
+    det argument for fortegn igennem igen...}
 \end{proof}
 
-
-\fixme{Noget afsluttende}
+We now have quite a large collection of spaces, and quite a few
+elements in them. We would like to be able to collect them all in a
+single space. \fixme{Skriv det her om eller skriv noget bedre...}
 
 \section{The limit space}
 \label{sec:rum-gr}
@@ -938,16 +984,16 @@ coordinate.
 Then we could define the limit space as
 \[ X_{m,\infty} = Y_{m,\infty}/\T^\infty. \]
 
-% Noget med at $s^m \simeq \Id$?
+                                          %                                           Noget med at $s^m \simeq \Id$?
 
 
-% Hvis ikke introduceret endnu ville spektralfølgen give mening
-% her. Hvis allerede introduceret i det generelle tilfælde ville det
-% nok give mening at specialisere til Y_{m,n} eller X_{m,n} her og
-% beskrive de forskellige søjler.
-%% Her ville det måske også give mening at se på H^1 og vise at den
-%% giver det "rigtige" svar, \Z^{m-1}, for at vise at følgen kan
-%% bruges til noget.
+                                          %                                           Hvis ikke introduceret endnu ville spektralfølgen give mening
+                                          %                                           her. Hvis allerede introduceret i det generelle tilfælde ville det
+                                          %                                           nok give mening at specialisere til Y_{m,n} eller X_{m,n} her og
+                                          %                                           beskrive de forskellige søjler.
+                                          %%                                           Her ville det måske også give mening at se på H^1 og vise at den
+                                          %%                                           giver det "rigtige" svar, \Z^{m-1}, for at vise at følgen kan
+                                          %%                                           bruges til noget.
 
 \fixme{Flyt dette hen hvor det giver mening. Muligvis et andet
   kapitel.}
@@ -1189,267 +1235,267 @@ $i$'th coordinate of $\T^{n+1}$, then
   udregninger}
 
 
-% The theorem and the corollary illustrate the problems with using
-% $Y_{m,n}$ instead of $X_{m,n}$, even though the space $Y_{m,n}$ is
-% conceptually simpler. We want to consider the limit spaces
-% $X_{m,\infty}$ and $Y_{m,\infty}$, but if we compute the first
-% homology group of the direct limit using e.g. \cite[\S14.6]{may}, we
-% see
-% \begin{align*}
-%   H_1(Y_{m,\infty}) &= H_1(\varinjlim_n Y_{m,n}) = \varinjlim_n
-%   H_1(Y_{m,n}) = \varinjlim_n \Z^{m+n-1} = \Z^\infty \\
-%   H_1(X_{m,\infty}) &= H_1(\varinjlim_n X_{m,n}) = \varinjlim_n
-%   H_1(X_{m,n}) = \varinjlim_n \Z^{m-1} = \Z^{m-1}.
-% \end{align*}
-% The reason we compute homology instead of cohomology is that
-% homology commutes with direct limits. . So for $Y_{m,\infty}$ the first homology group is not finitely generated.
+      %       The theorem and the corollary illustrate the problems with using
+      %       $Y_{m,n}$ instead of $X_{m,n}$, even though the space $Y_{m,n}$ is
+      %       conceptually simpler. We want to consider the limit spaces
+      %       $X_{m,\infty}$ and $Y_{m,\infty}$, but if we compute the first
+      %       homology group of the direct limit using e.g. \cite[\S14.6]{may}, we
+      %       see
+      %       \begin{align*}
+      %       H_1(Y_{m,\infty}) &= H_1(\varinjlim_n Y_{m,n}) = \varinjlim_n
+                                  %                                   H_1(Y_{m,n}) = \varinjlim_n \Z^{m+n-1} = \Z^\infty \\
+        %         H_1(X_{m,\infty}) &= H_1(\varinjlim_n X_{m,n}) = \varinjlim_n
+                                      %                                       H_1(X_{m,n}) = \varinjlim_n \Z^{m-1} = \Z^{m-1}.
+                                      %       \end{align*}
+                                      %                                       The reason we compute homology instead of cohomology is that
+                                      %                                       homology commutes with direct limits. . So for $Y_{m,\infty}$ the first homology group is not finitely generated.
 
-%%%%% Previous
-% \chapter{The space $\X$}
+                                      %%%%%                                       Previous
+                                      %                                       \chapter{The space $\X$}
 
-% % Snak snak. Måske deles op i to?
-% % Noget om starten, hvorfor dette er interessant. Se bagside af blok
-% % Også noget om rummene, definition, symmetrier (specielt X_{m,n}
-% % \cong X_{n,m}, måske filtreringen?
-% This chapter will introduce the spaces to be studied, along with a
-% brief listing of various useful structure.
+                                      % %                                       Snak snak. Måske deles op i to?
+                                      % %                                       Noget om starten, hvorfor dette er interessant. Se bagside af blok
+                                      % %                                       Også noget om rummene, definition, symmetrier (specielt X_{m,n}
+                                      % %                                       \cong X_{n,m}, måske filtreringen?
+                                      %                                       This chapter will introduce the spaces to be studied, along with a
+                                      %                                       brief listing of various useful structure.
 
-% \begin{definition}
-%   For natural numbers $m$ and $n$, the space $X_{m,n} \subset
-%   \C^{mn}$ is defined as
-%   \[ X_{m,n} = \set{(a_1,\dots,a_n) \in (\C^m)^n \delim\Bigg\vert\delim
-%     \begin{matrix}
-%       \text{Any } m \text{ subsequent vectors in } \\
-%       (e_1,\dots,e_m,a_1,\dots,a_n,e_1,\dots,e_m) \\
-%       \text{ are linearly independent.}
-%     \end{matrix} } \]
-%   For any two elements $X = [x_1,\dots,x_m]$ and $Y = [y_1,\dots,y_m]$
-%   in $\GL_m$, define the space $X_{m,n}(X,Y)$ as
-%   \[ X_{m,n}(X,Y) = \set{(a_1,\dots,a_n) \in (\C^m)^n
-%     \delim\Bigg\vert\delim
-%     \begin{matrix}
-%       \text{Any } m \text{ subsequent vectors in } \\
-%       (x_1,\dots,x_m,a_1,\dots,a_n,y_1,\dots,y_m) \\
-%       \text{ are linearly independent.}
-%     \end{matrix} } \]
-%   The special case $X=\Id$ will be denoted $\X(Y)$.
-%   Elements $(a_1,\dots,a_n)\in \X$ will be identified
-%   with the $m\times n$ matrix $A = [a_1,\dots,a_n]$ without mention.
-% \end{definition}
+                                      %                                       \begin{definition}
+                                      %                                       For natural numbers $m$ and $n$, the space $X_{m,n} \subset
+                                      %                                       \C^{mn}$ is defined as
+                                      %                                       \[ X_{m,n} = \set{(a_1,\dots,a_n) \in (\C^m)^n \delim\Bigg\vert\delim
+                                      %                                       \begin{matrix}
+                                      %                                       \text{Any } m \text{ subsequent vectors in } \\
+        %         (e_1,\dots,e_m,a_1,\dots,a_n,e_1,\dots,e_m) \\
+        %         \text{ are linearly independent.}
+        %         \end{matrix} } \]
+        %         For any two elements $X = [x_1,\dots,x_m]$ and $Y = [y_1,\dots,y_m]$
+        %         in $\GL_m$, define the space $X_{m,n}(X,Y)$ as
+        %         \[ X_{m,n}(X,Y) = \set{(a_1,\dots,a_n) \in (\C^m)^n
+        %         \delim\Bigg\vert\delim
+        %         \begin{matrix}
+        %         \text{Any } m \text{ subsequent vectors in } \\
+        %         (x_1,\dots,x_m,a_1,\dots,a_n,y_1,\dots,y_m) \\
+        %         \text{ are linearly independent.}
+        %         \end{matrix} } \]
+        %         The special case $X=\Id$ will be denoted $\X(Y)$.
+        %         Elements $(a_1,\dots,a_n)\in \X$ will be identified
+        %         with the $m\times n$ matrix $A = [a_1,\dots,a_n]$ without mention.
+        %         \end{definition}
 
-% Since the space $\X(X,Y)$ only depends on linear independence of
-% subsequent vectors, it can be described by giving the two flags in
-% $\C^m$ defined from the columns of the matrices
-% $X=\left[x_1,\dots,x_m\right]$ and $Y=\left[y_1,\dots,y_m\right]$:
-% \begin{align*}
-%   \mathrm{Fl_R}(X) &= \Big(\spa(x_m) \subset \spa(x_{m-1},x_m) \subset
-%     \dots \subset \C^m\Big) \\
-%   \mathrm{Fl_L}(Y) &= \Big(\spa(y_1) \subset \spa(y_1,y_2) \subset
-%     \dots \subset \C^m\Big)
-% \end{align*}
-% Multiplying with $X^{-1}$ on each vector in $\X(X,Y)$ defines a
-% homeomorphism 
-% \[ \X(X,Y)\cong \X(\Id,X^{-1}Y) = \X(X^{-1}Y) \]
-% Hence we only need to consider these spaces.
+        %         Since the space $\X(X,Y)$ only depends on linear independence of
+        %         subsequent vectors, it can be described by giving the two flags in
+        %         $\C^m$ defined from the columns of the matrices
+        %         $X=\left[x_1,\dots,x_m\right]$ and $Y=\left[y_1,\dots,y_m\right]$:
+        %         \begin{align*}
+        %         \mathrm{Fl_R}(X) &= \Big(\spa(x_m) \subset \spa(x_{m-1},x_m) \subset
+                                     %                                      \dots \subset \C^m\Big) \\
+        %         \mathrm{Fl_L}(Y) &= \Big(\spa(y_1) \subset \spa(y_1,y_2) \subset
+                                     %                                      \dots \subset \C^m\Big)
+                                     %       \end{align*}
+                                     %                                      Multiplying with $X^{-1}$ on each vector in $\X(X,Y)$ defines a
+                                     %                                      homeomorphism 
+                                     %                                      \[ \X(X,Y)\cong \X(\Id,X^{-1}Y) = \X(X^{-1}Y) \]
+                                     %                                      Hence we only need to consider these spaces.
 
-% Note that we can also define the space $X_{m,n}$ as the preimage of
-% $(\C^*)^{m+n-1}$ under the map $\Det : (\C^m)^n \to \C^{m+n-1}$,
-% given by
-% \begin{align*}
-%   \Det(a_1,\dots,a_n) = \Big( &\det(e_2,\dots,e_m,a_1),\\
-%   &\det(e_3,\dots,e_m,a_1,a_2),\\
-%   &\dots, \\
-%   &\det(a_n,e_1,\dots,e_{m-1}) \Big) 
-% \end{align*}
-% where $\det$ is the determinant map. There is a similar description
-% of $X_{m,n}(Y)$ as the preimage under a map $\Det_{Y}$. Since the map
-% $\Det_Y$ is continuous, this shows that the space $\X(Y)$ is open in
-% $\C^{mn}$.
+                                     %                                      Note that we can also define the space $X_{m,n}$ as the preimage of
+                                     %                                      $(\C^*)^{m+n-1}$ under the map $\Det : (\C^m)^n \to \C^{m+n-1}$,
+                                     %                                      given by
+                                     %                                      \begin{align*}
+                                     %                                      \Det(a_1,\dots,a_n) = \Big( &\det(e_2,\dots,e_m,a_1),\\
+        %                      &\det(e_3,\dots,e_m,a_1,a_2),\\
+        %                      &\dots, \\
+        %                      &\det(a_n,e_1,\dots,e_{m-1}) \Big) 
+                                 %       \end{align*}
+                                 %                                  where $\det$ is the determinant map. There is a similar description
+                                 %                                  of $X_{m,n}(Y)$ as the preimage under a map $\Det_{Y}$. Since the map
+                                 %                                  $\Det_Y$ is continuous, this shows that the space $\X(Y)$ is open in
+                                 %                                  $\C^{mn}$.
 
-% \section{Stabilization}
+                                 %                                  \section{Stabilization}
 
-% We would like to relate the spaces $X_{m,n}$ and $X_{m,n+1}$. To do
-% this, consider a lower-triangular $m\times m$ invertible matrix
-% $L$. This preserves the right flag $\mathrm{Fl_R}(\Id)$, so it defines
-% a homeomorphism $\tilde L : \X(Y) \to \X(LY)$ by
-% \begin{align*}
-%   \tilde L(a_1,\dots,a_n) &= (La_1,\dots,La_n)
-% \end{align*}
+                                 %                                  We would like to relate the spaces $X_{m,n}$ and $X_{m,n+1}$. To do
+                                 %                                  this, consider a lower-triangular $m\times m$ invertible matrix
+                                 %                                  $L$. This preserves the right flag $\mathrm{Fl_R}(\Id)$, so it defines
+                                 %                                  a homeomorphism $\tilde L : \X(Y) \to \X(LY)$ by
+                                 %                                  \begin{align*}
+                                 %                                  \tilde L(a_1,\dots,a_n) &= (La_1,\dots,La_n)
+                                                                                              %       \end{align*}
 
-% By using the Bruhat decompositon of the general linear group,
-% any matrix $Y$ can be written uniquely as a product $L \sigma U$,
-% where $L$ is an invertible lower triangular matrix, $U$ is an
-% invertible upper triangular matrix, and $\sigma$ is a
-% permutation matrix, see \cite[Example~1.2.11]{bjorner} or
-% \cite[Proposition~4.5]{hiller}. Since the flag $\mathrm{Fl_L}(\sigma
-% U)$ is preserved by right multiplication with upper triangular
-% matrices, this only depends on the permutation $\sigma$ and not on
-% $U$. All of this together shows the following lemma:
+                                                                                              %                                                                                               By using the Bruhat decompositon of the general linear group,
+                                                                                              %                                                                                               any matrix $Y$ can be written uniquely as a product $L \sigma U$,
+                                                                                              %                                                                                               where $L$ is an invertible lower triangular matrix, $U$ is an
+                                                                                              %                                                                                               invertible upper triangular matrix, and $\sigma$ is a
+                                                                                              %                                                                                               permutation matrix, see \cite[Example~1.2.11]{bjorner} or
+                                                                                              %                                                                                               \cite[Proposition~4.5]{hiller}. Since the flag $\mathrm{Fl_L}(\sigma
+                                                                                              %                                                                                               U)$ is preserved by right multiplication with upper triangular
+                                                                                              %                                                                                               matrices, this only depends on the permutation $\sigma$ and not on
+                                                                                              %                                                                                               $U$. All of this together shows the following lemma:
 
-% \begin{lemma}
-%   For $Y\in \GL_m$ with $Y = L\sigma U$, the space $\X(Y)$ is
-%   homeomorphic to $\X(\sigma)$.
-% \end{lemma}
+                                                                                              %                                                                                               \begin{lemma}
+                                                                                              %                                                                                               For $Y\in \GL_m$ with $Y = L\sigma U$, the space $\X(Y)$ is
+                                                                                              %                                                                                               homeomorphic to $\X(\sigma)$.
+                                                                                              %                                                                                               \end{lemma}
 
-% Using this lemma, we only need to understand the spaces
-% $\X(\sigma)$ to understand all of the spaces $\X(Y)$. More importantly,
-% it turns out that the space $X_{m,n+1}(\sigma)$ is given as a union of
-% spaces homeomorphic to a torus times $\X(\tau)$, for various
-% permutations $\tau$. This is summarized in the following lemma.
+                                                                                              %                                                                                               Using this lemma, we only need to understand the spaces
+                                                                                              %                                                                                               $\X(\sigma)$ to understand all of the spaces $\X(Y)$. More importantly,
+                                                                                              %                                                                                               it turns out that the space $X_{m,n+1}(\sigma)$ is given as a union of
+                                                                                              %                                                                                               spaces homeomorphic to a torus times $\X(\tau)$, for various
+                                                                                              %                                                                                               permutations $\tau$. This is summarized in the following lemma.
 
-% \begin{lemma}
-%   Any choice of indices $I= (i_1<\dots<i_k) \subset \set{1,\dots,m}$
-%   gives a subspace of $X_{m,n+1}(\sigma)$:
-%   \[ X_{m,n+1}^I(\sigma) = \set{(a_1,\dots,a_{n+1}) \in
-%     X_{m,n+1}(\sigma) \sdel 
-%     \begin{matrix} 
-%       (a_{n+1})_{i_j} \neq 0\; \forall i_j \in I, \\
-%       (a_{n+1})_j = 0 \;\forall j \not\in I
-%     \end{matrix} } \]
-%   This space is empty if $I$ does not contain the number $\sigma(m)$,
-%   so we will assume that $\sigma(m) \in I$ but otherwise leave it out
-%   of the notation.
-  
-%   These subspaces cover $X_{m,n+1}(\sigma)$. There is a map $\varphi$,
-%   defined for an indexing set $I$ and a permutation $\sigma$, which
-%   gives a new permutation such that
-%   \[ X_{m,n+1}^I(\sigma) \cong \X(\varphi(I,\sigma)) \times
-%   (\C^*)^{\size{I}} \]
-%   If we define the permutation $\widehat \sigma = \sigma \cdot
-%   \big(m\; m-1\; \dots \; 1\big)$ and the indexing set is $I = (i_1 <
-%   \dots < i_k)$, then $\varphi$ is given by
-%   \[ \varphi\big(I,\sigma\big) = \left(\prod_{j \in J} \big(
-%       i_j \; \sigma(m) \big) \right) \widehat \sigma \]
-%   where the product is over the set
-%   \[ J = \set{ j \in\set{1,\dots,k} \delim\mid\delim i_j <
-%     \sigma(m),\; \widehat\sigma^{-1}(i_j) > \widehat\sigma^{-1}(i_r) \,
-%     \forall r < j } \]
-% \end{lemma}
+                                                                                              %                                                                                               \begin{lemma}
+                                                                                              %                                                                                               Any choice of indices $I= (i_1<\dots<i_k) \subset \set{1,\dots,m}$
+                                                                                              %                                                                                               gives a subspace of $X_{m,n+1}(\sigma)$:
+                                                                                              %                                                                                               \[ X_{m,n+1}^I(\sigma) = \set{(a_1,\dots,a_{n+1}) \in
+                                                                                              %                                                                                               X_{m,n+1}(\sigma) \sdel 
+                                                                                              %                                                                                               \begin{matrix} 
+                                                                                              %                                                                                               (a_{n+1})_{i_j} \neq 0\; \forall i_j \in I, \\
+        %         (a_{n+1})_j = 0 \;\forall j \not\in I
+        %         \end{matrix} } \]
+        %         This space is empty if $I$ does not contain the number $\sigma(m)$,
+        %         so we will assume that $\sigma(m) \in I$ but otherwise leave it out
+        %         of the notation.
 
-% The proof of this lemma relies on taking $X_{m,n+1}^I(\sigma)$ and
-% multiplying with a lower triangular matrix to reduce it to something
-% in $\X(\tau)$. By considering the matrix used, the formula
-% for $\tau = \varphi(I,\sigma)$ given in the lemma can be found. In
-% practice, it is
-% often easier to do the reduction by hand rather than using the lemma,
-% but the formula can be useful. For example, it is clear that
-% $\varphi(I,\sigma)$ is given as a product of transpositions
-% and $\varphi\big((\sigma(m)), \sigma\big)$. By
-% considering exactly which transpositions, we can show that for all $I$
-% we have
-% \[ \varphi(I,\sigma) \leq \varphi\big((\sigma(m)), \sigma\big) \] 
-% in the Bruhat ordering on the symmetric group. The Bruhat
-% order is defined in \cite{bjorner}. It also follows that for all
-% $\sigma$, 
-% \[ \varphi\big((1<2<\dots<m),\sigma\big) = \Id \]
-% With this we can identify $X_{m,n}$ with the subspace
-% of $X_{m,n+1}$ where the last column has a 1 on each entry:
-% \[ X_{m,n} \cong \set{ (a_1,\dots,a_{n+1}) \in X_{m,n+1} \mid
-%   a_{n+1} = (1,\dots,1) } \]
-% The identification is given by the map $s : \X \to X_{m,n+1}$,
-% \[ s(a_1,\dots,a_n) = (La_1,\dots,La_n,Le_1) \]
-% where $L$ is the lower triangular matrix with all entries on or below
-% the diagonal equal to one:
-% \[ L =
-% \begin{pmatrix}
-%   1 & 0 & \dots & 0 \\
-%   \vdots & \ddots & \ddots & \vdots \\
-%   \vdots &  & \ddots & 0 \\
-%   1 & \dots & \dots & 1
-% \end{pmatrix} \]
+        %         These subspaces cover $X_{m,n+1}(\sigma)$. There is a map $\varphi$,
+        %         defined for an indexing set $I$ and a permutation $\sigma$, which
+        %         gives a new permutation such that
+        %         \[ X_{m,n+1}^I(\sigma) \cong \X(\varphi(I,\sigma)) \times
+        %         (\C^*)^{\size{I}} \]
+        %         If we define the permutation $\widehat \sigma = \sigma \cdot
+        %         \big(m\; m-1\; \dots \; 1\big)$ and the indexing set is $I = (i_1 <
+        %         \dots < i_k)$, then $\varphi$ is given by
+        %         \[ \varphi\big(I,\sigma\big) = \left(\prod_{j \in J} \big(
+        %         i_j \; \sigma(m) \big) \right) \widehat \sigma \]
+        %         where the product is over the set
+        %         \[ J = \set{ j \in\set{1,\dots,k} \delim\mid\delim i_j <
+        %         \sigma(m),\; \widehat\sigma^{-1}(i_j) > \widehat\sigma^{-1}(i_r) \,
+        %         \forall r < j } \]
+        %         \end{lemma}
 
-% These maps give a directed system of spaces,
-% \[ \xymatrix{ X_{m,1} \ar[r]^s & X_{m,2} \ar[r]^s & \dots \ar[r]^s &
-%   X_{m,n} \ar[r]^s & X_{m,n+1} \ar[r]^s & \dots } \]
-% and we can take the direct limit of this system,
-% \[ X_{m,\infty} = \varinjlim_n \X \]
-% The direct limit is the disjoint union of all the spaces $\X$, with the
-% identification $A \sim B$ if there are $j,k$ such that
-% $s^k(A) = s^j(B)$. The topology is the finest such that the maps $\X
-% \to X_{m,\infty}$ are all continuous.
+        %         The proof of this lemma relies on taking $X_{m,n+1}^I(\sigma)$ and
+        %         multiplying with a lower triangular matrix to reduce it to something
+        %         in $\X(\tau)$. By considering the matrix used, the formula
+        %         for $\tau = \varphi(I,\sigma)$ given in the lemma can be found. In
+        %         practice, it is
+        %         often easier to do the reduction by hand rather than using the lemma,
+        %         but the formula can be useful. For example, it is clear that
+        %         $\varphi(I,\sigma)$ is given as a product of transpositions
+        %         and $\varphi\big((\sigma(m)), \sigma\big)$. By
+        %         considering exactly which transpositions, we can show that for all $I$
+        %         we have
+        %         \[ \varphi(I,\sigma) \leq \varphi\big((\sigma(m)), \sigma\big) \] 
+        %         in the Bruhat ordering on the symmetric group. The Bruhat
+        %         order is defined in \cite{bjorner}. It also follows that for all
+        %         $\sigma$, 
+        %         \[ \varphi\big((1<2<\dots<m),\sigma\big) = \Id \]
+        %         With this we can identify $X_{m,n}$ with the subspace
+        %         of $X_{m,n+1}$ where the last column has a 1 on each entry:
+        %         \[ X_{m,n} \cong \set{ (a_1,\dots,a_{n+1}) \in X_{m,n+1} \mid
+        %         a_{n+1} = (1,\dots,1) } \]
+        %         The identification is given by the map $s : \X \to X_{m,n+1}$,
+        %         \[ s(a_1,\dots,a_n) = (La_1,\dots,La_n,Le_1) \]
+        %         where $L$ is the lower triangular matrix with all entries on or below
+        %         the diagonal equal to one:
+        %         \[ L =
+        %         \begin{pmatrix}
+        %         1 & 0 & \dots & 0 \\
+        %         \vdots & \ddots & \ddots & \vdots \\
+        %         \vdots &  & \ddots & 0 \\
+        %         1 & \dots & \dots & 1
+                                      %                                       \end{pmatrix} \]
 
-% \section{Symmetries}
+                                      %                                       These maps give a directed system of spaces,
+                                      %                                       \[ \xymatrix{ X_{m,1} \ar[r]^s & X_{m,2} \ar[r]^s & \dots \ar[r]^s &
+                                                                                                                                                   %                                                                                                                                                    X_{m,n} \ar[r]^s & X_{m,n+1} \ar[r]^s & \dots } \]
+                                                                                                                                                                                                                                                                                                                                                %                                                                                                                                                                                                                                                                                                                                                 and we can take the direct limit of this system,
+                                                                                                                                                                                                                                                                                                                                                %                                                                                                                                                                                                                                                                                                                                                 \[ X_{m,\infty} = \varinjlim_n \X \]
+                                                                                                                                                                                                                                                                                                                                                %                                                                                                                                                                                                                                                                                                                                                 The direct limit is the disjoint union of all the spaces $\X$, with the
+                                                                                                                                                                                                                                                                                                                                                %                                                                                                                                                                                                                                                                                                                                                 identification $A \sim B$ if there are $j,k$ such that
+                                                                                                                                                                                                                                                                                                                                                %                                                                                                                                                                                                                                                                                                                                                 $s^k(A) = s^j(B)$. The topology is the finest such that the maps $\X
+                                                                                                                                                                                                                                                                                                                                                %                                                                                                                                                                                                                                                                                                                                                 \to X_{m,\infty}$ are all continuous.
 
-% % Skriv noget her og byt rundt på rækkefølge?
-% % Noget om virkninger af \C^* på \X, e.g. virk på søjler, rækker,...
-% There are various symmetries and group actions worth keeping in mind
-% when working with these spaces. Some of these will be described here.
+                                                                                                                                                                                                                                                                                                                                                %                                                                                                                                                                                                                                                                                                                                                 \section{Symmetries}
 
-% Since we are interested in linear independence of vectors in $\C^m$,
-% the group of complex units $\C^*$ acts on $\X(\sigma)$ in various
-% ways. For any index $i$, we can define a group action $l_i$ by scaling
-% the $i$\textsuperscript{th} vector:
-% \begin{align*}
-%   l_i : \C^* \times \X(\sigma) &\to \X(\sigma) \\
-%   \big(\lambda , (a_1,\dots,a_n)\big) &\mapsto
-%   \big(a_1,\dots,a_{i-1},\lambda a_i,a_{i+1},\dots,a_n\big) 
-% \end{align*}
-% These actions commute with each other, so we get an action $l$ of
-% $(\C^*)^n$ on $\X(\sigma)$, given by
-% \[ l\big((\l_1,\dots,\l_n),(a_1,\dots,a_n)\big) =
-% \big(\l_1a_1,\dots,\l_na_n\big) \]
+                                                                                                                                                                                                                                                                                                                                                % %                                                                                                                                                                                                                                                                                                                                                 Skriv noget her og byt rundt på rækkefølge?
+                                                                                                                                                                                                                                                                                                                                                % %                                                                                                                                                                                                                                                                                                                                                 Noget om virkninger af \C^* på \X, e.g. virk på søjler, rækker,...
+                                                                                                                                                                                                                                                                                                                                                %                                                                                                                                                                                                                                                                                                                                                 There are various symmetries and group actions worth keeping in mind
+                                                                                                                                                                                                                                                                                                                                                %                                                                                                                                                                                                                                                                                                                                                 when working with these spaces. Some of these will be described here.
 
-% Likewise, we can also multiply the rows of $A\in
-% \X(\sigma)$ by non-zero complex numbers. This defines an action $l'$
-% of $(\C^*)^m$ on $\X(\sigma)$. The two actions together satisfy the
-% relation 
-% \[ l\Big((\l,\dots,\l),l'\big((\l^{-1},\dots,\l^{-1}), A\big)\Big) =
-% A \]
-% since multiplying all rows by $\l^{-1}$ while multiplying all columns
-% by $\l$ is the same as doing nothing.
+                                                                                                                                                                                                                                                                                                                                                %                                                                                                                                                                                                                                                                                                                                                 Since we are interested in linear independence of vectors in $\C^m$,
+                                                                                                                                                                                                                                                                                                                                                %                                                                                                                                                                                                                                                                                                                                                 the group of complex units $\C^*$ acts on $\X(\sigma)$ in various
+                                                                                                                                                                                                                                                                                                                                                %                                                                                                                                                                                                                                                                                                                                                 ways. For any index $i$, we can define a group action $l_i$ by scaling
+                                                                                                                                                                                                                                                                                                                                                %                                                                                                                                                                                                                                                                                                                                                 the $i$\textsuperscript{th} vector:
+                                                                                                                                                                                                                                                                                                                                                %                                                                                                                                                                                                                                                                                                                                                 \begin{align*}
+                                                                                                                                                                                                                                                                                                                                                %                                                                                                                                                                                                                                                                                                                                                 l_i : \C^* \times \X(\sigma) &\to \X(\sigma) \\
+        %         \big(\lambda , (a_1,\dots,a_n)\big) &\mapsto
+                                                        %                                                         \big(a_1,\dots,a_{i-1},\lambda a_i,a_{i+1},\dots,a_n\big) 
+                                                        %       \end{align*}
+                                                        %                                                         These actions commute with each other, so we get an action $l$ of
+                                                        %                                                         $(\C^*)^n$ on $\X(\sigma)$, given by
+                                                        %                                                         \[ l\big((\l_1,\dots,\l_n),(a_1,\dots,a_n)\big) =
+                                                        %                                                         \big(\l_1a_1,\dots,\l_na_n\big) \]
 
-% For the special case of $\X = \X(\Id)$, there is an additional
-% symmetry that can be useful to know. By thinking of $A \in \X$ as a
-% matrix, it is possible to transpose it. Checking the various
-% determinants used in the definition of $\X$ show that they do not
-% change after transposition. Hence transposing defines a homeomorphism
-% $T : X_{m,n} \to X_{n,m}$, allowing us to switch the order of $m$
-% and $n$.
+                                                        %                                                         Likewise, we can also multiply the rows of $A\in
+                                                        %                                                         \X(\sigma)$ by non-zero complex numbers. This defines an action $l'$
+                                                        %                                                         of $(\C^*)^m$ on $\X(\sigma)$. The two actions together satisfy the
+                                                        %                                                         relation 
+                                                        %                                                         \[ l\Big((\l,\dots,\l),l'\big((\l^{-1},\dots,\l^{-1}), A\big)\Big) =
+  % A \]
+  % since multiplying all rows by $\l^{-1}$ while multiplying all columns
+  % by $\l$ is the same as doing nothing.
 
-% \section{The quotient space}
+  % For the special case of $\X = \X(\Id)$, there is an additional
+  % symmetry that can be useful to know. By thinking of $A \in \X$ as a
+  % matrix, it is possible to transpose it. Checking the various
+  % determinants used in the definition of $\X$ show that they do not
+  % change after transposition. Hence transposing defines a homeomorphism
+  % $T : X_{m,n} \to X_{n,m}$, allowing us to switch the order of $m$
+  % and $n$.
 
-% % Rummene Y_{m,n}. 
-% While the above definition of $\X$ gives an open subset of $\C^{mn}$,
-% it has some issues that makes the space hard to
-% work with. As we shall see shortly, the fundamental group and the
-% cohomology ring of $\X$ both become larger as $n$ grows.
-% This complicates things slightly, but it can be fixed by taking the
-% quotient of a group action.
-% \begin{definition}
-%   The space $Y_{m,n}$ is the quotient space
-%   \[ Y_{m,n} = \X / T^n \]
-%   where $T^n$ acts on $X_{m,n}$ by scaling
-%   the columns, as defined above:
-%   \[ (\lambda_1,\dots,\lambda_n)\cdot (a_1,\dots,a_n) =
-%   (\l_1a_1,\dots,\l_na_n) \]
-% \end{definition}
+  % \section{The quotient space}
 
-% These spaces retain some of the structure described above. For
-% example, the stabilization map $s$ is linear in $A$, which means it
-% respects the group action.
-% \[ s\big((\l_1,\dots,\l_n) \cdot A\big) = (\l_1,\dots,\l_n,1)\cdot
-% s(A) \] 
-% Hence $s$ descends to a stabilization map $s : Y_{m,n} \to
-% Y_{m,n+1}$ and there is a direct limit,
-% \[ Y_{m,\infty} = \varinjlim_{n} Y_{m,n} \]
-% which can be thought of as $X_{m,\infty}/T^\infty$.
+  % % Rummene Y_{m,n}. 
+  % While the above definition of $\X$ gives an open subset of $\C^{mn}$,
+  % it has some issues that makes the space hard to
+  % work with. As we shall see shortly, the fundamental group and the
+  % cohomology ring of $\X$ both become larger as $n$ grows.
+  % This complicates things slightly, but it can be fixed by taking the
+  % quotient of a group action.
+  % \begin{definition}
+  %   The space $Y_{m,n}$ is the quotient space
+  %   \[ Y_{m,n} = \X / T^n \]
+  %   where $T^n$ acts on $X_{m,n}$ by scaling
+  %   the columns, as defined above:
+  %   \[ (\lambda_1,\dots,\lambda_n)\cdot (a_1,\dots,a_n) =
+  %   (\l_1a_1,\dots,\l_na_n) \]
+  % \end{definition}
 
-% The space $Y_{m,n}$ is homeomorphic to the subspace of $\X$ consisting
-% of elements with the last $n$ coordinates of the determinant map
-% $\Det$ equal to 1:
-% \[ Y_{m,n} \cong \set{ A \in \X \delim\big\vert\delim \Det(A) \in
-%   (\C^*)^{m-1}\times \set{1}^n }\]
-% The group action gives an identification,
-% \[ \X \cong Y_{m,n}\times (\C^*)^n \]
-% This shows the claim about the fundamental group of $\X$, but it can
-% also be used to get information about $Y_{m,n}$ from $\X$ or
-% vice versa. For example, it allows us to calculate the cohomology of
-% one when we know the cohomology of the other, by using the
-% K\"unneth formula to add or remove the cohomology of $(\C^*)^n$.
+  % These spaces retain some of the structure described above. For
+  % example, the stabilization map $s$ is linear in $A$, which means it
+  % respects the group action.
+  % \[ s\big((\l_1,\dots,\l_n) \cdot A\big) = (\l_1,\dots,\l_n,1)\cdot
+  % s(A) \] 
+  % Hence $s$ descends to a stabilization map $s : Y_{m,n} \to
+  % Y_{m,n+1}$ and there is a direct limit,
+  % \[ Y_{m,\infty} = \varinjlim_{n} Y_{m,n} \]
+  % which can be thought of as $X_{m,\infty}/T^\infty$.
+
+  % The space $Y_{m,n}$ is homeomorphic to the subspace of $\X$ consisting
+  % of elements with the last $n$ coordinates of the determinant map
+  % $\Det$ equal to 1:
+  % \[ Y_{m,n} \cong \set{ A \in \X \delim\big\vert\delim \Det(A) \in
+  % (\C^*)^{m-1}\times \set{1}^n }\]
+  % The group action gives an identification,
+  % \[ \X \cong Y_{m,n}\times (\C^*)^n \]
+  % This shows the claim about the fundamental group of $\X$, but it can
+  % also be used to get information about $Y_{m,n}$ from $\X$ or
+  % vice versa. For example, it allows us to calculate the cohomology of
+  % one when we know the cohomology of the other, by using the
+  % K\"unneth formula to add or remove the cohomology of $(\C^*)^n$.
 
 
 
-%%% Local Variables: 
-%%% mode: latex
-%%% TeX-master: "main"
-%%% End: 
+  %%% Local Variables: 
+  %%% mode: latex
+  %%% TeX-master: "main"
+  %%% End: 

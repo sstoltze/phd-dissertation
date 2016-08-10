@@ -31,15 +31,15 @@ results.\fixme{Bleh. Skriv mere}
 Before we can define the spaces that we will be working with, it will
 be helpful to define an approximation to them.
 
-\begin{definition}
+\begin{definition} 
   For natural numbers $m$ and $n$, the space $Y_{m,n}\subset \C^{mn}$
-  is
+  is \fixme{Hvor skal $\R$ og $\Hq$ introduceres?}
   \[ Y_{m,n} = \set{(a_1,\dots,a_n) \in (\C^m)^n \delim\Bigg\vert\delim
     \begin{matrix}
       \text{Any } m \text{ subsequent vectors in } \\
       (e_1,\dots,e_m,a_1,\dots,a_n,e_1,\dots,e_m) \\
       \text{ are linearly independent.}
-    \end{matrix} } \]
+    \end{matrix} }, \]
   where $e_1,\dots,e_m \in \C^m$ denotes the standard basis
   vectors,\fixme{Det der i...}
   \[ e_i =
@@ -75,7 +75,9 @@ defined spaces:
 \end{definition}
 
 Note that $Y_{m,n}(X,Y)$ can also be defined as the
-preimage of the open set $(\C^*)^{m+n-1}$ under the continuous map
+preimage of the open set $(\C^*)^{m+n-1}\subset \C^{m+n-1}$ under the
+continuous map $\Det_{X,Y}$ that calculates determinants of subsequent
+vectors:
 \begin{align*}
   \Det_{X,Y} : (\C^m)^n \to \C&^{m+n-1} \\
   \Det_{X,Y}(a_1,\dots,a_n) = (\det&(x_2,\dots,x_m,a_1),\\

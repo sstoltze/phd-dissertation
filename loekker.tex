@@ -144,10 +144,36 @@ triangular with entries given by the formula:
 \text{when } i \leq j. \]
 This is proven by considering negative powers of $L$ and showing the
 identity:
-\[ (L^{-j+1})_{ik} = (-1)^{i-k}\binom{j-1}{i-k}. \] \fixme{Gør dette}
-But since $T$ is an upper triangular matrix, it can be moved to the
-identity without affecting the linear independence.
-Hence the maps $s^m$ and $\widetilde s$ are homotopic. The composition
+\[ (L^{-j+1})_{ik} = (-1)^{i-k}\binom{j-1}{i-k} \quad \text{when } i
+\geq k. \] \fixme{Gør dette}
+This is automatically true when $j$ is one, so assume it is true for
+a given $j$. We will then show it for $j+1$. We are considering the
+entry
+\[ (L^{-(j+1)+1})_{ik} = (L^{-j})_{ik} = (L^{-1}\cdot L^{-j+1})_{ik} =
+\sum_{l=1}^m (L^{-1})_{il} \cdot (L^{-j+1})_{lk}. \]
+But if we use that $L^{-1}$ has entries
+\[ (L^{-1})_{il} =
+\begin{cases}
+  -1 & l = i-1 \\
+  1 & l = i  \\
+  0 & \text{otherwise}
+\end{cases}, \] \fixme{Skriv dette når $L^{-1}$ introduceres}
+this simplifies to
+\begin{align*}
+  (L^{-(j+1)+1})_{ik} &= (-1)\cdot(-1)^{i-1-k}\binom{j-1}{i-1-k}
+                        + (-1)^{i-k}\binom{j-1}{i-k} \\
+                      &= (-1)^{i-k}\cdot \left( \binom{j-1}{i-k-1} +
+                        \binom{j-1}{i-k} \right)\\
+                      &= (-1)^{i-k} \binom{j}{i-k} \\
+                      &= (-1)^{i-k} \binom{(j+1)-1}{i-k}
+\end{align*}
+as desired. Since we are considering only the first column, we get
+\[ T_{ij} = (L^{-j+1}e_1)_i = (L^{-j+1})_{i1} =
+(-1)^{i-1}\binom{j-1}{i-1}. \]
+As $T$ is an upper triangular matrix, it can be homotoped to
+the identity without affecting the linear independence of the
+columns, and the maps $s^m$ and $\widetilde s$ are therefore
+homotopic. The composition
 $f\circ \widetilde s$ is the same as $f$, except that the loop
 $f\circ\widetilde s$ is stationary at the identity for a while before
 it terminates. Putting it all together shows the following:

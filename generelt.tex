@@ -1,0 +1,133 @@
+% Her skal samles lidt generel information om SS og løkkerum
+
+\chapter{Spectral sequences and loop spaces}
+\fixme{Bedre titel...}
+
+The purpose of this chapter is to give a brief introduction to two
+important topics in this thesis, namely spectral sequences and loop
+spaces. Spectral sequences are an important tool in algebraic topology
+and can be considered a generalisation of long exact sequences, while
+loop spaces are a class of spaces that appear naturally when
+considering the spaces that will be studied in this thesis. The
+following pages will collect some basic info and state the results
+that are of interest in next chapters, while providing references for
+proofs and further information. \fixme{Måske noget med at vi starter
+  ca. fra Hatcher, alt andet betragtes som ``nyt''}
+
+\section{Spectral sequences}
+\label{sec:ss}
+
+A spectral sequence, as we will be using them, is a tool for computing
+the cohomology groups of a topological space, $X$, by considering an
+increasing sequence of subspaces
+\[ X_0 \subset X_1 \subset X_2 \subset \dots \subset X, \]
+with the union covering all of $X$,
+\[ X = \bigcup_{i} X_i. \]
+This is a generalisation of the long exact sequence of a pair, where
+we only have a single subspace $A \subset X$. Another simple example
+that most people are familiar with is if there are two subspaces,
+\[ X = A \cup B, \]
+in which case the cohomology of $X$ can often be computed from the
+cohomology of $A$, $B$ and $A\cap B$ by using the Mayer-Vietoris
+sequence. This likewise corresponds to a spectral sequence to compute
+the cohomology of $X$ by working with an abitrary covering. As might
+be expected, since spectral sequences work more generally there is
+also a corresponding increase in complexity when using them for
+calculations. In the following we will focus on the specific case that
+we will be using in this text. For a general introduction to the
+subject, see either \cite{hatcherss} or \cite{mccleary}.
+
+\subsection{The spectral sequence of a filtration}
+\label{sec:ss-filtration}
+
+Consider a space $X$ with a filtration, that is an increasing sequence
+of subspaces that cover $X$:
+\[ X_0 \subset X_1 \subset X_2 \subset
+\dots \subset X_k  = X. \]
+All of the following can be modified to work if the filtration is not
+finite, but we will not need this here. We will augment the filtration
+by defining additional subspaces,
+\[ X_s =
+\begin{cases}
+  \emptyset & s \leq -1 \\
+  X & s \geq k+1
+\end{cases}. \]
+
+With such a sequence, we can
+consider the relative cohomology groups
+\[ E_1^{p,q} = H^{p+q}(X_p,X_{p-1}), \]
+and the differentials between them coming from the long exact sequence
+of the triple $(X_{p+1},X_p,X_{p-1})$:
+\[ d_1 : E_1^{p,q} = H^{p+q}(X_p,X_{p-1}) \to H^{p+q+1}(X_{p+1},X_p) =
+E_1^{p+1,q}. \]
+This map factors as the composition of an
+inclusion of the pair $(X_p,X_{p-1})$ and the boundary map of the pair
+$(X_{p+1},X_p)$,
+\[ \xymatrix{ d_1 : H^{p+q}(X_p,X_{p-1}) \ar[r]^<<<<<{\jmath^*} &
+  H^{p+q}(X_p) \ar[r]^<<<<<{\delta} & H^{p+q+1}(X_{p+1},X_p),
+} \]
+and in particular we get that the composition of two such maps must be
+zero since the composition $\delta \circ \jmath^* = 0$ by
+exactness. So we can compute the homology of these groups and get new
+groups,
+\[ E_2^{p,q} = \ker d_1 / \im d_1. \]
+More suprisingly, we can also find new maps
+\[ d_2 : E_2^{p,q} \to E_2^{p+2,q-1} \]
+that make these new groups into a chain complex, allowing us to form
+\[ E_3^{p,q} = \ker d_2 / \im d_2. \]
+This process can be continued, giving a sequence of groups and maps
+\[ \xymatrix{d_r : E_r^{p,q} \ar[r] & E_r^{p+r,q-r+1} } \]
+where the composition $d_r \circ d_r$ is zero and
+$E_r^{p,q}$ is formed by taking the homology of $E_{r-1}^{p,q}$ with
+the map $d_{r-1}$. Since we have $E_r^{p,q} = 0$ for $p < 0$ or $p >
+k$, these maps will eventually always go either to or from a zero
+group and will thus not depend on the value of $r$. This allows us to 
+define the stable groups $E_\infty^{p,q}$ as these independent
+groups. The following theorem relates them to the groups $H^*(X)$ that
+we are interested in calculating.
+
+\begin{theorem}
+  \label{thm:ss}
+  Given a filtration $\set{X_s}$ of a topological space $X$ as above,
+  there is a sequence of abelian groups $E_r^{p,q}$ and maps
+  \[ d_r : E_r^{p,q} \to E_r^{p+r,q-r+1} \]
+  that satisfy the following:
+  \begin{itemize}
+  \item The first groups are
+    \[ E_1^{p,q} = H^{p+q}(X_p,X_{p-1}) \]
+    and the map $d_1$ is the boundary map of the triples
+    $(X_{p+1},X_p,X_{p-1})$.
+  \item The composition $d_r \circ d_r$ is zero and
+    \[ E_{r+1}^{p,q} = \ker d_r / \im d_r, \]
+    computed at $E_r^{p,q}$.
+  \item There is a filtration of the $n$'th cohomology group of $X$,
+    \[ 0 \subset F_n^n \subset \dots F_0^n = H^n(X), \]
+    with the limit groups $E_\infty^{p,n-p}$ isomorphic to the
+    quotients
+    \[ E_\infty^{p,n-p} \cong F_p^n / F_{p+1}^n. \]
+  \end{itemize}
+\end{theorem}
+
+This theorem is a combination of Proposition 1.2 and Theorem 1.14 in
+\cite{hatcherss}, and the proof can be found there as well. Assuming
+we can compute the spectral sequence, for which there are several
+tricks, the groups $H^n(X)$ can then be found by solving some
+extension problems of the form
+\[ 0 \to F_{p+1}^n \to F_p^n \to E_\infty^{p,n-p} \to 0, \]
+starting from the short exact sequence
+\[ 0 \to E_\infty^{n,0} \to F_{n-1}^n \to E_\infty^{n-1,1}. \]
+This can for example be done if $E_{\infty}^{p,n-p}$ is free for all
+$p$, in which case $H^n(X)$ is just the direct sum of these groups,
+\[ H^n(X) \cong \bigoplus_p E_\infty^{p,n-p}. \]
+
+\section{Loop spaces}
+\label{sec:ls}
+
+
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 

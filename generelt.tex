@@ -29,7 +29,7 @@ that most people are familiar with is if there are two subspaces,
 \[ X = A \cup B, \]
 in which case the cohomology of $X$ can often be computed from the
 cohomology of $A$, $B$ and $A\cap B$ by using the Mayer-Vietoris
-sequence. This likewise corresponds to a spectral sequence to compute
+sequence. This generalises to a spectral sequence to compute
 the cohomology of $X$ by working with an abitrary covering. As might
 be expected, since spectral sequences work more generally there is
 also a corresponding increase in complexity when using them for
@@ -81,10 +81,11 @@ where the composition $d_r \circ d_r$ is zero and
 $E_r^{p,q}$ is formed by taking the homology of $E_{r-1}^{p,q}$ with
 the map $d_{r-1}$. Since we have $E_r^{p,q} = 0$ for $p < 0$ or $p >
 k$, these maps will eventually always go either to or from a zero
-group and will thus not depend on the value of $r$. This allows us to 
-define the stable groups $E_\infty^{p,q}$ as these independent
-groups. The following theorem relates them to the groups $H^*(X)$ that
-we are interested in calculating.
+group and hence the groups $E_r^{p,q}$ will not change when we
+increase $r$. This allows us to
+define the stable groups $E_\infty^{p,q}$ as these $r$-independent
+groups. The following theorem relates them to the cohomology groups of
+$X$ that we are interested in calculating.
 
 \begin{theorem}
   \label{thm:ss}
@@ -100,7 +101,7 @@ we are interested in calculating.
   \item The composition $d_r \circ d_r$ is zero and
     \[ E_{r+1}^{p,q} = \ker d_r / \im d_r, \]
     computed at $E_r^{p,q}$.
-  \item There is a filtration of the $n$'th cohomology group of $X$,
+  \item There is a filtration of the $n\!$'th cohomology group of $X$,
     \[ 0 \subset F_n^n \subset \dots F_0^n = H^n(X), \]
     with the limit groups $E_\infty^{p,n-p}$ isomorphic to the
     quotients
@@ -110,22 +111,137 @@ we are interested in calculating.
 
 This theorem is a combination of Proposition 1.2 and Theorem 1.14 in
 \cite{hatcherss}, and the proof can be found there as well. Assuming
-we can compute the spectral sequence, for which there are several
-tricks, the groups $H^n(X)$ can then be found by solving some
-extension problems of the form
+we can compute the spectral sequence, the group $H^n(X)$ can then be
+found by solving extension problems of the form
 \[ 0 \to F_{p+1}^n \to F_p^n \to E_\infty^{p,n-p} \to 0, \]
 starting from the short exact sequence
-\[ 0 \to E_\infty^{n,0} \to F_{n-1}^n \to E_\infty^{n-1,1}. \]
-This can for example be done if $E_{\infty}^{p,n-p}$ is free for all
-$p$, in which case $H^n(X)$ is just the direct sum of these groups,
+\[ 0 \to E_\infty^{n,0} \to F_{n-1}^n \to E_\infty^{n-1,1} \to 0. \]
+For example, if we have that the groups $E_{\infty}^{p,n-p}$ are free
+for all $p$, the short exact sequences always split and $H^n(X)$ is
+isomorphic to the direct sum of these groups,
 \[ H^n(X) \cong \bigoplus_p E_\infty^{p,n-p}. \]
 
 \section{Loop spaces}
 \label{sec:ls}
 
+Throughout this section, every topological space will have a
+distinguished basepoint. We will be looking a spaces of loops,
+consiting of maps from the circle to a given space $X$, preserving the
+basepoint. For a general introduction to loop spaces, consult e.g.
+\cite{may}. The results in this section are taken from
+\cite{milnor} and the proofs can be found there as well.
+
+\begin{definition}
+  If $X$ is a topological space with basepoint $*\in
+  X$, the loop space $\Omega(X)$ is the space of based maps from the
+  cicle to $X$,
+  \[ \Omega(X) = \set{ \g : (S^1,1)\to (X,*) } = \set{ \g : [0,1] \to X
+    \mid f(0) = f(1) = * }. \]
+
+  We equip this set with the compact-open topology, so for a compact
+  set $K \subset S^1$ and an open set $U \subset X$, we get an open
+  subset of the loop space consisting of functions mapping $K$ to $U$,
+  \[ V(K,U) = \set{ \g\in \Omega(X) \mid \g(K) \subset U }. \]
+  The collection of all such sets form a subbase for the compact-open
+  topology on $\Omega(X)$.
+\end{definition}
+
+We will only worry about the case where $X$ is a Riemannian manifold,
+so it comes equipped with a Riemannian metric $g$ and an induced
+topological metric $d$. In this case, the compact-open topology is
+induced by the metric
+\[ d^*(\g,\g') = \max_t d(\g(t),\g'(t)). \]
+By \cite[Theorem 17.1]{milnor}, this is homotopy equivalent to the
+space of piecewise smooth loops in $X$, and we will generally work
+with this space instead. The proof will not be repeated here, but
+there is a construction in the proof that deserves a mention. For an
+open cover $\set{X_\alpha}_{\a\in I}$ of $X$, we define subsets of the
+loop space by requiring that the loops are piecewise contained in a
+set in the cover,
+\[ \Omega_k(X) = \set{\g \in \Omega(X) \delim \Big\vert\delim
+  \text{For each } j \leq 2^k, \g_{\left|\left[
+        \frac{j-1}{2^k},\frac{j}{2^k} \right]\right.} \text{ is 
+    contained in $X_\alpha$ for some $\alpha$.} }. \]
+This gives an increasing sequence of open subsets of $\Omega(X)$
+that cover the entire space. In particular, a compact subset of
+$\Omega(X)$ will be contained in $\Omega_k(X)$ for some $k$. By
+defining a cover of $X$ with good properties, we will be able to work
+exclusively with loops where we have some control
+over their behaviour.
 
 
+% Nævne at vi ikke behøver køre * -> *, men også kan køre p -> q
 
+Note that instead of considering loops, we could also consider the
+space of paths between two points $p,q\in X$, given by
+\[ \Omega(X,p,q) = \set{ \g : [0,1] \to X \mid \g(0) = p, \g(1) = q
+}. \]
+But by composing such a path with a fixed path $\a$ from $q$ to $p$,
+we end up with a loop at $p$. If we compose a loop at $p$ with the
+path from $p$ to $q$ given by running $\a$ in reverse, we get a path
+from $p$ to $q$, and the composition of these two operrations is
+homotopic to the identity. This shows that all such spaces 
+are homotopy equivalent, so we will not make a major distinction
+between them.
+
+\fixme{Et kort indblik i flag, ca. en halv eller en hel side?}
+
+\section{Flags}
+\label{sec:flags}
+
+The last thing to be discussed is the concept of a flag in a finite
+dimensional vector space. In an
+$m$-dimensional vector space $V$, a flag is an increasing sequence of
+subspaces of $V$,
+\[ V_1 \subset V_2 \subset \dots \subset V_m = V, \]
+with the dimension of $V_i$ equal to $i$. So the dimension of each
+subspace is one greater than the last. Note that if we pick a non-zero
+vector $v_1$ in $V_1$, another (non-zero) vector $v_2$ in $V_2 - V_1$,
+and continue picking $v_i$ in $V_i - V_{i-1}$, we end up with $m$
+linearly independent vectors. This allows us to construct a matrix in
+$\GL(V)$ by considering
+\[ [v_1,\dots,v_m], \]
+and we can recover the flag from the matrix by considering
+\begin{align*}
+  V_1 =\, &\spa(v_1) \\
+  V_2 =\, &\spa(v_1,v_2) \\
+  \vdots\,\, & \\
+  V_m =\, &\spa(v_1,\dots,v_m).
+\end{align*}
+Likewise, we could take the span of the columns starting from $v_m$
+and working backwards to get another flag.
+\begin{definition}
+  Given an invertible matrix $V = [v_1,\dots,v_m]$, the \textit{left
+    flag} of $V$ is
+  \begin{alignat*}{5}
+    \mathrm{Fl_L}(V)\, &&= \Big(&\spa(v_1) &&\subset \spa(v_1,v_2)
+    &&\subset \dots &&\subset \spa(v_1,\dots,v_m) = V\Big).
+  \end{alignat*}
+  The \textit{right flag} of $V$ is defined similarly as
+  \begin{alignat*}{5}
+    \mathrm{Fl_R}(V)\, &&= \Big(&\spa(v_m) &&\subset
+    \spa(x_{v-1},x_v) &&\subset \dots &&\subset
+    \spa(v_1,\dots,v_m) = V\Big). 
+  \end{alignat*}
+\end{definition}
+Note that we could multiply any column of $V$ by a non-zero scalar and
+we would end up with the same flag. Likewise, if we replace $v_j$ by
+$v_j + \lambda v_i$ for a scalar $\lambda$ and indices $j > i$, we do not
+change the left flag of $V$. And the right flag is unchanged by doing
+the same operation with $j < i$. In particular, if $L$ is a
+lower-triangular invertible matrix we can do the above operations one
+column at a time, starting from the last, and see that
+\[ \mathrm{Fl_R}(L) = \mathrm{Fl_R}(\Id). \]
+And similarly, if $U$ is upper-triangular and invertible and $\sigma$
+is a permutation matrix:
+\[ \mathrm{Fl_L}(\sigma U) = \mathrm{Fl_L}(\sigma). \]
+This is slightly harder to see, but $\sigma$ permutes the rows of $U$,
+moving the first row to row $\sigma(1)$, the second row to row
+$\sigma(2)$, and so on. By adding the first column to remaining ones,
+with a suitable scalar multiplied on, we can ensure that the only
+non-zero entry in row $\sigma(1)$ of $\sigma U$ is in the first
+column, row $\sigma(1)$, just as it is in the matrix
+$\sigma$. Continuing like this gives the desired identity.
 
 %%% Local Variables: 
 %%% mode: latex

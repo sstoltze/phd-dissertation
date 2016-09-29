@@ -329,7 +329,7 @@ loop space map $f$. We are now ready to prove the result.
   injective on homotopy groups.
 \end{proof}
 
-Since $f$ is a weak homotopy equivalence, it follows that $f_*$ is
+Since $f$ is a weak homotopy equivalence, it follows that it induces
 an isomorphism on homology and cohomology groups. The Pontrjagin
 homology ring of the loop space, with product given by loop
 concatenation, has been calculated in \cite[Theorem~4.1]{grbic} as
@@ -345,6 +345,174 @@ is $2i$. By the above result, this is also the homology of
 $X_{m,\infty}$. The groups are finitely generated and torsion free, so
 by the Universal Coefficient Theorem the homology and cohomology
 groups are isomorphic as abelian groups.
+
+
+
+\section{Other coefficients}
+\label{sec:coef}
+\fixme{Andre koefficienter, kan nok gøres ret kort her. Skal ca. bare
+  bemærke at alting virker}
+
+
+\section{Cohomological stability}
+\label{sec:costa}
+Since we now know the space $X_{m,\infty}(\sigma)$ its cohomology, it
+would be nice to relate this to the cohomology of
+$X_{m,n}(\sigma)$. To do
+this, we specialise to the case $m = 3$ in everything that
+follows. First, we need an offset that depends on the permutation
+we are considering:
+\begin{definition}
+  Define a function $\lambda$ on the symmetric group of three elements
+  by
+  \begin{align*}
+    \lambda(\sigma) &=
+                      \begin{cases}
+                        0 & \sigma = \Id \\
+                        1 & \sigma \in \set{(1\,2),(2\,3),(1\,2\,3)}
+                        \\
+                        2 & \sigma \in \set{(1\,3\,2), (1\,3)}
+                      \end{cases}
+  \end{align*}
+\end{definition}
+
+This section will prove the following theorem:
+\begin{theorem}
+  If $n \geq k + \lambda(\sigma)$, the stabilisation map
+  \[ L_{n}^* : H^k(X_{3,\infty}(\sigma)) \to H^k(X_{3,n}(\sigma)) \]
+  is an isomorphism. \fixme{Snak om stabilisering forfra vs. bagfra, L
+  vs. s}
+\end{theorem}
+
+The proof will proceed by induction on $k$. Our induction hypothesis
+is divided into two parts, were we require the stabilisation to be an
+isomorphism when $n$ is greater than $k+\lambda(\sigma)$, and
+injective when $n$ is $k+\lambda(\sigma)-1$. The exact statement we
+want to prove is the following:
+\begin{hypothesis}[$I_{k-1}$]
+  For all $r \leq k-1$ and all $\sigma \in S_3$, the following two
+  statements hold:
+  \begin{itemize}
+  \item The map $L_{n}^* : H^r(X_{3,\infty}(\sigma)) \to
+    H^r(X_{3,n}(\sigma))$ is an isomorphism for $n \geq r +
+    \lambda(\sigma)$.
+  \item The map $L_{n}^* : H^r(X_{3,\infty}(\sigma)) \to
+    H^r(X_{3,n}(\sigma))$ is injective for $n \geq r +\lambda(\sigma)
+    -1$.
+  \end{itemize}
+\end{hypothesis}
+
+By direct calculation, the
+groups $H^0(X_{3,n}(\sigma))$ are all $\Z$ when $n \geq
+\lambda(\sigma)$, so the isomorphism in case $k = 0$ is automatically
+true. \fixme{måske bemærke noget med at injektivitet ikke giver mening
+  her}
+
+We now assume the hypothesis $I_{k-1}$ and want to prove $I_k$. Before
+we start, we consider the spectral sequence for $X_{3,n+1}(\sigma)$
+and observe how the different permutations that show up relate to each
+other. This is summarised in the following table:
+
+\[
+\begin{array}{|c|cccc|}
+  \hline
+  \sigma & \multicolumn{1}{c|}{\sigma_\emptyset} 
+  & \multicolumn{1}{c|}{\sigma_{\set{1}}} 
+  & \multicolumn{1}{c|}{\sigma_{\set{2}}} & \sigma_{\set{1,2}} \\
+  \hline
+  \Id & \Id & (1\,2) & (2\,3) & (1\,3\,2) \\
+  (1\,2) & \Id & \Id & (1\,2\,3) & (1\,3) \\
+  (2\,3) & \Id & \Id & (1\,2) & (1\,2) \\
+  (1\,2\,3) & \Id & \Id & \Id & \Id \\
+  (1\,3\,2) & (2\,3) & (1\,2\,3) & (2\,3) & (1\,2\,3) \\
+  (1\,3) & (2\, 3) & (2\,3) & (2\,3) & (2\,3) \\
+  \hline
+\end{array}
+\] \fixme{Leg med stregerne og tjek at det faktisk er rigtigt hvad der
+  står...}
+By considering the table, we can see the following inequalities for
+the function $\lambda$:
+\begin{align*}
+  \lambda(\sigma) &\geq \lambda(\sigma_{\emptyset}), \\
+  \lambda(\sigma) &\geq \lambda(\sigma_{\set{1}}) - 1, \\
+  \lambda(\sigma) &\geq \lambda(\sigma_{\set{2}}) - 1, \\
+  \lambda(\sigma) &\geq \lambda(\sigma_{\set{1,2}}) - 2. \\
+\end{align*}
+These will be used during the proof.
+
+\subsection{Injectivity}
+
+We will start by proving injectivity. Consider a permutation $\sigma$
+and $n \geq k + \lambda(\sigma) - 1$. We will start by proving that
+the stabilisation map
+\[ s^* : H^k(X_{3,n+1}(\sigma)) \to
+H^k(X_{3,n}(\sigma_{\emptyset})) \]
+is injective. Consider the spectral sequence for computing
+$H^k(X_{3,n+1}(\sigma))$. Since we choose to stabilise from the left,
+as discussed in \fixme{Diskuter dette...Hvor?}, the map $L_n$
+becomes a map of spectral sequences and respects the stabilisation map
+$s$. The
+following is an image of the first page of the spectral sequence, with
+... denoting that $L_n^*$ is an isomorphism and ... denoting
+that it is injective. \fixme{Tegn og indsæt her}
+
+If the map 
+\[ s^* : H^k(X_{3,n+1}(\sigma)) \to
+H^k(X_{3,n}(\sigma_{\emptyset})) \]
+is not injective, there is an element $\alpha$ of the kernel of the
+boundary map that is also in the group 
+\[ H^{k-1}(X_{3,n}(\sigma_{\emptyset})) \otimes t_1 \oplus 
+H^{k-1}(X_{3,n}(\sigma_{\emptyset})) \otimes t_2 \oplus 
+H^{k-2}(X_{3,n}(\sigma_{\emptyset})) \otimes t_1 t_2. \]
+But on these last groups, the stabilisation map is an isomorphism so
+we get an element $\widehat{\alpha}$ in the corresponding group in the
+spectral sequence for $X_{3,\infty}(\sigma)$. Since the stabilisation
+maps are maps of spectral sequences, we have
+\[ 0 = d_1(L_{n}(\widehat{\alpha})) = L_n(d_1(\widehat{\alpha})) \]
+But the right hand side is the composition of $L_n$, which we know by
+the induction hypothesis to be injective, and the boundary map in the
+spectral sequence for the infinite spaces, which we know to be
+injective on the groups we are considering. So $\widehat{\alpha}$ must
+be zero, and hence so is $\alpha$. This shows that $s^*$ is injective
+when $n \geq k + \lambda(\sigma) - 1$. Now we consider the different
+choices of $\sigma$.
+
+\subsubsection{$\sigma = \Id$}
+
+We know that the cohomology of $X_{3,\infty}$ is the inverse
+limit of the cohomology groups of $X_{3,n}$ using the stabilisation
+map. \fixme{Sørg for at vi ved det, eller skriv det her. Henvis til
+  May}
+When considered in this way, the map $L_n$ is just the projection on
+the corresponding factor. But if we project and get zero, we know that
+the only possible lift to the next group is zero, since $s^*$ is
+injective. Continuing like this, we see that the only element of
+$H^k(X_{3,\infty})$ that can project to zero is the zero element, and
+hence $L_n$ is injective in this case.
+
+\subsubsection{$\lambda(\sigma) = 1$}
+
+If $\sigma \in \set{(1\,2),(2\,3),(1\,2\,3)}$, we know that
+$\sigma_{\emptyset} = \Id$ and that $n \geq k + \lambda(\sigma) - 1 =
+k$, giving $n-1\geq k-1$. Consider the following commutative diagram:
+\[ \xymatrix{ H^k(X_{3,\infty}(\sigma)) \ar[r]^{s^*}_{\cong} \ar[d]^{L_n} &
+  H^k(X_{3,\infty}) \ar[d]^{L_{n-1}} \\
+  H^k(X_{3,n}(\sigma)) \ar[r]^{s^*} & H^k(X_{3,n-1}
+} \]
+By the previous case, the map on the right is injective and so the
+composition $s^* \circ L_{n-1}$ is as well. Since the map commutes,
+this means that the left vertical map, $L_n$ must be injective as
+well, as desired.
+
+\subsubsection{$\lambda(\sigma) = 2$}
+
+The last case has $\sigma_{\emptyset} = (2\,3)$ and proceeds exactly
+as the previous case, using the inectivity that has already been
+proved for this permutation.
+
+\subsection{Surjectivity}
+
+
 
 
 % \section{Future work}

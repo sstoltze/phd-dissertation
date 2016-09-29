@@ -53,6 +53,7 @@ the standard basis that appears in the definition of $Y_{m,n}$ with
 any collection of linearly independent vectors and get similarly
 defined spaces: 
 \begin{definition}
+  \label{def:rum}
   For two invertible matrices $X$ and $Y$ in
   $\GL_m(\C)$, the space $Y_{m,n}(X,Y) \subset \C^{mn}$ is
   \[ Y_{m,n}(X,Y) = \set{(a_1,\dots,a_n) \in (\C^m)^n
@@ -540,7 +541,7 @@ following lemma.
   a map $\varphi$,
   defined for an indexing set $I$ and a permutation $\sigma$, which
   gives a new permutation such that
-  \[ Y_{m,n+1}^I(\sigma) \cong Y_{m,n+1}(\varphi(I,\sigma)) \times
+  \[ Y_{m,n+1}^I(\sigma) \cong Y_{m,n}(\varphi(I,\sigma)) \times
   (\C^*)^{\size{I}}. \]
   If we define the permutation $\widehat \sigma = \sigma \cdot
   \big(m\; m-1\; \dots \; 1\big)$ and the indexing set is ${I = (i_1 <
@@ -857,10 +858,11 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   \]
   is invertible by induction on $s$. The exact statement we intend to
   prove is that the determinant of $R$ is strictly positive if two
-  divides $s$ an even number of times and is strictly negative if $s$
-  two divides $s$ and odd number of times.
+  divides $s$ an even number of times and is strictly negative if
+  two divides $s$ an odd number of times.
   For $s = 1$, $R$ is always the matrix $R = \left( 1 \right)$ and we
-  are done since 2 divides 1 zero times.
+  are done since $\det R = 1$ is strictly positive and two divides $s$
+  zero times.
   Assume the statement is correct for $s-1$. Since the determinant is
   linear in each row, we can use Equation \ref{eq:rows} and get
   \begin{align*}
@@ -936,8 +938,10 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   \end{pmatrix}. \]
   Here we use $\widetilde{r}_i$ to denote the $i$'th row of $P$ where we
   have removed the leftmost entry. But we can now apply the induction
-  hypothesis. We see that all the determinants have the same sign and
-  that $\det R$ changes sign if $s-1$ is odd and otherwise has the
+  hypothesis. We see that all the determinants have the same sign, are
+  non-zero and
+  so $\det R$ is non-zero with opposite sign if $s-1$ is odd and
+  otherwise has the
   same sign. This exactly means that $\det R$ changes sign
   when $s$ passes a multiple of two, as stated above. \fixme{Tjek lige
     det argument for fortegn igennem igen...}
@@ -986,16 +990,17 @@ coordinate.
 Then we could define the limit space as
 \[ X_{m,\infty} = Y_{m,\infty}/\T^\infty. \]
 
-                                          %                                           Noget med at $s^m \simeq \Id$?
+% Noget med at $s^m \simeq \Id$?
 
+\fixme{Andre koefficienter her?}
 
-                                          %                                           Hvis ikke introduceret endnu ville spektralfølgen give mening
-                                          %                                           her. Hvis allerede introduceret i det generelle tilfælde ville det
-                                          %                                           nok give mening at specialisere til Y_{m,n} eller X_{m,n} her og
-                                          %                                           beskrive de forskellige søjler.
-                                          %%                                           Her ville det måske også give mening at se på H^1 og vise at den
-                                          %%                                           giver det "rigtige" svar, \Z^{m-1}, for at vise at følgen kan
-                                          %%                                           bruges til noget.
+% Hvis ikke introduceret endnu ville spektralfølgen give mening
+% her. Hvis allerede introduceret i det generelle tilfælde ville det
+% nok give mening at specialisere til Y_{m,n} eller X_{m,n} her og
+% beskrive de forskellige søjler.
+%% Her ville det måske også give mening at se på H^1 og vise at den
+%% giver det "rigtige" svar, \Z^{m-1}, for at vise at følgen kan
+%% bruges til noget.
 
 \fixme{Flyt dette hen hvor det giver mening. Muligvis et andet
   kapitel.}
@@ -1236,6 +1241,22 @@ $i$'th coordinate of $\T^{n+1}$, then
   whatever der nu giver mening når jeg har skrevet kapitlet med
   udregninger}
 
+
+\section{Quaternionic and real spaces}
+\label{sec:koeff}
+
+When the spaces $Y_{m,n}(X,Y)$ were introduced in Definition
+\ref{def:rum}, we could have used other entries for our vectors than
+the complex numbers. Two possible alternatives would be the real
+numbers, $\R$, or the quaternions, $\Hq$, giving us the spaces
+$Y^{\R}_{m,n}(X,Y)$ and $Y^{\Hq}_{m,n}(X,Y)$. These behave much like
+the spaces studied above, with the notable exception that since the
+quaternions are not commutative one needs to choose wheter to act with
+scalars from the left or from the right. Since the stabilisation map,
+\[ s : Y_{m,n}^{\Hq} \to Y_{m,n+1}^{Hq}, \]
+acts on the left with a matrix and this map should be linear to give
+an induced map on the quotient $X^{\Hq}_{m,n}$, we will choose to act
+with scalars from the right.
 
       %       The theorem and the corollary illustrate the problems with using
       %       $Y_{m,n}$ instead of $X_{m,n}$, even though the space $Y_{m,n}$ is

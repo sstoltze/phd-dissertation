@@ -103,7 +103,7 @@ Since the space $\Omega$ is relatively well-studied, this gives
 information about $X_{m,\infty}$. In particular, it allows us to
 calculate the homology and cohomology of this space.
 
-We want to show that the stabilization map
+We want to show that the stabilisation map
 \begin{align*}
   s : X_{m,n} &\to X_{m,n+1} \\
   A\cdot \T^n = (a_1,\dots,a_n)\cdot \T^n 
@@ -263,7 +263,7 @@ and $\varphi_{k+1}$ are related in the following fashion:
   \end{align*}
   This allows us to take all the repetitions
   $\left[\dots,\g(t),\g(t),\dots\right]$ and move them to the end as
-  diagonal matrices, which results in the stabilization map $s$.
+  diagonal matrices, which results in the stabilisation map $s$.
 \end{proof}
 
 The above lemma shows that the maps $\varphi_k$ fit together to define
@@ -321,10 +321,10 @@ loop space map $f$. We are now ready to prove the result.
   \[ \varphi_k(f(g(w))) = \left[
     \g_w\left(\frac{1}{2^k}\right),\dots,\g_w\left(\frac{2^k-1}{2^k}
     \right)\right] \] 
-  is homotopic to the stabilization map
+  is homotopic to the stabilisation map
   \[ s(g(w)) = \left[g(w),\Id,\dots,\Id\right], \]
   with the homotopy given by sliding along the path $\g_w=f(g(w))$.
-  So the map $g$ can be stabilized to a null-homotopic map, so it must
+  So the map $g$ can be stabilised to a null-homotopic map, so it must
   be null-homotopic in $X_{m,\infty}$. This shows that $f_*$ is
   injective on homotopy groups.
 \end{proof}
@@ -378,12 +378,14 @@ we are considering:
 
 This section will prove the following theorem:
 \begin{theorem}
+  \label{thm:kostab}
   If $n \geq k + \lambda(\sigma)$, the stabilisation map
   \[ L_{n}^* : H^k(X_{3,\infty}(\sigma)) \to H^k(X_{3,n}(\sigma)) \]
   is an isomorphism. \fixme{Snak om stabilisering forfra vs. bagfra, L
   vs. s}
 \end{theorem}
 
+\begin{proof}
 The proof will proceed by induction on $k$. Our induction hypothesis
 is divided into two parts, were we require the stabilisation to be an
 isomorphism when $n$ is greater than $k+\lambda(\sigma)$, and
@@ -497,7 +499,7 @@ $\sigma_{\emptyset} = \Id$ and that $n \geq k + \lambda(\sigma) - 1 =
 k$, giving $n-1\geq k-1$. Consider the following commutative diagram:
 \[ \xymatrix{ H^k(X_{3,\infty}(\sigma)) \ar[r]^{s^*}_{\cong} \ar[d]^{L_n} &
   H^k(X_{3,\infty}) \ar[d]^{L_{n-1}} \\
-  H^k(X_{3,n}(\sigma)) \ar[r]^{s^*} & H^k(X_{3,n-1}
+  H^k(X_{3,n}(\sigma)) \ar[r]^{s^*} & H^k(X_{3,n-1}).
 } \]
 By the previous case, the map on the right is injective and so the
 composition $s^* \circ L_{n-1}$ is as well. Since the map commutes,
@@ -507,11 +509,88 @@ well, as desired.
 \subsubsection{$\lambda(\sigma) = 2$}
 
 The last case has $\sigma_{\emptyset} = (2\,3)$ and proceeds exactly
-as the previous case, using the inectivity that has already been
-proved for this permutation.
+as the previous case, using the injectivity that has already been
+proved for this permutation and that $\lambda((2\,3)) = 1 =
+\lambda(\sigma)-1$.
+\[ \xymatrix{ H^k(X_{3,\infty}(\sigma)) \ar[r]^{s^*}_{\cong} \ar[d]^{L_n} &
+  H^k(X_{3,\infty}(\emptyset)) \ar[d]^{L_{n-1}} \\
+  H^k(X_{3,n}(\sigma)) \ar[r]^{s^*} & H^k(X_{3,n-1}(\sigma_{\emptyset})).
+} \]
 
 \subsection{Surjectivity}
 
+We will now prove surjectivity. Let $\sigma$ be a permutation in $S_3$
+and let $n \geq k + \lambda(\sigma)$. As before, we start by proving
+that the map
+\[ s^* : H^k(X_{3,n+1}(\sigma)) \to
+H^k(X_{3,n}(\sigma_{\emptyset})) \] \fixme{Vælg om L skal have stjerne
+  eller ej}
+is surjective. To see this, we will look at the spectral sequences for
+$X_{3,\infty}(\sigma)$ and $X_{3,n+1}(\sigma)$, and the maps between
+them induced by the stabilisation map $L^*_{n+1}$. This is summarised in
+the following diagram. \fixme{Sørg for at notationen $E(\infty,\sigma)$
+  etc er introduceret.}
+\[ \xymatrix{ 0 \ar[r]\ar[d] & H^k(X_{3,\infty}(\sigma))
+  \ar[r]^{i^*}\ar[d]^{L^*_{n+1}} & E_1^{0,k}(\infty,\sigma)
+  \ar[r]^{d_1}\ar[d]^{A_0} & 
+  E_1^{1,k}(\infty,\sigma) \ar[r]^{d_1}\ar[d]^{A_1} &
+  E_1^{2,k}(\infty,\sigma) \ar[d]^{A_2} \\
+  0 \ar[r] & H^k(X_{3,n+1}(\sigma)) \ar[r]^{i^*} &
+  E_1^{0,k}(n+1,\sigma) \ar[r]^{d_1} & E_1^{1,k}(n+1,\sigma)
+  \ar[r]^{d_1} & E_1^{2,k}(n+1,\sigma) 
+} \]
+The upper row is exact, since it is part of the spectral sequence for
+$X_{3,\infty}(\sigma)$ and this collapses at the second page. The
+bottom row is a chain complex, by considering the spectral sequence,
+and is exact at
+$E_1^{0,k}(n+1,\sigma)$. To see this, consider the induction
+hypothesis. If we pass to the second page of the spectral sequence, we
+can see that at row $k$ the groups will no longer change so we have
+\[ H^k(X_{3,n+1}(\sigma)) = \ker d_1. \] \fixme{Tegning/diagram. Plus
+  argument for at alting under forsvinder. Kræver nok lidt analyse af
+  $n$ og $k$}
+The map $A_1$ in the diagram is an isomorphism, since it is induced from
+the maps
+\[ L^*_{n} : H^{k-1}(X_{3,\infty}(\sigma_{\set{i}})) \to
+H^{k-1}(X_{3,n}(\sigma_{\set{i}})). \]
+But this is an isomorphism by applying the first part of $I_{k-1}$,
+using the assumption 
+\[ n \geq k+\lambda(\sigma) \geq
+(k-1)+\lambda(\sigma_{\set{i}}). \]
+The map $A_2$ is an isomorphism by the exact same argument.
+This allows us to do a diagram chase: Consider an element $x$ in
+$E_1^{0,k}(n+1,\sigma)$. Then $d_1(x) = A_1(y)$ for a $y$ in
+$E_1^{1,k}(\infty,\sigma)$. But 
+\[ A_2(d_1(y)) = d_1(A_1(y)) = d_1(d_1(x)) = 0, \]
+so $y = d_1(z)$ for some $z$ in $E_1^{0,k}(\infty,\sigma)$. The
+element $x - A_0(z)$ is in the kernel of $d_1$,
+\[ d_1(x - A_0(z)) = d_1(x) - A_1(d_1(z)) = d_1(x) - A_1(y) = 0. \]
+So there is a $w$ in $H^k(X_{3,n+1}(\sigma)$ with $i^*(w)$ equal to
+$x-A_0(z)$. So we have found $w$ and $z$ with
+\[ A_0(z) + d_1(w) = A_0(z) + x - A_0(z) = 0, \]
+showing that
+\[ \xymatrix{ H^k(X_{3,n+1}(\sigma)) \oplus E_1^{0,k}(\infty,\sigma)
+  \ar[r]^{i^* + A_0} & E_1^{0,k}(n+1,\sigma) } \]  \fixme{Ryk rundt på
+funktionsnavne}
+is surjective. The map $s^*$ that we are considering is the
+composition
+\[ \xymatrix{ H^k(X_{3,n+1}(\sigma)) \ar[r]^{i^*} &
+  E_1^{0,k}(n+1,\sigma) = H^k(X_{3,n}(\sigma_{\emptyset}\times T^2))
+  \ar[r]^{\pr} & H^k(X_{3,n}(\sigma_{\emptyset})). } \]
+The projection, which is induced from the inclusion of
+$X_{3,n}(\sigma_{\emptyset})$ into the product, is surjective, so we
+only need to show that the image of
+$E_1^{0,k}(\infty,\sigma)$ is contained in the image of $s^*$ to
+finish the proof of surjectivity. Consider the diagram
+\[ \xymatrix{ E_1^{0,k}(\infty,\sigma) \ar[r]^{A_0} \ar[d]^{L_{n+1}^*}
+  & E_1^{0,k}(n+1,\sigma) \ar[d]^{\pr} \\
+  H^k(X_{3,\infty}(\sigma_{\emptyset})) \ar[r]^{L_n^*} &
+  H^k(X_{3,n}(\sigma_{\emptyset})). } \] \fixme{Bør lige tjekke at
+  alle afbildninger hedder det rigtige her...}
+This shows that $\pr\circ A_0$ is contained in the image of
+$L_n^*$. But the stabilisation map $L_n$ factors up to homotopy over
+$s$, so we are finished and the induction hypothesis $I_k$ holds.
+\end{proof}
 
 
 

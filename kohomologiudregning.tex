@@ -9,6 +9,7 @@
 
 %%%%% Previous
 \chapter{Cohomology calculations for $Y_{3,3}$}
+\label{chapter:udregninger}
 
 In this section we will calculate the cohomology of the space
 $Y_{3,3}$, which is the set:
@@ -570,6 +571,7 @@ compute the homology of the differentials.
 \end{figure}
 
 \section{Differentials on $E_1$}
+\label{sec:orientation}
 
 By definition, the differentials are the boundary maps of the long
 exact sequence of the triple $(F_{p+1},F_p,F_{p-1})$,
@@ -587,11 +589,11 @@ This is an isomorphism in cohomology and gives a map between the long
 exact sequences that makes the following diagram
 commute:
 \[ \xymatrix{
-H^{p+q}(F_0) \ar[r]^>>>>>>>>>>>>>>>>>>>>{d_1} \ar[d]^{i^*} & H^{p+q+1}(F_1,F_0)
-\ar[d]^{i^*}_{\cong} \\
+H^{p+q}(F_0) \ar[r]^>>>>>>>>>>>>>>>>>>>>{d_1} \ar[d]^{i^*} &
+H^{p+q+1}(F_1,F_0) \ar[d]^{i^*}_{\cong} \\
 H^{p+q}((Y_{\set{1}}\sqcup Y_{\set{2}})\times (D-0))
-\ar[r]^>>>>>{\delta} & H^{p+q+1}((Y_{\set{1}}\sqcup Y_{\set{2}})\times (D,D-0))
-} \]
+\ar[r]^>>>>>{\delta} & H^{p+q+1}((Y_{\set{1}}\sqcup Y_{\set{2}})\times
+(D,D-0)) } \]
 The bottom map is the boundary map from the long exact sequence of the
 pair $(D,D-0)$. This map is well-known and will be treated at the end
 of this section, so the only missing part is to calculate the
@@ -672,7 +674,8 @@ orientation of the torus in $R$. This is done by differentiating the
 map to get a map of tangent spaces
 \[ Tf : TT^2 \to TR \]
 and checking that the determinant of this map is
-positive. This has been done in Sage.
+positive. This has been done in Sage, see Appendix
+\ref{sec:sageorientation} for the code.
 
 \paragraph{$\mathbf{d_{01} y_{01,1}}$:}
 In this case the map becomes
@@ -874,6 +877,7 @@ it. To be more precise, the map is given on generators by:
 \end{align*}
 
 \section{Turning the page}
+\label{sec:rand}
 
 We can now use the above to calculate the $E_2$-page. We have
 calculated the groups appearing on the first page and the

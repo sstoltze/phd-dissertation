@@ -7,12 +7,22 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{mathtools}
-\usepackage{listings}
 \usepackage{enumerate}
 \usepackage{enumitem}
 \usepackage[dvips]{graphicx}
 \usepackage{wrapfig}
 
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage{listings}
+\lstset{
+  breakatwhitespace=true,
+  breaklines=true,
+  frame=single,
+  postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+  showstringspaces=false,
+  stringstyle=\color{green}
+}
 
 \usepackage{csquotes}
 \usepackage[backend=bibtex,style=alphabetic]{biblatex}
@@ -186,6 +196,9 @@
 
 % Skal der noget som helst med om det andet jeg lavede med pi_1?
 % Sikkert ikke, men snak lige med Marcel.
+
+\appendix
+\include{sagecode}
 
 \backmatter
 \nocite{*}

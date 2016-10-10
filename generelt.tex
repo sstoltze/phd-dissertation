@@ -23,17 +23,19 @@ increasing sequence of subspaces
 \[ X_0 \subset X_1 \subset X_2 \subset \dots \subset X, \]
 with the union covering all of $X$,
 \[ X = \bigcup_{i} X_i. \]
-This is a generalisation of the long exact sequence of a pair, where
+An example that most people should be familiar with is the long exact
+sequence of a pair, where
 we only have a single subspace $A \subset X$. Another simple example
-that most people are familiar with is if there are two subspaces,
+is the case where there are two subspaces,
 \[ X = A \cup B, \]
 in which case the cohomology of $X$ can often be computed from the
 cohomology of $A$, $B$ and $A\cap B$ by using the Mayer-Vietoris
 sequence. This generalises to a spectral sequence to compute
 the cohomology of $X$ by working with an abitrary covering. As might
-be expected, since spectral sequences work more generally there is
-also a corresponding increase in complexity when using them for
-calculations. In the following we will focus on the specific case that
+be expected, since spectral sequences work more generally they also
+carry a corresponding increase in complexity when using them for
+calculations. In the following section we will focus on the specific
+case that 
 we will be using in this text. For a general introduction to the
 subject, see either \cite{hatcherss} or \cite{mccleary}.
 
@@ -211,23 +213,23 @@ and we can recover the flag from the matrix by considering
 Likewise, we could take the span of the columns starting from $v_m$
 and working backwards to get another flag.
 \begin{definition}
-  Given an invertible matrix $V = [v_1,\dots,v_m]$, the \textit{left
-    flag} of $V$ is
+  Given an invertible matrix $A = [v_1,\dots,v_m]$, the \textit{left
+    flag} of $A$ is
   \begin{alignat*}{5}
-    \mathrm{Fl_L}(V)\, &&= \Big(&\spa(v_1) &&\subset \spa(v_1,v_2)
+    \mathrm{Fl_L}(A)\, &&= \Big(&\spa(v_1) &&\subset \spa(v_1,v_2)
     &&\subset \dots &&\subset \spa(v_1,\dots,v_m) = V\Big).
   \end{alignat*}
   The \textit{right flag} of $V$ is defined similarly as
   \begin{alignat*}{5}
-    \mathrm{Fl_R}(V)\, &&= \Big(&\spa(v_m) &&\subset
+    \mathrm{Fl_R}(A)\, &&= \Big(&\spa(v_m) &&\subset
     \spa(x_{v-1},x_v) &&\subset \dots &&\subset
     \spa(v_1,\dots,v_m) = V\Big). 
   \end{alignat*}
 \end{definition}
-Note that we could multiply any column of $V$ by a non-zero scalar and
+Note that we could multiply any column of $A$ by a non-zero scalar and
 we would end up with the same flag. Likewise, if we replace $v_j$ by
 $v_j + \lambda v_i$ for a scalar $\lambda$ and indices $j > i$, we do not
-change the left flag of $V$. And the right flag is unchanged by doing
+change the left flag of $A$. The right flag is unchanged by doing
 the same operation with $j < i$. In particular, if $L$ is a
 lower-triangular invertible matrix we can do the above operations one
 column at a time, starting from the last, and see that
@@ -242,6 +244,12 @@ with a suitable scalar multiplied on, we can ensure that the only
 non-zero entry in row $\sigma(1)$ of $\sigma U$ is in the first
 column, row $\sigma(1)$, just as it is in the matrix
 $\sigma$. Continuing like this gives the desired identity.
+\fixme{Mere her... Eller en afslutning}
+
+\section{Coxeter groups and the Bruhat order}
+
+\fixme{Skriv lidt her... Bare lige nok til at vise at permutationerne
+  er relaterede}
 
 %%% Local Variables: 
 %%% mode: latex

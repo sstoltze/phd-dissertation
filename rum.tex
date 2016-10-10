@@ -41,11 +41,11 @@ be helpful to define an approximation to them.
       \text{ are linearly independent.}
     \end{matrix} }, \]
   where $e_1,\dots,e_m \in \C^m$ denotes the standard basis
-  vectors,\fixme{Det der i...}
+  vectors,
   \[ e_i =
   \big(0,\dots,0,\overset{\substack{i\\\downarrow}}{1},0\dots,0\big).\]
-
 \end{definition}
+
 We will switch between considering $(a_1,\dots,a_n)\in Y_{m,n}$ as an
 ordered sequences of linearly independent vectors and an $m\times n$
 matrix $[a_1,\dots,a_n]$ as needed and without mention. We can replace
@@ -55,18 +55,19 @@ defined spaces:
 \begin{definition}
   \label{def:rum}
   For two invertible matrices $X$ and $Y$ in
-  $\GL_m(\C)$, the space $Y_{m,n}(X,Y) \subset \C^{mn}$ is
+  $\GL_m(\C)$, the space \newline
+  $Y_{m,n}(X,Y) \subset \C^{mn}$ is
   \[ Y_{m,n}(X,Y) = \set{(a_1,\dots,a_n) \in (\C^m)^n
     \delim\Bigg\vert\delim 
     \begin{matrix}
       \text{Any } m \text{ subsequent vectors in } \\
       (x_1,\dots,x_m,a_1,\dots,a_n,y_1,\dots,y_m) \\
       \text{ are linearly independent.}
-    \end{matrix} } \]
+    \end{matrix} }, \]
   where $(x_1,\dots,x_m)$ and $(y_1,\dots,y_m)$ are the column vectors
   of $X$ and $Y$ respectively.
   
-  There are two special cases that will be especially important.
+  There are two special cases that will be important.
   If both $X$ and $Y$ are the identity-matrix, we get the previously
   defined spaces,
   \[ Y_{m,n} = Y_{m,n}(\Id,\Id). \]
@@ -76,25 +77,25 @@ defined spaces:
 \end{definition}
 
 Note that $Y_{m,n}(X,Y)$ can also be defined as the
-preimage of the open set $(\C^*)^{m+n-1}\subset \C^{m+n-1}$ under the
+pre-image of the open set $(\C^*)^{m+n-1}$ in $\C^{m+n-1}$ under the
 continuous map $\Det_{X,Y}$ that calculates determinants of subsequent
 vectors:
 \begin{align*}
-  \Det_{X,Y} : (\C^m)^n \to \C&^{m+n-1} \\
-  \Det_{X,Y}(a_1,\dots,a_n) = (\det&(x_2,\dots,x_m,a_1),\\
-  \det&(x_3,\dots,x_m,a_1,a_2), \\
-                              &\vdots\\
-  \det&(a_n,y_1,\dots,y_{m-1})).
-\end{align*}\fixme{Se om alignment kan blive bedre på pilen.}
-This shows that it is an open subset of $(\C^m)^n$. Another important
+  \Det_{X,Y} : (\C^m)^n \to &\;\C^{m+n-1} \\
+  \Det_{X,Y}(a_1,\dots,a_n) = \,&\; (\det(x_2,\dots,x_m,a_1),\\
+  &\; \det(x_3,\dots,x_m,a_1,a_2), \\
+  &\;\;\;\; \vdots\\
+  &\; \det(a_n,y_1,\dots,y_{m-1})).
+\end{align*}
+This shows that $Y_{m,n}(X,Y)$ is an open subset of
+$(\C^m)^n$. Another important
 feature of $Y_{m,n}(X,Y)$ is that it does not really depend on the
-particular matrices $X = [x_1,\dots,x_m]$ and $Y = [y_1,\dots,y_m]$,
-but\fixme{hbox for $X$}
-only on the two flags in $\C^{m}$ 
-defined from the columns: \fixme{Snak lidt om flag tidligere/i introen?}
+particular matrices
+$X =\nobreak [x_1,\dots,x_m]$ and $Y = [y_1,\dots,y_m]$,
+but only on the two flags in $\C^{m}$ defined from the columns:
 \begin{alignat*}{5}
-  \mathrm{Fl_R}(X)\, &&= \Big(&\spa(x_m) &&\subset \spa(x_{m-1},x_m) &&\subset
-  \dots &&\subset \C^m\Big) \\
+  \mathrm{Fl_R}(X)\, &&= \Big(&\spa(x_m) &&\subset \spa(x_{m-1},x_m)
+  &&\subset \dots &&\subset \C^m\Big) \\
   \mathrm{Fl_L}(Y)\, &&= \Big(&\spa(y_1) &&\subset \spa(y_1,y_2) &&\subset
   \dots &&\subset \C^m\Big).
 \end{alignat*}
@@ -115,7 +116,7 @@ following lemma shows.
 
 \begin{lemma} \label{lem:rum-perm}
   For $X,Y\in \GL_m(\C)$, there exists a unique permutation $\sigma
-  \in S_m$ \fixme{Introducer notation for $S_m$} such that the space
+  \in S_m$ such that the space
   $Y_{m,n}(X,Y)$ is homeomorphic to $Y_{m,n}(\sigma)$.
 \end{lemma}
 
@@ -135,15 +136,12 @@ following lemma shows.
   \[ Y_{m,n}(X,Y) \cong Y_{m,n}(L^{-1}, \sigma U). \]
   But by the remark above, the space $Y_{m,n}(L^{-1},\sigma U)$ only
   depends
-  on the flags \fixme{Introducer flag. Måske flyt dette til en
-    bemærkning efter definitionen af $Y_{m,n}$. Og vis at højre er
-    uændret ved mult med nedre-triangulære og venstre er uændret ved
-    mult med øvre-triangulære}
+  on the flags 
   \begin{align*}
     \mathrm{Fl_R}(L^{-1}) &= \mathrm{Fl_R}(\Id) \\
     \mathrm{Fl_L}(\sigma U) &= \mathrm{Fl_L}(\sigma).
   \end{align*}
-  So $Y_{m,n}(L^{-1},\sigma U)$ is the same space as $Y_{m,n}(\sigma)$.
+  So $Y_{m,n}(L^{-1},\sigma U)$ is homeomorphic to the space $Y_{m,n}(\sigma)$.
 \end{proof}
 
 Due to this, we will almost exclusively consider the spaces
@@ -244,7 +242,7 @@ lemma.
 \begin{theorem}
   \label{thm:ikke-tom}
   The space $Y_{m,n}(\sigma)$ is empty if and only if there exists an
-  $i \leq m$ such that
+  $i \in \set{1,\dots,m}$ such that
   \[ 1 + n + i \leq \sigma(i). \]
 \end{theorem}
 \begin{proof}
@@ -266,12 +264,13 @@ lemma.
   The other direction
   will proceed by a purely dimensional argument. Consider the two
   flags of interest,
-  \begin{align*}
-    \mathrm{Fl_R}(\Id) &= (V_1 \subset V_2 \subset \dots \subset V_m),
-    \\
-    \mathrm{Fl_L}(\sigma) &= (W_1 \subset W_2 \subset \dots \subset
-                            W_m).
-  \end{align*}
+  \begin{alignat*}{6}
+    \mathrm{Fl_R}(\Id) &&\;= (&V_1 &&\subset V_2 &&\subset \dots
+    &&\subset V_m&&), \\
+    \mathrm{Fl_L}(\sigma) &&\;= (&W_1 &&\subset W_2 &&\subset \dots &&\subset
+                            W_m&&).
+  \end{alignat*}
+
   Assume that the condition on $\sigma$ and $n$ is satisfied, so for
   all $i \leq m$:
   \[ 1 + n + i > \sigma(i) \]
@@ -300,8 +299,10 @@ lemma.
   space is non-empty and concluding the proof.
 \end{proof}
 \begin{remark}
-  Note that if $n \geq m-1$, there is no such $i$ and the space
-  $Y_{m,n}(\sigma)$ is non-empty. So the spaces become non-empty as
+  Note that if $n \geq m-1$, then for any $i\geq 1$ we have
+  \[ 1 + n + i \geq m - 1 + 1 +i \geq m+i > m \geq \sigma(i), \] 
+  and hence the space $Y_{m,n}(\sigma)$ is non-empty. So the spaces
+  become non-empty as
   soon as there are ``enough'' columns.
 \end{remark}
 It will occasionally be nice to have an explicit element of
@@ -309,10 +310,12 @@ $Y_{m,n}(\sigma)$, but to do this we will need a slight amount of
 setup. Hence it will be delayed until Theorem
 \ref{thm:eksplicit-element} in Section \ref{sec:rum-stabil}.
 
-\fixme{overvej ny sektion til gruppevirkning/kvotientrum}
-The spaces have quite a few symmetries that could be of interest.
+\section{Symmetries}
+
+The space $Y_{m,n}(\sigma)$ has quite a few symmetries that could be
+of interest.
 Since we are interested in linear independence of vectors in $\C^m$,
-the group of complex units, $\T=(\C)^*$, acts on the spaces $Y_{m,n}$
+the group of complex units, $\T=(\C)^*$, acts on the space 
 in several ways. The 
 most important for our purposes is the following:
 \begin{definition}
@@ -358,8 +361,7 @@ spaces $Y_{m,n}(X,Y)$. In particular, we have the following:
 
 \begin{lemma}
   \label{lem:reduktion}
-  There is a homeomorphism
-  \[ Y_{m,n}(X,Y) \cong X_{m,n}(X,Y) \times \T^n. \]
+  The spaces $Y_{m,n}(X,Y)$ and $X_{m,n}(X,Y) \times \T^n$ are homeomorphic.
 \end{lemma}
 \begin{proof}
   Define a map
@@ -428,6 +430,7 @@ for different values of
 $m$ and $n$. Since an invertible, lower triangular matix $L$ preserves
 the flag $\mathrm{Fl}_R(\Id)$, we will try to use this to define a map
 \begin{align*}
+  s : Y_{m,n} &\to Y_{m,n+1} \\
   s(a_1,\dots,a_{n}) &= (La_1,\dots,La_{n},Le_1).
 \end{align*}
 At first, consider the spaces $Y_{m,n}$ and $Y_{m,n+1}$.
@@ -436,7 +439,6 @@ we will start by considering the inverse of $s$, mapping a subset of
 $Y_{m,n+1}$ to $Y_{m,n}$.
 Consider an element $A=(a_1,\dots,a_{n+1})$ in $Y_{m,n+1}$ where
 the entries of $a_{n+1}$ are all equal to one:
-\fixme{Lav om på dette så det ser lidt bedre ud...}
 \[ A = 
 \begin{pmatrix}
   \vrule & \vrule & & \vrule & \vspace{-0.5em}
@@ -445,17 +447,17 @@ the entries of $a_{n+1}$ are all equal to one:
   \vrule & \vrule & & \vrule & 1
 \end{pmatrix}. \] 
 Then we can multiply through with the lower triangular, invertible
-matrix $L^{-1}$ with ones on the diagonal and negative ones just below,
-\fixme{Formuler bedre?}
+matrix $L^{-1}$ with ones on the diagonal, negative ones just below
+the diagonal and zeroes everywhere else,
 \[ L^{-1} =
 \begin{pmatrix}
-  1 &  0 & 0 & \dots & 0 & 0 \\
-  -1 &  1 & 0 & \dots & 0 &0 \\
-  0 & -1 & 1 & \dots & 0 & 0 \\
-  \vdots &  &  & \ddots & & \vdots \\
-  0 & 0 & & & 1 & 0 \\
-  0 & 0 & & & -1 & 1
-\end{pmatrix}. \]\fixme{Få det til at se godt ud}
+   1 &  0 & 0 & \dots &  0 & 0 \\
+  -1 &  1 & 0 & \dots &  0 & 0 \\
+   0 & -1 & 1 & \dots &  0 & 0 \\
+   \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+   0 &  0 & 0 & \dots &  1 & 0 \\
+   0 &  0 & 0 & \dots & -1 & 1
+\end{pmatrix}. \]
 This reduces $A$ to
 \[ L^{-1}A =
 \begin{pmatrix}
@@ -485,7 +487,7 @@ upper triangular matrix given above. But this space is the same as
 $Y_{m,n}$ since the right flag of a lower triangular matrix and the
 left flag of an upper triangular matrix
 is the same as the corresponding flag of the identity
-matrix. \fixme{Henvisning hvis det er vist før}
+matrix, as we saw in Section \ref{sec:flags}.
 
 Since the above is done by multiplying with a matrix, it commutes with
 the action of the torus $\T^n$ on $Y_{m,n}$, and everything can be
@@ -517,7 +519,7 @@ defined by the identity permutation $\Id\in S_m$,
 but there is a similar stabilisation for the other permutations. We
 will again start by considering the unreduced spaces
 $Y_{m,n}(\sigma)$. For
-any permutation $\sigma$, the space $Y_{m,n+1}(\sigma)$ a union of
+any permutation $\sigma$, the space $Y_{m,n+1}(\sigma)$ is a union of
 spaces homeomorphic to a torus times $Y_{m,n}(\tau)$, for various
 permutations $\tau\in S_m$. The exact relation is given by the
 following lemma.
@@ -756,7 +758,18 @@ following lemma.
 \fixme{Sørg for at permutations-notationen er beskrevet,
   e.g. $\sigma_1 = e_{\sigma(1)}$.}
 
-\fixme{Fortsæt her med ikke-tom}
+By looking at the formula for $\varphi$, we can deduce the following
+corollary that shows how the different possible permutations that can
+show up are related.
+
+\begin{corollary}
+  Blah blah, $\varphi(J,\sigma) \leq \varphi(I,\sigma)$ for $I \subset
+  J$. \fixme{Vis det her. Slå op i noter}
+\end{corollary}
+\begin{proof}
+  
+\end{proof}
+
 With the stabilisation map, we can now give explicit elements of
 $Y_{m,n}(\sigma)$, as was hinted at earlier.
 

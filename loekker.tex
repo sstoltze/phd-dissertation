@@ -1,22 +1,4 @@
 
-% Løkker!
-%% Hvis løkkerummet ikke er blevet præsenteret endnu, så start med
-%% dette.
-%% Hvis sætningerne fra Milnor ikke er blevet introduceret, så lav et
-%% kort afsnit om dem her.
-
-% Sætningen
-%% Med bevis.
-%% Variationer: \R og \H. Med bevis (måske mere med skitse hvor man
-%% overvejer hvor \H er forskellig fra \C. \R er det oplagte tilfælde
-%% at udelade for ikke at gøre det hele ensformigt. Måske en kort note
-%% om hvor sammenhæng af skalarerne spiller ind.
-
-% Stabiliserings-argumenter? 
-%% Måske kan det Marcel laver smides ind her for generelt m, ellers
-%% skal det gemmes til senere.
-
-%%%%% Previous
 \chapter{Loop spaces} 
 \fixme{Skal stadig nok revideres en del.}
 
@@ -178,6 +160,7 @@ $f\circ \widetilde s$ is the same as $f$, except that the loop
 $f\circ\widetilde s$ is stationary at the identity for a while before
 it terminates. Putting it all together shows the following:
 \begin{lemma}
+  \label{lem:homotopycommute}
   The diagram
   \[ \xymatrix{ X_{m,nm} \ar[rr]^{s^m}\ar[dr]_{f} & & \ar[dl]^f
     X_{m,(n+1)m} \\
@@ -354,12 +337,65 @@ groups are isomorphic as abelian groups.
   bemærke at alting virker}
 
 
+\section{Other stabilisations and the spectral sequence of
+  $X_{m,\infty}$}
+
+Now that we know the space $X_{m,\infty}$, we can consider different
+ways of reaching this space from the spaces $X_{m,n}(\sigma)$. The
+first thing to note is that the space $X_{m,\infty}$, so far described
+as sequences of linearly independent vectors $(v_1,v_2,\dots,v_k)$ in
+$\C^m$ of varying length, may as well be described as infinite
+sequences $(v_i)_{i=1}^\infty$ for which there is some $k$ such that
+the matrix $(v_{k+r*m +1},v_{k+r*m +2},\dots,v_{k+(r+1)*m})$ is the
+identity matrix for all integers $r \geq 0$, with the same
+requirements for
+linear independence. We could also consider sequences that are
+infinite in the other direction, or
+doubly infinite sequences
+that start and end with the identity matrix
+and get the same space. Likewise, $X_{m,\infty}(\sigma)$ could be
+defined as doubly infinite series that start with the identity matrix
+and end with infinite copies of $\sigma$. The homeomorphisms between
+these spaces are the obvious ones of inclusion or cutting off the tail
+or start of an infinite sequence. As we saw in the proof of Lemma
+\ref{lem:homotopycommute}, the two inclusions of $X_{m,n}$ in
+$X_{m,\infty}$ by either
+using the stabilisation map $s$ or by adding on the identity matrix
+are homotopic, so this does not change any of the above results. To
+differentiate the two, we will refer to the inclusion by adjoining an
+infinite sequence of identity matrices and permutation matrices as
+\[ L_n : X_{m,n}(\sigma) \to X_{m,\infty}(\sigma). \]
+This map is important since it respects the
+filtration 
+\[ F_0 \subset F_1 \subset \dots \subset X_{m,n}(\sigma) \]
+and hence defines a map between the spectral sequences of
+$X_{m,n}(\sigma)$ and $X_{m,\infty}(\sigma)$.
+
+We will be using this map to prove the following theorem.
+\begin{theorem}
+  The spectral sequence for $X_{3,\infty}(\sigma)$ collapses on the
+  second page, with all cohomology concentrated in the first column.
+\end{theorem}
+At first this theorem may seem slightly strange, but since we know
+that the spaces $X_{3,\infty}(\sigma)$ are homotopy equivalent for all
+$\sigma$, since they are all equivalent to the loop space
+$\Omega(\SU_3/\T^2)$, the theorem
+just tells us that all the cohomology of $X_{3,\infty}(\sigma)$ can be
+found in the $X_{3,\infty}(\sigma_{\emptyset})$ part of $F_0 \cong
+X_{3,\infty}(\sigma_{\emptyset})\times T^2$.
+
+\begin{proof}
+  
+\end{proof}
+
+
 \section{Cohomological stability}
 \label{sec:costa}
-Since we now know the space $X_{m,\infty}(\sigma)$ its cohomology, it
+Since we now know the space $X_{m,\infty}(\sigma)$ and its cohomology, it
 would be nice to relate this to the cohomology of
-$X_{m,n}(\sigma)$. To do
-this, we specialise to the case $m = 3$ in everything that
+$X_{m,n}(\sigma)$, for finite $n$. To do this, we specialise to the
+case $m = 3$ in
+everything that
 follows. First, we need an offset that depends on the permutation
 we are considering:
 \begin{definition}
@@ -368,10 +404,10 @@ we are considering:
   \begin{align*}
     \lambda(\sigma) &=
                       \begin{cases}
-                        0 & \sigma = \Id \\
-                        1 & \sigma \in \set{(1\,2),(2\,3),(1\,2\,3)}
+                        0, & \sigma = \Id \\
+                        1, & \sigma \in \set{(1\,2),(2\,3),(1\,2\,3)}
                         \\
-                        2 & \sigma \in \set{(1\,3\,2), (1\,3)}
+                        2, & \sigma \in \set{(1\,3\,2), (1\,3)}
                       \end{cases}
   \end{align*}
 \end{definition}
@@ -381,8 +417,7 @@ This section will prove the following theorem:
   \label{thm:kostab}
   If $n \geq k + \lambda(\sigma)$, the stabilisation map
   \[ L_{n}^* : H^k(X_{3,\infty}(\sigma)) \to H^k(X_{3,n}(\sigma)) \]
-  is an isomorphism. \fixme{Snak om stabilisering forfra vs. bagfra, L
-  vs. s}
+  is an isomorphism.
 \end{theorem}
 
 \begin{proof}
@@ -406,7 +441,7 @@ want to prove is the following:
 
 By direct calculation, the
 groups $H^0(X_{3,n}(\sigma))$ are all $\Z$ when $n \geq
-\lambda(\sigma)$, so the isomorphism in case $k = 0$ is automatically
+\lambda(\sigma)$, so the isomorphism in $I_0$ is automatically
 true. \fixme{måske bemærke noget med at injektivitet ikke giver mening
   her}
 
@@ -423,8 +458,8 @@ other. This is summarised in the following table:
   & \multicolumn{1}{c|}{\sigma_{\set{2}}} & \sigma_{\set{1,2}} \\
   \hline
   \Id & \Id & (1\,2) & (2\,3) & (1\,3\,2) \\
-  (1\,2) & \Id & \Id & (1\,2\,3) & (1\,3) \\
-  (2\,3) & \Id & \Id & (1\,2) & (1\,2) \\
+  (1\,2) & \Id & (1\,2\,3) & \Id & (1\,3) \\
+  (2\,3) & \Id & (1\,2) & \Id & (1\,2) \\
   (1\,2\,3) & \Id & \Id & \Id & \Id \\
   (1\,3\,2) & (2\,3) & (1\,2\,3) & (2\,3) & (1\,2\,3) \\
   (1\,3) & (2\, 3) & (2\,3) & (2\,3) & (2\,3) \\
@@ -448,7 +483,7 @@ We will start by proving injectivity. Consider a permutation $\sigma$
 and $n \geq k + \lambda(\sigma) - 1$. We will start by proving that
 the stabilisation map
 \[ s^* : H^k(X_{3,n+1}(\sigma)) \to
-H^k(X_{3,n}(\sigma_{\emptyset})) \]
+H^k(X_{3,n}(\sigma_{\emptyset})) \] 
 is injective. Consider the spectral sequence for computing
 $H^k(X_{3,n+1}(\sigma))$. Since we choose to stabilise from the left,
 as discussed in \fixme{Diskuter dette...Hvor?}, the map $L_n$
@@ -497,7 +532,8 @@ hence $L_n$ is injective in this case.
 If $\sigma \in \set{(1\,2),(2\,3),(1\,2\,3)}$, we know that
 $\sigma_{\emptyset} = \Id$ and that $n \geq k + \lambda(\sigma) - 1 =
 k$, giving $n-1\geq k-1$. Consider the following commutative diagram:
-\[ \xymatrix{ H^k(X_{3,\infty}(\sigma)) \ar[r]^{s^*}_{\cong} \ar[d]^{L_n} &
+\[ \xymatrix{ H^k(X_{3,\infty}(\sigma)) \ar[r]^{s^*}_{\cong}
+  \ar[d]^{L_n} & 
   H^k(X_{3,\infty}) \ar[d]^{L_{n-1}} \\
   H^k(X_{3,n}(\sigma)) \ar[r]^{s^*} & H^k(X_{3,n-1}).
 } \]
@@ -592,7 +628,7 @@ $L_n^*$. But the stabilisation map $L_n$ factors up to homotopy over
 $s$, so we are finished and the induction hypothesis $I_k$ holds.
 \end{proof}
 
-
+\fixme{Afslutning...}
 
 % \section{Future work}
 

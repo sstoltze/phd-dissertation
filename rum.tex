@@ -759,18 +759,141 @@ following lemma.
   e.g. $\sigma_1 = e_{\sigma(1)}$.}
 
 By looking at the formula for $\varphi$, we can deduce the following
-corollary that shows how the different possible permutations that can
-show up are related.
+theorem that shows how the different possible permutations that can
+show up are related in the Bruhat order, described in Section
+\ref{sec:bruhat}.
 
-\begin{corollary}
-  Blah blah, $\varphi(J,\sigma) \leq \varphi(I,\sigma)$ for $I \subset
-  J$. \fixme{Vis det her. Slå op i noter}
-\end{corollary}
+\begin{theorem}
+  \label{thm:bruhat-ord}
+  If $I = (i_1 < \dots < i_k)$ and $J$ is a subset of $I$, then the
+  permutation $\varphi(I,\sigma)$ is less than or equal to the
+  permutation $\varphi(J,\sigma)$ in the Bruhat order.
+\end{theorem}
+A different way of phrasing this is that as the indexing set becomes
+larger, we get closer to $\varphi\left((1 < 2 < \dots <
+  m),\sigma\right)$ and further away from
+$\varphi\left((\sigma(m)),\sigma\right)$.
 \begin{proof}
+  The proof is mostly checking cases. If $\varphi(J,\sigma) =
+  \varphi(I,\sigma)$ we are done. We will start by considering the
+  simplest remaining case, where
+  \[ \varphi(I,\sigma) = (i_k \; \sigma(m)) \cdot 
+  \varphi(J,\sigma). \]
+  To simplify further, assume that all the indices $i_r$ in $I$ and
+  $J$ satisfy the conditions $i_r < \sigma(m)$ and
+  $\widehat{\sigma}^{-1}(i_r) > \widehat{\sigma}^{-1}(i_s)$ for all $s
+  < r$. Then we can compute the two permutations we are interested in,
+  \begin{align*}
+    \tau &= \varphi(I,\sigma) = (i_1\;\dots\;i_{k-1}\;i_k\;\sigma(m))
+           \cdot \widehat{\sigma} \\
+    \phi &= \varphi(J,\sigma) = (i_1\;\dots\;i_{k-1}\;\sigma(m)) \cdot
+    \widehat{\sigma}.
+  \end{align*}
+  First we note that the two permutations are related in the Bruhat
+  order, since
+  \[ \tau^{-1} \cdot \phi = \varphi(J,\sigma)^{-1} \cdot
+  (i_k\;\sigma(m)) \cdot \varphi(J,\sigma), \]
+  which is exactly the condition described in Definition
+  \ref{def:bruhat-def}. So
+  we only need to count the number of inversions of each of the
+  permutations, and
+  see that $\tau$ has fewer inversions than $\phi$.
+
+  From the
+  definition of $\tau$ and $\phi$, we can see that if $a$ is not in
+  the set
+  $\set{\widehat{\sigma}^{-1}(i_{k-1}),\widehat{\sigma}^{-1}(i_{k})}$,
+  then $\tau(a) = \phi(a)$. We would like to find pairs $(a,b)$
+  with $a < b$ that are inversions for eiher $\tau$ or $\phi$, but not
+  both. So we should only consider pairs $(a,b)$ where at least one is
+  either $\widehat{\sigma}^{-1}(i_k)$ or
+  $\widehat{\sigma}^{-1}(i_{k-1})$.
+
+  Note that by the definition of $\varphi$, we have
+  $\widehat{\sigma}^{-1}(i_{k-1}) < \widehat{\sigma}^{-1}(i_{k})$. So
+  we start by checking this pair.
+  \begin{align*}
+    \tau(\widehat{\sigma}^{-1}(i_{k-1})) = i_k <\,& \sigma(m) =
+    \tau(\widehat{\sigma}^{-1}(i_{k})), \\
+    \phi(\widehat{\sigma}^{-1}(i_{k-1})) = \sigma(m) &> i_k =
+    \phi(\widehat{\sigma}^{-1}(i_{k})).
+  \end{align*}
+  This is an inversion for $\phi$, but not for $\tau$. 
+
+  Now we consider
+  pairs $(a,b)$ that are inversions for $\tau$ but not for $\phi$, and
+  in which exactly one of the two numbers are in the set
+  $\set{\widehat{\sigma}^{-1}(i_{k-1}),\widehat{\sigma}^{-1}(i_{k})}$.
+  These satisfy the inequalities
+  \begin{align*}
+    a &< b, \\
+    \tau(a) &> \tau(b), \\
+    \phi(a) &< \phi(b).
+  \end{align*}
+  If $a = \widehat{\sigma}^{-1}(i_{k-1})$, then the inequalities
+  reduce to
+  \[ i_k = \tau(a) > \tau(b) = \phi(b) > \phi(a) = \sigma(m), \]
+  which is impossible since $i_k < \sigma(m)$.
+  If $b = \widehat{\sigma}^{-1}(i_{k})$ we get
+  \[ \sigma(m) = \tau(b) < \tau(a) = \phi(a) < \phi(b) = i_k, \]
+  which is again impossible. So neither of these cases give rise to
+  inversions for $\tau$.
+  If $a = \widehat{\sigma}^{-1}(i_{k})$, the inequalities become
+  \[ i_k < \phi(b) = \tau(b) < \sigma(m). \]
+  This gives us a set of inversions of the form
+  \[ \set{(\widehat{\sigma}^{-1}(i_{k}),s) \mid s >
+    \widehat{\sigma}^{-1}(i_{k}), i_k < \phi(s) < \sigma(m)}. \]
+  If $b = \widehat{\sigma}^{-1}(i_{k-1})$, we get
+  \[ i_k < \tau(a) = \phi(a) < \sigma(m), \]
+  and a set of inversions of the form
+  \[ \set{(s,\widehat{\sigma}^{-1}(i_{k-1})) \mid s <
+    \widehat{\sigma}^{-1}(i_{k-1}), i_k < \phi(s) < \sigma(m)}. \]
+
+  Now we consider inversions for $\phi$ that are not inversions for
+  $\tau$. These satisfy
+  \begin{align*}
+    a &< b \\
+    \tau(a) &< \tau(b) \\
+    \phi(a) &> \phi(b)
+  \end{align*}
+  If $a = \widehat{\sigma}^{-1}(i_{k})$, we get
+  \[ \sigma(m) < \tau(b) = \phi(b) < i_k, \]
+  which is impossible. Likewise, $b = \widehat{\sigma}^{-1}(i_{k-1})$
+  gives
+  \[ \sigma(m) < \phi(a) = \tau(a) < i_k. \]
+  So these contribute nothing. If $a$ is
+  $\widehat{\sigma}^{-1}(i_{k-1})$, then
+  \[ i_k < \tau(b) = \phi(b) < \sigma(m) \]
+  and we get the set
+  \[ \set{(\widehat{\sigma}^{-1}(i_{k-1}),s) \mid s >
+    \widehat{\sigma}^{-1}(i_{k-1}), s \neq
+    \widehat{\sigma}^{-1}(i_{k}), i_k < \phi(s) < \sigma(m)}. \]
+  The last remaining case is $b = \widehat{\sigma}^{-1}(i_{k})$, which
+  gives
+  \[ i _k < \phi(a) = \tau(a) < \sigma(m), \]
+  with inversions
+  \[ \set{ (s,\widehat{\sigma}^{-1}(i_{k})) \mid s <
+    \widehat{\sigma}^{-1}(i_{k}), s \neq
+    \widehat{\sigma}^{-1}(i_{k-1}), i_k < \phi(s) < \sigma(m) }. \]
   
+  But if we consider the sets of inversions, we can see that all the
+  new inversions for $\tau$ have a corresponding inversion for
+  $\phi$. So since we certainly removed the inversion
+  $(\widehat{\sigma}^{-1}(i_{k-1}),\widehat{\sigma}^{-1}(i_{k}))$ when
+  we passed from $\phi$ to $\tau$, we have not added new ones without
+  also removing old inversions. All in all, this shows that
+  $\varphi(I,\sigma) = \tau$ has fewer inversions than
+  $\varphi(J,\sigma) = \phi$, giving the desired inequality in the
+  Bruhat order,
+  \[ \varphi(I,\sigma) \leq \varphi(J,\sigma). \]
+  To get the general case, note that the Bruhat order is transitive,
+  by definition, so we simply apply the above argument several times.
 \end{proof}
 
-With the stabilisation map, we can now give explicit elements of
+A summary of the above theorem is that the map $\varphi(\cdot,\sigma)$
+is order-reversing when we order the indexing sets by inclusion.
+
+Now that we have a stabilisation map, we can give explicit elements of
 $Y_{m,n}(\sigma)$, as was hinted at earlier.
 
 \begin{theorem}
@@ -781,7 +904,7 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   belongs to $Y_{m,n}(\sigma)$.
 \end{theorem}
 \begin{proof}
-  For a discussion of then $Y_{m,n}(\sigma)$ is non-empty, consult
+  For a discussion of when $Y_{m,n}(\sigma)$ is non-empty, consult
   Theorem \ref{thm:ikke-tom}.
   
   We already know that the sequence
@@ -796,9 +919,10 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   \[ \left( L^{m-k}e_1,\dots,L e_1,\sigma_1,\dots,\sigma_k \right). \]
   
   Calculating the determinant of a matrix of this form by column
-  expansion, this is equivalent to choosing $s=m-k$ numbers
-  $i_1,\dots,i_s \in \set{1,\dots,m},$ with $i_j < i_{j+1},$ and checking that the matrix
-  \[
+  expansion, this is equivalent to choosing $s=m-k$ numbers,
+  $i_1,\dots,i_s \in \set{1,\dots,m},$ with $i_j < i_{j+1},$ and
+  checking that the matrix
+  \[ R = 
   \begin{pmatrix}
     \matrow{r_{i_1}} \\
     \matrow{r_{i_2}} \\
@@ -810,7 +934,7 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   matrix
   \[ P = (L^{m-k}e_1,\dots,Le_1). \]
   
-  Calculating this matrix by induction, we see that it is related to
+  Calculating $P$ by induction, we see that it is related to
   Pascal's triangle,
   \[ P =
   \begin{pmatrix}
@@ -928,7 +1052,7 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
     \matrow{\widehat{r}_{i_{s-1}-j_{s-2}}} \\
     \matrow{\widehat{r}_{i_s-j_{s-1}}}
   \end{pmatrix}. \]
-
+  
   By considering the last column of one of these matrices, we see that
   it has the form
   \[
@@ -956,8 +1080,7 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   so $\det R$ is non-zero with opposite sign if $s-1$ is odd and
   otherwise has the
   same sign. This exactly means that $\det R$ changes sign
-  when $s$ passes a multiple of two, as stated above. \fixme{Tjek lige
-    det argument for fortegn igennem igen...}
+  when $s$ passes a multiple of two, as stated above.
 \end{proof}
 
 We now have quite a large collection of spaces, and quite a few

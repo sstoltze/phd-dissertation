@@ -191,7 +191,7 @@ between them.
 \section{Flags}
 \label{sec:flags}
 
-The last thing to be discussed is the concept of a flag in a finite
+We will also require the concept of a flag in a finite
 dimensional vector space. In an
 $m$-dimensional vector space $V$, a flag is an increasing sequence of
 subspaces of $V$,
@@ -244,12 +244,104 @@ with a suitable scalar multiplied on, we can ensure that the only
 non-zero entry in row $\sigma(1)$ of $\sigma U$ is in the first
 column, row $\sigma(1)$, just as it is in the matrix
 $\sigma$. Continuing like this gives the desired identity.
-\fixme{Mere her... Eller en afslutning}
 
 \section{Coxeter groups and the Bruhat order}
+\label{sec:bruhat}
 
-\fixme{Skriv lidt her... Bare lige nok til at vise at permutationerne
-  er relaterede}
+The final subject to be introduced is Coxeter groups and the Bruhat
+order. For a proper introduction, consult either \cite{bjorner} or
+\cite{hiller}.
+
+\begin{definition}
+  A \textit{Coxeter group} is a group $W$ along with a set of
+  generators $S$,
+  where all $s \in S$ have order two. The generators only have
+  relations of the form
+  \[ (s s')^{m(s,s')} = \Id \]
+  for some function $m : S \times S \to \N\cup\set{\infty}$, with
+  $m(s,s) = 1$ and $m(s,s') \geq 2$ for $s\neq s'$.
+\end{definition}
+
+An important property of Coxeter groups is that any element $w \in W$
+can be written as a \textit{reduced product},
+\[ w = s_1 s_2 \dots s_k, \]
+where $k = \ell(w)$ is minimal. This number is called the
+\textit{length} of $w$. It is a theorem, see for example \cite[Chapter
+1.5]{bjorner}, that any two reduced products of $w$ can be obtained
+from each other by using \textit{braid moves} of the form
+\[ s s' s s' \dots s s' = s' s s' s \dots s' s, \]
+where each side of the equality has $m(s,s')$ elements. Another
+important property is that any expression of an element $w$ as a
+product of generators contains a reduced product for $w$, obtained by
+deleting an even number of the generators. With more
+work, it is possible to show that products of generators are unique up
+to using braid moves and inserting or deleting the identity in the
+product as $s^2$.
+
+Our primary example of a Coxeter group will be the
+symmetric group on the set $\set{1,\dots,n}$, which we will denote
+$S_n$. These will be written as products of cycles. For example, the
+permutation $\sigma\in S_3$, given by
+\begin{align*}
+  \sigma(1) &= 3, \\
+  \sigma(2) &= 1, \\
+  \sigma(3) &= 2,
+\end{align*}
+will be written as $\sigma = (1 \; 3 \; 2)$.
+For our purposes, it will be useful to occasionally consider
+these as
+matrices. We will do this by working over $\C^n$, equipped with the
+standard basis $e_1,\dots,e_n$. An element $\sigma \in S_n$
+corresponds to the matrix defined by
+\[ \sigma \cdot e_i = e_{\sigma(i)}. \]
+The generators of $S_n$ as a Coxeter group are the \textit{simple
+  transpositions}, which are the elements
+\[ \set{(1\; 2), (2\; 3), \dots, (n-1 \; n) }. \]
+
+Coxeter groups show up in various places, but we will require two
+properties. The first is that the symmetric group is the Weyl group of
+$\GL_n(\C)$, which for our purposes means that it is a Coxeter group
+and if we let $B^U$ denote the upper-triangular matrices in
+$\GL_n(\C)$, there is a \textit{Bruhat decomposition},
+\[ \GL_n(\C) = \bigcup_{\sigma \in S_n} B^U \cdot \sigma \cdot B^U. \]
+Note that this is a disjoint union. For a proof of this, see
+\cite[Theorem 4.3]{hiller}. We
+would prefer to change this slightly, which is done by considering the
+element $\sigma_0$ in $S_n$ defined by
+\[ \sigma_0(k) = n+1-k. \]
+This element is its own inverse, which gives us
+\begin{align*}
+  \GL_n(\C) = \sigma_0 \cdot \GL_n(\C) &= \bigcup_{\sigma\in S_n}
+                                         \sigma_0\cdot B^U \cdot
+                                         \sigma\cdot B^U \\
+                                       &= \bigcup_{\sigma\in S_n}
+                                         \sigma_0\cdot B^U \cdot
+                                         \sigma_0^2\cdot \sigma \cdot
+                                         B^U \\
+                                       &= \bigcup_{\sigma\in S_n}
+                                         B^L\cdot \sigma_0\cdot
+                                         \sigma\cdot B^U.
+\end{align*}
+This is essentially the same theorem, but we have replaced the first
+copy of upper-triangular matrices with lower-triangular matrices, by
+conjugating with $\sigma_0$.
+
+The second property is that Coxeter groups come equipped with a
+partial order, called the Bruhat order.
+\begin{definition}
+  \label{def:bruhat-def}
+  The \textit{Bruhat order} on the Coxeter group $W$ with generators
+  $S$ is the transitive closure of the relation
+  \[ u \to v \iff \ell(u) < \ell(v) \text{ and } u^{-1}v \in
+  \bigcup_{w\in W} w
+  \cdot S \cdot w^{-1}. \]
+  So we say that $w \leq w'$ if there is a sequence of elements in $W$
+  with
+  \[ w \to w_1 \to w_2 \to \dots \to w_k \to w'. \]
+\end{definition}
+
+This ordering will show up in Theorem \ref{thm:bruhat-ord}.
+\fixme{Måske aflsutning?}
 
 %%% Local Variables: 
 %%% mode: latex

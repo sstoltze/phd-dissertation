@@ -245,7 +245,7 @@ This space is homeomorphic to $(\C^*)^5 \times \C\times Y$:
   c & d & h \\
   e & f & i
 \end{pmatrix} \mapsto \left(
-a, i, h, \frac{d}{h}-\frac{f}{i}, \frac{b}{h}-\frac{bc}{ah},
+a, i, h, \frac{d}{h}-\frac{f}{i}, \frac{d}{h}-\frac{bc}{ah},
 \frac{e}{i}, \frac{bhi}{adi-afh},\frac{c}{h}-\frac{e}{i}
 \right) \] 
 Since the cohomology of $Y$ is already known, applying the K\"unneth
@@ -609,7 +609,7 @@ We can write the inclusion out in coordinates as
   (a,d,f,h,i,b,c,g) \mapsto \bigg(&g,h,i,\frac{a}{g},-f,d,\\
   & C =
   c-\frac{a}{g}-\frac{cd}{f}-bc^2+\frac{abc}{g}, \\
-  & \frac{bfC}{d},\frac{c}{C}-\frac{a}{g C},-\frac{cd}{fC}\bigg) 
+  & \frac{bfC}{d},\frac{c}{C}-\frac{a}{g C},\frac{cd}{fC}\bigg) 
 \end{align*}
 
 On the generators, this is given by
@@ -651,7 +651,8 @@ that this coordinate is small. If $y_{01,1}$ is involved, we choose the
 generator
 \[ \sigma(\lambda) = (1-\lambda,1) \qquad \lambda\in S^1 \]
 as this gives
-\[ y_{01,1} = [t \mapsto 1-(1-\lambda)\cdot 1] = [t\mapsto \lambda] \]
+\[ y_{01,1} = [\lambda \mapsto 1-(1-\lambda)\cdot 1] = [\lambda
+\mapsto \lambda] \]
 
 \paragraph{$\mathbf{a_{01} y_{01,1}}$:}
 The relevant map is
@@ -870,7 +871,7 @@ it. To be more precise, the map is given on generators by:
   H^*(X)\otimes H^*(D-0)) &\to H^*(X)\otimes H^*(D,D-0)) \\
   x\otimes d &\mapsto
   \begin{cases}
-    x \otimes \delta d & d\in H^1(D-0) \\
+    x \otimes \delta d & \text{if } d\in H^1(D-0) \\
     0 & \text{otherwise}
   \end{cases}
 \end{align*}

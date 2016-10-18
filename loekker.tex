@@ -1,5 +1,5 @@
 
-\chapter{Loop spaces} 
+\chapter{Loops and limits} 
 \label{chap:loekker}
 \fixme{Skal stadig nok revideres en del.}
 
@@ -12,29 +12,18 @@ manifold $\GLB{m}$.
   The loop space $\Omega = \Omega(\GLB{m})$ is the space
   \[ \Omega = \set{\g : [0,1] \to \GLB{m} \mid \g(0) = \g(1) =
     [\Id]} \]
-  with the compact-open topology. 
+  with the compact-open topology. This was briefly described in
+  Section \ref{sec:ls}. Since $\GLB{m}$ is a Riemannian manifold, the
+  loop space becomes a metric space where loops are close if they are
+  close at every point.
 \end{definition}
-
-\begin{remark} \fixme{Flyt til introduktions-området. Hvis intet
-    introduktions-område, så skriv om og inkluder de vigtigste
-    resultater fra Milnor her uden bevis}
-  Following \cite[Chapter 17]{milnor}, the compact-open topology is
-  also the topology given by two loops being close if they are close
-  at every point, with the metric
-  \[ d(\g,\g') = \max_{t\in[0,1]} \widetilde d (\g(t),\g'(t)), \]
-  where $\widetilde d$ is a metric on $\GLB{m}$ induced from a
-  Riemannian metric. The space $\Omega$ is homotopy equivalent to the
-  space of piecewise smooth loops with a slightly modified metric, and
-  we will generally choose the most convenient model for our
-  arguments.
-\end{remark}
 
 \section{The map $X_{m,n}\to\Omega$}
 
 As has been done before, we will start by considering $Y_{m,n}$ and
 then quotient out with the torus $\T^n$ afterwards.
 For $A = [a_1,\dots,a_n]\in Y_{m,n}$ we
-can define a path $ \g_A$ in $\GL_m$ by starting with
+can define a path $ \g_A$ in $\GL_m(\C)$ by starting with
 $\g_A(0) = \Id$. Since the matrix $[e_2,\dots,e_m,a_1]$ is
 invertible by the definition of $Y_{m,n}$, we know that $a_1$ is
 linearly independent of $e_2,\dots,e_m$. Hence it can be written as
@@ -42,10 +31,10 @@ linearly independent of $e_2,\dots,e_m$. Hence it can be written as
 with $c_1 \neq 0$. Rewriting the expression leads to the formula
 \[  \frac{1}{c_1} a_1= e_1 + \frac{1}{c_1} \left(\sum_{i=2}^m c_i
   e_i\right). \]
-This gives us a path in $\GL_m$ from the identity to
+This gives us a path in $\GL_m(\C)$ from the identity to
 $\left[\frac{1}{c_1} a_1,e_2,\dots,e_m\right]$:
 \[ [0,1]\ni t \mapsto \left[ e_1 + t\left(\sum_{i=2}^m
-    \frac{c_i}{c_1}e_i\right),e_2,\dots,e_m \right] \in \GL_m. \]
+    \frac{c_i}{c_1}e_i\right),e_2,\dots,e_m \right] \in \GL_m(\C). \]
 This process can be continued, since we can rewrite the similar
 expression for $a_2$ as
 \[ \frac{1}{d_2}a_2 = e_2 + \frac{1}{d_2}\left(\sum_{i=3}^m d_i
@@ -56,10 +45,10 @@ and get a path
     \frac{d_1}{d_2c_1}a_1\right),e_3,\dots,e_m\right] \]
 that starts where the other path stopped. If we continue through the
 vectors in $A$, we will eventually end at a point,
-\[ [\l_i e_i,\dots,\l_me_m,\l_1e_1,\dots,\l_{i-1}e_{i-1}]\in \GL_m, \]
+\[ [\l_i e_i,\dots,\l_me_m,\l_1e_1,\dots,\l_{i-1}e_{i-1}]\in \GL_m(\C), \]
 which is diagonal, except the columns may have been
 permuted if $n$ is not divisible by $m$. Choosing a fixed path in
-$\GL_m$ from $[e_i,\dots,e_{i-1}]$ to $\Id$, scaling the columns and
+$\GL_m(\C)$ from $[e_i,\dots,e_{i-1}]$ to $\Id$, scaling the columns and
 appending it to all the other paths then gives a path $ \g_A$ with
 \[  \g_A(0) = \Id, \qquad \g_A(1) =
 [\l_1e_1,\dots,\l_me_m]. \]
@@ -72,7 +61,7 @@ defines a continuous function from $Y_{m,n}$ to the loop space. Note
 that \fixme{Argumenter for kontinuitet?}
 this function descends to the quotient space $X_{m,n}=Y_{m,n}/\T^n$, since
 elements of $Y_{m,n}$ that are equivalent under the $\mathrm{T}^n$-action gives
-paths in $\GL_m$ that are equivalent under the $\mathrm{B}_m$-action.
+paths in $\GL_m(\C)$ that are equivalent under the $\mathrm{B}_m$-action.
 
 The goal of this chapter is to prove the following theorem:
 
@@ -128,7 +117,7 @@ triangular with entries given by the formula:
 This is proven by considering negative powers of $L$ and showing the
 identity:
 \[ (L^{-j+1})_{ik} = (-1)^{i-k}\binom{j-1}{i-k} \quad \text{when } i
-\geq k. \] \fixme{Gør dette}
+\geq k. \] 
 This is automatically true when $j$ is one, so assume it is true for
 a given $j$. We will then show it for $j+1$. We are considering the
 entry
@@ -140,7 +129,7 @@ But if we use that $L^{-1}$ has entries
   -1 & l = i-1 \\
   1 & l = i  \\
   0 & \text{otherwise}
-\end{cases}, \] \fixme{Skriv dette når $L^{-1}$ introduceres}
+\end{cases}, \]
 this simplifies to
 \begin{align*}
   (L^{-(j+1)+1})_{ik} &= (-1)\cdot(-1)^{i-1-k}\binom{j-1}{i-1-k}
@@ -182,7 +171,7 @@ choose $\e$ so small that for any two points $A= [a_1,\dots, a_m]$ and
 $B=[b_1,\dots,b_m]$ in $\SUT{m}$, with the distance from $A$ to $B$ less
 than $\e$, any $m$ subsequent vectors in the sequence
 $(a_1,\dots,a_m,b_1,\dots,b_m)$ are linearly
-independent. \fixme{Argumenter for dette?}
+independent. 
 With this, we get an increasing sequence of open sets in $\Omega$,
 defined by requiring the loops to be piecewise contained in a ball of
 radius $\e$:
@@ -430,8 +419,8 @@ inclusion by adjoining an
 infinite sequence of identity matrices and permutation matrices as
 \[ L_n : X_{m,n}(\sigma) \to X_{m,\infty}(\sigma). \]
 This map is important since it respects the
-filtration defined in \fixme{Indsæt reference}
-\[ F_0 \subset F_1 \subset \dots \subset X_{m,n}(\sigma) \]
+filtration defined in Section \ref{sec:filtration},
+\[ F_0 \subset F_1 \subset \dots \subset X_{m,n}(\sigma), \]
 and hence defines a map between the spectral sequences of
 $X_{m,n}(\sigma)$ and $X_{m,\infty}(\sigma)$. These spectral sequences
 are defined exactly as for $X_{m,n}(\Id)$.
@@ -783,13 +772,11 @@ We will now prove surjectivity. Let $\sigma$ be a permutation in $S_3$
 and let $n \geq k + \lambda(\sigma)$. As before, we start by proving
 that the map
 \[ s^* : H^k(X_{3,n+1}(\sigma)) \to
-H^k(X_{3,n}(\sigma_{\emptyset})) \] \fixme{Vælg om L skal have stjerne
-  eller ej}
+H^k(X_{3,n}(\sigma_{\emptyset})) \] 
 is surjective. To see this, we will look at the spectral sequences for
 $X_{3,\infty}(\sigma)$ and $X_{3,n+1}(\sigma)$, and the maps between
 them induced by the stabilisation map $L^*_{n+1}$. This is summarised in
-the following diagram. \fixme{Sørg for at notationen $E(\infty,\sigma)$
-  etc er introduceret.}
+the following diagram.
 \[ \xymatrix{ 0 \ar[r]\ar[d] & H^k(X_{3,\infty}(\sigma))
   \ar[r]^{i^*}\ar[d]^{L^*_{n+1}} & E_1^{0,k}(\infty,\sigma)
   \ar[r]^{d_1}\ar[d]^{A_0} & 

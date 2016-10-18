@@ -1,19 +1,21 @@
 % Her skal samles lidt generel information om SS og løkkerum
 
-\chapter{Spectral sequences and loop spaces}
+\chapter{Preliminaries}
 \label{chap:generelt}
-\fixme{Bedre titel...}
 
-The purpose of this chapter is to give a brief introduction to two
-important topics in this thesis, namely spectral sequences and loop
-spaces. Spectral sequences are an important tool in algebraic topology
+The purpose of this chapter is to give a brief introduction to some
+important topics, most importantly spectral sequences
+and loop spaces. Spectral sequences are an important tool in algebraic
+topology 
 and can be considered a generalisation of long exact sequences, while
 loop spaces are a class of spaces that appear naturally when
 considering the spaces that will be studied in this thesis. The
 following pages will collect some basic info and state the results
 that are of interest in next chapters, while providing references for
-proofs and further information. \fixme{Måske noget med at vi starter
-  ca. fra Hatcher, alt andet betragtes som ``nyt''}
+proofs and further information. The chapter also includes a very brief
+introduction to flags and Coxeter groups, to give enough basic
+information for the small part these two subjects will play in the
+main text.
 
 \section{Spectral sequences}
 \label{sec:ss}
@@ -43,7 +45,7 @@ subject, see either \cite{hatcherss} or \cite{mccleary}.
 \subsection{The spectral sequence of a filtration}
 \label{sec:ss-filtration}
 
-Consider a space $X$ with a filtration, that is an increasing sequence
+Consider a space $X$ with a filtration, an increasing sequence
 of subspaces that cover $X$:
 \[ X_0 \subset X_1 \subset X_2 \subset
 \dots \subset X_k  = X. \]
@@ -187,12 +189,10 @@ homotopic to the identity. This shows that all such spaces
 are homotopy equivalent, so we will not make a major distinction
 between them.
 
-\fixme{Et kort indblik i flag, ca. en halv eller en hel side?}
-
 \section{Flags}
 \label{sec:flags}
 
-We will also require the concept of a flag in a finite
+To ease some arguments, we will need the concept of a flag in a finite
 dimensional vector space. In an
 $m$-dimensional vector space $V$, a flag is an increasing sequence of
 subspaces of $V$,
@@ -280,21 +280,7 @@ to using braid moves and inserting or deleting the identity in the
 product as $s^2$.
 
 Our primary example of a Coxeter group will be the
-symmetric group on the set $\set{1,\dots,n}$, which we will denote
-$S_n$. These will be written as products of cycles. For example, the
-permutation $\sigma\in S_3$, given by
-\begin{align*}
-  \sigma(1) &= 3, \\
-  \sigma(2) &= 1, \\
-  \sigma(3) &= 2,
-\end{align*}
-will be written as $\sigma = (1 \; 3 \; 2)$.
-For our purposes, it will be useful to occasionally consider
-these as
-matrices. We will do this by working over $\C^n$, equipped with the
-standard basis $e_1,\dots,e_n$. An element $\sigma \in S_n$
-corresponds to the matrix defined by
-\[ \sigma \cdot e_i = e_{\sigma(i)}. \]
+symmetric group $S_n$.
 The generators of $S_n$ as a Coxeter group are the \textit{simple
   transpositions}, which are the elements
 \[ \set{(1\; 2), (2\; 3), \dots, (n-1 \; n) }. \]
@@ -341,8 +327,31 @@ partial order, called the Bruhat order.
   \[ w \to w_1 \to w_2 \to \dots \to w_k \to w'. \]
 \end{definition}
 
-This ordering will show up in Theorem \ref{thm:bruhat-ord}.
-\fixme{Måske aflsutning?}
+This ordering will show up in Theorem \ref{thm:bruhat-ord}. We will
+show a quick example to see how the order works. Take the two
+permutations $(1\;2\;3)$ and $(2\;3)$ in $S_3$. These are comparable,
+since
+\[ (2\;3) \cdot (1\;2 \;3) = (1\;3) = (2\;3) (1\; 2) (2\; 3). \]
+The minimum number of simple transpositions needed to write $(1\;2\;3)$
+as a product is two, namely
+\[ (1\;2\;3) = (1\;2) \cdot (2\;3), \]
+while $(2\;3)$ is already written as a product with a single
+factor. This shows
+\[ \ell((2\;3)) = 1 < 2 = \ell((1\;2\;3)), \]
+and we get the relation $(2\;3) \to (1\;2\;3)$, showing $(2\;3) \leq
+(1\;2\;3)$ in the Bruhat order. On the other
+hand, $(1\;2)$ and $(2\;3)$ are not comparable since they are both of
+length one.
+
+To illustrate the ordering, we can draw a diagram of $S_3$, where the
+arrows denotes the relation $\sigma\to\tau$, and $\sigma\leq\tau$
+exactly when we can follow a path from $\sigma$ to $\tau$ in the
+diagram:
+\[ \xymatrix{
+  & (1\; 3) & \\
+  (1\; 2\; 3)\ar[ur] & & (1\; 3\; 2)\ar[ul] \\
+  (1\; 2)\ar[u]\ar[urr] & & (2\; 3) \ar[ull]\ar[u] \\
+  & \Id \ar[ul] \ar[ur] &} \]
 
 %%% Local Variables: 
 %%% mode: latex

@@ -84,6 +84,38 @@ coefficient-groups. Nothing in the proof seems to rely on the
 coefficients being complex numbers, so the proof should be almost
 automatic if a suitable $\lambda$ could be defined.
 
+\section{Structure}
+
+There is also more structure to study on the spaces
+$X_{m,n}(\sigma)$. For example, since $X_{m,\infty}$ is a
+loop space, it comes equipped with a product. This product can be
+defined in various very similar ways, and it could be interesting to
+see how they relate. One possible definition would be
+\[ (A,B) \mapsto [A,\Id, B], \]
+which is directly inspired by the product on the loop space being
+concatenation of loops. But we also have the other spaces
+$X_{m,n}(\sigma)$ which are also equivalent to a loop space, and for
+these the product is slightly harder to define. A possiblity would be
+to use Theorem \ref{thm:eksplicit-element} to define a map
+\begin{align*}
+  X_{m,\infty}(\sigma) \times X_{m,\infty}(\tau) \to
+  X_{m,\infty}(\tau) \\
+  (A,B) \mapsto [A,\sigma,\widehat{L},\Id,B],
+\end{align*}
+where $\widehat{L}$ is the matrix $(L^m e_1,\dots,Le_1)$. Another way
+of doing it would be
+\[ (A,B) \mapsto [A,\sigma,\sigma\cdot B] \in
+X_{m,\infty}(\sigma\cdot\tau). \]
+All of these possibilites could be used to give a coproduct in
+cohomology, and it would be interesting to see how this relates to the
+usual coproduct on the cohomology of $\Omega(\SUT{m})$.
+
+Likewise, all of these maps have equivalents in the spaces
+$X_{m,n}(\sigma)$, $n < \infty$, except here we
+need to add on extra columns to the spaces. This gives various maps
+that could be used to probe the cohomology and structure of the
+spaces.
+
 \section{Generalised spaces}
 
 Another avenue of study could be to consider all the spaces
@@ -111,15 +143,6 @@ Like the spaces $X_{m,n}$ considered here, this would give another way
 to study a complicated space, $\mathrm{L}(\GL_m)$, by working with
 simpler versions that consist of a finite sequence of points that we
 connect with nice paths.
-
-\fixme{En eller anden form for afslutning...}
-
-% Slå sammen med sidste kapitel?
-
-% Se bagside af blok. Blah blah blah
-% Formodning om at s^* er surjektiv.
-% Erstat \C med \R eller \H
-% Se om rummene A....A approksimerer det frie løkkerum
 
 %%% Local Variables: 
 %%% mode: latex

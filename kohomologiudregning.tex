@@ -8,27 +8,15 @@
 
 
 %%%%% Previous
-\chapter{Cohomology calculations for $Y_{3,3}$}
+\chapter{Cohomology calculations}
 \label{chap:udregninger}
 
-In this section we will calculate the cohomology of the space
-$Y_{3,3}$, which is the set:
-\[ Y_{3,3} = \set{
-  \begin{pmatrix}
-    a & b & g \\
-    c & d & h \\
-    e & f & i
-  \end{pmatrix} \in \C^9 \sdel 
-  \begin{matrix}
-    a\neq 0,\, ad-bc \neq 0, \\
-    adi+beh+cfg-deg-bci-afh \neq 0, \\
-    di-fh \neq 0,\, i \neq 0
-  \end{matrix} } \]
-
-The way we will calculate this is by using the spectral sequence for
-a filtration of $Y_{3,3}$. Some of the calculations have
-been done in Sage and the relevant source code can be found in
-Appendix \ref{appendix:sage}.
+This chapter will be focused on the cohomology of $Y_{m,n}$ and
+$X_{m,n}$. We will introduce the spectral sequence that computes the
+cohomology of $Y_{m,n}$, and use it to compute the first cohomology
+groups of all the spaces. Afterwards, we focus on $Y_{3,3}$ and give a
+full description of the cohomology, which also leads to the cohomology
+of the quotient, $X_{3,3}$.
 
 \section{A filtration on $\Y$}
 \label{sec:filtration}
@@ -40,12 +28,12 @@ considering a filtration.
 
 For $0 \leq p \leq m-1$, let $F_p$ be the subset
 \[ F_p=\set{ (a_1,\dots,a_n) \in Y_{m,n} \mid a_n \text{ has at most } p
-  \text{ zeroes}.} \]
-$F_p$ is open in $\X$ since we stay inside the subspace when we
+  \text{ zeroes}.}. \]
+$F_p$ is open in $\Y$ since we stay inside the subspace when we
 vary the coordinates of a point $A\in F_p$, as long as we do not
 introduce new zeroes in the last column.
 Together, the subspaces form an increasing sequence:
-\[ F_0 \subset F_1 \subset \dots \subset F_{m-1} = Y_{m,n} \]
+\[ F_0 \subset F_1 \subset \dots \subset F_{m-1} = Y_{m,n}. \]
 
 The general method of computing the homology and cohomology of
 $Y_{m,n}$ is by using the spectral sequence of this
@@ -55,11 +43,11 @@ cohomology, but similar arguments could of course be applied to
 homology.
 
 The spectral sequence has $E_1$-page given by
-\[ E_1^{p,q} = H^{p+q}(F_p,F_{p-1}) \]
+\[ E_1^{p,q} = H^{p+q}(F_p,F_{p-1}), \]
 with differentials given by the boundary map in the long exact
 sequence of the triple $(F_{p+1},F_p,F_{p-1})$:
 \[ d_1 : H^{p+q}(F_p,F_{p-1}) = E_1^{p,q} \to E_1^{p+1,q} =
-H^{p+q+1}(F_{p+1},F_p) \]
+H^{p+q+1}(F_{p+1},F_p). \]
 
 To use the spectral sequence, we need to compute the cohomology of the
 pair $(F_p,F_{p-1})$. To calculate this we will use excision, so we
@@ -67,7 +55,7 @@ would like to find an open subset of $F_p$ that contains the
 complement of $F_{p-1}$. For any choice of exactly $p$ 
 different indices $\set{v_1,\dots,v_p}\subset \set{1,\dots,m-1}$,
 define $Y_{\set{v_1,\dots,v_p}}$ to be the points $(a_1,\dots,a_n)\in
-F_p$ which has $(a_n)_{v_i} = 0$ for all $i$. Since $\X$ is open, we
+F_p$ which has $(a_n)_{v_i} = 0$ for all $i$. Since $\Y$ is open, we
 can get an open set in $F_p$ by inserting a small disc on these
 zero-entries. More precisely, the set we get is
 \[ Y_{\set{v_1,\dots,v_p}} \times D_p \cong \set{ A\in F_p \sdel 
@@ -76,7 +64,7 @@ zero-entries. More precisely, the set we get is
     \min_{i\not\in \set{v_1,\dots,v_p}} \size{(a_n)_i}, \\
     \left(a_1,\dots,a_{n-1},a_n-t\sum_{i} (a_n)_{v_i}e_{v_i}\right)\in
     F_p \forall t \in [0,1]
-  \end{matrix} } \]
+  \end{matrix} }. \]
 This is an open set in $F_p$, with $Y_{\emptyset} = F_0$, and it
 contains all points $(a_1,\dots,a_n)\in F_p$ where the entries of
 $a_n$ indicated by $\set{v_1,\dots,v_p}$ are zero. For a different
@@ -85,17 +73,17 @@ smaller than the norm of the non-zero entries in $a_n$ ensures
 disjointness, so the intersection is empty:
 \[ \left(Y_{\set{v_1,\dots,v_p}}\times D_p\right) \cap \left(
   Y_{\set{u_1,\dots,u_p}}\times D_p\right) = \emptyset \quad \text{if }
-\set{v_1,\dots,v_p} \neq \set{u_1,\dots,u_p} \]
+\set{v_1,\dots,v_p} \neq \set{u_1,\dots,u_p}. \]
 
-The intersection of $\X\times D_p$ and $F_{p-1}$ corresponds to
+The intersection of $\Y\times D_p$ and $F_{p-1}$ corresponds to
 removing 0 from the disc, since one of the entries inserted on the
 last column has to be non-zero.
 \[ \left(Y_{\set{v_1,\dots,v_p}}\times D_p \right) \cap F_{p-1} =
-Y_{\set{v_1,\dots,v_p}} \times \left(D_p-0\right) \]
+Y_{\set{v_1,\dots,v_p}} \times \left(D_p-0\right). \]
 This means that the disjoint union of all of these form an open set in
 $F_p$ with
 \[ F_p = F_{p-1}\cup \left(\coprod_{\set{v_1,\dots,v_p}}
-  Y_{\set{v_1,\dots,v_p}}\times D_p\right) \]
+  Y_{\set{v_1,\dots,v_p}}\times D_p\right), \]
 and by excision, the inclusion of pairs
 \[ \xymatrix{ \displaystyle \coprod_{\set{v_1,\dots,v_p}}
   Y_{\set{v_1,\dots,v_p}}\times (D_p,D_p-0) \ar@{^(->}[r] &
@@ -108,7 +96,7 @@ induces an isomorphism of cohomology groups,
             &\cong \bigoplus_{\set{v_1,\dots,v_p}}
               H^{p+q}(Y_{\set{v_1,\dots,v_p}}\times (D_p,D_p-0)) \\   
             &\cong \bigoplus_{\set{v_1,\dots,v_p}}
-              H^{q-p}(Y_{\set{v_1,\dots,v_p}})\otimes H^{2p}(D_p,D_p-0)
+              H^{q-p}(Y_{\set{v_1,\dots,v_p}})\otimes H^{2p}(D_p,D_p-0).
 \end{align*}
 The last isomorphism is given by the K\"unneth formula, and the fact
 that the pair $(D_p,D_p-0)$ only has non-zero cohomology in degree
@@ -117,7 +105,7 @@ $2p$:
 H^{q-1}(S^{2p-1}) =
 \begin{cases}
   \Z & q = 2p \\
-  0 & \text{otherwise}
+  0 & \text{otherwise}.
 \end{cases} \]
 In particular, it follows that
 \[ E_1^{p,q} = 0 \]
@@ -285,6 +273,7 @@ the following theorem.
 An immediate consequence is the following result.
 
 \begin{corollary}
+  \label{cor:1-kohom}
   The first cohomology group of $X_{m,n}$ is $\Z^{m-1}$.
 \end{corollary}
 \begin{proof}
@@ -314,13 +303,13 @@ form
 \end{pmatrix},
 \]
 where $L$ is the lower triangular matrix that defines the
-stabilisation map, see Definition \ref{def:stabilisering}. Computing the
-determinants gives
+stabilisation map, see Definition \ref{def:stabilisering}. Computing
+the determinants gives
 \[ \Det(s^{n-1}(v)) = (\pm v_1,\dots,\pm v_m, \pm 1, \dots,\pm 1), \]
 with the signs dependent on $n$ and $m$. Using the action of
-$\T^{n}$ to change the last $n-1$ determinants as in
-\fixme{find ud af hvad der skal refereres til
-  her}, we can get an element of $Y_{m,n}$ with any prescribed
+$\T^{n}$ to change the last $n-1$ determinants as in the proof of
+Lemma \ref{lem:reduktion}, we can get an element of $Y_{m,n}$ with any
+prescribed
 determinant. Altogether this defines a lift, $f$, of the
 determinant map,
 \[ \xymatrix{ \T^{m+n-1} \ar[r]^f \ar@/_1.5pc/[rr]_\Id & Y_{m,n}
@@ -334,12 +323,14 @@ This shows that $\Det^*$ is injective and $f^*$ is surjective. But by
 the previous theorem, $f^*$ is a map between free abelian groups of
 the same rank, hence it must also be injective and so an
 isomorphism with inverse $\Det^*$. This shows that the determinant map
-is an isomorphism on the first cohomology groups.
-This result immediately extends to the quotiented spaces, with
-\fixme{Sørg for at $\TT{m+n-1}{n}$ er introduceret før. Det er ikke
-  den oplagte virkning...}
+is an isomorphism on the first cohomology groups and immediately
+extends to the quotiented spaces, with
 \[ \Det^* : H^1(\TT{m+n-1}{n}) \to H^1(X_{m,n}) \]
-an isomorphism. Furthermore it shows that the stabilisation maps on
+an isomorphism. Note that the action of $\T^n$ on $\T^{m+n-1}$ is not
+the obvious one, but is given by how the determinants change when
+$\T^n$ acts on $Y_{m,n}$ and the quotient is isomorphic to
+$\T^{m-1}$. Furthermore the stabilisation
+maps on
 degree one cohomology are surjective, since the stabilisation maps
 \[ s: Y_{m,n} \to Y_{m,n+1} \]
 change the signs of some determinants and add an extra determinant
@@ -348,19 +339,37 @@ H^1(Y_{m,n+1})$ represents the image of moving once around zero in the
 $i$'th coordinate of $\T^{n+1}$, then
 \[ s^*(d_i) =
 \begin{cases}
-  \pm d_i & 1 \leq i \leq n \\
+  d_i & 1 \leq i \leq n \\
   0 & \text{otherwise}
-\end{cases} \] \fixme{Muligvis skift så vi bruger $x_i$ eller $t_i$ eller
-  whatever der nu giver mening når jeg har skrevet kapitlet med
-  udregninger}
-
+\end{cases} \]
 
 
 \section{The spectral sequence of $Y_{3,3}$}
 \label{sec:ss33}
 
-We can apply the above filtration to get a spectral sequence of
-$X=Y_{3,3}$. The groups we need to compute for the first page are:
+
+In this section we will calculate the cohomology of the space
+$Y_{3,3}$, which is the set:
+\[ Y_{3,3} = \set{
+  \begin{pmatrix}
+    a & b & g \\
+    c & d & h \\
+    e & f & i
+  \end{pmatrix} \in \C^9 \sdel 
+  \begin{matrix}
+    a\neq 0,\, ad-bc \neq 0, \\
+    adi+beh+cfg-deg-bci-afh \neq 0, \\
+    di-fh \neq 0,\, i \neq 0
+  \end{matrix} } \]
+
+The way we will calculate this is by using the spectral sequence for
+a filtration of $Y_{3,3}$. Some of the calculations have
+been done in Sage and the relevant source code can be found in
+Appendix \ref{appendix:sage}.
+
+
+We can apply the filtration to get a spectral sequence of
+$Y=Y_{3,3}$. The groups we need to compute for the first page are:
 \[ E_1^{p,q} \cong
 \begin{cases}
   H^{q}(Y_\emptyset) & p=0 \\
@@ -413,13 +422,13 @@ cohomology of $Y_{\set{1,2}}$:
   \Z^7 & q = 3 \\
   \Z^4 & q = 4 \\
   \Z & q = 5 \\
-  0 & \text{otherwise}
+  0 & \text{otherwise}.
 \end{cases} \]
 
 Since we know the product structure from the K\"unneth formula, we can
-name the generators and get the ring structure,
+name the generators and get the ring 
 \[ H^*(Y_{\set{1,2}}) = \bigwedge\nolimits^*[a_{00},d_{00},i_{00}]\otimes
-H^*(Y) \]
+H^*(Y). \]
 The two generators of $Y$ will be denoted $y_{00,1}$ for the degree
 one generator and $y_{00,2}$ for the degree two generator. All other
 generators have degree one. The ring
@@ -1028,7 +1037,7 @@ homology does not change anything. Hence $E_2 = E_\infty$, the
 spectral sequence collapses at the 2\textsuperscript{nd} term, and
 there are no extension problems since all the groups are free and
 abelian. This allows us to read off the cohomology of $Y_{3,3}$. Since
-we are also interested in factoring out the $T^3$ torus, we note this
+we are also interested in factoring out the $\T^3$ torus, we note this
 as well.
 \[ H^q(Y_{3,3}) = E_2^{0,q} \oplus E_2^{1,q-1} = 
 \begin{cases}
@@ -1056,11 +1065,6 @@ H^q(X_{3,3}) =
   0 & \text{otherwise}
 \end{cases}
 \]
-We can also read off the ring structure from the spectral sequence, as
-it is induced from the spaces we start with. Since we do not
-need it, it will not be included here.
-% Også noget med \pi_1? Eg. surjektivitet eller lignende?
-
 
 %%% Local Variables: 
 %%% mode: latex

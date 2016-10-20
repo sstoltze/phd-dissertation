@@ -1,16 +1,10 @@
 \chapter{Introduction}
-\fixme{Sørg for at $T$ er $\mathrm{T}$ hele vejen. Samme for
-  $\mathrm{B}$ og $\GL$ og $\SU$}
- \fixme{Tjek ``continuous'' alle steder...}
-
-
-
-
-The spaces that are studied in this thesis were originally introduced
-as... blah blah, nulsnit af v.b., et eller andet, blah, matricer.
 
 \fixme{Skriv det der skal være før her. Snak med Marcel. Og få
   indledningen til at give mening}
+
+The spaces that are studied in this thesis were originally introduced
+as... blah blah, nulsnit af v.b., et eller andet, blah, matricer.
 
 
 The spaces $X_{m,n}(\sigma)$ that we will be studying in the thesis
@@ -20,15 +14,64 @@ in $\C^2$, with the requirement that $v_i$ and $v_{i+1}$ are linearly
 independent, that the first entry of $v_1$  is non-zero, and either
 the first or the second entry of $v_n$ is non-zero as well. Using the
 notation introduced in this thesis, these are the spaces $Y_{2,n}$ or
-$Y_{2,n}((1\;2))$ from Definition \ref{def:rum}. \fixme{Fortsæt}
+$Y_{2,n}((1\;2))$ from Definition \ref{def:rum}. Taking a quotient
+of the action
+\begin{align*}
+  \T^n \times Y_{2,n}(\sigma) &\to Y_{2,n}(\sigma) \\
+  (\l_1,\dots,\l_n)\cdot (v_1,\dots,v_n) &= (\l_1v_1,\dots,\l_nv_n),
+\end{align*}
+we end up with the spaces referred to as $X_{2,n}(\sigma)$ in
+Definition \ref{def:kvotientrum}. He then showed that $Y_{2,n}$ was
+covered by the spaces $Y_{2,n-1}\times\T^2$ and $Y_{2,n-1}((1\; 2))\times
+\T$, giving inclusion maps
+\[ s : Y_{2,n-1} \cong Y_{2,n-1}\times\set{(1,1)} \to Y_{2,n}. \]
+By using the Mayer-Vietoris sequence for the cover, and the
+corresponding cover of $X_{2,n}$, he proved the
+following theorem.
+\begin{theorem}
+  The space $X_{2,n}$ has homology groups
+  \[ H_q(X_{2,n}) \cong
+  \begin{cases}
+    \Z & 0 \leq q \leq n \\
+    0 & \text{otherwise}
+  \end{cases} \]
+  The inclusion
+  \[ s : X_{2,n-1} \to X_{2,n} \]
+  is an isomorphism on homology when the degree is $\leq n-1$.
+\end{theorem}
+
+By noticing that these are the homology groups of the loop space
+$\Omega(\SU_2/\T)$, he defined a map from $X_{2,n}$ to the loop space
+by sending $(v_1,\dots,v_n)$ to
+the path given by connecting up the matrices
+\[ \Id \leadsto [e_2,v_1] \leadsto [v_1,v_2] \leadsto \dots \leadsto
+\Id. \]
+He proved that this map is an isomorphism on homology when the
+groups are non-zero.
+
+The aim of this dissertation is to extend some of
+these results to $X_{m,n}$, $m > 2$, with a focus on cohomology
+instead of homology. The cohomology groups become much harder to
+calculate when $m > 2$, since the Mayer-Vietoris sequence that was
+used for $X_{2,n}$
+does not give enough information. Instead we have to cover $X_{m,n}$
+with several subspaces, which means we have to use spectral
+sequences to compute the cohomology groups and this leads to increased
+complexity. However, it is still possible to prove that $X_{m,n}$
+approximates the loop space $\Omega(\SUT{m})$ when $n$ is large, which
+is the content of Theorem \ref{thm:loekker}. This approximation allows
+us to compute $H^q(X_{3,n})$ when $n \geq q$, as is done in Theorem
+\ref{thm:kostab}.
 
 The thesis starts with a short introduction to some of the tools and
 subjects that
 will be required in the following chapters, contained in Chapter
-\ref{chap:generelt}. This is mostly consists of brief descriptions of
+\ref{chap:generelt}. This mostly consists of brief descriptions of
 various subjects that are of interest, with references to
-important theorems. The sections that are too complicated to be
-covered in their entirety also contain references to literature with a
+important theorems. The subjects that are covered are spectral
+sequences, loop spaces, flags, and Coxeter groups, and since it is not
+possible to give a full overview of these subjects in a couple of
+pages, every section also contain references to literature with a
 more extensive coverage.
 
 In Chapter \ref{chap:rum}, we give a description of the spaces we will
@@ -64,10 +107,10 @@ on working over the complex numbers, so it easily carries over to the
 real and quaternionic cases. We then give a brief
 mention of other ways we could define the limit space, which all turn
 out to be equivalent from a homotopy theoretic standpoint. By working
-with one of these other stabilisations of $X_{m,n}(\sigma)$, we get a
+with one of these other stabilisations of $X_{3,n}(\sigma)$, we get a
 result that tells us exactly when the cohomology groups of
-$X_{m,n}(\sigma)$ stabilise to the cohomology groups of
-$X_{m,\infty}(\sigma)$.
+$X_{3,n}(\sigma)$ stabilise to the cohomology groups of
+$X_{3,\infty}(\sigma)$.
 
 The thesis concludes with a brief description of the open questions
 still remaining, contained in Chapter \ref{chap:fremtid}. These are

@@ -467,7 +467,7 @@ X_{3,\infty}(\sigma_{\emptyset})\times T^2$.
   multiplication with the lower-triangular matrix. The inclusion
   can be illustrated by considering a concrete example. For the
   case
-  \[X_{3,\infty}(\Id)_{\set{1}}\times(D-0) \to
+  \[\imath : X_{3,\infty}(\Id)_{\set{1}}\times(D-0) \to
   X_{3,\infty}(\Id)_{\emptyset}, \]
   we get the map
   \[
@@ -481,16 +481,44 @@ X_{3,\infty}(\sigma_{\emptyset})\times T^2$.
       \matrow{r_2} & 1 \\
       \matrow{r_3} & 1
     \end{pmatrix}, t_2,\varepsilon\right). \]
-  By inspection, when $\varepsilon$ is a fixed, small real number,
-  this is just the usual inclusion
-  \[ X_{3,\infty}(\Id)_{\set{1}} \to X_{3,\infty}(\Id)_{\emptyset}, \]
-  and hence an isomorphism on cohomology\fixme{Burde nok liiiiiige
-    argumenteres for...}. This means that 
+  \fixme{Forklar $t_2$ i denne}
+  
+  When $\varepsilon$ is a fixed, small real number, we get a homotopy
+  commutative diagram
+  \[ \xymatrix{ X_{3,\infty}(\Id)_{\set{1}} \ar[d]^{\imath}
+    \ar@{^(->}[r] & X_{3,\infty}(\Id) \\
+    X_{3,\infty}(\Id)_{\emptyset} \ar@{^(->}[ur] }, \]
+  where the homotopy is given by first multiplying the top row with a
+  number moving from one to $\varepsilon$ and then moving the last
+  coordinate of the top row to zero, illustrated below:
+  \begin{align*}
+    \begin{pmatrix}
+      \matrow{\frac{1}{\varepsilon}r_1} & 1 \\
+      \matrow{r_2} & 1 \\
+      \matrow{r_3} & 1
+    \end{pmatrix} 
+                   &\leadsto 
+                     \begin{pmatrix}
+                       \matrow{r_1} & \varepsilon \\
+                       \matrow{r_2} & 1 \\
+                       \matrow{r_3} & 1
+                     \end{pmatrix} \\
+                                        &\leadsto
+                                          \begin{pmatrix}
+                                            \matrow{r_1} & 0 \\
+                                            \matrow{r_2} & 1 \\
+                                            \matrow{r_3} & 1
+                                          \end{pmatrix}.
+  \end{align*}
+  But the inclusions into $X_{3,\infty}(\Id)$ are homotopy
+  equivalences, since they correspond to considering paths with a
+  different endpoint in the flag manifold and we know these are all
+  equivalent. Hence we must have $\imath$ a homotopy equivalence as
+  well, and so it is an isomorphism on cohomology groups:
   \[ \imath^*(r\otimes 1) = r\otimes 1. \]
-  Likewise, we can see that
-  if we choose our matrix to be e.g.
-  \[
-  A = \begin{pmatrix}
+  
+  Likewise, we can see that if we choose our matrix to be e.g.
+  \[ A = \begin{pmatrix}
     1 & 0 & 0 \\
     0 & 1 & 1 \\
     0 & 0 & 1

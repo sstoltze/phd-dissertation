@@ -6,9 +6,22 @@
 
 
 This dissertation is the outcome of my Ph.D. studies at the Department
-of Mathematics, Aarhus University. \fixme{Acknowledgements etc.}
+of Mathematics, Aarhus University, from February 2013 to October
+2016. It contains and expands on the subjects covered in my combined
+progress report and Master's thesis, which was finished and defended
+in January 2015.
 
-\section{Acknowledgements}
+I would like to thank my Ph.D. advisor, Marcel B\"okstedt, for both
+suggesting this project and helping me with plenty of meetings and long
+discussions when I was stuck, as well as providing
+encouragement and good advice when it was needed most.
+
+I would also like to thank my office mates and fellow Ph.D. students
+at the Department of Mathematics
+for both providing valuable feedback on ideas and for keeping me
+motivated.
+
+\fixme{Acknowledgements etc. Venner, kolleger, familie, Julie?}
 
 \section{Notation and conventions}
 
@@ -21,24 +34,32 @@ the maps $f$ and $g$ are homotopic. For subsets, we will use $A
 make a distinction between points of $X$ and one-point subsets of
 $X$. The set difference of $X$ and $A$ will be written as $X-A$.
 
-We will be working exclusively with topology in the complex numbers,
-so the disc $D$ is the unit disc in the complex plane $\C$ and $D_p$
-is the unit disc in $\C^p$. The non-zero elements in $\C$ will be
-written as $\C^* = \C - 0$. $\GL_m(\C)$ will denote the group of
+We will be working almost exclusively with topology in the complex
+numbers,
+so the disc $D\subset\C$ is the unit disc in the complex plane and
+$D_p$ is the unit disc in $\C^p$. The non-zero elements in $\C$ will
+be written as $\C^* = \C - 0$. $\GL_m(\C)$ will denote the group of
 linear automorphisms of $\C^m$ and the standard basis of $\C^m$ is
-$e_1,\dots,e_m$. Linear maps will be written as matrices with respect
+$e_1,\dots,e_m$,
+\[ e_i =
+\big(0, \dots, 0, \overset{\substack{i\\\downarrow}}{1}, 0\dots,
+0\big).\]
+Linear maps will be written as matrices with respect
 to the standard basis.
 
 Since we are mainly concerned with algebraic topology, a space will
 occasionally be replaced with a homotopy equivalent one without
-mention. For example, $\T^n$ will denote both the torus $(\C^*)^n
-\subset \GL_n(\C)$ and $(S^1)^n\subset \C^n$ depending on context, and
+mention. For example, $\T^n$ will denote both the complex units
+$(\C^*)^n$, the
+diagonal matrices in $\GL_n(\C)$, and $(S^1)^n$ depending
+on context, and
 the
 punctured disc $D_p-0$ will sometimes be identified with the sphere
 $S^{2p-1} \subset \C^p$. Likewise, we will not distinguish between the
 different models of the flag manifold of $\C^m$, given as $\GLB{m}
 \cong \UT{m} \cong \SUT{m}$ with $B_m \subset \GL_m(\C)$ the upper (or
-lower) triangular matrices in $\GL_m$, $\T^m \subset \U_m$ the diagonal
+lower) triangular matrices in $\GL_m(\C)$, $\T^m \subset \U_m$ the
+diagonal
 matrices in the unitary group and $\T^{m-1}\subset \SU_m$ the diagonal
 matrices in the special unitary group.
 
@@ -48,14 +69,16 @@ reference, it can be found in \cite{hatcher}.
 
 We will use permutations a great deal. The permutations of the set
 $\set{1,\dots,n}$ will be denoted $S_n$.
-These will be written as products of cycles. For example, the
+These will be written as products of cycles, where we multiply by
+considering permutations as functions and then composing. For
+example, the
 permutation $\sigma\in S_3$, given by
 \begin{align*}
   \sigma(1) &= 3, \\
   \sigma(2) &= 1, \\
   \sigma(3) &= 2,
 \end{align*}
-will be written as $\sigma = (1 \; 3 \; 2)$.
+will be written as $\sigma = (1 \; 3 \; 2) = (2\; 3)\cdot (1\; 2)$.
 For our purposes, it will be useful to occasionally consider
 a permutation as a matrix. We will do this by working with a fixed
 basis, $e_1,\dots,e_n$. An element $\sigma \in S_n$ then
@@ -63,6 +86,7 @@ corresponds to the matrix defined by
 \[ \sigma \cdot e_i = e_{\sigma(i)}. \]
 So a permutation multiplied on a matrix from the left permutes the
 rows of the matrix.
+
 
 \vfill
 \begin{flushright}

@@ -28,7 +28,9 @@ with the union covering all of $X$,
 \[ X = \bigcup_{i} X_i. \]
 An example that most people should be familiar with is the long exact
 sequence of a pair, where
-we only have a single subspace $A \subset X$. Another simple example
+we have a single subspace $A \subset X$ and try to compute the
+cohomology of $X$ from the cohomology of $A$ and the cohomology of the
+pair $(X,A)$. Another simple example
 is the case where there are two subspaces,
 \[ X = A \cup B, \]
 in which case the cohomology of $X$ can often be computed from the
@@ -310,7 +312,8 @@ This element is its own inverse, which gives us
                                          \sigma\cdot B^U.
 \end{align*}
 This is essentially the same theorem, but we have replaced the first
-copy of upper-triangular matrices with lower-triangular matrices, by
+copy of the upper-triangular matrices $B^U$ with lower-triangular
+matrices $B^L$, by
 conjugating with $\sigma_0$.
 
 The second property is that Coxeter groups come equipped with a
@@ -331,7 +334,7 @@ This ordering will show up in Theorem \ref{thm:bruhat-ord}. We will
 show a quick example to see how the order works. Take the two
 permutations $(1\;2\;3)$ and $(2\;3)$ in $S_3$. These are comparable,
 since
-\[ (2\;3) \cdot (1\;2 \;3) = (1\;3) = (2\;3) (1\; 2) (2\; 3). \]
+\[ (2\;3)^{-1} \cdot (1\;2 \;3) = (1\;3) = (2\;3) (1\; 2) (2\; 3). \]
 The minimum number of simple transpositions needed to write $(1\;2\;3)$
 as a product is two, namely
 \[ (1\;2\;3) = (1\;2) \cdot (2\;3), \]

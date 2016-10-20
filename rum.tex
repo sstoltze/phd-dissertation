@@ -8,9 +8,6 @@
 
 \chapter{Spaces of linearly independent vectors}
 \label{chap:rum}
-\fixme{Bedre titel?}
-\fixme{Sæt memoir til at bruge den rigtige chapter-overskrift så det
-  ikke ligner lort.}
 
 % Introduktion til rum
 %% Ukvotienterede (Y_{m,n}) og de rigtige (X_{m,n} = Y_{m,n}/T^m)
@@ -27,7 +24,7 @@ In this chapter we will introduce the spaces that will be studied in
 the rest of the document, and collect various useful
 results.
 
-\section{The spaces} \fixme{Bedre overskrift...}
+\section{Spaces} 
 \label{sec:rum}
 Before we can define the spaces that we will be working with, it will
 be helpful to define an approximation to them.
@@ -42,9 +39,7 @@ be helpful to define an approximation to them.
       \text{ are linearly independent.}
     \end{matrix} }, \]
   where $e_1,\dots,e_m \in \C^m$ denotes the standard basis
-  vectors,
-  \[ e_i =
-  \big(0,\dots,0,\overset{\substack{i\\\downarrow}}{1},0\dots,0\big).\]
+  vectors.
 \end{definition}
 
 We will switch between considering $(a_1,\dots,a_n)\in Y_{m,n}$ as an
@@ -530,6 +525,7 @@ quotient with the above group action. This gives us the spaces we are
 actually interested in.
 
 \begin{definition}
+  \label{def:kvotientrum}
   For natural numbers $n$ and $m$ and invertible matrices $X$ and $Y$,
   we define the space $X_{m,n}(X,Y)$ as the quotient of $Y_{m,n}(X,Y)$
   using the group action above,
@@ -750,8 +746,7 @@ following lemma.
   notation, 
   so the $k = 0$ case is really $I = (\sigma(m))$ and $i_k$
   is the last index not equal to $\sigma(m)$.
-\end{lemma} \fixme{måske skal beviset skrives om. Det er muligvis
-  rodet/for langt}
+\end{lemma}
 \begin{proof}
   Fix the permutation $\sigma \in S_m$. The observation that
   $Y^I_{m,n+1}(\sigma)$ is empty 
@@ -1287,9 +1282,12 @@ take the limit as $n$ approaches infinity.
   only if $\imath_n^{-1}(U)$ is open in $X_{m,n}$ for all n.
 \end{definition}
 
-% Noget med at $s^m \simeq \Id$?
+It is this limit space that we will focus on in the following
+chapters, especially in Chapter \ref{chap:loekker}. Before we do this,
+we will however need to set up some tools, which will be done in the
+next chapter.
 
-\section{Quaternionic and real spaces}
+\section{Quaternionic and real cases}
 \label{sec:koeff}
 
 When the spaces $Y_{m,n}(X,Y)$ were introduced in Definition

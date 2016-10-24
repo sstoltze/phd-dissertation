@@ -1,8 +1,11 @@
-\documentclass[a4paper,openbib,10pt]{memoir}
+\documentclass[a4paper,openbib,10pt,draft]{memoir}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
+
 \usepackage{lmodern}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,shrink=10,stretch=10]{microtype}
+
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -128,7 +131,9 @@
 \frontmatter
 
 \include{front}
+\microtypesetup{protrusion=false}
 \tableofcontents
+\microtypesetup{protrusion=true}
 
 
 % Ny struktur. Baseret på gamle studerendes afhandlinger.

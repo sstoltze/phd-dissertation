@@ -1,7 +1,6 @@
 
 \chapter{Loops and limits} 
 \label{chap:loekker}
-\fixme{Skal stadig nok revideres en del.}
 
 We now return to the general case. We want to show that the limit
 space
@@ -126,10 +125,10 @@ entry
 But if we use that $L^{-1}$ has entries
 \[ (L^{-1})_{il} =
 \begin{cases}
-  -1 & l = i-1 \\
-  1 & l = i  \\
-  0 & \text{otherwise}
-\end{cases}, \]
+  -1 & l = i-1, \\
+  1 & l = i,  \\
+  0 & \text{otherwise},
+\end{cases} \]
 this simplifies to
 \begin{align*}
   (L^{-(j+1)+1})_{ik} &= (-1)\cdot(-1)^{i-1-k}\binom{j-1}{i-1-k}
@@ -416,7 +415,7 @@ using the stabilisation map $s$ or by adding on the identity matrix
 are homotopic, so this does not change any of the above results. To
 differentiate the two ways of stabilising, we will refer to the
 inclusion by adjoining an
-infinite sequence of permutation matrices as
+infinite sequence of identity matrices on the left as
 \[ L_n : X_{m,n}(\sigma) \to X_{m,\infty}(\sigma). \]
 
 This map is important since it respects the
@@ -568,10 +567,10 @@ we are considering:
   \begin{align*}
     \lambda(\sigma) &=
                       \begin{cases}
-                        0, & \sigma = \Id \\
-                        1, & \sigma \in \set{(1\,2),(2\,3),(1\,2\,3)}
+                        0, & \sigma = \Id, \\
+                        1, & \sigma \in \set{(1\,2),(2\,3),(1\,2\,3)},
                         \\
-                        2, & \sigma \in \set{(1\,3\,2), (1\,3)}
+                        2, & \sigma \in \set{(1\,3\,2), (1\,3)}.
                       \end{cases}
   \end{align*}
 \end{definition}
@@ -597,364 +596,472 @@ This section will prove the following theorem:
 \end{theorem}
 
 \begin{proof}
-The proof will proceed by induction on $k$. Our induction hypothesis
-is divided into two parts, were we require the stabilisation to be an
-isomorphism when $n$ is greater than $k+\lambda(\sigma)$, and
-injective when $n$ is $k+\lambda(\sigma)-1$. The exact statement we
-want to prove is the following:
-\begin{hypothesis}[$I_{k-1}$]
-  For all $r \leq k-1$ and all $\sigma \in S_3$, the following two
-  statements hold:
-  \begin{itemize}
-  \item The map $L_{n}^* : H^r(X_{3,\infty}(\sigma)) \to
-    H^r(X_{3,n}(\sigma))$ is an isomorphism for $n \geq r +
-    \lambda(\sigma)$.
-  \item The map $L_{n}^* : H^r(X_{3,\infty}(\sigma)) \to
-    H^r(X_{3,n}(\sigma))$ is injective for $n \geq r +\lambda(\sigma)
-    -1$.
-  \end{itemize}
-\end{hypothesis}
-
-By direct calculation, the
-groups $H^0(X_{3,n}(\sigma))$ are all $\Z$ when $n \geq
-\lambda(\sigma)$, so the isomorphism in $I_0$ is automatically
-true. \fixme{måske bemærke noget med at injektivitet ikke giver mening
-  her}
-
-We now assume the hypothesis $I_{k-1}$ and want to prove $I_k$. Before
-we start, we consider the spectral sequence for $X_{3,n+1}(\sigma)$
-and observe how the different permutations that show up relate to each
-other. This is summarised in the following table:
-
-\[
-\begin{array}{|c|cccc|}
-  \hline
-  \sigma & \multicolumn{1}{c|}{\sigma_\emptyset} 
-  & \multicolumn{1}{c|}{\sigma_{\set{1}}} 
-  & \multicolumn{1}{c|}{\sigma_{\set{2}}} & \sigma_{\set{1,2}} \\
-  \hline
-  \Id & \Id & (1\;2) & (2\;3) & (1\;3\;2) \\
-  (1\;2) & \Id & (1\;2\;3) & \Id & (1\;3) \\
-  (2\;3) & \Id & (1\;2) & \Id & (1\;2) \\
-  (1\;2\;3) & \Id & \Id & \Id & \Id \\
-  (1\;3\;2) & (2\;3) & (1\;2\;3) & (2\;3) & (1\;2\;3) \\
-  (1\;3) & (2\; 3) & (2\;3) & (2\;3) & (2\;3) \\
-  \hline
-\end{array}
-\]
-By considering the table, we can see the following inequalities for
-the function $\lambda$:
-\begin{align*}
-  \lambda(\sigma) &\geq \lambda(\sigma_{\emptyset}), \\
-  \lambda(\sigma) &\geq \lambda(\sigma_{\set{1}}) - 1, \\
-  \lambda(\sigma) &\geq \lambda(\sigma_{\set{2}}) - 1, \\
-  \lambda(\sigma) &\geq \lambda(\sigma_{\set{1,2}}) - 2. \\
-\end{align*}
-These will be used during the proof.
-
-\subsection{Injectivity}
-
-We will start by proving injectivity. Consider a permutation $\sigma$
-and $n \geq k + \lambda(\sigma) - 1$. We will start by proving that
-the stabilisation map
-\[ s^* : H^k(X_{3,n+1}(\sigma)) \to
-H^k(X_{3,n}(\sigma_{\emptyset})) \] 
-is injective. Consider the spectral sequence for computing
-$H^k(X_{3,n+1}(\sigma))$. Since we choose to stabilise from the left,
-as discussed in Section \ref{sec:stabilitet} above, $L_n$
-becomes a map of spectral sequences and respects the stabilisation map
-$s$. Figure \ref{fig:injektiv} is an image of the first page of
-the spectral sequence, with
-\colorbox{isomorphism}{$E_1^{p,q}$} denoting that $L_n^*$ is an
-isomorphism on the group and \colorbox{injective}{$E_1^{p,q}$} denoting
-that it is injective.
-\begin{figure}[ht]
-  \[ 
-  \begin{array}{|c|ccc|}
-    \hline 
-    &
-    &
-    &
-    \\
-    \multirow{6}{*}{$k$} 
-    & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\emptyset}))
-      \otimes t_1t_2 $}
-    & \colorbox{isomorphism}{ $H^{k-2}(X_{3,n}(\sigma_{\set{1}}))
-      \otimes t_2 $}
-    & \multirow{6}{*}{\colorbox{injective}{$
-      H^{k-2}(X_{3,n}(\sigma_{\set{1,2}}))$}} \\
-    & \colorbox{injective}{$H^{k-1}(X_{3,n}(\sigma_{\emptyset}))
-      \otimes t_1$}
-    & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\set{2}}))
-      \otimes t_1$}
-    & \\
-    & \colorbox{injective}{$H^{k-1}(X_{3,n}(\sigma_{\emptyset}))
-      \otimes t_2 $} 
-    & \colorbox{injective}{$H^{k-1}(X_{3,n}(\sigma_{\set{1}}))
-      \otimes 1$} &\\
-    & H^k(X_{3,n}(\sigma_{\emptyset})) \otimes 1 
-    & \colorbox{injective}{$H^{k-1}(X_{3,n}(\sigma_{\set{2}}))
-      \otimes 1$} &\\
-    & & &\\
-    \hline& & & \\
-    \multirow{6}{*}{$k-1$}
-    & \colorbox{isomorphism}{$H^{k-3}(X_{3,n}(\sigma_{\emptyset}))
-      \otimes t_1t_2$}
-    & \colorbox{isomorphism}{$H^{k-3}(X_{3,n}(\sigma_{\set{1}}))
-      \otimes t_2$}
-    & \multirow{6}{*}{\colorbox{isomorphism}{$
-      H^{k-2}(X_{3,n}(\sigma_{\set{1,2}}))$}} \\
-    & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\emptyset}))
-      \otimes t_1$}
-    & \colorbox{isomorphism}{$H^{k-3}(X_{3,n}(\sigma_{\set{2}}))
-      \otimes t_1$} &\\
-    & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\emptyset}))
-      \otimes t_2 $}
-    & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\set{1}}))
-      \otimes 1$}
-    &\\
-    & \colorbox{isomorphism}{$H^{k-1}(X_{3,n}(\sigma_{\emptyset}))
-      \otimes 1$}
-    & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\set{2}}))
-      \otimes 1$}
-    &\\
-    && & \\
+  The proof will proceed by induction on $k$. Our induction hypothesis
+  is divided into two parts, were we require the stabilisation to be an
+  isomorphism when $n$ is greater than $k+\lambda(\sigma)$, and
+  injective when $n$ is $k+\lambda(\sigma)-1$. The exact statement we
+  want to prove is the following:
+  \begin{hypothesis}[$I_{k-1}$]
+    For all $r \leq k-1$ and all $\sigma \in S_3$, the following two
+    statements hold:
+    \begin{itemize}
+    \item The map $L_{n}^* : H^r(X_{3,\infty}(\sigma)) \to
+      H^r(X_{3,n}(\sigma))$ is an isomorphism for $n \geq r +
+      \lambda(\sigma)$.
+    \item The map $L_{n}^* : H^r(X_{3,\infty}(\sigma)) \to
+      H^r(X_{3,n}(\sigma))$ is injective for $n \geq r +\lambda(\sigma)
+      -1$.
+    \end{itemize}
+  \end{hypothesis}
+  
+  By direct calculation, the
+  groups $H^0(X_{3,n}(\sigma))$ are all $\Z$ when $n \geq
+  \lambda(\sigma)$, so the isomorphism in $I_0$ is automatically
+  true. \fixme{måske bemærke noget med at injektivitet ikke giver mening
+    her}
+  
+  We now assume the hypothesis $I_{k-1}$ and want to prove $I_k$. Before
+  we start, we consider the spectral sequence for $X_{3,n+1}(\sigma)$
+  and observe how the different permutations that show up relate to each
+  other. This is summarised in the following table:
+  
+  \[
+  \begin{array}{|c|cccc|}
     \hline
-    & & & \\
-    & \multirow{4}{*}{\dots} 
-    & \multirow{4}{*}{\dots} 
-    & \multirow{4}{*}{\dots} 
-    \\
-    & & & \\
-    & & & \\
-    & & & \\
-    & & & \\
-    \hline && & \\
-    \multirow{6}{*}{$0$} 
-    & \multirow{6}{*}{\colorbox{isomorphism}{$E_{1}^{0,0}$}} 
-    & \multirow{6}{*}{\colorbox{isomorphism}{$E_1^{1,0}$}}
-    & \multirow{6}{*}{\colorbox{isomorphism}{$E_1^{2,0}$}} \\
-    & & &\\
-    & & &\\
-    & & &\\
-    & & &\\
+    \sigma & \multicolumn{1}{c|}{\sigma_\emptyset} 
+    & \multicolumn{1}{c|}{\sigma_{\set{1}}} 
+    & \multicolumn{1}{c|}{\sigma_{\set{2}}} & \sigma_{\set{1,2}} \\
     \hline
-    \end{array}
-    \]
-    \caption{The $E_1$ page when we assume $I_{k-1}$ and $n \geq
-      k+\lambda(\sigma)-1$.}
-    \label{fig:injektiv}
-\end{figure}
-
-If the map 
-\[ s^* : H^k(X_{3,n+1}(\sigma)) \to
-H^k(X_{3,n}(\sigma_{\emptyset})) \]
-is not injective, there is an element $\alpha$ of the kernel of the
-boundary map that is also in the group 
-\[ H^{k-1}(X_{3,n}(\sigma_{\emptyset})) \otimes t_1 \oplus 
-H^{k-1}(X_{3,n}(\sigma_{\emptyset})) \otimes t_2 \oplus 
-H^{k-2}(X_{3,n}(\sigma_{\emptyset})) \otimes t_1 t_2. \]
-But on these last groups, the stabilisation map is an isomorphism so
-we get an element $\widehat{\alpha}$ in the corresponding group in the
-spectral sequence for $X_{3,\infty}(\sigma)$. Since the stabilisation
-maps are maps of spectral sequences, we have
-\[ 0 = d_1(L_{n}(\widehat{\alpha})) = L_n(d_1(\widehat{\alpha})) \]
-But the right hand side is the composition of $L_n$, which we know by
-the induction hypothesis to be injective, and the boundary map in the
-spectral sequence for the infinite spaces, which we know to be
-injective on the groups we are considering by Theorem
-\ref{thm:kollaps}. So $\widehat{\alpha}$ must
-be zero, and hence so is $\alpha$. This shows that $s^*$ is injective
-when $n \geq k + \lambda(\sigma) - 1$. Now we consider the different
-choices of $\sigma$.
-
-\subsubsection{$\sigma = \Id$}
-
-We know that the cohomology of $X_{3,\infty}$ is the inverse
-limit of the cohomology groups of $X_{3,n}$ using the stabilisation
-map, see e.g. \cite{may}. \fixme{Bedre reference?}
-When considered in this way, the map $L_n^*$ is just the projection on
-the corresponding factor. But if we project and get zero, we know that
-the only possible lift to the next group is zero, since $s^*$ is
-injective. Continuing like this, we see that the only element of
-$H^k(X_{3,\infty})$ that can project to zero is the zero element, and
-hence $L_n^*$ is injective in this case.
-
-\subsubsection{$\lambda(\sigma) = 1$}
-
-If $\sigma \in \set{(1\;2),(2\;3),(1\;2\;3)}$, we know that
-$\sigma_{\emptyset} = \Id$ and that $n \geq k + \lambda(\sigma) - 1 =
-k$, giving $n-1\geq k-1$. Consider the following commutative diagram:
-\[ \xymatrix{ H^k(X_{3,\infty}(\sigma)) \ar[r]^{s^*}_{\cong}
-  \ar[d]^{L_n^*} & 
-  H^k(X_{3,\infty}) \ar[d]^{L_{n-1}^*} \\
-  H^k(X_{3,n}(\sigma)) \ar[r]^{s^*} & H^k(X_{3,n-1}).
-} \]
-By the previous case, the map on the right is injective and so the
-composition $s^* \circ L_{n-1}^*$ is as well. Since the map commutes,
-this means that the left vertical map, $L_n^*$ must be injective as
-well, as desired.
-
-\subsubsection{$\lambda(\sigma) = 2$}
-
-The last case has $\sigma_{\emptyset} = (2\;3)$ and proceeds exactly
-as the previous case, using the injectivity that has already been
-proved for this permutation and that $\lambda((2\;3))$ is
-$\lambda(\sigma)-1$.
-\[ \xymatrix{ H^k(X_{3,\infty}(\sigma)) \ar[r]^{s^*}_{\cong}
-  \ar[d]^{L_n^*} &
-  H^k(X_{3,\infty}(\emptyset)) \ar[d]^{L_{n-1}^*} \\
-  H^k(X_{3,n}(\sigma)) \ar[r]^{s^*} & H^k(X_{3,n-1}(\sigma_{\emptyset})).
-} \]
-
-\subsection{Surjectivity}
-
-We will now prove surjectivity. Let $\sigma$ be a permutation in $S_3$
-and let $n \geq k + \lambda(\sigma)$. As before, we start by proving
-that the map
-\[ s^* : H^k(X_{3,n+1}(\sigma)) \to
-H^k(X_{3,n}(\sigma_{\emptyset})) \] 
-is surjective. To see this, we will look at the spectral sequences for
-$X_{3,\infty}(\sigma)$ and $X_{3,n+1}(\sigma)$, and the maps between
-them induced by the stabilisation map $L^*_{n+1}$. This is summarised in
-the following diagram.
-\[ \xymatrix{ 0 \ar[r]\ar[d] & H^k(X_{3,\infty}(\sigma))
-  \ar[r]^{i^*}\ar[d]^{L^*_{n+1}} & E_1^{0,k}(\infty,\sigma)
-  \ar[r]^{d_1}\ar[d]^{A_0} & 
-  E_1^{1,k}(\infty,\sigma) \ar[r]^{d_1}\ar[d]^{A_1} &
-  E_1^{2,k}(\infty,\sigma) \ar[d]^{A_2} \\
-  0 \ar[r] & H^k(X_{3,n+1}(\sigma)) \ar[r]^{i^*} &
-  E_1^{0,k}(n+1,\sigma) \ar[r]^{d_1} & E_1^{1,k}(n+1,\sigma)
-  \ar[r]^{d_1} & E_1^{2,k}(n+1,\sigma) 
-} \]
-The upper row is exact, since it is part of the spectral sequence for
-$X_{3,\infty}(\sigma)$ and this collapses at the second page. The
-bottom row is a chain complex, by considering the spectral sequence,
-and is exact at
-$E_1^{0,k}(n+1,\sigma)$. To see this, consider the induction
-hypothesis, illustrated in Figure \ref{fig:surjektiv}.
-\begin{figure}[ht]
-  \[ 
-  \begin{array}{|c|ccc|}
-    \hline 
-    &
-    &
-    &
-    \\
-    \multirow{6}{*}{$k$} 
-    & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\emptyset}))
-      \otimes t_1t_2 $}
-    & \colorbox{isomorphism}{ $H^{k-2}(X_{3,n}(\sigma_{\set{1}}))
-      \otimes t_2 $}
-    & \multirow{6}{*}{\colorbox{isomorphism}{$
-      H^{k-2}(X_{3,n}(\sigma_{\set{1,2}}))$}} \\
-    & \colorbox{isomorphism}{$H^{k-1}(X_{3,n}(\sigma_{\emptyset}))
-      \otimes t_1$}
-    & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\set{2}}))
-      \otimes t_1$}
-    & \\
-    & \colorbox{isomorphism}{$H^{k-1}(X_{3,n}(\sigma_{\emptyset}))
-      \otimes t_2 $} 
-    & \colorbox{isomorphism}{$H^{k-1}(X_{3,n}(\sigma_{\set{1}}))
-      \otimes 1$} &\\
-    & H^k(X_{3,n}(\sigma_{\emptyset})) \otimes 1 
-    & \colorbox{isomorphism}{$H^{k-1}(X_{3,n}(\sigma_{\set{2}}))
-      \otimes 1$} &\\
-    & & &\\
-    \hline& & & \\
-    \multirow{6}{*}{$k-1$}
-    & \colorbox{isomorphism}{$H^{k-3}(X_{3,n}(\sigma_{\emptyset}))
-      \otimes t_1t_2$}
-    & \colorbox{isomorphism}{$H^{k-3}(X_{3,n}(\sigma_{\set{1}}))
-      \otimes t_2$}
-    & \multirow{6}{*}{\colorbox{isomorphism}{$
-      H^{k-2}(X_{3,n}(\sigma_{\set{1,2}}))$}} \\
-    & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\emptyset}))
-      \otimes t_1$}
-    & \colorbox{isomorphism}{$H^{k-3}(X_{3,n}(\sigma_{\set{2}}))
-      \otimes t_1$} &\\
-    & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\emptyset}))
-      \otimes t_2 $}
-    & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\set{1}}))
-      \otimes 1$}
-    &\\
-    & \colorbox{isomorphism}{$H^{k-1}(X_{3,n}(\sigma_{\emptyset}))
-      \otimes 1$}
-    & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\set{2}}))
-      \otimes 1$}
-    &\\
-    && & \\
+    \Id & \Id & (1\;2) & (2\;3) & (1\;3\;2) \\
+    (1\;2) & \Id & (1\;2\;3) & \Id & (1\;3) \\
+    (2\;3) & \Id & (1\;2) & \Id & (1\;2) \\
+    (1\;2\;3) & \Id & \Id & \Id & \Id \\
+    (1\;3\;2) & (2\;3) & (1\;2\;3) & (2\;3) & (1\;2\;3) \\
+    (1\;3) & (2\; 3) & (2\;3) & (2\;3) & (2\;3) \\
     \hline
-    & & & \\
-    & \multirow{4}{*}{\dots} 
-    & \multirow{4}{*}{\dots} 
-    & \multirow{4}{*}{\dots} 
-    \\
-    & & & \\
-    & & & \\
-    & & & \\
-    & & & \\
-    \hline && & \\
-    \multirow{6}{*}{$0$} 
-    & \multirow{6}{*}{\colorbox{isomorphism}{$E_{1}^{0,0}$}} 
-    & \multirow{6}{*}{\colorbox{isomorphism}{$E_1^{1,0}$}}
-    & \multirow{6}{*}{\colorbox{isomorphism}{$E_1^{2,0}$}} \\
-    & & &\\
-    & & &\\
-    & & &\\
-    & & &\\
-    \hline
+  \end{array}
+  \]
+  By considering the table, we can see the following inequalities for
+  the function $\lambda$:
+  \begin{align*}
+    \lambda(\sigma) &\geq \lambda(\sigma_{\emptyset}), \\
+    \lambda(\sigma) &\geq \lambda(\sigma_{\set{1}}) - 1, \\
+    \lambda(\sigma) &\geq \lambda(\sigma_{\set{2}}) - 1, \\
+    \lambda(\sigma) &\geq \lambda(\sigma_{\set{1,2}}) - 2. \\
+  \end{align*}
+  These will be used during the proof.
+  
+  
+  
+  \subsection{Surjectivity of $s^*$}
+  
+  Let $\sigma$ be a permutation in $S_3$ and let $n \geq k +
+  \lambda(\sigma)$. We start by showing that the map
+  \[ s^* : H^k(X_{3,n+1}(\sigma)) \to
+  H^k(X_{3,n}(\sigma_{\emptyset})) \] 
+  is surjective in this case.
+  To see this, we will look at the spectral sequences for
+  $X_{3,\infty}(\sigma)$ and $X_{3,n+1}(\sigma)$, and the maps between
+  them induced by the stabilisation map $L^*_{n+1}$. This is
+  summarised in the following diagram.
+  \[ \xymatrix{ 0 \ar[r]\ar[d] & H^k(X_{3,\infty}(\sigma))
+    \ar[r]^{i^*}\ar[d]^{L^*_{n+1}} & E_1^{0,k}(\infty,\sigma)
+    \ar[r]^{d_1}\ar[d]^{A_0} & 
+    E_1^{1,k}(\infty,\sigma) \ar[r]^{d_1}\ar[d]^{A_1} &
+    E_1^{2,k}(\infty,\sigma) \ar[d]^{A_2} \\
+    0 \ar[r] & H^k(X_{3,n+1}(\sigma)) \ar[r]^{i^*} &
+    E_1^{0,k}(n+1,\sigma) \ar[r]^{d_1} & E_1^{1,k}(n+1,\sigma)
+    \ar[r]^{d_1} & E_1^{2,k}(n+1,\sigma).
+  } \]
+  The upper row is exact, since it is part of the spectral sequence for
+  $X_{3,\infty}(\sigma)$ and this collapses at the second page by
+  Theorem \ref{thm:kollaps}. The
+  bottom row is a chain complex, by considering the spectral sequence,
+  and is exact at
+  $E_1^{0,k}(n+1,\sigma)$. To see this, consider the induction
+  hypothesis applied to the spectral sequence for $X_{3,n+1}(\sigma)$,
+  illustrated in Figure \ref{fig:surjektiv}. Since we choose to
+  stabilise from the left,
+  as discussed in Section \ref{sec:stabilitet} above, $L_n$
+  becomes a map of spectral sequences and respects the stabilisation map
+  $s$. We use the notation \colorbox{isomorphism}{$E_1^{p,q}$} to show
+  that the map $L_n^*$ is an isomorphism on $E_1^{p,q}$ according to
+  $I_{k-1}$. 
+  \begin{figure}[ht]
+    \[ 
+    \begin{array}{|c|ccc|}
+      \hline 
+      &
+      &
+      &
+      \\
+      \multirow{6}{*}{$k$} 
+      & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\emptyset}))
+        \otimes t_1t_2 $}
+      & \colorbox{isomorphism}{ $H^{k-2}(X_{3,n}(\sigma_{\set{1}}))
+        \otimes t_2 $}
+      & \multirow{6}{*}{\colorbox{isomorphism}{$
+        H^{k-2}(X_{3,n}(\sigma_{\set{1,2}}))$}} \\
+      & \colorbox{isomorphism}{$H^{k-1}(X_{3,n}(\sigma_{\emptyset}))
+        \otimes t_1$}
+      & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\set{2}}))
+        \otimes t_1$}
+      & \\
+      & \colorbox{isomorphism}{$H^{k-1}(X_{3,n}(\sigma_{\emptyset}))
+        \otimes t_2 $} 
+      & \colorbox{isomorphism}{$H^{k-1}(X_{3,n}(\sigma_{\set{1}}))
+        \otimes 1$} &\\
+      & H^k(X_{3,n}(\sigma_{\emptyset})) \otimes 1 
+      & \colorbox{isomorphism}{$H^{k-1}(X_{3,n}(\sigma_{\set{2}}))
+        \otimes 1$} &\\
+      & & &\\
+      \hline& & & \\
+      \multirow{6}{*}{$k-1$}
+      & \colorbox{isomorphism}{$H^{k-3}(X_{3,n}(\sigma_{\emptyset}))
+        \otimes t_1t_2$}
+      & \colorbox{isomorphism}{$H^{k-3}(X_{3,n}(\sigma_{\set{1}}))
+        \otimes t_2$}
+      & \multirow{6}{*}{\colorbox{isomorphism}{$
+        H^{k-2}(X_{3,n}(\sigma_{\set{1,2}}))$}} \\
+      & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\emptyset}))
+        \otimes t_1$}
+      & \colorbox{isomorphism}{$H^{k-3}(X_{3,n}(\sigma_{\set{2}}))
+        \otimes t_1$} &\\
+      & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\emptyset}))
+        \otimes t_2 $}
+      & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\set{1}}))
+        \otimes 1$}
+      &\\
+      & \colorbox{isomorphism}{$H^{k-1}(X_{3,n}(\sigma_{\emptyset}))
+        \otimes 1$}
+      & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\set{2}}))
+        \otimes 1$}
+      &\\
+      && & \\
+      \hline
+      & & & \\
+      & \multirow{4}{*}{\dots} 
+      & \multirow{4}{*}{\dots} 
+      & \multirow{4}{*}{\dots} 
+      \\
+      & & & \\
+      & & & \\
+      & & & \\
+      & & & \\
+      \hline && & \\
+      \multirow{6}{*}{$0$} 
+      & \multirow{6}{*}{\colorbox{isomorphism}{$E_{1}^{0,0}$}} 
+      & \multirow{6}{*}{\colorbox{isomorphism}{$E_1^{1,0}$}}
+      & \multirow{6}{*}{\colorbox{isomorphism}{$E_1^{2,0}$}} \\
+      & & &\\
+      & & &\\
+      & & &\\
+      & & &\\
+      \hline
     \end{array}
     \]
     \caption{The $E_1$ page when we assume $I_{k-1}$ and $n \geq
       k+\lambda(\sigma)$.}
     \label{fig:surjektiv}
-\end{figure}
-If we pass to the second page of the spectral sequence, we
-can see that at row $k$ the groups will no longer change, so we have
-\[ H^k(X_{3,n+1}(\sigma)) = \ker d_1. \]
-The map $A_1$ in the diagram is an isomorphism, since it is induced from
-the maps
-\[ L^*_{n} : H^{k-1}(X_{3,\infty}(\sigma_{\set{i}})) \to
-H^{k-1}(X_{3,n}(\sigma_{\set{i}})). \]
-But this is an isomorphism by applying the first part of $I_{k-1}$,
-using the assumption 
-\[ n \geq k+\lambda(\sigma) \geq
-(k-1)+\lambda(\sigma_{\set{i}}). \]
-The map $A_2$ is an isomorphism by the exact same argument.
-This allows us to do a diagram chase: Consider an element $x$ in
-$E_1^{0,k}(n+1,\sigma)$. Then $d_1(x) = A_1(y)$ for a $y$ in
-$E_1^{1,k}(\infty,\sigma)$. But 
-\[ A_2(d_1(y)) = d_1(A_1(y)) = d_1(d_1(x)) = 0, \]
-so $y = d_1(z)$ for some $z$ in $E_1^{0,k}(\infty,\sigma)$. The
-element $x - A_0(z)$ is in the kernel of $d_1$,
-\[ d_1(x - A_0(z)) = d_1(x) - A_1(d_1(z)) = d_1(x) - A_1(y) = 0. \]
-So there is a $w$ in $H^k(X_{3,n+1}(\sigma)$ with $i^*(w)$ equal to
-$x-A_0(z)$. So we have found $w$ and $z$ with
-\[ A_0(z) + d_1(w) = A_0(z) + x - A_0(z) = 0, \]
-showing that
-\[ \xymatrix{ H^k(X_{3,n+1}(\sigma)) \oplus E_1^{0,k}(\infty,\sigma)
-  \ar[r]^{i^* + A_0} & E_1^{0,k}(n+1,\sigma) } \]  \fixme{Ryk rundt på
-funktionsnavne}
-is surjective. The map $s^*$ that we are considering is the
-composition
-\[ \xymatrix{ H^k(X_{3,n+1}(\sigma)) \ar[r]^{i^*} &
-  E_1^{0,k}(n+1,\sigma) = H^k(X_{3,n}(\sigma_{\emptyset}\times T^2))
-  \ar[r]^{\pr} & H^k(X_{3,n}(\sigma_{\emptyset})). } \]
-The projection, which is induced from the inclusion of
-$X_{3,n}(\sigma_{\emptyset})$ into the product, is surjective, so we
-only need to show that the image of
-$E_1^{0,k}(\infty,\sigma)$ is contained in the image of $s^*$ to
-finish the proof of surjectivity. Consider the diagram
-\[ \xymatrix{ E_1^{0,k}(\infty,\sigma) \ar[r]^{A_0} \ar[d]^{\pr}
-  & E_1^{0,k}(n+1,\sigma) \ar[d]^{\pr} \\
-  H^k(X_{3,\infty}(\sigma_{\emptyset})) \ar[r]^{L_n^*} &
-  H^k(X_{3,n}(\sigma_{\emptyset})). } \] \fixme{Bør lige tjekke at
-  alle afbildninger hedder det rigtige her...}
-This shows that $\pr\circ A_0$ is contained in the image of
-$L_n^*$. But the stabilisation map $L_n$ factors up to homotopy over
-$s$, so we are finished and the induction hypothesis $I_k$ holds.
+  \end{figure}
+  
+  If we pass to the second page of the spectral sequence, we
+  can see that at row $k$ the groups will no longer change. This is
+  because everything except $H^k(X_{3,n}(\sigma_{\emptyset}))\otimes 1$ is
+  isomorphic to the $X_{3,\infty}(\sigma)$-case, where the columns $p=1$
+  and $p=2$ disappears on the second page, according to Theorem
+  \ref{thm:kollaps}. We then know
+  \[ H^k(X_{3,n+1}(\sigma)) = \ker d_1. \]
+  The map $A_1$ in the diagram is an isomorphism, since it is induced
+  from the maps
+  \[ L^*_{n} : H^{k-1}(X_{3,\infty}(\sigma_{\set{i}})) \to
+  H^{k-1}(X_{3,n}(\sigma_{\set{i}})). \]
+  These are isomorphisms by applying the first part of $I_{k-1}$,
+  using the assumption 
+  \[ n \geq k+\lambda(\sigma) \geq
+  (k-1)+\lambda(\sigma_{\set{i}}). \]
+  The map $A_2$ is an isomorphism by the exact same argument.
+  This allows us to do a diagram chase: Consider an element $x$ in
+  $E_1^{0,k}(n+1,\sigma)$. Then $d_1(x) = A_1(y)$ for a $y$ in
+  $E_1^{1,k}(\infty,\sigma)$. But 
+  \[ A_2(d_1(y)) = d_1(A_1(y)) = d_1(d_1(x)) = 0, \]
+  so $y = d_1(z)$ for some $z$ in $E_1^{0,k}(\infty,\sigma)$. The
+  element $x - A_0(z)$ is in the kernel of $d_1$,
+  \[ d_1(x - A_0(z)) = d_1(x) - A_1(d_1(z)) = d_1(x) - A_1(y) = 0. \]
+  So there is a $w$ in $H^k(X_{3,n+1}(\sigma))$ with $i^*(w)$ equal to
+  $x-A_0(z)$. So we have found $w$ and $z$ with
+  \[ A_0(z) + i^*(w) = A_0(z) + x - A_0(z) = x, \]
+  showing that
+  \[ \xymatrix{ H^k(X_{3,n+1}(\sigma)) \oplus E_1^{0,k}(\infty,\sigma)
+    \ar[r]^-{i^* + A_0} & E_1^{0,k}(n+1,\sigma) } \]
+  is surjective. The map $s^*$ that we are considering is the
+  composition
+  \[ \xymatrix{ H^k(X_{3,n+1}(\sigma)) \ar[r]^-{i^*} &
+    E_1^{0,k}(n+1,\sigma) = H^k(X_{3,n}(\sigma_{\emptyset}\times T^2))
+    \ar[r]^-{\pr} & H^k(X_{3,n}(\sigma_{\emptyset})). } \]
+  The projection, which is induced from the inclusion of
+  $X_{3,n}(\sigma_{\emptyset})$ into the product, is surjective, so we
+  only need to show that the image of
+  $E_1^{0,k}(\infty,\sigma)$ under the map $\pr\circ A_0$ is contained
+  in the image of $s^*$ to
+  finish the proof of surjectivity of $s^*$. Consider the diagram
+  \[ \xymatrix{ E_1^{0,k}(\infty,\sigma) \ar[r]^{A_0} \ar[d]^{\pr}
+    & E_1^{0,k}(n+1,\sigma) \ar[d]^{\pr} \\
+    H^k(X_{3,\infty}(\sigma_{\emptyset})) \ar[r]^{L_n^*} &
+    H^k(X_{3,n}(\sigma_{\emptyset})). } \]
+  This shows that $\pr\circ A_0$ is contained in the image of
+  $L_n^*$. But the stabilisation map $L_n$ factors up to homotopy over
+  $s$, so we get that
+  \[ \im(\pr\circ A_0) \subset \im L_n^* \subset \im s^*. \]
+  By applying the surjectivity of $\pr\circ (i^*+A_0)$ that was just
+  shown, we see that
+  \[  s^* : H^k(X_{3,n+1}(\sigma)) \to
+  H^k(X_{3,n}(\sigma_{\emptyset})) \] 
+  is surjective.
+  
+  \subsection{Injectivity}
+  
+  We will now prove injectivity of $L_n^*$, so assume that $n \geq
+  k+\lambda(\sigma)-1$. As above, we will prove that
+  the stabilisation map
+  \[ s^* : H^k(X_{3,n+1}(\sigma)) \to
+  H^k(X_{3,n}(\sigma_{\emptyset})) \] 
+  is injective. Consider the spectral sequence for computing
+  $H^k(X_{3,n+1}(\sigma))$. Figure \ref{fig:injektiv} is an image of
+  the first page of the spectral sequence, with
+  \colorbox{isomorphism}{$E_1^{p,q}$} denoting that $L_n^*$ is an
+  isomorphism on the group and \colorbox{injective}{$E_1^{p,q}$}
+  denoting that it is injective.
+  \begin{figure}[ht]
+    \[ 
+    \begin{array}{|c|ccc|}
+      \hline 
+      & & & \\
+      \multirow{6}{*}{$k$} 
+      & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\emptyset}))
+        \otimes t_1t_2 $}
+        & \colorbox{isomorphism}{ $H^{k-2}(X_{3,n}(\sigma_{\set{1}}))
+          \otimes t_2 $}
+          & \multirow{6}{*}{\colorbox{injective}{$
+            H^{k-2}(X_{3,n}(\sigma_{\set{1,2}}))$}} \\
+      & \colorbox{injective}{$H^{k-1}(X_{3,n}(\sigma_{\emptyset}))
+        \otimes t_1$}
+        & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\set{2}}))
+          \otimes t_1$}
+          & \\
+      & \colorbox{injective}{$H^{k-1}(X_{3,n}(\sigma_{\emptyset}))
+        \otimes t_2 $} 
+        & \colorbox{injective}{$H^{k-1}(X_{3,n}(\sigma_{\set{1}}))
+          \otimes 1$} &\\
+      & H^k(X_{3,n}(\sigma_{\emptyset})) \otimes 1 
+        & \colorbox{injective}{$H^{k-1}(X_{3,n}(\sigma_{\set{2}}))
+          \otimes 1$} &\\
+      & & &\\
+      \hline& & & \\
+      \multirow{6}{*}{$k-1$}
+      & \colorbox{isomorphism}{$H^{k-3}(X_{3,n}(\sigma_{\emptyset}))
+        \otimes t_1t_2$}
+        & \colorbox{isomorphism}{$H^{k-3}(X_{3,n}(\sigma_{\set{1}}))
+          \otimes t_2$}
+          & \multirow{6}{*}{\colorbox{isomorphism}{$
+            H^{k-2}(X_{3,n}(\sigma_{\set{1,2}}))$}} \\
+      & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\emptyset}))
+        \otimes t_1$}
+        & \colorbox{isomorphism}{$H^{k-3}(X_{3,n}(\sigma_{\set{2}}))
+          \otimes t_1$} &\\
+      & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\emptyset}))
+        \otimes t_2 $}
+        & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\set{1}}))
+          \otimes 1$}
+          &\\
+      & \colorbox{isomorphism}{$H^{k-1}(X_{3,n}(\sigma_{\emptyset}))
+        \otimes 1$}
+        & \colorbox{isomorphism}{$H^{k-2}(X_{3,n}(\sigma_{\set{2}}))
+          \otimes 1$}
+          &\\
+      && & \\
+      \hline
+      & & & \\
+      & \multirow{4}{*}{\dots} 
+        & \multirow{4}{*}{\dots} 
+          & \multirow{4}{*}{\dots} 
+      \\
+      & & & \\
+      & & & \\
+      & & & \\
+      & & & \\
+      \hline && & \\
+      \multirow{6}{*}{$0$} 
+      & \multirow{6}{*}{\colorbox{isomorphism}{$E_{1}^{0,0}$}} 
+        & \multirow{6}{*}{\colorbox{isomorphism}{$E_1^{1,0}$}}
+          & \multirow{6}{*}{\colorbox{isomorphism}{$E_1^{2,0}$}} \\
+      & & &\\
+      & & &\\
+      & & &\\
+      & & &\\
+      \hline
+    \end{array}
+    \]
+    \caption{The $E_1$ page when we assume $I_{k-1}$ and $n \geq
+      k+\lambda(\sigma)-1$.}
+    \label{fig:injektiv}
+  \end{figure}
+  
+  If the map 
+  \[ s^* : H^k(X_{3,n+1}(\sigma)) \to
+  H^k(X_{3,n}(\sigma_{\emptyset})) \]
+  is not injective, there is an element $\alpha$ of the kernel of the
+  boundary map that is also in the group 
+  \[ H^{k-1}(X_{3,n}(\sigma_{\emptyset})) \otimes t_1 \oplus 
+  H^{k-1}(X_{3,n}(\sigma_{\emptyset})) \otimes t_2 \oplus 
+  H^{k-2}(X_{3,n}(\sigma_{\emptyset})) \otimes t_1 t_2. \]
+  But on these last groups, the stabilisation map is an isomorphism so
+  we get an element $\widehat{\alpha}$ in the corresponding group in the
+  spectral sequence for $X_{3,\infty}(\sigma)$. Since the stabilisation
+  maps are maps of spectral sequences, we have
+  \[ 0 = d_1(L_{n}(\widehat{\alpha})) = L_n(d_1(\widehat{\alpha})) \]
+  But the right hand side is the composition of $L_n$, which we know by
+  the induction hypothesis to be injective, and the boundary map in the
+  spectral sequence for the infinite spaces, which we know to be
+  injective on the groups we are considering by Theorem
+  \ref{thm:kollaps}. So $\widehat{\alpha}$ must
+  be zero, and hence so is $\alpha$. This shows that $s^*$ is injective
+  when $n \geq k + \lambda(\sigma) - 1$. Now we consider the different
+  choices of $\sigma$.
+  
+  \subsubsection{$\sigma = \Id$}
+  
+  Since $\sigma_{\emptyset}$ is $\Id$, and all the maps
+  \[ s^* : H^k(X_{3,j+1}) \to H^k(X_{3,j}), \quad j \geq n \]
+  are surjective, we know that the cohomology
+  of $X_{3,\infty}$ is the inverse
+  limit of the cohomology groups of $X_{3,n}$ using the stabilisation
+  map, see e.g. \cite[Chapter 19.4]{may}.
+  When considered in this way, the map $L_n^*$ is just the projection on
+  the corresponding factor. But if we project and get zero, we know that
+  the only possible lift to the next group is zero, since $s^*$ is
+  injective. Continuing like this, we see that the only element of
+  $H^k(X_{3,\infty})$ that can project to zero is the zero element, and
+  hence $L_n^*$ is injective in this case.
+  
+  \subsubsection{$\lambda(\sigma) \geq 1$}
+  
+  If $\lambda(\sigma)=1$, we know $\sigma \in
+  \set{(1\;2),(2\;3),(1\;2\;3)}$,
+  $\sigma_{\emptyset} = \Id$ and that $n \geq k + \lambda(\sigma) - 1 =
+  k$, giving $n-1\geq k-1$. Consider the following commutative diagram:
+  \[ \xymatrix{ H^k(X_{3,\infty}(\sigma)) \ar[r]^{s^*}_{\cong}
+    \ar[d]^{L_n^*} & 
+    H^k(X_{3,\infty}) \ar[d]^{L_{n-1}^*} \\
+    H^k(X_{3,n}(\sigma)) \ar[r]^{s^*} & H^k(X_{3,n-1}).
+  } \]
+  By the previous case, the map on the right is injective and so the
+  composition $s^* \circ L_{n-1}^*$ is as well. Since the map commutes,
+  this means that the left vertical map, $L_n^*$ must be injective as
+  well, as desired.
+  
+  The last case has $\sigma_{\emptyset} = (2\;3)$ and proceeds exactly
+  as the case $\lambda(\sigma) = 1$, using the injectivity that has
+  already been proved for this permutation and that $\lambda((2\;3))$ is
+  $\lambda(\sigma)-1$.
+  
+  \subsection{Surjectivity}
+  
+  We finish by proving that $L_n^*$ is surjective, so we assume $n \geq
+  k+\lambda(\sigma)$. We have already
+  worked with the stabilisation map $s^*$ and we now split into cases
+  based on $\sigma$.
+  
+  \subsubsection{$\sigma = \Id$}
+  
+  We still know that the cohomology group of $X_{3,\infty}$ is the
+  inverse limit of the
+  cohomology groups of $X_{3,n}$ and that the map $L_n^*$ is just the
+  projection. But since we know all the maps 
+  \[s^* : H^k(X_{3,j+1})\to H^k(X_{3,j}), \quad j \geq n \] are
+  surjective, we can hit anything in $H^k(X_{3,n})$ by choosing a lift
+  in each $H^k(X_{3,j})$ for $j \geq n$ and use these to get an element
+  of the inverse limit. Hence $L_n^*$ is surjective in this case.
+  
+  \subsubsection{$\lambda(\sigma) \geq 1$}
+  
+  For the other permutations, define groups $C_n(\sigma)$ as the
+  cokernel of the map $L_n^*$:
+  \[ \xymatrix{ 0 \ar[r] & H^k(X_{3,\infty}(\sigma))
+    \ar[r]^{L_{n}^*} &
+    H^k(X_{3,n}(\sigma)) \ar[r] &
+    C_{n}(\sigma) \ar[r] &  0.} \]
+  The maps
+  \[s^* : H^k(X_{3,n+1}(\sigma)) \to H^k(X_{3,n}(\sigma_{\emptyset})) \]
+  induces maps between these cokernels and gives a commuting diagram
+  \[ \xymatrix{ 0 \ar[r] & H^k(X_{3,\infty}(\sigma))
+    \ar[r]^{L_{n}^*}\ar[d]^{s^*} &
+    H^k(X_{3,n}(\sigma)) \ar[r]\ar[d]^{s^*} &
+    C_{n}(\sigma) \ar[r]\ar[d]^{s^*} &  0 \\
+    0 \ar[r] & H^k(X_{3,n}(\sigma_{\emptyset})) \ar[r]^{L_{n-1}^*} &
+    H^k(X_{3,n-1}(\sigma_{\emptyset})) \ar[r] &
+    C_{n-1}(\sigma_{\emptyset}) \ar[r] &  0. } \]
+  If $\lambda(\sigma) = 1$, we know that $\sigma_{\emptyset} = \Id$, and
+  if we combine this with the inequality
+  \[ n \geq k+\lambda(\sigma) = k+1 \implies n-1 \geq k, \]
+  we conclude $C_{n-1}(\Id) = 0$ by the previous case. The
+  maps not between cokernels are isomorphisms, since we have already
+  proved
+  injectivity and surjectivity of $s^*$, in the infinity case in
+  Theorem \ref{thm:kollaps} and earlier in this proof in the case of $n
+  < \infty$. Hence the map 
+  \[ s^* : C_{n}(\sigma) \to C_{n-1}(\sigma_{\emptyset}) = 0 \]
+  is an isomorphism by the 5-lemma, and so $L_n^*$ is surjective.
+  
+  In the final cases, $\lambda(\sigma) = 2$, we apply the above
+  argument, using
+  \[ \sigma_{\emptyset} = (2\; 3),\quad \lambda(\sigma_{\emptyset}) =
+  1. \]
+  Since
+  \[ n \geq k+\lambda(\sigma) = k +2 \implies n-1 \geq k+1 = k +
+  \lambda((2\;3)), \]
+  we conclude $C_{n-1}((2\;3))=0$ by the previous case, and the same
+  arguments as last time give us $C_{n}(\sigma) = 0$ and $L^*_n$
+  surjective.
+  
+  This shows that $I_k$ follows from $I_{k-1}$, and hence finishes the
+  proof of the theorem.
 \end{proof}
+
+We will end this chapter with a quick application of this theorem to
+$X_{3,3}$, since this is a group we have previously calculated.
+
+\begin{example}
+  Recall that
+  \[ H^q(X_{3,3}) = \begin{cases}
+    \Z & q = 0, \\
+    \Z^{2} & q=1, \\
+    \Z^{2} & q=2, \\
+    \Z^{2} & q=3, \\
+    \Z^{3} & q=4, \\
+    \Z^{2} & q=5, \\
+    \Z & q=6, \\
+    0 & \text{otherwise}.
+  \end{cases} \]
+  If we consider the above theorem, we have $n = 3$ and
+  $\lambda(\Id) = 0$, giving
+  \[ 3 = n \geq k +\lambda(\sigma) = k. \]
+  So the theorem tells us the first three cohomology groups of
+  $X_{3,3}$ are isomorphic to the corresponding ones for
+  $\Omega(\SU_3/\T^2)$.
+  This fits with what is expected if we use the groups computed in
+  \cite{grbic},
+  \[ H_*(\Omega(\SU_3/\T^2)) \cong T(x_1,x_{2}) \otimes
+  \Z[y_1,y_{2}]/I. \]
+  In degree one we get the elements $x_1$ and $x_2$, in degree two we
+  get $y_1$ and $x_1 x_2$ and in degree three we get $y_1 x_1$ and
+  $y_1 x_2$ as generators in the homology of the loop space, which
+  correspond to the right dimensions of the cohomology groups by the
+  universal coefficient theorem. Since the theorem also works for $n >
+  3$, we conclude that for $q\in \set{1,2,3}$ and $n\geq 3$, we have
+  \[ H^q(X_{3,n}) \cong \Z^2. \]
+\end{example}
+
 
 %%% Local Variables: 
 %%% mode: latex

@@ -6,14 +6,14 @@
 The purpose of this chapter is to give a brief introduction to some
 important topics, most importantly spectral sequences
 and loop spaces. Spectral sequences are an important tool in algebraic
-topology 
-and can be considered a generalisation of long exact sequences, while
+topology and can be considered a generalisation of long exact
+sequences, while
 loop spaces are a class of spaces that appear naturally when
 considering the spaces that will be studied in this thesis. The
 following pages will collect some basic info and state the results
 that are of interest in next chapters, while providing references for
 proofs and further information. The chapter also includes a very brief
-introduction to flags and Coxeter groups, to give enough basic
+introduction to flags and Coxeter groups, to give enough
 information for the small part these two subjects will play in the
 main text.
 
@@ -56,8 +56,8 @@ finite, but we will not need this here. We will augment the filtration
 by defining additional subspaces,
 \[ X_s =
 \begin{cases}
-  \emptyset & s \leq -1 \\
-  X & s \geq k+1
+  \emptyset & s \leq -1, \\
+  X & s \geq k+1.
 \end{cases}. \]
 
 With such a sequence, we can
@@ -68,17 +68,21 @@ of the triple $(X_{p+1},X_p,X_{p-1})$:
 \[ d_1 : E_1^{p,q} = H^{p+q}(X_p,X_{p-1}) \to H^{p+q+1}(X_{p+1},X_p) =
 E_1^{p+1,q}. \]
 This map factors as the composition of an
-inclusion of the pair $(X_p,X_{p-1})$ and the boundary map of the pair
+inclusion of $X_p$ into the pair $(X_p,X_{p-1})$ and the boundary map
+of the pair
 $(X_{p+1},X_p)$,
 \[ \xymatrix{ d_1 : H^{p+q}(X_p,X_{p-1}) \ar[r]^<<<<<{\jmath^*} &
   H^{p+q}(X_p) \ar[r]^<<<<<{\delta} & H^{p+q+1}(X_{p+1},X_p),
 } \]
-and in particular we get that the composition of two such maps must be
-zero since the composition $\delta \circ \jmath^* = 0$ by
-exactness. So we can compute the homology of these groups and get new
-groups,
+and in particular we get that the composition of two such maps,
+\[ d_1 \circ d_1 = \delta \circ \jmath^* \circ \delta \circ
+\jmath^*, \]
+must be
+zero since the composition $\jmath^*\circ\delta$ is zero by the
+long exact seuqence of the pair $(X_{p+1},X_p)$. So we can compute the
+homology of these groups and get new groups,
 \[ E_2^{p,q} = \ker d_1 / \im d_1. \]
-More suprisingly, we can also find new maps
+More surprisingly, we can also find new maps
 \[ d_2 : E_2^{p,q} \to E_2^{p+2,q-1} \]
 that make these new groups into a chain complex, allowing us to form
 \[ E_3^{p,q} = \ker d_2 / \im d_2. \]
@@ -86,9 +90,11 @@ This process can be continued, giving a sequence of groups and maps
 \[ \xymatrix{d_r : E_r^{p,q} \ar[r] & E_r^{p+r,q-r+1} } \]
 where the composition $d_r \circ d_r$ is zero and
 $E_r^{p,q}$ is formed by taking the homology of $E_{r-1}^{p,q}$ with
-the map $d_{r-1}$. Since we have $E_r^{p,q} = 0$ for $p < 0$ or $p >
-k$, these maps will eventually always go either to or from a zero
-group and hence the groups $E_r^{p,q}$ will not change when we
+respect to the map $d_{r-1}$. Since we have $E_r^{p,q} = 0$ for $p <
+0$ or $p > k$, these maps will eventually always go either to or from
+a zero
+group when $r > k$, and hence the groups $E_r^{p,q}$ will not change
+when we
 increase $r$. This allows us to
 define the stable groups $E_\infty^{p,q}$ as these $r$-independent
 groups. The following theorem relates them to the cohomology groups of
@@ -109,7 +115,7 @@ $X$ that we are interested in calculating.
     \[ E_{r+1}^{p,q} = \ker d_r / \im d_r, \]
     computed at $E_r^{p,q}$.
   \item There is a filtration of the $n\!$'th cohomology group of $X$,
-    \[ 0 \subset F_n^n \subset \dots F_0^n = H^n(X), \]
+    \[ 0 \subset F_n^n \subset \dots \subset F_0^n = H^n(X), \]
     with the limit groups $E_\infty^{p,n-p}$ isomorphic to the
     quotients
     \[ E_\infty^{p,n-p} \cong F_p^n / F_{p+1}^n. \]
@@ -134,9 +140,10 @@ isomorphic to the direct sum of these groups,
 Throughout this section, every topological space will have a
 distinguished basepoint. We will be looking a spaces of loops,
 consiting of maps from the circle to a given space $X$, preserving the
-basepoint. For a general introduction to loop spaces, consult e.g.
-\cite{may}. The results in this section are taken from
-\cite{milnor} and the proofs can be found there as well.
+basepoint. For a general introduction to loop spaces, consult
+e.g. \cite[Part~3]{milnor} or \cite[Section~8.2]{may}. The results in
+this section are taken from \cite{milnor} and the proofs can be found
+there as well.
 
 \begin{definition}
   If $X$ is a topological space with basepoint $*\in
@@ -157,7 +164,9 @@ We will only worry about the case where $X$ is a Riemannian manifold,
 so it comes equipped with a Riemannian metric $g$ and an induced
 topological metric $d$. In this case, the compact-open topology is
 induced by the metric
-\[ d^*(\g,\g') = \max_t d(\g(t),\g'(t)). \]
+\[ d^*(\g,\g') = \max_t d(\g(t),\g'(t)), \]
+so two loops are close in $\Omega(X)$ when the points $\g(t)$ and
+$\g'(t)$ are close for each $t$.
 By \cite[Theorem 17.1]{milnor}, this is homotopy equivalent to the
 space of piecewise smooth loops in $X$, and we will generally work
 with this space instead. The proof will not be repeated here, but
@@ -186,7 +195,7 @@ space of paths between two points $p,q\in X$, given by
 But by composing such a path with a fixed path $\a$ from $q$ to $p$,
 we end up with a loop at $p$. If we compose a loop at $p$ with the
 path from $p$ to $q$ given by running $\a$ in reverse, we get a path
-from $p$ to $q$, and the composition of these two operrations is
+from $p$ to $q$, and the composition of these two operations is
 homotopic to the identity. This shows that all such spaces 
 are homotopy equivalent, so we will not make a major distinction
 between them.
@@ -204,12 +213,12 @@ subspace is one greater than the last. Note that if we pick a non-zero
 vector $v_1$ in $V_1$, another (non-zero) vector $v_2$ in $V_2 - V_1$,
 and continue picking $v_i$ in $V_i - V_{i-1}$, we end up with $m$
 linearly independent vectors. This allows us to construct a matrix in
-$\GL(V)$ by considering
+$\GL(V)$ as
 \[ [v_1,\dots,v_m], \]
-and we can recover the flag from the matrix by considering
+and we can recover the flag from the matrix by taking
 \begin{align*}
-  V_1 =\, &\spa(v_1) \\
-  V_2 =\, &\spa(v_1,v_2) \\
+  V_1 =\, &\spa(v_1), \\
+  V_2 =\, &\spa(v_1,v_2), \\
   \vdots\,\, & \\
   V_m =\, &\spa(v_1,\dots,v_m).
 \end{align*}
@@ -222,10 +231,10 @@ and working backwards to get another flag.
     \mathrm{Fl_L}(A)\, &&= \Big(&\spa(v_1) &&\subset \spa(v_1,v_2)
     &&\subset \dots &&\subset \spa(v_1,\dots,v_m) = V\Big).
   \end{alignat*}
-  The \textit{right flag} of $V$ is defined similarly as
+  The \textit{right flag} of $A$ is defined similarly as
   \begin{alignat*}{5}
     \mathrm{Fl_R}(A)\, &&= \Big(&\spa(v_m) &&\subset
-    \spa(x_{v-1},x_v) &&\subset \dots &&\subset
+    \spa(v_{m-1},v_m) &&\subset \dots &&\subset
     \spa(v_1,\dots,v_m) = V\Big). 
   \end{alignat*}
 \end{definition}
@@ -233,22 +242,36 @@ Note that we could multiply any column of $A$ by a non-zero scalar and
 we would end up with the same flag. Likewise, if we replace $v_j$ by
 $v_j + \lambda v_i$ for a scalar $\lambda$ and indices $j > i$, we do not
 change the left flag of $A$. The right flag is unchanged by doing
-the same operation with $j < i$. In particular, if $L$ is a
-lower-triangular invertible matrix we can do the above operations one
-column at a time, starting from the last, and see that
-\[ \mathrm{Fl_R}(L) = \mathrm{Fl_R}(\Id). \]
-And similarly, if $U$ is upper-triangular and invertible and $\sigma$
-is a permutation matrix:
-\[ \mathrm{Fl_L}(\sigma U) = \mathrm{Fl_L}(\sigma). \]
-This is slightly harder to see, but $\sigma$ permutes the rows of $U$,
-moving the first row to row $\sigma(1)$, the second row to row
-$\sigma(2)$, and so on. By adding the first column to remaining ones,
-with a suitable scalar multiplied on, we can ensure that the only
-non-zero entry in row $\sigma(1)$ of $\sigma U$ is in the first
-column, row $\sigma(1)$, just as it is in the matrix
-$\sigma$. Continuing like this gives the desired identity.
+the same operation with $j < i$. In particular, these opeartions
+correspond to multiplying with a lower-triangular matrix $L$ for the
+right flag, or an upper-triangular matrix $U$ for the left flag,
+giving the identities
+\begin{align*}
+  \mathrm{Fl_R}(L\cdot A) &= \mathrm{Fl_R}(A), \\
+  \mathrm{Fl_L}(A \cdot U) &= \mathrm{Fl_L}(A).
+\end{align*}
+The cases that will be of most importance to us is when $A$ is a
+permutation matrix. Writing these out for future use, we get
+\[  \mathrm{Fl_R}(L) = \mathrm{Fl_R}(\Id) \]
+when $A$ is the identity, and
+\[  \mathrm{Fl_L}(\sigma \cdot U) = \mathrm{Fl_L}(\sigma) \]
+for a general permutation $\sigma\in S_m$.
+% $L$  is a
+% lower-triangular invertible matrix we can do the above operations one
+% column at a time, starting from the last, and see that
+% \[ \mathrm{Fl_R}(L) = \mathrm{Fl_R}(\Id). \]
+% And similarly, if $U$ is upper-triangular and invertible and $\sigma$
+% is a permutation matrix:
+% \[ \mathrm{Fl_L}(\sigma U) = \mathrm{Fl_L}(\sigma). \]
+% This is slightly harder to see, but $\sigma$ permutes the rows of $U$
+% by moving the first row to row $\sigma(1)$, the second row to row
+% $\sigma(2)$, and so on. By adding the first column to remaining ones,
+% with a suitable scalar multiplied on, we can ensure that the only
+% non-zero entry in row $\sigma(1)$ of $\sigma U$ is in the first
+% column, row $\sigma(1)$, just as it is in the matrix
+% $\sigma$. Continuing like this gives the desired identity.
 
-\section{Coxeter groups and the Bruhat order}
+\section{Coxeter groups}
 \label{sec:bruhat}
 
 The final subject to be introduced is Coxeter groups and the Bruhat
@@ -258,8 +281,8 @@ order. For a proper introduction, consult either \cite{bjorner} or
 \begin{definition}
   A \textit{Coxeter group} is a group $W$ along with a set of
   generators $S$,
-  where all $s \in S$ have order two. The generators only have
-  relations of the form
+  where all $s \in S$ have order two. The generators are only allowed
+  to have relations of the form
   \[ (s s')^{m(s,s')} = \Id \]
   for some function $m : S \times S \to \N\cup\set{\infty}$, with
   $m(s,s) = 1$ and $m(s,s') \geq 2$ for $s\neq s'$.
@@ -282,38 +305,43 @@ to using braid moves and inserting or deleting the identity in the
 product as $s^2$.
 
 Our primary example of a Coxeter group will be the
-symmetric group $S_n$.
-The generators of $S_n$ as a Coxeter group are the \textit{simple
+symmetric group $S_m$.
+The generators of $S_m$ as a Coxeter group are the \textit{simple
   transpositions}, which are the elements
-\[ \set{(1\; 2), (2\; 3), \dots, (n-1 \; n) }. \]
+\[ \set{(1\; 2), (2\; 3), \dots, (m-1 \; m) }. \]
+The length of $\sigma$ is the minimal number of simple transpositions
+needed to write $\sigma$, which is the same as the number of
+\textit{inversions} of $\sigma$,
+\[ \ell(\sigma) = \size{\set{ (i,j) \mid 1\leq i < j\leq m, \sigma(i) >
+  \sigma(j)}}. \]
 
 Coxeter groups show up in various places, but we will require two
 properties. The first is that the symmetric group is the Weyl group of
-$\GL_n(\C)$, which for our purposes means that it is a Coxeter group
-and if we let $B^U$ denote the upper-triangular matrices in
-$\GL_n(\C)$, there is a \textit{Bruhat decomposition},
-\[ \GL_n(\C) = \bigcup_{\sigma \in S_n} B^U \cdot \sigma \cdot B^U. \]
+$\GL_m(\C)$, which for our purposes means that it is a Coxeter group
+and if we let $\B^U$ denote the upper-triangular matrices in
+$\GL_m(\C)$, there is a \textit{Bruhat decomposition},
+\[ \GL_m(\C) = \bigcup_{\sigma \in S_m} \B^U \cdot \sigma \cdot \B^U. \]
 Note that this is a disjoint union. For a proof of this, see
 \cite[Theorem 4.3]{hiller}. We
 would prefer to change this slightly, which is done by considering the
-element $\sigma_0$ in $S_n$ defined by
-\[ \sigma_0(k) = n+1-k. \]
+element $\sigma_0$ in $S_m$ defined by
+\[ \sigma_0(k) = m+1-k. \]
 This element is its own inverse, which gives us
 \begin{align*}
-  \GL_n(\C) = \sigma_0 \cdot \GL_n(\C) &= \bigcup_{\sigma\in S_n}
-                                         \sigma_0\cdot B^U \cdot
-                                         \sigma\cdot B^U \\
-                                       &= \bigcup_{\sigma\in S_n}
-                                         \sigma_0\cdot B^U \cdot
+  \GL_m(\C) = \sigma_0 \cdot \GL_m(\C) &= \bigcup_{\sigma\in S_m}
+                                         \sigma_0\cdot \B^U \cdot
+                                         \sigma\cdot \B^U \\
+                                       &= \bigcup_{\sigma\in S_m}
+                                         \sigma_0\cdot \B^U \cdot
                                          \sigma_0^2\cdot \sigma \cdot
-                                         B^U \\
-                                       &= \bigcup_{\sigma\in S_n}
-                                         B^L\cdot \sigma_0\cdot
-                                         \sigma\cdot B^U.
+                                         \B^U \\
+                                       &= \bigcup_{\sigma\in S_m}
+                                         \B^L\cdot \sigma_0\cdot
+                                         \sigma\cdot \B^U.
 \end{align*}
 This is essentially the same theorem, but we have replaced the first
-copy of the upper-triangular matrices $B^U$ with lower-triangular
-matrices $B^L$, by
+copy of the upper-triangular matrices $\B^U$ with lower-triangular
+matrices $\B^L$, by
 conjugating with $\sigma_0$.
 
 The second property is that Coxeter groups come equipped with a
@@ -330,7 +358,11 @@ partial order, called the Bruhat order.
   \[ w \to w_1 \to w_2 \to \dots \to w_k \to w'. \]
 \end{definition}
 
-This ordering will show up in Theorem \ref{thm:bruhat-ord}. We will
+This ordering will show up in Theorem \ref{thm:bruhat-ord}. The
+condition on $u^{-1}v$ is usually the one to check when we want to
+find out if two elements are comparable, since if this is satisfied we
+only need to check the lengths of $u$ and $v$ to find out if $u \to v$
+or $v\to u$ holds. We will
 show a quick example to see how the order works. Take the two
 permutations $(1\;2\;3)$ and $(2\;3)$ in $S_3$. These are comparable,
 since
@@ -346,7 +378,7 @@ and we get the relation $(2\;3) \to (1\;2\;3)$, showing $(2\;3) \leq
 hand, $(1\;2)$ and $(2\;3)$ are not comparable since they are both of
 length one.
 
-To illustrate the ordering, we can draw a diagram of $S_3$, where the
+To illustrate the ordering, we can draw a diagram of $S_3$ where the
 arrows denotes the relation $\sigma\to\tau$, and $\sigma\leq\tau$
 exactly when we can follow a path from $\sigma$ to $\tau$ in the
 diagram:

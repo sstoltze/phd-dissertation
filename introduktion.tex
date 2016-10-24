@@ -3,7 +3,7 @@
 \fixme{Skriv det der skal være før her. Snak med Marcel. Og få
   indledningen til at give mening}
 
-The spaces that are studied in this thesis were originally introduced
+The spaces we will be workng with were originally introduced
 as... blah blah, nulsnit af v.b., et eller andet, blah, matricer.
 
 
@@ -32,21 +32,24 @@ following theorem.
   The space $X_{2,n}$ has homology groups
   \[ H_q(X_{2,n}) \cong
   \begin{cases}
-    \Z & 0 \leq q \leq n \\
-    0 & \text{otherwise}
+    \Z & 0 \leq q \leq n, \\
+    0 & \text{otherwise.}
   \end{cases} \]
   The inclusion
   \[ s : X_{2,n-1} \to X_{2,n} \]
   is an isomorphism on homology when the degree is $\leq n-1$.
 \end{theorem}
 
-By noticing that these are the homology groups of the loop space
-$\Omega(\SU_2/\T)$, he defined a map from $X_{2,n}$ to the loop space
+The homology of $X_{2,n}$ consists of a copy of the integers in all
+degrees up to $n$, so when $n$ is large it looks like the homology
+groups of the loop space
+$\Omega(\SU_2/\T)$, which has a copy of the integers in each
+degree. We can define a map from $X_{2,n}$ to the loop space
 by sending $(v_1,\dots,v_n)$ to
 the path given by connecting up the matrices
 \[ \Id \leadsto [e_2,v_1] \leadsto [v_1,v_2] \leadsto \dots \leadsto
-\Id. \]
-He proved that this map is an isomorphism on homology when the
+\Id, \]
+and it turns out that this map is an isomorphism on homology when the
 groups are non-zero.
 
 The aim of this dissertation is to extend some of
@@ -66,23 +69,25 @@ us to compute $H^q(X_{3,n})$ when $n \geq q$, as is done in Theorem
 The thesis starts with a short introduction to some of the tools and
 subjects that
 will be required in the following chapters, contained in Chapter
-\ref{chap:generelt}. This mostly consists of brief descriptions of
-various subjects that are of interest, with references to
-important theorems. The subjects that are covered are spectral
+\ref{chap:generelt}. Each section consists of a brief description of
+a subject, with references to
+important theorems needed for our purposes. The topics that are
+covered are spectral
 sequences, loop spaces, flags, and Coxeter groups, and since it is not
-possible to give a full overview of these subjects in a couple of
+possible to give a full overview of any of these in a couple of
 pages, every section also contain references to literature with a
 more extensive coverage.
 
 In Chapter \ref{chap:rum}, we give a description of the spaces we will
 be working with, first introducing subspaces $Y_{m,n}(\sigma)$ of
-$\C^{m\cdot n}$, which depend on permutations $\sigma\in S_m$, and
+$(\C^{m})^{n}$, which depend on permutations $\sigma\in S_m$, and
 then quotienting out with an action of the complex torus $\T^n =
 (\C^*)^n$, giving the spaces $X_{m,n}(\sigma)$ that we will mostly be
 working with. We show that these spaces are non-empty when $n$ is
 large enough, and we spend some time working out how the space
 $Y_{m,n}(\sigma)$ can be built from the spaces $Y_{m,n-1}(\tau)$, and
-exactly which permutations $\tau$ are necessary to do this. This
+exactly which permutations $\tau$ are necessary to do this in Theorem
+\ref{thm:permutation}. This
 allows us to take a limit, and gives us the spaces
 $Y_{m,\infty}(\sigma)$ and $X_{m,\infty}(\sigma)$. We end
 with a very brief discussion of the spaces we get when we replace the
@@ -93,10 +98,10 @@ sequence that will be used extensively. This allows us to compute the
 cohomology of the space $Y_{m,n}(\sigma)$ from the cohomology of the
 spaces $Y_{m,n-1}(\tau)$ that it is built from. We immediately use
 this spectral sequence to work out the first cohomology group of both
-$Y_{m,n}(\Id)$ and $X_{m,n}(\Id)$ for all $m$ and $n$. The rest of the
+$Y_{m,n}$ and $X_{m,n}$ for all $m$ and $n$. The rest of the
 chapter is spent doing computations with the spectral sequence for the
-spaces $Y_{3,3}(\Id)$ and
-$X_{3,3}(\Id)$, ending with a complete description of the cohomology
+spaces $Y_{3,3}$ and
+$X_{3,3}$, ending with a complete description of the cohomology
 groups for these spaces.
 
 The following chapter, Chapter \ref{chap:loekker}, studies the limit
@@ -105,10 +110,11 @@ are homotopy equivalent to the loop space $\Omega(\SUT{m})$, which
 gives us the cohomology of the limit space. The proof does not depend
 on working over the complex numbers, so it easily carries over to the
 real and quaternionic cases. We then give a brief
-mention of other ways we could define the limit space, which all turn
-out to be equivalent from a homotopy theoretic standpoint. By working
-with one of these other stabilisations of $X_{3,n}(\sigma)$, we get a
-result that tells us exactly when the cohomology groups of
+mention of other ways we could define the limit space, which are all
+equivalent from a homotopy theoretic standpoint. By working
+with one of these other stabilisations of $X_{3,n}(\sigma)$, we get
+Theorem \ref{thm:kostab}
+that tells us when the cohomology groups of
 $X_{3,n}(\sigma)$ stabilise to the cohomology groups of
 $X_{3,\infty}(\sigma)$.
 

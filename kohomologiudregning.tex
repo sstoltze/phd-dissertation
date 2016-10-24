@@ -30,15 +30,14 @@ For $0 \leq p \leq m-1$, let $F_p$ be the subset
 \[ F_p=\set{ (a_1,\dots,a_n) \in Y_{m,n} \mid a_n \text{ has at most } p
   \text{ zeroes}.}. \]
 $F_p$ is open in $\Y$ since we stay inside the subspace when we
-vary the coordinates of a point $A\in F_p$, as long as we do not
+vary the coordinates of a point, as long as we do not
 introduce new zeroes in the last column.
-Together, the subspaces form an increasing sequence:
+The subspaces form an increasing sequence:
 \[ F_0 \subset F_1 \subset \dots \subset F_{m-1} = Y_{m,n}. \]
 
 The general method of computing the homology and cohomology of
 $Y_{m,n}$ is by using the spectral sequence of this
-filtration, as described in \cite{hatcherss} and
-\cite{mccleary}. Here we will focus on
+filtration, as described in Theorem \ref{thm:ss}. Here we will focus on
 cohomology, but similar arguments could of course be applied to
 homology.
 
@@ -55,7 +54,13 @@ would like to find an open subset of $F_p$ that contains the
 complement of $F_{p-1}$. For any choice of exactly $p$ 
 different indices $\set{v_1,\dots,v_p}\subset \set{1,\dots,m-1}$,
 define $Y_{\set{v_1,\dots,v_p}}$ to be the points $(a_1,\dots,a_n)\in
-F_p$ which has $(a_n)_{v_i} = 0$ for all $i$. Since $\Y$ is open, we
+F_p$ which has $(a_n)_{v_i} = 0$ for all $i$.
+Note that if we define an indexing set ${I =
+  \set{1,\dots,m}-\set{v_1,\dots,v_p}}$,
+these spaces correspond to the spaces in Theorem
+\ref{thm:permutation} by the formula
+\[ Y_{\set{v_1,\dots,v_p}} = Y_{m,n}^I, \]
+Since $\Y$ is open, we
 can get an open set in $F_p$ by inserting a small disc on these
 zero-entries. More precisely, the set we get is
 \[ Y_{\set{v_1,\dots,v_p}} \times D_p \cong \set{ A\in F_p \sdel 
@@ -77,14 +82,14 @@ disjointness, so the intersection is empty:
 
 The intersection of $\Y\times D_p$ and $F_{p-1}$ corresponds to
 removing 0 from the disc, since one of the entries inserted on the
-last column has to be non-zero.
+last column has to be non-zero,
 \[ \left(Y_{\set{v_1,\dots,v_p}}\times D_p \right) \cap F_{p-1} =
 Y_{\set{v_1,\dots,v_p}} \times \left(D_p-0\right). \]
 This means that the disjoint union of all of these form an open set in
 $F_p$ with
 \[ F_p = F_{p-1}\cup \left(\coprod_{\set{v_1,\dots,v_p}}
-  Y_{\set{v_1,\dots,v_p}}\times D_p\right), \]
-and by excision, the inclusion of pairs
+  Y_{\set{v_1,\dots,v_p}}\times D_p\right). \]
+By excision, the inclusion of pairs
 \[ \xymatrix{ \displaystyle \coprod_{\set{v_1,\dots,v_p}}
   Y_{\set{v_1,\dots,v_p}}\times (D_p,D_p-0) \ar@{^(->}[r] &
   (F_p,F_{p-1}) } \]
@@ -104,7 +109,7 @@ $2p$:
 \[ H^q(D_p,D_p-0) \cong \widetilde H^{q-1}(D_p-0) = \widetilde
 H^{q-1}(S^{2p-1}) =
 \begin{cases}
-  \Z & q = 2p \\
+  \Z & q = 2p, \\
   0 & \text{otherwise}.
 \end{cases} \]
 In particular, it follows that
@@ -123,9 +128,7 @@ $X_{m,n}$ via factoring out the extra free group from the torus
 in the isomorphism
 \[ H^1(Y_{m,n}) \cong H^1(X_{m,n}) \oplus H^1(\T^n). \]
 
-From the theory
-underlying the spectral sequence, see e.g. \cite[Chapter
-1]{hatcherss}, we get that there is a subgroup
+From Theorem \ref{thm:ss}, we get that there is a subgroup
 \[ 0 \subset H \subset H^1(Y_{m,n}) \]
 and isomorphisms
 \begin{align*}
@@ -193,9 +196,14 @@ the following theorem.
 
   Now assume the theorem is correct for 
   \[ H^1(Y_{m,n-1}) \cong \Z^{m+n-2}. \]
-  By excision, we know that the group $H^2(F_1,F_0)$ is given by
+  By applying the formula for $\varphi$ given in Theorem
+  \ref{thm:permutation} to an index $i < m$,
+  \[ Y_{\set{i}} = Y^{\set{1,\dots,m}-i}_{m,n} \cong Y_{m,n-1}\big((i\;
+  i+1)\big) \times \T^{m-1}, \]
+  and we see that excision tells us that the group $H^2(F_1,F_0)$ is
+  given by
   \[ H^2(F_1,F_0) \cong \bigoplus_{i=1}^{m-1} H^0(Y_{m,n-1}\big((i\;
-  i+1)\big) \otimes H^2(D,D-0) \cong \Z^{m-1}. \]
+  i+1)\big)\times\T^{m-1}) \otimes H^2(D,D-0) \cong \Z^{m-1}. \]
   \begin{figure}[ht]
     \[ \xy
     (5,4); (5,-13); **\dir{-}; (5,4); *\dir{>};
@@ -229,8 +237,8 @@ the following theorem.
   The first map is induced by the inclusions
   \[ \imath : Y_{m,n-1}\big((i\; i+1)\big) \times \T^{m-1} \times (D-0)
   \to Y^{m,n-1}\times \T^m, \] 
-  given by first using the inverse of the homeomorphism from Lemma
-  \ref{lem:permutation}, given by the indices $I = (1 < 2 < \dots <
+  given by first using the inverse of the homeomorphism from Theorem
+  \ref{thm:permutation}, given by the indices $I = (1 < 2 < \dots <
   i-1 < i+1 < \dots m)$,
   \[ Y_{m,n}^I \to Y_{m,n+1}\big((i \; i+1)\big) \times \T^{m-1}, \]
   and then inserting the coordinate from $(D-0)$ on the $i$'th
@@ -251,13 +259,12 @@ the following theorem.
   \[ \imath^*(\alpha_j) = \widetilde{\alpha_j}\otimes 1 \in
   H^*(Y_{m,n-1}\big((i\; i+1) \big) \times \T^{m-1}) \otimes
   H^*(D-0) \]
-  And since $\delta$ is given by \fixme{Bør nok også argumenteres for
-    et sted}
+  And since $\delta$ is given by
   \[ \delta(\beta) =
   \begin{cases}
     \widetilde{\beta}\otimes [(D,D-0)] & \text{if } \beta =
-    \widetilde{\beta}\otimes [D-0] \\
-    0 & \text{otherwise}
+    \widetilde{\beta}\otimes [D-0], \\
+    0 & \text{otherwise}.
   \end{cases}, \]
   we see that $\delta(\imath^*(\alpha_j)) = 0$ in this case. If $i =
   j$, then the same considerations give us that
@@ -329,7 +336,7 @@ extends to the quotiented spaces, with
 \[ \Det^* : H^1(\TT{m+n-1}{n}) \to H^1(X_{m,n}) \]
 an isomorphism. Note that the action of $\T^n$ on $\T^{m+n-1}$ is not
 the obvious one, but is given by how the determinants change when
-$\T^n$ acts on $Y_{m,n}$ and the quotient is isomorphic to
+$\T^n$ acts on $Y_{m,n}$. The quotient is still isomorphic to
 $\T^{m-1}$. Furthermore the stabilisation
 maps on
 degree one cohomology are surjective, since the stabilisation maps
@@ -340,8 +347,8 @@ H^1(Y_{m,n+1})$ represents the image of moving once around zero in the
 $i$'th coordinate of $\T^{n+1}$, then
 \[ s^*(d_i) =
 \begin{cases}
-  d_i & 1 \leq i \leq n \\
-  0 & \text{otherwise}
+  d_i & 1 \leq i \leq n, \\
+  0 & \text{otherwise}.
 \end{cases} \]
 
 
@@ -361,23 +368,23 @@ $Y_{3,3}$, which is the set:
     a\neq 0,\, ad-bc \neq 0, \\
     adi+beh+cfg-deg-bci-afh \neq 0, \\
     di-fh \neq 0,\, i \neq 0
-  \end{matrix} } \]
+  \end{matrix} }. \]
 
-The way we will calculate this is by using the spectral sequence for
-a filtration of $Y_{3,3}$. Some of the calculations have
+The way we will calculate this is by using the spectral sequence
+defined in Section \ref{sec:filtration}. Some of the calculations have
 been done in Sage and the relevant source code can be found in
 Appendix \ref{appendix:sage}.
 
 
-We can apply the filtration to get a spectral sequence of
-$Y=Y_{3,3}$. The groups we need to compute for the first page are:
+The groups we need to compute for the first page in the spectral
+sequence are:
 \[ E_1^{p,q} \cong
 \begin{cases}
-  H^{q}(Y_\emptyset) & p=0 \\
+  H^{q}(Y_\emptyset) & p=0, \\
   H^{q+1}(Y_{\set{1}} \times (D,D-0)) \oplus H^{q+1}(Y_{\set{2}} \times
-  (D,D-0)) & p=1 \\
+  (D,D-0)) & p=1, \\
   H^{q+2}(Y_{\set{1,2}}\times (D_2,D_2-0)) & p = 2 \\
-  0 & \text{otherwise}
+  0 & \text{otherwise}.
 \end{cases} \]
 The four spaces that appear will be handled separately.
 
@@ -396,7 +403,7 @@ $Y_{3,3}$ that have two zeroes in the last column:
     adi-bci \neq 0 \\
     di \neq 0, i \neq 0
   \end{matrix}
-} \]
+}. \]
 
 The space is homeomorphic to $(\C^*)^3\times \C^2
 \times \set{(b,c)\in\C^2 \delim \vert \delim bc\neq 1}$, with the
@@ -409,7 +416,7 @@ homeomorphism given by
     c & d & 0 \\
     e & f & i
   \end{pmatrix} &\mapsto \left(a,d,i,\frac{e}{i},\frac{f}{i},
-    \frac{b}{a}, \frac{c}{d}\right)
+    \frac{b}{a}, \frac{c}{d}\right).
 \end{align*}
 
 We already computed the cohomology of $Y =\set{(b,c)\delim \vert\delim
@@ -417,12 +424,12 @@ We already computed the cohomology of $Y =\set{(b,c)\delim \vert\delim
 cohomology of $Y_{\set{1,2}}$:
 \[ H^q(Y_{\set{1,2}}) =
 \begin{cases}
-  \Z & q = 0 \\
-  \Z^4 & q = 1 \\
-  \Z^7 & q = 2 \\
-  \Z^7 & q = 3 \\
-  \Z^4 & q = 4 \\
-  \Z & q = 5 \\
+  \Z & q = 0, \\
+  \Z^4 & q = 1, \\
+  \Z^7 & q = 2, \\
+  \Z^7 & q = 3, \\
+  \Z^4 & q = 4, \\
+  \Z & q = 5, \\
   0 & \text{otherwise}.
 \end{cases} \]
 
@@ -434,7 +441,7 @@ The two generators of $Y$ will be denoted $y_{00,1}$ for the degree
 one generator and $y_{00,2}$ for the degree two generator. All other
 generators have degree one. The ring
 structure is the usual one on a tensor product, with the added
-relation $y_{00,1}\cup y_{00,2} = 0$. The element $y_{00,1}\in H^1(Y)$
+relation $y_{00,1}\cdot y_{00,2} = 0$. The element $y_{00,1}\in H^1(Y)$
 is given by the map
 \[ Y\ni (b,c) \mapsto 1-bc\in \C^* \]
 in cohomology, since there is another map
@@ -457,7 +464,7 @@ zero, which is the space
     a \neq 0, ad-bc \neq 0 \\
     adi + beh - bci - afh \neq 0 \\
     di -fh \neq 0, h \neq 0, i \neq 0 
-  \end{matrix}
+  \end{matrix}.
 } \]
 
 This space is homeomorphic to $(\C^*)^5 \times \C\times Y$:
@@ -468,24 +475,24 @@ This space is homeomorphic to $(\C^*)^5 \times \C\times Y$:
 \end{pmatrix} \mapsto \left(
 a, i, h, \frac{d}{h}-\frac{f}{i}, \frac{d}{h}-\frac{bc}{ah},
 \frac{e}{i}, \frac{bhi}{adi-afh},\frac{c}{h}-\frac{e}{i}
-\right) \] 
+\right). \] 
 Since the cohomology of $Y$ is already known, applying the K\"unneth
 formula gives
 \[ H^q(Y_{\set{1}}) =
 \begin{cases}
-  \Z & q = 0 \\
-  \Z^6 & q = 1 \\
-  \Z^{16} & q = 2 \\
-  \Z^{25} & q = 3 \\
-  \Z^{25} & q = 4 \\
-  \Z^{16} & q = 5 \\
-  \Z^6 & q = 6 \\
-  \Z & q = 7 \\
-  0 & \text{otherwise}
+  \Z & q = 0, \\
+  \Z^6 & q = 1, \\
+  \Z^{16} & q = 2, \\
+  \Z^{25} & q = 3, \\
+  \Z^{25} & q = 4, \\
+  \Z^{16} & q = 5, \\
+  \Z^6 & q = 6, \\
+  \Z & q = 7, \\
+  0 & \text{otherwise}.
 \end{cases} \] 
 As before, the ring structure is given by
 \[ H^*(Y_{\set{1}}) =
-\bigwedge\nolimits^*[a_{01},d_{01},f_{01},h_{01},i_{01}] \otimes H^*(Y)\]
+\bigwedge\nolimits^*[a_{01},d_{01},f_{01},h_{01},i_{01}] \otimes H^*(Y).\]
 
 \subsection{The cohomology of $Y_{\set{2}}$}
 
@@ -500,7 +507,7 @@ The space is
     a \neq 0, ad-bc \neq 0 \\
     adi +cfg -bci - deg \neq 0 \\
     di \neq 0, g\neq 0, i \neq 0 \end{matrix}
-} \]
+}, \]
 which can also be identified with $(\C^*)^5\times \C\times Y$ using
 the homeomorphism
 \[ \begin{pmatrix}
@@ -509,22 +516,23 @@ the homeomorphism
   e & f & i
 \end{pmatrix} \mapsto \left(\frac{a}{g},d,i,g, 1+\frac{cfg}{adi}-
   \frac{eg}{ai}-\frac{bc}{ad}, \frac{f}{i},\frac{b}{a}, \frac{c}{d}
-\right)\]
+\right).\]
+
 Since we already know the cohomology of this space, we know
 \begin{align*}
   H^q(Y_{\set{2}}) = 
   \left(\bigwedge\nolimits^*[a_{10},d_{10},f_{10},g_{10},i_{10}]\otimes
   H^*(Y)\right)^q &=
   \begin{cases}
-    \Z & q = 0 \\
-    \Z^6 & q = 1 \\
-    \Z^{16} & q = 2 \\
-    \Z^{25} & q = 3 \\
-    \Z^{25} & q = 4 \\
-    \Z^{16} & q = 5 \\
-    \Z^6 & q = 6 \\
-    \Z & q = 7 \\
-    0 & \text{otherwise}
+    \Z & q = 0, \\
+    \Z^6 & q = 1, \\
+    \Z^{16} & q = 2, \\
+    \Z^{25} & q = 3, \\
+    \Z^{25} & q = 4, \\
+    \Z^{16} & q = 5, \\
+    \Z^6 & q = 6, \\
+    \Z & q = 7, \\
+    0 & \text{otherwise}.
   \end{cases}
 \end{align*}
 
@@ -543,7 +551,7 @@ vector are non-zero.
     a \neq 0, ad-bc \neq 0, di-fh \neq 0, \\
     adi+beh+cfg-deg-bci-afh \neq 0, \\
     g\neq 0, h\neq 0, i\neq 0
-  \end{matrix} }\]
+  \end{matrix} }. \]
 The space is homeomorphic to $(\C^*)^7\times \set{ (x,y,z)\in \C^3
   \mid y-z-xyz = 1}$, with the homeomorphism given by
 \begin{align*}
@@ -557,7 +565,7 @@ The space is homeomorphic to $(\C^*)^7\times \set{ (x,y,z)\in \C^3
   &C=\frac{c}{h}-\frac{a}{g}+\frac{cdi-deh}{fh^2-dhi} +
   \frac{beh-bci}{fgh-dgi},\\
   &\left.\frac{bC}{aD},\frac{c}{hC}-\frac{a}{gC},
-    \frac{D}{C}\frac{eh-ci}{fh-di}\right)
+    \frac{D}{C}\frac{eh-ci}{fh-di}\right).
 \end{align*}
 
 To get the cohomology, we refer back to Example \ref{ex:32}, where we
@@ -583,7 +591,7 @@ this, we get
 and the generators are
 \[ H^*(Y_{\emptyset}) =
 \bigwedge\nolimits^*[a_{11},d_{11},g_{11},h_{11},i_{11},C_{11},D_{11}]
-\otimes H^*(Z) \]
+\otimes H^*(Z). \]
 
 \subsubsection{A note on the cohomology of $Z$}
 
@@ -609,7 +617,8 @@ is done by considering the subspace
   \frac{y-1}{1+xy}>0 } \subset Z. \]
 This space is closed in $Z$ since any sequence in $R$ that converges
 in $Z$ must also converge in $R$.
-Consider a subbundle $NR \cong R\times D$ of the normal bundle of $R$
+Consider a subbundle $NR \cong R\times D$ of the normal
+bundle of $R$
 in the tangent bundle $TZ$, such that the exponential map is a
 diffeomorphism on $NR$. This gives us a diagram
 \[ \xymatrix{ H^2(NR,NR_0) & H^2(Z,Z-R) \ar[l]_\cong \ar[r]^>>>>>{j^*} &
@@ -644,11 +653,12 @@ either $1$ or $-1$, depending on orientation, to the homology class in
 $(Z,Z-R)$.
 
 There is a smiliar argument with the space $Y$ from before and the
-subspace $R_Y = \set{(b,c) \in \R^2 \mid b > 0, c > 0, bc > 1}$. In
+subspace ${R_Y = \set{(b,c) \in \R^2 \mid b > 0, c > 0, bc > 1}}$. In
 particular, the generator of $H_2(Y)$ can be taken as
 $i_*\left([\widehat T]\right)$, where $[\widehat
-  T]$ is a generator of $H_2(\widehat \T)$ for the torus $\widehat \T
-  = \set{(b,c)\mid \size{b}=\size{c} = 2}$.
+  T]$ is a generator of $H_2(\widehat \T)$ for the torus 
+\[ {\widehat \T = \set{(b,c)\mid \size{b}=\size{c} = 2}} \subset
+R_Y. \]
 
 \subsection{The first page}
 
@@ -656,11 +666,11 @@ With all of the above, we can draw the $E_1$-page of the spectral
 sequence. Remember that this is
 \[ E_1^{p,q} \cong
 \begin{cases}
-  H^{q}(Y_\emptyset) & p=0 \\
+  H^{q}(Y_\emptyset) & p=0, \\
   H^{q+1}(Y_{\set{1}} \times (D,D-0)) \oplus H^{q+1}(Y_{\set{2}} \times
-  (D,D-0)) & p=1 \\
-  H^{q+2}(Y_{\set{1,2}}\times (D_2,D_2-0)) & p = 2 \\
-  0 & \text{otherwise}
+  (D,D-0)) & p=1, \\
+  H^{q+2}(Y_{\set{1,2}}\times (D_2,D_2-0)) & p = 2, \\
+  0 & \text{otherwise}.
 \end{cases} \]
 
 By inserting the groups that were calculated above into this, we get
@@ -697,7 +707,7 @@ compute the homology of the differentials.
 By definition, the differentials are the boundary maps of the long
 exact sequence of the triple $(F_{p+1},F_p,F_{p-1})$,
 \[ d_1 : E_1^{p,q} = H^{p+q}(F_p,F_{p-1}) \to H^{p+q+1}(F_{p+1},F_p) =
-E_1^{p+1,q} \]
+E_1^{p+1,q}. \]
 We will consider the two cases $p=0$ and $p=1$ separately.
 
 \subsection{First column}
@@ -705,16 +715,16 @@ We will consider the two cases $p=0$ and $p=1$ separately.
 For $p = 0$, we are looking at the boundary map of the pair
 $(F_1,F_0)$. Consider the inclusion of pairs,
 \[ i : Y_{\set{1}}\times (D,D-0) \sqcup Y_{\set{2}}\times (D,D-0) \to
-(F_1,F_0) \]
+(F_1,F_0). \]
 This is an isomorphism in cohomology and gives a map between the long
 exact sequences that makes the following diagram
 commute:
 \[ \xymatrix{
-H^{p+q}(F_0) \ar[r]^>>>>>>>>>>>>>>>>>>>>{d_1} \ar[d]^{i^*} &
+H^{p+q}(F_0) \ar[r]^>>>>>>>>>>>>>>>>>>>{d_1} \ar[d]^{i^*} &
 H^{p+q+1}(F_1,F_0) \ar[d]^{i^*}_{\cong} \\
 H^{p+q}((Y_{\set{1}}\sqcup Y_{\set{2}})\times (D-0))
 \ar[r]^>>>>>{\delta} & H^{p+q+1}((Y_{\set{1}}\sqcup Y_{\set{2}})\times
-(D,D-0)) } \]
+(D,D-0)). } \]
 The bottom map is the boundary map from the long exact sequence of the
 pair $(D,D-0)$. This map is well-known and will be treated at the end
 of this section, so the only missing part is to calculate the
@@ -731,30 +741,30 @@ We can write the inclusion out in coordinates as
   (a,d,f,h,i,b,c,g) \mapsto \bigg(&g,h,i,\frac{a}{g},-f,d,\\
   & C =
   c-\frac{a}{g}-\frac{cd}{f}-bc^2+\frac{abc}{g}, \\
-  & \frac{bfC}{d},\frac{c}{C}-\frac{a}{g C},\frac{cd}{fC}\bigg) 
+  & \frac{bfC}{d},\frac{c}{C}-\frac{a}{g C},\frac{cd}{fC}\bigg).
 \end{align*}
 
 On the generators, this is given by
 \begin{align*}
   i^* : H^*(Y_{\emptyset}) &\to H^*(Y_{\set{1}}\times (D-0)) \\
-  a_{11} & \mapsto a_{01} - g_{01} \\
-  d_{11} &\mapsto f_{01} \\
-  g_{11} &\mapsto g_{01} \\
-  h_{11} &\mapsto h_{01} \\
-  i_{11} &\mapsto i_{01} \\
-  D_{11} &\mapsto d_{01} \\
-  C_{11} &\mapsto a_{01} - g_{01} + y_{01,1} \\
-  z_{11} &\mapsto y_{01,2} + (a_{01}-d_{01}+f_{01}-g_{01})y_{01,1}
+  a_{11} & \mapsto a_{01} - g_{01}, \\
+  d_{11} &\mapsto f_{01}, \\
+  g_{11} &\mapsto g_{01}, \\
+  h_{11} &\mapsto h_{01}, \\
+  i_{11} &\mapsto i_{01}, \\
+  D_{11} &\mapsto d_{01}, \\
+  C_{11} &\mapsto a_{01} - g_{01} + y_{01,1}, \\
+  z_{11} &\mapsto y_{01,2} + (a_{0}-d_{01}+f_{01}-g_{01})y_{01,1},
 \end{align*}
 where $g_{01}$ is the generator of $H^1(D-0)$.
 
-In degree 1, this is calculated by dualizing to homology, writing out
+In degree 1, this is calculated by dualising to homology, writing out
 the map on generators and working
 out what they map to. For $z_{11}$ it is slightly
 harder. To calculate this, we use the submanifold $R \subset Z$
 defined previously as
 \[ R = \set{(x,y,z)\in \R^3 \delim \Big\vert\delim x > 0, y < 0, z =
-  \frac{y-1}{1+xy}>0} \]
+  \frac{y-1}{1+xy}>0}. \]
 by choosing a generator $\alpha = [\sigma]$ of $H_2(Y_{\set{1}}\times
 (D-0))$ and calculating the intersection of the image of $f = \pr_Z
 \circ i\circ \sigma$ and $R$. Note that if the coordinates of $Y$ are
@@ -766,43 +776,44 @@ $h$ do not appear in the projection to $Z$ and can not influence the
 result. Hence we only have to check the duals of the following
 generators in degree 2:
 \[ a_{01} y_{01,1}, d_{01} y_{01,1}, f_{01} y_{01,1}, y_{01,1} g_{01},
-y_{01,2} \]
+y_{01,2}. \]
 These will be handled individually. All non-relevant coordinates will
 be set to 1, except $g$ which will be denoted $\e$ to make it clear
 that this coordinate is small. If $y_{01,1}$ is involved, we choose the
 generator
-\[ \sigma(\lambda) = (1-\lambda,1) \qquad \lambda\in S^1 \]
+\[ \sigma(\lambda) = (1-\lambda,1)\in Y, \quad \lambda\in S^1, \]
 as this gives
 \[ y_{01,1} = [\lambda \mapsto 1-(1-\lambda)\cdot 1] = [\lambda
-\mapsto \lambda] \]
+\mapsto \lambda]. \]
 
 \paragraph{$\mathbf{a_{01} y_{01,1}}$:}
 The relevant map is
 \[ (a,\lambda) \mapsto \left( (1-\l)C, \frac{1}{C}-\frac{a}{\e
-    C},\frac{1}{C}\right)\]
+    C},\frac{1}{C}\right), \]
 where $C = -1-\frac{a\l}{\e}$. If this intersects $R$ then $C$ has
 to be real and positive by looking at the last coordinate, which
 forces $\l$ real and negative by the first coordinate and $a$ real and
 positive by the second. Hence there is at most one intersection, at
 $(1,-1)$:
-\[ f(1,-1) = \left( \frac{2-2\e}{\e},-1,\frac{\e}{1-\e}\right) \]
+\[ f(1,-1) = \left( \frac{2-2\e}{\e},-1,\frac{\e}{1-\e}\right). \]
 By inspection, this satisfies the conditions and hence belongs to
 $R$, so we conclude that the image intersects once. This gives the
 following formula:
 \[ \langle f^*(z_{11}), a_{01}y_{01,1} \rangle = \langle
-z_{11},f_*(a_{01}y_{01,1})\rangle = \pm 1 \]
+z_{11},f_*(a_{01}y_{01,1})\rangle = \pm 1. \]
 To check the sign, we need to check if this map preserves the
 orientation of the torus in $R$. This is done by differentiating the
 map to get a map of tangent spaces
 \[ Tf : TT^2 \to TR \]
 and checking that the determinant of this map is
 positive. This has been done in Sage, see Appendix
-\ref{sec:sageorientation} for the code.
+\ref{sec:sageorientation} for the code. The intersection preserves
+orientation, so the sign is plus.
 
 \paragraph{$\mathbf{d_{01} y_{01,1}}$:}
 In this case the map becomes
 \[ (d,\l) \mapsto \left( \frac{(1-\l)C}{d},\frac{\e-1}{\e C},
-  \frac{d}{C} \right) \]
+  \frac{d}{C} \right), \]
 and by a similar analysis, this intersects in exactly the
 point $f(1,-1)$, which is the same as before. However, this time the
 orientation is reversed.
@@ -817,10 +828,10 @@ This also intersects and preserves the orientation.
 This is calculated by the intersection points of the fundamental class
 of the torus in $Y$, which was mentioned earlier:
 \[ \widehat T = \set{(b,c) \in \C^2 \mid \size{b}=\size{c} = 2}
-\subset Y \]
+\subset Y. \]
 The map becomes
 \[ (b,c) \mapsto \left( bC, \frac{c}{C}-\frac{1}{\e C},\frac{c}{C}
-\right) \]
+\right), \]
 with $C = -bc^2-\frac{1-bc}{\e}$. We will write $x$ for the first
 coordinate, $y$ for the second and $z$ for the third. An analysis as
 before gives $bc = xz > 0$ and $c = \frac{1}{\e(z-y)} \in
@@ -828,7 +839,7 @@ before gives $bc = xz > 0$ and $c = \frac{1}{\e(z-y)} \in
 $xy = bc - b\e^{-1}<0$ shows that $b$ must be positive since $bc$ is
 positive. The only possible point of intersection is
 \[ f(2,2) = \left( \frac{6-16\e}{\e},
-  \frac{2\e-1}{3-8\e},\frac{2\e}{3-8\e} \right) \]
+  \frac{2\e-1}{3-8\e},\frac{2\e}{3-8\e} \right). \]
 Since $\e$ is very small, this intersects $R$ and the orientation is
 preserved.
 
@@ -844,20 +855,20 @@ The inclusion in coordinates is
   & C= -af-\frac{a^2bh}{d}+\frac{a^2bhf}{d}+\frac{a^2b^2ch}{d}, \\
   & \frac{bC}{D}, \frac{cd}{hC}-\frac{a}{C},
   \frac{cD}{C}-\frac{ahD}{dC}+\frac{afhD}{dC}+
-  \frac{abchD}{dC}\bigg)
+  \frac{abchD}{dC}\bigg).
 \end{align*}
 
 We calculate as before and get the following on generators:
 \begin{align*}
   i^* : H^*(Y_{\emptyset}) &\to H^*(Y_{\set{2}}\times (D-0)) \\
-  a_{11} & \mapsto a_{10} \\
-  d_{11} &\mapsto d_{10} - h_{10} \\
-  g_{11} &\mapsto g_{10} \\
-  h_{11} &\mapsto h_{10} \\
-  i_{11} &\mapsto i_{10} \\
-  D_{11} &\mapsto d_{10} + y_{10,1} - h_{10} \\
-  C_{11} &\mapsto f_{10} + a_{10} \\
-  z_{11} &\mapsto y_{10,2} + (a_{10}-d_{10}+f_{10}+h_{10})y_{10,1}
+  a_{11} & \mapsto a_{10}, \\
+  d_{11} &\mapsto d_{10} - h_{10}, \\
+  g_{11} &\mapsto g_{10}, \\
+  h_{11} &\mapsto h_{10}, \\
+  i_{11} &\mapsto i_{10}, \\
+  D_{11} &\mapsto d_{10} + y_{10,1} - h_{10}, \\
+  C_{11} &\mapsto f_{10} + a_{10}, \\
+  z_{11} &\mapsto y_{10,2} + (a_{10}-d_{10}+f_{10}+h_{10})y_{10,1},
 \end{align*}
 where $h_{10}$ is the generator of $H^1(D-0)$.
 
@@ -868,7 +879,7 @@ previous ones.
 
 The differential on the second column is the boundary map
 \[ \delta : H^q((Y_{\set{1}}\sqcup Y_{\set{2}})\times (D,D-0)) \cong
-H^q(F_1,F_0) \to H^{q+1}(F_2,F_1) \] 
+H^q(F_1,F_0) \to H^{q+1}(F_2,F_1). \] 
 
 To calculate this map, consider the inclusion of triples
 \[ Y_{\set{1,2}}\times (D_2,D_2-0,(D-0)\times (D-0)) \hookrightarrow
@@ -879,7 +890,7 @@ of $Y_{\set{1,2}}$. There are homeomorphisms of pairs,
   \big(D_2-0,(D-0)\times(D-0)\big) \cong \big(D\times (D-0) \sqcup
   (D-0)\times D, (D-0)\times(D-0)\big) \\
   \big(D_2,D_2-0\big) \cong \big(D\times D,D\times
-  (D-0)\cup (D-0)\times D\big) =  (D,D-0)\times (D,D-0)
+  (D-0)\cup (D-0)\times D\big) =  (D,D-0)\times (D,D-0).
 \end{align*}
 These gives a commuting diagram,
 \[ \xymatrix{ H^q(F_1,F_0) \ar[r] \ar[d] & H^{q+1}(F_2,F_1)
@@ -887,7 +898,7 @@ These gives a commuting diagram,
   H^q(Y_{\set{1,2}}\times (D_2-0,(D-0)\times (D-0))) \ar[r]
 %  \ar@{=}[d] 
 &
-  H^{q+1}(Y_{\set{1,2}} \times (D_2,D_2-0)) %\ar@{=}[d] 
+  H^{q+1}(Y_{\set{1,2}} \times (D_2,D_2-0)). %\ar@{=}[d] 
 %\\
 %  H^q(Y_{\set{1,2}}\times ((D,D-0)\times (D-0) \sqcup (D-0)\times
 %  (D,D-0))) \ar[r] & H^{q+1}(Y_{\set{1,2}}\times (D,D-0)\times (D,D-0))
@@ -898,7 +909,7 @@ homeomorphism of pairs to the bottom of the diagram, the boundary map
 at the bottom becomes the sum of the two boundary maps,
 \[ \xymatrix@R=0.1em{ H^q(Y_{\set{1,2}}\times (D,D-0)\times (D-0))
   \ar[]!<15ex,0ex>;[rd]!<-20ex,0ex>^{\delta} \\
-  & H^{q+1}(Y_{\set{1,2}}\times (D,D-0)\times (D,D-0)) \\
+  & H^{q+1}(Y_{\set{1,2}}\times (D,D-0)\times (D,D-0)). \\
   H^q(Y_{\set{1,2}}\times (D-0)\times (D,D-0))
   \ar[]!<15ex,0ex>;[ur]!<-20ex,0ex>_\delta } \]
 The boundary maps are given by the long exact sequence of the pair
@@ -912,9 +923,9 @@ $Y_{\set{1,2}}\times (D-0)\times (D,D-0)$ to $Y_{\set{2}}\times
 two maps:
 \begin{align*}
   i_1^* : H^q(Y_{\set{1}}\times (D,D-0)) &\to H^q(Y_{\set{1,2}}\times
-  (D,D-0)\times (D-0)) \\
+  (D,D-0)\times (D-0)), \\
   i_2^* : H^q(Y_{\set{2}}\times (D,D-0)) &\to H^q(Y_{\set{1,2}}\times
-  (D-0) \times (D,D-0))
+  (D-0) \times (D,D-0)).
 \end{align*}
 
 \subsubsection{The inclusion $Y_{\set{1,2}}\times (D,D-0) 
@@ -925,10 +936,10 @@ In coordinates, the map becomes
   (\C^*)^3 \times Y \times (D,D-0)\times (D-0) &\to (\C^*)^5 \times Y
   \times (D,D-0) \\
   (a,d,i,b,c,g,h) &\mapsto \left(a,i,h,\frac{d}{h},
-  \frac{d}{h}(1-bc), \frac{bh}{d},\frac{dc}{h},g\right)
+  \frac{d}{h}(1-bc), \frac{bh}{d},\frac{dc}{h},g\right).
 \end{align*}
 
-Again, we calculate the map on cohomology by dualizing to homology
+Again, we calculate the map on cohomology by dualising to homology
 and working with the dual generators. To check what happens to the
 elements of $H^q(Y)$, we count intersections with the subspace $R_Y =
 \set{(b,c)\in \R^2 \mid b > 0, c > 0, bc > 1}$ of $Y$, exactly as for
@@ -936,14 +947,14 @@ $Z$ above.
 \begin{align*}
   i_1^* : H^q(Y_{\set{1}}\times (D,D-0)) &\to H^q(Y_{\set{1,2}}\times
   (D,D-0)\times (D-0)) \\
-  a_{01} &\mapsto a_{00} \\
-  d_{01} &\mapsto d_{00}-h_{00} + y_{00,1} \\
-  f_{01} &\mapsto d_{00} - h_{00} \\
-  g_{01} &\mapsto g_{00} \\
-  h_{01} &\mapsto h_{00} \\
-  i_{01} &\mapsto i_{00} \\
-  y_{01,1} &\mapsto y_{00,1} \\
-  y_{01,2} &\mapsto y_{00,2} - d_{00}y_{00,1} + h_{00}y_{00,1}
+  a_{01} &\mapsto a_{00}, \\
+  d_{01} &\mapsto d_{00}-h_{00} + y_{00,1}, \\
+  f_{01} &\mapsto d_{00} - h_{00}, \\
+  g_{01} &\mapsto g_{00}, \\
+  h_{01} &\mapsto h_{00}, \\
+  i_{01} &\mapsto i_{00}, \\
+  y_{01,1} &\mapsto y_{00,1}, \\
+  y_{01,2} &\mapsto y_{00,2} - d_{00}y_{00,1} + h_{00}y_{00,1}.
 \end{align*}
 We denote the generator of $H^2(D,D-0)$ in
 $H^*(Y_{\set{1}}\times (D,D-0))$ by $g_{01}$ and for
@@ -957,20 +968,20 @@ This is exactly as above for the map
   (\C^*)^3 \times Y \times (D-0)\times (D,D-0) &\to (\C^*)^5 \times
   Y\times (D,D-0) \\ 
   (a,d,i,b,c,g,h) &\mapsto
-  \left(\frac{a}{g},d,i,g,1-bc,b,c,h\right)
+  \left(\frac{a}{g},d,i,g,1-bc,b,c,h\right).
 \end{align*}
 In cohomology, this becomes
 \begin{align*}
   i_2^* : H^q(Y_{\set{2}}\times (D,D-0)) &\to H^q(Y_{\set{1,2}}\times
   (D-0) \times (D,D-0)) \\
-  a_{10} &\mapsto a_{00} - g_{00} \\
-  d_{10} &\mapsto d_{00} \\
-  f_{10} &\mapsto y_{00,1}\\
-  g_{10} &\mapsto g_{00} \\
-  h_{10} &\mapsto h_{00} \\
-  i_{10} & \mapsto i_{00} \\
-  y_{10,1} &\mapsto y_{00,1} \\
-  y_{10,2} &\mapsto y_{00,2}
+  a_{10} &\mapsto a_{00} - g_{00}, \\
+  d_{10} &\mapsto d_{00}, \\
+  f_{10} &\mapsto y_{00,1}, \\
+  g_{10} &\mapsto g_{00}, \\
+  h_{10} &\mapsto h_{00}, \\
+  i_{10} & \mapsto i_{00}, \\
+  y_{10,1} &\mapsto y_{00,1}, \\
+  y_{10,2} &\mapsto y_{00,2},
 \end{align*}
 with $g_{01}\in H^2(D,D-0)$ inside $H^*(Y_{\set{2}}\times (D,D-0))$ and
 $g_{00}\in H^2(D,D-0)$, $h_{00}\in H^1(D-0)$ inside
@@ -983,7 +994,7 @@ maps for the pair $(D,D-0)$. By writing out the long exact sequence,
 the boundary map
 \[ \delta : H^*(D-0) \to H^*(D,D-0) \]
 is an isomorphism in degree 1,
-\[ H^1(D-0) \cong H^2(D,D-0) \]
+\[ H^1(D-0) \cong H^2(D,D-0), \]
 and zero in all other degrees. The boundary map for the pair $X\times
 (D,D-0)$ is $\Id\otimes \delta$ in tensor-notation. So the boundary
 map in the cases above picks out the ``new'' coordinate added to
@@ -993,8 +1004,8 @@ it. To be more precise, the map is given on generators by:
   H^*(X)\otimes H^*(D-0)) &\to H^*(X)\otimes H^*(D,D-0)) \\
   x\otimes d &\mapsto
   \begin{cases}
-    x \otimes \delta d & \text{if } d\in H^1(D-0) \\
-    0 & \text{otherwise}
+    x \otimes \delta d & \text{if } d\in H^1(D-0), \\
+    0 & \text{otherwise}.
   \end{cases}
 \end{align*}
 
@@ -1031,7 +1042,7 @@ is done using Sage. The result can be found in Figure \ref{fig:e2}.
 \end{figure}
 
 The differentials from $E_2$ onwards are given as maps:
-\[ d_r : E_r^{p,q} \to E_r^{p+r,q+1-r} \]
+\[ d_r : E_r^{p,q} \to E_r^{p+r,q+1-r}. \]
 For $r\geq 2$, this increases $p$ by at least 2. This means that
 the domain or codomain of $d_r$ will always be zero, so taking
 homology does not change anything. Hence $E_2 = E_\infty$, the
@@ -1042,28 +1053,28 @@ we are also interested in factoring out the $\T^3$ torus, we note this
 as well.
 \[ H^q(Y_{3,3}) = E_2^{0,q} \oplus E_2^{1,q-1} = 
 \begin{cases}
-  \Z & q = 0 \\
-  \Z^{5} & q = 1\\
-  \Z^{11} & q = 2\\
-  \Z^{15} & q = 3\\
-  \Z^{17} & q = 4\\
-  \Z^{19} & q = 5\\
-  \Z^{18} & q = 6\\
-  \Z^{12} & q = 7\\
-  \Z^{5} & q = 8\\
-  \Z & q = 9\\
-  0 & \text{otherwise} 
+  \Z & q = 0, \\
+  \Z^{5} & q = 1,\\
+  \Z^{11} & q = 2,\\
+  \Z^{15} & q = 3,\\
+  \Z^{17} & q = 4,\\
+  \Z^{19} & q = 5,\\
+  \Z^{18} & q = 6,\\
+  \Z^{12} & q = 7,\\
+  \Z^{5} & q = 8,\\
+  \Z & q = 9,\\
+  0 & \text{otherwise}.
 \end{cases} \qquad
 H^q(X_{3,3}) =
 \begin{cases}
-  \Z & q = 0 \\
-  \Z^{2} & q=1 \\
-  \Z^{2} & q=2 \\
-  \Z^{2} & q=3 \\
-  \Z^{3} & q=4 \\
-  \Z^{2} & q=5 \\
-  \Z & q=6 \\
-  0 & \text{otherwise}
+  \Z & q = 0, \\
+  \Z^{2} & q=1, \\
+  \Z^{2} & q=2, \\
+  \Z^{2} & q=3, \\
+  \Z^{3} & q=4, \\
+  \Z^{2} & q=5, \\
+  \Z & q=6, \\
+  0 & \text{otherwise}.
 \end{cases}
 \]
 

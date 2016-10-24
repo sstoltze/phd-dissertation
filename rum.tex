@@ -30,8 +30,8 @@ Before we can define the spaces that we will be working with, it will
 be helpful to define an approximation to them.
 
 \begin{definition} 
-  For natural numbers $m$ and $n$, the space $Y_{m,n}\subset \C^{mn}$
-  is
+  For natural numbers $m$ and $n$, the space $Y_{m,n}\subset
+  (\C^{m})^{n}$ is
   \[ Y_{m,n} = \set{(a_1,\dots,a_n) \in (\C^m)^n \delim\Bigg\vert\delim
     \begin{matrix}
       \text{Any } m \text{ subsequent vectors in } \\
@@ -52,7 +52,7 @@ defined spaces:
   \label{def:rum}
   For two invertible matrices $X$ and $Y$ in
   $\GL_m(\C)$, the space \newline
-  $Y_{m,n}(X,Y) \subset \C^{mn}$ is
+  $Y_{m,n}(X,Y) \subset (\C^{m})^{n}$ is
   \[ Y_{m,n}(X,Y) = \set{(a_1,\dots,a_n) \in (\C^m)^n
     \delim\Bigg\vert\delim 
     \begin{matrix}
@@ -72,7 +72,7 @@ defined spaces:
   \[ Y_{m,n}(Y) = Y_{m,n}(\Id,Y). \]
 \end{definition}
 
-Note that $Y_{m,n}(X,Y)$ can also be defined as the
+We could also define $Y_{m,n}(X,Y)$ as the
 pre-image of the open set $(\C^*)^{m+n-1}$ in $\C^{m+n-1}$ under the
 continuous map $\Det_{X,Y}$ that calculates determinants of subsequent
 vectors:
@@ -91,7 +91,7 @@ $X =\nobreak [x_1,\dots,x_m]$ and $Y = [y_1,\dots,y_m]$,
 but only on the two flags in $\C^{m}$ defined from the columns:
 \begin{alignat*}{5}
   \mathrm{Fl_R}(X)\, &&= \Big(&\spa(x_m) &&\subset \spa(x_{m-1},x_m)
-  &&\subset \dots &&\subset \C^m\Big) \\
+  &&\subset \dots &&\subset \C^m\Big), \\
   \mathrm{Fl_L}(Y)\, &&= \Big(&\spa(y_1) &&\subset \spa(y_1,y_2)
   &&\subset \dots &&\subset \C^m\Big).
 \end{alignat*}
@@ -101,8 +101,7 @@ and if $(a_1,\dots,a_{k})$ is a collection of linearly independent
 vectors of $\C^m$, then the vectors
 $(x_{k+1},\dots,x_m,a_1,\dots,a_{k})$ are
 linearly independent if and only if $a_1$ is not in the subspace
-spanned by $(x_{k+1},\dots,x_m)$, $a_1$ and $a_2$ are linearly
-independent and not in the
+spanned by $(x_{k+1},\dots,x_m)$, $a_1$ and $a_2$ are not in the
 subspace spanned by $(x_{k+2},\dots,x_m)$ and so forth. The same
 argument can be applied to the columns of $Y$.
 
@@ -134,10 +133,10 @@ following lemma shows.
   depends
   on the flags 
   \begin{align*}
-    \mathrm{Fl_R}(L^{-1}) &= \mathrm{Fl_R}(\Id) \\
+    \mathrm{Fl_R}(L^{-1}) &= \mathrm{Fl_R}(\Id), \\
     \mathrm{Fl_L}(\sigma U) &= \mathrm{Fl_L}(\sigma).
   \end{align*}
-  So $Y_{m,n}(L^{-1},\sigma U)$ is homeomorphic to the space
+  So $Y_{m,n}(L^{-1},\sigma U)$ is the same as the space
   $Y_{m,n}(\sigma)$.
 \end{proof}
 
@@ -189,12 +188,12 @@ cohomology.
   of $Y_{2,2}$.
   Consider $Y$ as a subspace of
   the one-point compactification $S^4 = \C^2\cup\set{\infty}$. Then the
-  complement is:
-  \[ S^4-Y = \set{(b,c)\in \C^2 \mid bc=1}\cup\set{\infty} \]
+  complement is
+  \[ S^4-Y = \set{(b,c)\in \C^2 \mid bc=1}\cup\set{\infty}. \]
   This can be identified with the wedge sum $S^1\vee S^2$ by considering
   the subspace
   \[ \C^* \cong \set{\left(b,\frac{1}{b} \right) \sdel b\in \C^*} =
-  (S^4-Y)-\set{\infty} \]
+  (S^4-Y)-\set{\infty}. \]
   The point at infinity is glued to this space when either $b$ or $c$
   is large, which for our copy of $\C^*$
   corresponds to $b$ large or $b$ near 0. Hence what we get is
@@ -204,24 +203,24 @@ cohomology.
   Now we can apply Alexander duality to this space to compute
   \[ \widetilde H_q(Y) \cong \widetilde H^{3-q}(S^4-Y) =
   \begin{cases}
-    \Z & q \in \set{1,2} \\
-    0 & \text{otherwise}
+    \Z & q \in \set{1,2}, \\
+    0 & \text{otherwise}.
   \end{cases} \]
   and hence
   \[ H^q(Y) \cong
   \begin{cases}
-    \Z & q \in \set{0,1,2} \\
-    0 & \text{otherwise}
+    \Z & q \in \set{0,1,2}, \\
+    0 & \text{otherwise}.
   \end{cases} \]
   
   This shows
   \[ H^q(Y_{2,2}) \cong H^q((\C^*)^2\times Y) =
   \begin{cases}
-    \Z & q=0 \\
-    \Z^3 & q = 1 \\
-    \Z^4 & q = 2 \\
-    \Z^3 & q = 3 \\
-    \Z & q =4 \\
+    \Z & q=0, \\
+    \Z^3 & q = 1, \\
+    \Z^4 & q = 2, \\
+    \Z^3 & q = 3, \\
+    \Z & q =4, \\
     0 & \text{otherwise}.
   \end{cases} \]
 \end{example}
@@ -276,7 +275,7 @@ cohomology.
   \begin{align*}
     (b,c,d,e) \mapsto \left(
     \frac{b(c-de)}{d-bc}, \frac{c}{c-de}, \frac{e(d-bc)}{c-de},
-    d-bc, c-de\right)
+    d-bc, c-de\right).
   \end{align*}
   We will use Alexander duality to compute the cohomology. Consider
   the complement in $S^8$,
@@ -284,7 +283,7 @@ cohomology.
     \mid c = de} \cup \set{\infty}, \]
   and denote the two sets as $W_1$ and $W_2$. Then
   \begin{align*}
-    W_1\cap W_2 &= \set{(b,c,d,e) \mid d=bc,c=de}\cup\set{\infty}
+    W_1\cap W_2 &= \set{(b,c,d,e) \mid d=bc,c=de}\cup\set{\infty}.
   \end{align*}
   We glue the point at infinity to this space when $c$ is large, but
   this is the same as either $d$ or $e$ being large. Hence there is a
@@ -293,30 +292,30 @@ cohomology.
     W_1\cap W_2 &\cong \set{(b,d,e) \mid d=bde}\cup\set{\infty} \\
                 &= \set{(b,d,e)\mid 0 = (be-1)d}\cup\set{\infty} \\
                 &= \set{(b,d,e) \mid d = 0} \cup \set{(b,d,e) \mid
-                  be=1}\cup\set{\infty}
+                  be=1}\cup\set{\infty}.
   \end{align*}
   
   These new spaces have computable homology, since they can be
   identified with spaces built from spheres. The first is relatively
   easy,
   \[ Z_1 = \set{(b,d,e)\mid d = 0}\cup \set{\infty} =
-  \set{(b,0,0,d)}\cup\set{\infty} \cong S^4 \]
+  \set{(b,0,0,d)}\cup\set{\infty} \cong S^4. \]
   The second is slightly harder.
   \[ Z_2 =\set{(b,d,e)\mid be=1}\cup\set{\infty}=
-  \set{\left(b,\frac{d}{b},d,\frac{1}{b} \right) }\cup\set{\infty} \]
+  \set{\left(b,\frac{d}{b},d,\frac{1}{b} \right) }\cup\set{\infty}. \]
   This set is homeomorphic to the one-point compactification of
   $\set{(b,d)\in \C^*\times \C}$. By \cite[Chapter~2.3]{dupontk}, this
   is given by the smash product of the one-point compactifications,
   \[ Z_2\simeq (\C^*\times\C)^+ \cong (\C^*)^+\wedge\C^+ \cong (S^1\vee
-  S^2) \wedge S^2 = S^3 \vee S^4 \]
+  S^2) \wedge S^2 = S^3 \vee S^4. \]
   The intersection of these spaces is
   \[ Z_1\cap Z_2 = \set{\left(b,0,0,\frac{1}{b}\right)}\cup\set{\infty}
-  \simeq S^1\vee S^2 \]
+  \simeq S^1\vee S^2. \]
   
   From all of this, we get a commutative diagram of inclusions,
   \[ \xymatrix{
     S^1\vee S^2 \ar[r]\ar[d] & S^3\vee S^4 \ar[d] \\
-    S^4 \ar[r] & W_1\cap W_2
+    S^4 \ar[r] & W_1\cap W_2.
   } \]
   The two maps from $S^1\vee S^2$ are zero in cohomology (when the
   degree is greater than zero) since in each
@@ -324,46 +323,46 @@ cohomology.
   Mayer-Vietoris, we get
   \[ H^q(W_1\cap W_2) =
   \begin{cases}
-    \Z & q=0 \\
-    0 & q = 1 \\
-    \Z & q = 2 \\
-    \Z^2 & q = 3 \\
-    \Z^2 & q =4 \\
-    0 & \text{otherwise}
+    \Z & q=0, \\
+    0 & q = 1, \\
+    \Z & q = 2, \\
+    \Z^2 & q = 3, \\
+    \Z^2 & q =4, \\
+    0 & \text{otherwise}.
   \end{cases} \]
   where the case $q=0$ follows from $W_1\cap W_2$ being connected
   and $q = 1$ follows from writing out the relevant part of the
   long exact sequence,
   \[ \xymatrix{ H^0(S^3\vee S^4)\oplus H^0(S^4) \ar@{->>}[r] &
-    H^0(S^1\vee S^4) \ar[r] & H^1(W_1\cap W_2) \ar[r] & 0} \]
+    H^0(S^1\vee S^4) \ar[r] & H^1(W_1\cap W_2) \ar[r] & 0.} \]
   
   $W_1$ and $W_2$ are both a copy of $S^6$ since we can get one of
   the coordinates from two of the others. Hence we get another diagram,
   \[ \xymatrix{
     W_1\cap W_2 \ar[r]\ar[d] & S^6 \ar[d] \\
-    S^6 \ar[r] & S^8-\widetilde Z
+    S^6 \ar[r] & S^8-\widetilde Z,
   } \]
   and again the map from the intersection is zero. Repeating the
   above, we can compute:
   \[ H^q(S^8-\widetilde Z) =
   \begin{cases}
-    \Z & q = 0 \\
-    0 & q = 1 \\
-    0 & q = 2 \\
-    \Z & q = 3 \\
-    \Z^2 & q = 4 \\
-    \Z^2 & q = 5 \\
-    \Z^2 & q =6 \\
-    0 & \text{otherwise}
+    \Z & q = 0, \\
+    0 & q = 1, \\
+    0 & q = 2, \\
+    \Z & q = 3, \\
+    \Z^2 & q = 4, \\
+    \Z^2 & q = 5, \\
+    \Z^2 & q =6, \\
+    0 & \text{otherwise}.
   \end{cases} \]
   Applying Alexander duality then gives
   \[ H^q(\widetilde Z) =
   \begin{cases}
-    \Z & q = 0 \\
-    \Z^2 & q = 1 \\
-    \Z^2 & q = 2 \\
-    \Z^2 & q = 3 \\
-    \Z & q = 4 \\
+    \Z & q = 0, \\
+    \Z^2 & q = 1, \\
+    \Z^2 & q = 2, \\
+    \Z^2 & q = 3, \\
+    \Z & q = 4, \\
     0 & \text{otherwise}.
   \end{cases} \]
   The shows that the cohomology of $Z$ is the same as the
@@ -374,13 +373,13 @@ cohomology.
   By using this, we can compute the cohomology of $Y_{3,2}$ as
   \[ H^q(Y_{3,2}) \cong H^q((\C^*)^4\times Z) = 
   \begin{cases}
-    \Z & q = 0 \\
-    \Z^4 & q = 1 \\
-    \Z^7 & q = 2 \\
-    \Z^8 & q = 3 \\
-    \Z^7 & q = 4 \\
-    \Z^4 & q = 5 \\
-    \Z & q = 6 \\
+    \Z & q = 0, \\
+    \Z^4 & q = 1, \\
+    \Z^7 & q = 2, \\
+    \Z^8 & q = 3, \\
+    \Z^7 & q = 4, \\
+    \Z^4 & q = 5, \\
+    \Z & q = 6, \\
     0 & \text{otherwise}.
   \end{cases} \]
 \end{example}
@@ -437,7 +436,7 @@ lemma.
 
   Assume that the condition on $\sigma$ and $n$ is satisfied, so for
   all $i \leq m$:
-  \[ 1 + n + i > \sigma(i) \]
+  \[ 1 + n + i > \sigma(i). \]
   In the flag formulation, this means that the subspaces $V_{m-n-k}$
   and $W_k$ intersect trivially for all $k$.
 
@@ -448,11 +447,11 @@ lemma.
   we see that we must choose $a_1$ so it is not in any of the
   following subspaces of $\C^m$:
   \begin{align*}
-    a_1 &\not\in V_{m-1} \\
-    a_1 &\not\in V_{m-n-1} \oplus W_1 \\
+    a_1 &\not\in V_{m-1}, \\
+    a_1 &\not\in V_{m-n-1} \oplus W_1, \\
     \vdots & \\
-    a_1 &\not\in V_1\oplus W_{m-n-1} \\
-    a_1 &\not\in W_{m-n}
+    a_1 &\not\in V_1\oplus W_{m-n-1}, \\
+    a_1 &\not\in W_{m-n}.
   \end{align*}
   But that means choosing $a_1$ in $\C^m$ after removing a
   finite number of proper subspaces, since the dimensions of the
@@ -481,12 +480,13 @@ of interest. We will start with a particular one that will not be used
 much in the dissertation, but which can occasionally be used to ease
 computations.
 \begin{lemma}
+  \label{lem:transponering}
   If $(a_1,\dots,a_n) \in Y_{m,n}$, then the transposed matrix
   $(a_1,\dots,a_n)^T$ is in $Y_{n,m}$.
 \end{lemma}
 \begin{proof}
   This follows directly from defining $Y_{m,n}$ as
-  $\Det_{\Id,\Id}^{-1}(\T^{m+n-1}$. When we compute the determinants
+  $\Det_{\Id,\Id}^{-1}(\T^{m+n-1})$. When we compute the determinants
   of the matrix, we see that the important entries of
   $(a_1,\dots,a_n)$ lie in a square submatrix which is unchanged under
   transposition. So we get
@@ -495,6 +495,11 @@ computations.
     &= \Det_{\Id,\Id}( (a_1,\dots,a_n)^T ).
   \end{align*}
 \end{proof}
+
+As an example, we computed the cohomology of $Y_{3,2}$ in Example
+\ref{ex:32}, and this theorem then tells us that
+\[ Y_{2,3} \cong Y_{3,2} \cong (\C^*)^4\times Z \]
+has the same cohomology groups.
 
 Since we are interested in linear independence of vectors in $\C^m$,
 the group of complex units, $\T=(\C)^*$, acts on the space 
@@ -515,7 +520,7 @@ most important for our purposes is the following:
   a_n). \]
 \end{definition}
 
-While all of these symmetries on an open subset of $\C^{mn}$ are nice
+While all of these symmetries are nice
 to work with, the spaces as defined above have some issues. In
 particular, as we shall see in Theorem \ref{thm:forste}, the
 fundamental group and the cohomology ring of
@@ -534,8 +539,8 @@ actually interested in.
 
 Note that since matrix multiplication is linear, it commutes with the
 action of $\T^n$ on $Y_{m,n}(X,Y)$ and we get directly from Lemma
-\ref{lem:rum-perm} that for each choice of $X,Y\in \GL_m(\C)$ there is
-a permutation $\sigma \in S_m$ such that
+\ref{lem:rum-perm} that for each choice of ${X,Y\in \GL_m(\C)}$ there
+is a permutation $\sigma \in S_m$ such that
 \[ X_{m,n}(X,Y) \cong X_{m,n}(\sigma). \]
 Hence most of our attention will be focused on these particular
 spaces. The quotient spaces are naturally closely related to the
@@ -605,7 +610,7 @@ by instead computing
 
 We would like to relate the spaces $Y_{m,n}(\sigma)$ that we obtain
 for different values of
-$m$ and $n$. Since an invertible, lower triangular matix $L$ preserves
+$m$ and $n$. Since an invertible, lower-triangular matix $L$ preserves
 the flag $\mathrm{Fl}_R(\Id)$, we will try to use this to define a map
 \begin{align*}
   s : Y_{m,n} &\to Y_{m,n+1} \\
@@ -624,7 +629,7 @@ the entries of $a_{n+1}$ are all equal to one:
   a_1 & a_2 & \dots & a_{n} & \vdots \\
   \vrule & \vrule & & \vrule & 1
 \end{pmatrix}. \] 
-Then we can multiply through with the lower triangular, invertible
+Then we can multiply through with the lower-triangular, invertible
 matrix $L^{-1}$ with ones on the diagonal, negative ones just below
 the diagonal and zeroes everywhere else,
 \[ L^{-1} =
@@ -649,21 +654,27 @@ This reduces $A$ to
 \end{pmatrix}, \]
 and going a bit further we can see that
 $(L^{-1}a_1,\dots,L^{-1}a_{n}) \in Y_{m,n}$ by computing
-\[ L^{-1}\cdot \left(\Id_m,a_1,\dots,a_{n+1},\Id_m\right) =
+\[ L^{-1}\cdot \left(\Id,a_1,\dots,a_{n+1},\Id\right) =
 \left(L^{-1},L^{-1}a_1,\dots,L^{-1}a_{n},
   \begin{array}{cccccc}
-    1 & 1 & 0 & \dots & \dots & 0 \\
-    0 & -1 & 1 & \dots & \dots& 0\\
-    0 & 0 & -1 & \ddots & & \vdots\\
-    \vdots & \vdots & & \ddots & 1 & 0 \\
-    0 & 0 & \dots & & -1& 1
+    1 &  1 &  0 & \dots &  0 & 0 \\
+    0 & -1 &  1 & \dots &  0 & 0 \\
+    0 &  0 & -1 & \dots &  0 & 0 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 &  0 & 0 & \dots &  1 & 0 \\
+    0 &  0 & 0 & \dots & -1 & 1
+    % 1 & 1 & 0 & \dots & \dots & 0 \\
+    % 0 & -1 & 1 & \dots & \dots& 0\\
+    % 0 & 0 & -1 & \ddots & & \vdots\\
+    % \vdots & \vdots & & \ddots & 1 & 0 \\
+    % 0 & 0 & \dots & & -1& 1
   \end{array}
-\right). \] \fixme{Få til at se bedre ud og fylde mindre. hbox error}
+\right). \]
 This shows that $L^{-1}\cdot(a_1,\dots,a_{n})$ is in
 $Y_{m,n}(L^{-1},U)$, where $U$ is the
-upper triangular matrix given above. But this space is the same as
-$Y_{m,n}$ since the right flag of a lower triangular matrix and the
-left flag of an upper triangular matrix
+upper-triangular matrix given above. But this space is the same as
+$Y_{m,n}$ since the right flag of a lower-triangular matrix and the
+left flag of an upper-triangular matrix
 is the same as the corresponding flag of the identity
 matrix, as we saw in Section \ref{sec:flags}.
 
@@ -678,10 +689,10 @@ $X_{m,n}$ and $X_{m,n+1}$, by working with the inverse matrix $L$.
   \label{def:stabilisering}
   The \textit{stabilisation map} $s : X_{m,n} \to X_{m,n+1}$ is given
   by
-  \[ s\left(a_1,\dots,a_{n-1}\right) =
-  \left(La_1,\dots,La_{n-1},Le_1\right), \]
-  where $L$ is the lower triangular matrix with every entry below the
-  diagonal equal to 1,
+  \[ s\left(a_1,\dots,a_{n}\right) =
+  \left(La_1,\dots,La_{n},Le_1\right), \]
+  where $L$ is the lower-triangular matrix with every entry below the
+  diagonal equal to one,
   \[ L =
   \begin{pmatrix}
     1 & 0 & 0 & \dots & 0 \\
@@ -700,10 +711,10 @@ $Y_{m,n}(\sigma)$. For
 any permutation $\sigma$, the space $Y_{m,n+1}(\sigma)$ is a union of
 spaces homeomorphic to a torus times $Y_{m,n}(\tau)$, for various
 permutations $\tau\in S_m$. The exact relation is given by the
-following lemma.
+following theorem.
 
-\begin{lemma}
-  \label{lem:permutation}
+\begin{theorem}
+  \label{thm:permutation}
   Any choice of indices $I= (i_1<\dots<i_k) \subset \set{1,\dots,m}$
   defines a subspace of $Y_{m,n+1}(\sigma)$:
   \[ Y_{m,n+1}^I(\sigma) = \set{(a_1,\dots,a_{n+1}) \in
@@ -729,24 +740,24 @@ following lemma.
   \[ \varphi\big(I,\sigma\big) = 
   \begin{cases}
     \begin{matrix} \widehat\sigma \end{matrix} & 
-    \begin{array}{l} k = 0 \end{array} \\
+    \begin{array}{l} k = 0, \end{array} \\
     \begin{matrix}
       \big( i_k\; \sigma(m) \big) \cdot \varphi\left( (i_1 < \dots <
         i_{k-1}),\sigma\right) \\
     \end{matrix} &
     \begin{array}{l} i_k < \sigma(m) \text{ and } \\
       \widehat\sigma^{-1}(i_k) > \widehat\sigma^{-1}(i_r) \,
-      \forall r < k\end{array}\\
+      \forall r < k,\end{array}\\
     \begin{matrix}
       \varphi\left( (i_1 < \dots < i_{k-1}),\sigma\right)
     \end{matrix} &
-    \begin{array}{l} \text{otherwise} \end{array}
-  \end{cases}. \]
+    \begin{array}{l} \text{otherwise}. \end{array}
+  \end{cases} \]
   Note that the index $\sigma(m)$ has once again been removed from the
   notation, 
   so the $k = 0$ case is really $I = (\sigma(m))$ and $i_k$
   is the last index not equal to $\sigma(m)$.
-\end{lemma}
+\end{theorem}
 \begin{proof}
   Fix the permutation $\sigma \in S_m$. The observation that
   $Y^I_{m,n+1}(\sigma)$ is empty 
@@ -776,17 +787,17 @@ following lemma.
   $(a_1,\dots,a_{n+1})$ with the matrix
   \[ M = (a_{n+1},\sigma_1,\dots,\sigma_{m-1}) \]
   invertible. It is this matrix that we want to factor as
-  $L\cdot \varphi(I,\sigma)\cdot U$, where $L$ is an invertible, lower
-  triangular matrix and $U$ is an invertible, upper triangular
+  $L\cdot \varphi(I,\sigma)\cdot U$, where $L$ is an invertible,
+  lower-triangular matrix and $U$ is an invertible, upper-triangular
   matrix. To do this, we want to make row operations on the matrix
   corresponding to multiplying with $L^{-1}$ until we end up with an
-  upper triangular matrix with permuted rows, corresponding to
+  upper-triangular matrix with permuted rows, corresponding to
   $\varphi(I,\sigma) \cdot U$. Multiplying with $L^{-1}$ corresponds
   to making row operations where each row is only allowed to affect
   the rows below it. We want to remove all non-zero entries in the
   first column except for one, and we want this single entry to have
   the lowest possible index. We also want to make the matrix as close
-  as possible to upper triangular, which is done by making sure that
+  as possible to upper-triangular, which is done by making sure that
   each operation does not introduce a non-zero entry to the left of an
   already existing non-zero entry.
   
@@ -798,9 +809,9 @@ following lemma.
   where $\tau$ is the permutation
   \[ \tau(k) =
   \begin{cases}
-    \sigma(k-1) & k > 1 \\
-    \sigma(m) & k = 1
-  \end{cases}. \]
+    \sigma(k-1) & k > 1, \\
+    \sigma(m) & k = 1.
+  \end{cases} \]
   We recognize this as the permutation $\widehat\sigma$ and get the
   formula
   \[ \varphi((\sigma(m)),\sigma) = \widehat\sigma. \]
@@ -809,7 +820,8 @@ following lemma.
     Y_{m,n+1}^{(\sigma(m))}(\sigma) &\to Y_{m,n}(\widehat\sigma)\times
                                       \C^* \\
     (a_1,\dots,a_n,\lambda\cdot\sigma_m) &\mapsto
-                                           (a_1,\dots,a_n,\lambda)
+                                           \left((a_1,\dots,a_n),
+                                           \lambda\right).
   \end{align*}
   
   Now consider the case $k > 0$, so $I = (i_1 < \dots < i_k)$. If $i_k
@@ -830,8 +842,8 @@ following lemma.
   $\sigma(m)$. The first 1 is on the $\sigma(m)$'th row and the next
   is on the $i_k$'th row. All entries below are zero. $A$, $B$, $C$
   and $D$ are the matrices consisting of the corresponding rows from
-  $(\sigma_1,\dots,\sigma_{m-1})$. But by multiplying with a lower
-  triangular matrix, we can reduce this matrix to
+  $(\sigma_1,\dots,\sigma_{m-1})$. But by multiplying with a
+  lower-triangular matrix, we can reduce this matrix to
   \[
   \begin{pmatrix}
     I_1 & A \\
@@ -878,8 +890,9 @@ following lemma.
   We are now unable to change the middle row, row $i_k$, since there
   are no non-zero
   entries above the left-most one. The additional $-1$ that was
-  introduced can be removed by multiplying on the right with an upper
-  triangular matrix that subtracts column $\widehat\sigma^{-1}(i_k)$
+  introduced can be removed by multiplying on the right with an
+  upper-triangular matrix that subtracts column
+  $\widehat\sigma^{-1}(i_k)$
   from column $\widehat\sigma^{-1}(i_j)$. So we are able to remove the
   one in the $i_k$'th row without changing the resulting permutation,
   showing that in this case,
@@ -911,7 +924,7 @@ following lemma.
   stars to indicate entries that may be non-zero but that are not
   important.
   If we switch row $i_k$ and row $\sigma(m)$ along with column
-  $i_k$ and column $\sigma(m)$, we get another lower triangular
+  $i_k$ and column $\sigma(m)$, we get another lower-triangular
   matrix:
   \[ (i_k \; \sigma(m)) \widetilde{L}^{-1} (i_k \; \sigma(m)) = 
   \begin{pmatrix}
@@ -928,7 +941,7 @@ following lemma.
   one in the first column, row $i_k$, replaced by zero. This gives the
   formula
   \[ (i_k \; \sigma(m)) \cdot \varphi(I,\sigma) =
-  \varphi\big((i_1<\dots<i_{k-1}),\sigma\big) \]
+  \varphi\big((i_1<\dots<i_{k-1}),\sigma\big), \]
   and our desired formula for $\varphi$ follows by multiplying over.
 \end{proof}
 
@@ -953,16 +966,6 @@ $\varphi\left((\sigma(m)),\sigma\right)$.
   simplest remaining case, where
   \[ \varphi(I,\sigma) = (i_k \; \sigma(m)) \cdot 
   \varphi(J,\sigma). \]
-  To simplify further, assume that all the indices $i_r$ in $I$ and
-  $J$ satisfy the conditions $i_r < \sigma(m)$ and
-  $\widehat{\sigma}^{-1}(i_r) > \widehat{\sigma}^{-1}(i_s)$ for all $s
-  < r$. Then we can compute the two permutations we are interested in,
-  \begin{align*}
-    \tau &= \varphi(I,\sigma) = (i_1\;\dots\;i_{k-1}\;i_k\;\sigma(m))
-           \cdot \widehat{\sigma} \\
-    \phi &= \varphi(J,\sigma) = (i_1\;\dots\;i_{k-1}\;\sigma(m)) \cdot
-    \widehat{\sigma}.
-  \end{align*}
   First we note that the two permutations are related in the Bruhat
   order, since
   \[ \tau^{-1} \cdot \phi = \varphi(J,\sigma)^{-1} \cdot
@@ -972,18 +975,33 @@ $\varphi\left((\sigma(m)),\sigma\right)$.
   we only need to count the number of inversions of each of the
   permutations, and
   see that $\tau$ has fewer inversions than $\phi$.
+  To simplify further, assume that all the indices $i_r$ in $I$ and
+  $J$ satisfy the conditions $i_r < \sigma(m)$ and
+  $\widehat{\sigma}^{-1}(i_r) > \widehat{\sigma}^{-1}(i_s)$ for all $s
+  < r$. This corresponds to removing the entries of $I$ that have no
+  effect on $\varphi(I,\sigma)$ by the previous theorem. Then we can
+  compute the two permutations we are interested in by using the
+  formula for $\varphi$,
+  \begin{align*}
+    \tau &= \varphi(I,\sigma) = (i_1\;\dots\;i_{k-1}\;i_k\;\sigma(m))
+           \cdot \widehat{\sigma}, \\
+    \phi &= \varphi(J,\sigma) = (i_1\;\dots\;i_{k-1}\;\sigma(m)) \cdot
+    \widehat{\sigma}.
+  \end{align*}
 
   From the
   definition of $\tau$ and $\phi$, we can see that if $a$ is not in
   the set
-  $\set{\widehat{\sigma}^{-1}(i_{k-1}),\widehat{\sigma}^{-1}(i_{k})}$,
+  \[
+  \set{\widehat{\sigma}^{-1}(i_{k-1}),\widehat{\sigma}^{-1}(i_{k})},
+  \]
   then $\tau(a) = \phi(a)$. We would like to find pairs $(a,b)$
   with $a < b$ that are inversions for eiher $\tau$ or $\phi$, but not
   both. So we should only consider pairs $(a,b)$ where at least one is
   either $\widehat{\sigma}^{-1}(i_k)$ or
   $\widehat{\sigma}^{-1}(i_{k-1})$.
 
-  Note that by the definition of $\varphi$, we have
+  Note that by our previous assumption on the indices $i_r$, we have 
   $\widehat{\sigma}^{-1}(i_{k-1}) < \widehat{\sigma}^{-1}(i_{k})$. So
   we start by checking this pair.
   \begin{align*}
@@ -1007,7 +1025,7 @@ $\varphi\left((\sigma(m)),\sigma\right)$.
   If $a = \widehat{\sigma}^{-1}(i_{k-1})$, then the inequalities
   reduce to
   \[ i_k = \tau(a) > \tau(b) = \phi(b) > \phi(a) = \sigma(m), \]
-  which is impossible since $i_k < \sigma(m)$.
+  which is impossible since $i_k < \sigma(m)$ by assumption.
   If $b = \widehat{\sigma}^{-1}(i_{k})$ we get
   \[ \sigma(m) = \tau(b) < \tau(a) = \phi(a) < \phi(b) = i_k, \]
   which is again impossible. So neither of these cases give rise to
@@ -1026,16 +1044,16 @@ $\varphi\left((\sigma(m)),\sigma\right)$.
   Now we consider inversions for $\phi$ that are not inversions for
   $\tau$. These satisfy
   \begin{align*}
-    a &< b \\
-    \tau(a) &< \tau(b) \\
-    \phi(a) &> \phi(b)
+    a &< b, \\
+    \tau(a) &< \tau(b), \\
+    \phi(a) &> \phi(b).
   \end{align*}
   If $a = \widehat{\sigma}^{-1}(i_{k})$, we get
   \[ \sigma(m) < \tau(b) = \phi(b) < i_k, \]
   which is impossible. Likewise, $b = \widehat{\sigma}^{-1}(i_{k-1})$
   gives
   \[ \sigma(m) < \phi(a) = \tau(a) < i_k. \]
-  So these contribute nothing. If $a$ is
+  So these cases contribute nothing. If $a$ is
   $\widehat{\sigma}^{-1}(i_{k-1})$, then
   \[ i_k < \tau(b) = \phi(b) < \sigma(m) \]
   and we get the set
@@ -1060,7 +1078,7 @@ $\varphi\left((\sigma(m)),\sigma\right)$.
   $\varphi(J,\sigma) = \phi$, giving the desired inequality in the
   Bruhat order,
   \[ \varphi(I,\sigma) \leq \varphi(J,\sigma). \]
-  To get the general case, note that the Bruhat order is transitive,
+  To get the general case, note that the Bruhat order is transitive
   by definition, so we simply apply the above argument several times.
 \end{proof}
 
@@ -1088,14 +1106,14 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   is whether the matrices
   \[ \left(e_{k+n+1}, \dots, e_m,L^n e_1, \dots, Le_1, \sigma_1, \dots,
     \sigma_{k}\right) \]
-  are invertible, for $k \in \set{1,\dots,m-1}$. If $n+k$ are greater
+  are invertible, for $k \in \set{1,\dots,m-1}$. If $n+k$ is greater
   than or equal to $m$, we of course mean the matrices
   \[ \left( L^{m-k}e_1,\dots,L e_1,\sigma_1,\dots,\sigma_k \right). \]
   
   Calculating the determinant of a matrix of this form by column
-  expansion, this is equivalent to choosing $s=m-k$ numbers,
-  $i_1,\dots,i_s \in \set{1,\dots,m},$ with $i_j < i_{j+1},$ and
-  checking that the matrix
+  expansion, we see that expanding along the column $\sigma_i$ removes
+  row $\sigma(i)$ from the matrix and introduces a sign. So this
+  matrix being invertible for all $\sigma$ is equivalent to the matrix 
   \[ R = 
   \begin{pmatrix}
     \matrow{r_{i_1}} \\
@@ -1104,7 +1122,10 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
     \matrow{r_{i_s}}
   \end{pmatrix}
   \]
-  is invertible, where $r_{l}$ denotes the $l$'th row of the
+  being invertible for any choice
+  of $s=m-k$ numbers,
+  $i_1,\dots,i_s \in \set{1,\dots,m},$ with $i_j < i_{j+1},$ 
+  where $r_{l}$ denotes the $l$'th row of the
   matrix
   \[ P = (L^{m-k}e_1,\dots,Le_1). \]
   
@@ -1126,8 +1147,29 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   \end{pmatrix}, \]
   with the entry in the $i$'th row and $j$'th column given by the
   formula
-  \[ p_{i,j} = { m-k-j+i-1 \choose i-1}. \] \fixme{Skriv beviset for
-    dette ud}
+  \[ p_{i,j} = { m-k-j+i-1 \choose i-1}. \] 
+  We start with column $j=m-k$. This column is always $Le_1$, which we
+  know consists of all ones, so the formula holds here since
+  \[ p_{i,m-k} = { m-k-(m-k)+i-1 \choose i-1} = {i-1\choose i-1}. \] 
+  Now assume that the formula holds for column
+  $j$, given as $L^{m-k-j+1}e_1$. Moving a column to the left is the
+  same as multiplying with $L$, which corresponds to
+  adding all of the entries above a given entry together. So we get
+  \[ p_{i,j-1} = \sum_{r=1}^{i} p_{r,j}  =  \sum_{r=1}^i { m-k-j+r-1
+    \choose r-1}.  \]
+  But the entry $p_{1,j}$ is always one, so we can replace
+  $p_{1,j}$ with $p_{1,j-1}$ in the sum without changing the
+  result. The conclusion then follows from the standard formulas for
+  binomial coefficients,
+  \begin{align*}
+    p_{2,j-1} = p_{1,j} + p_{2,j} 
+    = p_{1,j-1} + p_{2,j} &= {m-k-j+1\choose 0} + {m-k-j+1 \choose
+                            1}\\
+                          &= {m-k-j+2\choose 1}\\
+                          &= {m-k-(j-1)+2-1\choose 2-1},
+  \end{align*}
+  and we can continue like this to get the formula for $p_{i,j}$
+  given above.
   
   In particular, by the standard formulas for binomial coefficients,
   \[ p_{i,j} = p_{i-1,j} + p_{i,j+1}, \]
@@ -1135,10 +1177,7 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   above,
   $r_{j-1}$, and adding the row $\widehat{r}_j$ given by shifting
   every entry of $r_j$ one to the left and adding a zero,
-  \begin{equation}
-    \label{eq:rows}
-    r_j = r_{j-1} + \widehat{r}_j.
-  \end{equation}
+  \[ r_j = r_{j-1} + \widehat{r}_j. \]
   To illustrate, if $m-k$ is three, then $P$ is the matrix
   \[ P = 
   \begin{pmatrix}
@@ -1175,14 +1214,15 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   are done since $\det R = 1$ is strictly positive and two divides $s$
   zero times.
   Assume the statement is correct for $s-1$. Since the determinant is
-  linear in each row, we can use Equation \ref{eq:rows} and get
+  linear in each row, we can use the equation for row $r_j$ given
+  above and get
   \begin{align*}
     \det{R} &= 
               \det\begin{pmatrix}
                 \matrow{r_{i_1}} \\
                 \matrow{r_{i_2}} \\
                 & \hspace{-0.75em} \vdots & \\
-                \matrow{r_{i_{s-1}}} \\
+                \matrow{r_{i_{(s-1)}}} \\
                 \matrow{r_{i_s}}
               \end{pmatrix} \\
             &= 
@@ -1190,41 +1230,41 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
                 \matrow{r_{i_1}} \\
                 \matrow{r_{i_2}} \\
                 & \hspace{-0.75em} \vdots & \\
-                \matrow{r_{i_{s-1}}} \\
+                \matrow{r_{i_{(s-1)}}} \\
                 \matrow{r_{i_s-1}}
               \end{pmatrix}+
     \det\begin{pmatrix}
       \matrow{r_{i_1}} \\
       \matrow{r_{i_2}} \\
       & \hspace{-0.75em} \vdots & \\
-      \matrow{r_{i_{s-1}}} \\
+      \matrow{r_{i_{(s-1)}}} \\
       \matrow{\widehat{r}_{i_s}}
     \end{pmatrix} \\
             &=   \det\begin{pmatrix}
               \matrow{r_{i_1}} \\
               \matrow{r_{i_2}} \\
               & \hspace{-0.75em} \vdots & \\
-              \matrow{r_{i_{s-1}}} \\
-              \matrow{r_{i_{s-1}}}
+              \matrow{r_{i_{(s-1)}}} \\
+              \matrow{r_{i_{(s-1)}}}
             \end{pmatrix}
-    + \sum_{j=0}^{i_s-i_{s-1}-1} \det\begin{pmatrix}
+    + \sum_{j=0}^{i_s-i_{(s-1)}-1} \det\begin{pmatrix}
       \matrow{r_{i_1}} \\
       \matrow{r_{i_2}} \\
       & \hspace{-0.75em} \vdots & \\
-      \matrow{r_{i_{s-1}}} \\
+      \matrow{r_{i_{(s-1)}}} \\
       \matrow{\widehat{r}_{i_s-j}} \end{pmatrix}.
   \end{align*}
   The first determinant is zero, since the matrix has two equal rows,
   so we are left with the sum. Doing the same thing for all the other
   rows except for the first one gives us
   \[ \det R = \sum_{j_1 = 0}^{i_2-i_1-1}\sum_{j_2 = 0}^{i_3-i_2-1}
-  \dots \sum_{j_{s-1}=0}^{i_s-i_{s-1}-1} \det
+  \dots \sum_{j_{(s-1)}=0}^{i_s-i_{(s-1)}-1} \det
   \begin{pmatrix}
     \matrow{r_{i_1}} \\
     \matrow{\widehat{r}_{i_2-j_1}} \\
     & \hspace{-0.75em} \vdots & \\
-    \matrow{\widehat{r}_{i_{s-1}-j_{s-2}}} \\
-    \matrow{\widehat{r}_{i_s-j_{s-1}}}
+    \matrow{\widehat{r}_{i_{(s-1)}-j_{(s-2)}}} \\
+    \matrow{\widehat{r}_{i_s-j_{(s-1)}}}
   \end{pmatrix}. \]
   
   By considering the last column of one of these matrices, we see that
@@ -1237,24 +1277,26 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
     0
   \end{pmatrix} \]
   since we have shifted every row below the first one space to the
-  left. By expanding the determinant using this column, we remove it and
+  left. By expanding the determinant using this column, we remove the
+  first row and the last column, possibly introduce a sign, and
   end up with
   \[ \det R = \sum_{j_1 = 0}^{i_2-i_1-1}\sum_{j_2 = 0}^{i_3-i_2-1}
-  \dots \sum_{j_{s-1}=0}^{i_s-i_{s-1}-1} (-1)^{s-1} \det
+  \dots \sum_{j_{(s-1)}=0}^{i_s-i_{(s-1)}-1} (-1)^{s-1} \det
   \begin{pmatrix}
     \matrow{\widetilde{r}_{i_2-j_1}} \\
     & \hspace{-0.75em} \vdots & \\
-    \matrow{\widetilde{r}_{i_{s-1}-j_{s-2}}} \\
-    \matrow{\widetilde{r}_{i_s-j_{s-1}}}
+    \matrow{\widetilde{r}_{i_{(s-1)}-j_{(s-2)}}} \\
+    \matrow{\widetilde{r}_{i_s-j_{(s-1)}}}
   \end{pmatrix}. \]
   Here we use $\widetilde{r}_i$ to denote the $i$'th row of $P$ where we
   have removed the leftmost entry. But we can now apply the induction
-  hypothesis. We see that all the determinants have the same sign, are
-  non-zero and
+  hypothesis. We see that all the determinants have the same sign and
+  are non-zero,
   so $\det R$ is non-zero with opposite sign if $s-1$ is odd and
-  otherwise has the
-  same sign. This exactly means that $\det R$ changes sign
-  when $s$ passes a multiple of two, as stated above.
+  with the
+  same sign if $s-1$ is even. This exactly means that $\det R$ changes
+  sign
+  when $s$ passes a multiple of two, as stated above, and we are done.
 \end{proof}
 
 \section{The limit space}

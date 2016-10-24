@@ -18,7 +18,7 @@ encouragement and good advice when it was needed most.
 
 I would also like to thank my office mates and fellow Ph.D. students
 at the Department of Mathematics
-for both providing valuable feedback on ideas and for keeping me
+for both providing valuable feedback on ideas, and for keeping me
 motivated.
 
 \fixme{Acknowledgements etc. Venner, kolleger, familie, Julie?}
@@ -39,13 +39,23 @@ numbers,
 so the disc $D\subset\C$ is the unit disc in the complex plane and
 $D_p$ is the unit disc in $\C^p$. The non-zero elements in $\C$ will
 be written as $\C^* = \C - 0$. $\GL_m(\C)$ will denote the group of
-linear automorphisms of $\C^m$ and the standard basis of $\C^m$ is
-$e_1,\dots,e_m$,
-\[ e_i =
-\big(0, \dots, 0, \overset{\substack{i\\\downarrow}}{1}, 0\dots,
-0\big).\]
-Linear maps will be written as matrices with respect
-to the standard basis.
+linear automorphisms of $\C^m$ and will be written as matrices with
+respect to the standard basis $e_1,\dots,e_m$ of $\C^m$,
+defined by
+\[ \xy (9,0.5)*{\scriptstyle\leftarrow i};
+(0,0)*{e_i =
+\begin{pmatrix}
+  0 \\
+  \vdots \\
+  0 \\
+  1 \\
+  0 \\
+  \vdots \\
+  0
+\end{pmatrix}}; \endxy
+%\big(0, \dots, 0, \overset{\substack{i\\\downarrow}}{1}, 0\dots,
+%0\big).
+\]
 
 Since we are mainly concerned with algebraic topology, a space will
 occasionally be replaced with a homotopy equivalent one without
@@ -57,7 +67,7 @@ the
 punctured disc $D_p-0$ will sometimes be identified with the sphere
 $S^{2p-1} \subset \C^p$. Likewise, we will not distinguish between the
 different models of the flag manifold of $\C^m$, given as $\GLB{m}
-\cong \UT{m} \cong \SUT{m}$ with $B_m \subset \GL_m(\C)$ the upper (or
+\cong \UT{m} \cong \SUT{m}$ with $\B_m \subset \GL_m(\C)$ the upper (or
 lower) triangular matrices in $\GL_m(\C)$, $\T^m \subset \U_m$ the
 diagonal
 matrices in the unitary group and $\T^{m-1}\subset \SU_m$ the diagonal
@@ -68,7 +78,7 @@ with integer coefficients. If a theorem is mentioned by name without a
 reference, it can be found in \cite{hatcher}.
 
 We will use permutations a great deal. The permutations of the set
-$\set{1,\dots,n}$ will be denoted $S_n$.
+$\set{1,\dots,m}$ will be denoted $S_m$.
 These will be written as products of cycles, where we multiply by
 considering permutations as functions and then composing. For
 example, the
@@ -80,15 +90,16 @@ permutation $\sigma\in S_3$, given by
 \end{align*}
 will be written as $\sigma = (1 \; 3 \; 2) = (2\; 3)\cdot (1\; 2)$.
 For our purposes, it will be useful to occasionally consider
-a permutation as a matrix. We will do this by working with a fixed
-basis, $e_1,\dots,e_n$. An element $\sigma \in S_n$ then
+a permutation as a matrix. We will do this by working with the
+standard
+basis, $e_1,\dots,e_m\in \C^m$. An element $\sigma \in S_m$ then
 corresponds to the matrix defined by
 \[ \sigma \cdot e_i = e_{\sigma(i)}. \]
 So a permutation multiplied on a matrix from the left permutes the
 rows of the matrix.
 
 
-\vfill
+\vspace{5em}
 \begin{flushright}
   Simon Stoltze \\
   Aarhus University\\

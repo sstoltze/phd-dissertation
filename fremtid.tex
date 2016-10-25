@@ -29,11 +29,10 @@ like
   \lambda(\sigma) &\geq \lambda(\sigma_{\set{1}}) - 1,\\
   &\vdots \\
   \lambda(\sigma) &\geq \lambda(\sigma_{\set{m}}) - 1,\\
+  \lambda(\sigma) &\geq \lambda(\sigma_{\set{1,2}}) - 2,\\
   &\vdots \\
-  \lambda(\sigma) &\geq \lambda(\sigma_{\set{1,\dots,m}}) - m + 1.
-\end{align*} \fixme{Overvej dette igen. Og burde nok kun være
-  1,...,m-1 i indekset, men kan ikke lige få det formuleret på en
-  ordentlig måde}
+  \lambda(\sigma) &\geq \lambda(\sigma_{\set{1,\dots,m}-\sigma(m)}) - m + 1.
+\end{align*}
 By considering the function defined on $S_3$ in the previous chapter,
 it seems like the definition should depend on $\sigma(1)$, but it may
 also be related to the Bruhat ordering on $S_m$, which means it
@@ -124,7 +123,7 @@ $X_{m,n}(\sigma)$ at the same time:
 Since the space $X_{m,n}$ approximates the loop group when $n$ is
 large, by having a sequence of vectors map to a loop at the identity,
 one could expect $\widehat{X}_{m,n}$ to approximate the free loop
-group of all maps from the circle to $\GL_m(\C)$, by mapping a
+group of all maps from the circle to $\GL_m(\C)/\B_m$, by mapping a
 sequence of vectors starting and ending at $A$ to a loop at $A$. This
 would require a study of similarly defined stabilisation maps for
 these spaces and seeing what happens when we take a limit. This
@@ -136,11 +135,13 @@ is summarised in the following conjecture.
   so that the space
   \[ \widehat{X}_{m,\infty} = \varinjlim_n \widehat{X}_{m,n} \]
   is homotopy equivalent to the free loop space
-  \[ \mathrm{L}(\GL_m(\C)) = \set{ \gamma : S^1 \to \GL_m(\C) }. \]
+  \[ \mathrm{L}(\GL_m(\C)/\B_m) = \set{ \gamma : S^1 \to
+    \GL_m(\C)/\B_m }. \]
 \end{conjecture}
 
 Like the spaces $X_{m,n}$ considered here, this would give another way
-to study a complicated space, $\mathrm{L}(\GL_m)$, by working with
+to study a complicated space, $\mathrm{L}(\GL_m(\C)/\B_m)$, by working
+with
 simpler versions that consist of a finite sequence of points that we
 connect with nice paths.
 

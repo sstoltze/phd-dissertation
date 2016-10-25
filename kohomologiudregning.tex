@@ -635,8 +635,8 @@ that this is a generator, consider the torus
 This intersects $R$ in exactly one point, namely $p=(2,-2,1)$. By
 taking the intersection with $\widehat T$ we can extend the previous
 diagram,
-\[ \xymatrix{ H^2(NR,NR_0) \ar[d]^{i^*} & H^2(Z,Z-R) \ar[d]^{i^*}
-  \ar[l]_<<<<<\cong \ar[r]^>>>>>{j^*} & H^2(Z) \ar[d]^{i^*} \\
+\[ \xymatrix{ H^2(NR,NR_0) \ar[d]^-{i^*} & H^2(Z,Z-R) \ar[d]^-{i^*}
+  \ar[l]_<<<<<\cong \ar[r]^>>>>>{j^*} & H^2(Z) \ar[d]^-{i^*} \\
   H^2(p\times (D,D-0)) & H^2(\widehat \T,\widehat \T-p)
   \ar[r]^>>>>>{\cong} \ar[l]_>>>>>\cong & H^2(\widehat \T).
 } \]
@@ -720,8 +720,8 @@ This is an isomorphism in cohomology and gives a map between the long
 exact sequences that makes the following diagram
 commute:
 \[ \xymatrix{
-H^{p+q}(F_0) \ar[r]^>>>>>>>>>>>>>>>>>>>{d_1} \ar[d]^{i^*} &
-H^{p+q+1}(F_1,F_0) \ar[d]^{i^*}_{\cong} \\
+H^{p+q}(F_0) \ar[r]^>>>>>>>>>>>>>>>>>>>{d_1} \ar[d]^-{i^*} &
+H^{p+q+1}(F_1,F_0) \ar[d]^-{i^*}_-{\cong} \\
 H^{p+q}((Y_{\set{1}}\sqcup Y_{\set{2}})\times (D-0))
 \ar[r]^>>>>>{\delta} & H^{p+q+1}((Y_{\set{1}}\sqcup Y_{\set{2}})\times
 (D,D-0)). } \]
@@ -763,8 +763,8 @@ the map on generators and working
 out what they map to. For $z_{11}$ it is slightly
 harder. To calculate this, we use the submanifold $R \subset Z$
 defined previously as
-\[ R = \set{(x,y,z)\in \R^3 \delim \Big\vert\delim x > 0, y < 0, z =
-  \frac{y-1}{1+xy}>0}. \]
+\[ R = \set{(x,y,z)\in \R^3 \delim \Big\vert\delim x > 0, y < 0, xy <
+  -1, z = \frac{y-1}{1+xy}>0}, \]
 by choosing a generator $\alpha = [\sigma]$ of $H_2(Y_{\set{1}}\times
 (D-0))$ and calculating the intersection of the image of $f = \pr_Z
 \circ i\circ \sigma$ and $R$. Note that if the coordinates of $Y$ are
@@ -834,13 +834,14 @@ The map becomes
 \right), \]
 with $C = -bc^2-\frac{1-bc}{\e}$. We will write $x$ for the first
 coordinate, $y$ for the second and $z$ for the third. An analysis as
-before gives $bc = xz > 0$ and $c = \frac{1}{\e(z-y)} \in
-\R$. So both $b$ and $c$ must be real and $c$ should be positive. Then
-$xy = bc - b\e^{-1}<0$ shows that $b$ must be positive since $bc$ is
-positive. The only possible point of intersection is
+before gives $bc = xz > 0$ and $C = \frac{1}{\e(z-y)} \in
+\R$. So both $b$ and $c$ must be real, by looking at $x$ and $y$, and
+$C$ should be positive since $z>0$ and $y<0$. Then
+both $b$ and $c$ must be positive to get the correct sign for $x$ and
+$z$. The only possible point of intersection is
 \[ f(2,2) = \left( \frac{6-16\e}{\e},
   \frac{2\e-1}{3-8\e},\frac{2\e}{3-8\e} \right). \]
-Since $\e$ is very small, this intersects $R$ and the orientation is
+Since $\e$ is very small, this intersects $R$, and the orientation is
 preserved.
 
 \subsubsection{The inclusion $Y_{\set{2}}\times (D-0) 
@@ -888,11 +889,11 @@ given by inserting a small disc, sphere or torus on the zero-entries
 of $Y_{\set{1,2}}$. There are homeomorphisms of pairs,
 \begin{align*}
   \big(D_2-0,(D-0)\times(D-0)\big) \cong \big(D\times (D-0) \sqcup
-  (D-0)\times D, (D-0)\times(D-0)\big) \\
+  (D-0)\times D, (D-0)\times(D-0)\big), \\
   \big(D_2,D_2-0\big) \cong \big(D\times D,D\times
   (D-0)\cup (D-0)\times D\big) =  (D,D-0)\times (D,D-0).
 \end{align*}
-These gives a commuting diagram,
+These give a commuting diagram,
 \[ \xymatrix{ H^q(F_1,F_0) \ar[r] \ar[d] & H^{q+1}(F_2,F_1)
   \ar[d]^\cong \\ 
   H^q(Y_{\set{1,2}}\times (D_2-0,(D-0)\times (D-0))) \ar[r]
@@ -963,6 +964,7 @@ H^2(D,D-0)$ and $h_{00} \in H^1(D-0)$.
 
 \subsubsection{The inclusion $Y_{\set{1,2}}\times (D-0)
 \times (D,D-0) \to Y_{\set{2}}\times (D,D-0)$}
+
 This is exactly as above for the map
 \begin{align*}
   (\C^*)^3 \times Y \times (D-0)\times (D,D-0) &\to (\C^*)^5 \times
@@ -989,6 +991,7 @@ $H^*(Y_{\emptyset}\times(D-0)\times(D,D-0))$.
 
 \subsubsection{Boundary maps}
 \label{disk}
+
 We have now reduced everything to calculating some well-known boundary
 maps for the pair $(D,D-0)$. By writing out the long exact sequence,
 the boundary map

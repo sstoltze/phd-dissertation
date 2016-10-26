@@ -1,4 +1,4 @@
-\documentclass[a4paper,openbib,10pt]{memoir}
+\documentclass[a4paper,openbib,10pt,twosided]{memoir}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
@@ -37,7 +37,7 @@
 \usepackage[backend=bibtex,style=alphabetic]{biblatex}
 \addbibresource{phdbooks.bib}
 
-\usepackage[english, status=draft]{fixme}
+%\usepackage[english, status=draft]{fixme}
 
 \usepackage[all,cmtip]{xy}
 \entrymodifiers={+!!<0pt,\fontdimen22\textfont2>}
@@ -126,11 +126,19 @@
 \renewcommand{\d}{\delta}
 \renewcommand{\l}{\lambda}
 
+% Til introduktionen
+\newcommand{\gdim}{{2m+n}}
+\newcommand{\pdim}{{m+n}}
+\newcommand{\pdimm}{{m+n-1}}
+\newcommand{\CP}{\mathbb{CP}}
+\newcommand{\Grass}{\mathrm{Gr}_m(\C^{\gdim})}
+
 \begin{document}
 
 \frontmatter
 
 \include{front}
+
 \microtypesetup{protrusion=false}
 \tableofcontents
 \microtypesetup{protrusion=true}
@@ -159,35 +167,15 @@
                        % forklaring af hvad de går ud på.
 \mainmatter
 
-% Et kapitel med lidt generelle resultater. Dette vil nok mest bestå
-% af lidt om spektralfølger (Hatcher?) og lidt om løkkerum (Milnor).
-
-\include{generelt}
-
-% Muligvis bør der også være et kapitel med en introduktion til
-% spektral-følger og andet generelt brugt teori, såsom lidt
-% Morse-teori fra Milnor, en introduktion til løkke-rum, måske lidt om
-% Coxeter-grupper? Det kan diskuteres om det skal i samme kapitel som
-% introduktionen til rummene.
-% Her inkluderer de gamle mennesker små beviser men lader store
-% sætninger stå urørte. Sikkert henvisen til sætninger man skal bruge
-% direkte og så vise nogle af de specialtilfælde der dukker op. Eller
-% nogle gange at give ideerne i de lange beviser.
-
+\include{generelt} % Lidt generelle restultater.
+                   % Løkkerum og spektralfølger, lidt om Coxeter
+                   % grupper og flag
 
 \include{rum} % Vis at rummene ikke er tomme (både
               % dimensions-argumentet og "stabilisering af de oplagte
               % elementer"-argumentet
               % skal nok være med. Kunne også beskrive
               % spektralfølgen.
-
-% Hvad med dimension 2 tilfældet? Dette kunne inddrages fra Marcels
-% noter og måske fylde et lille kapitel. Eventuelt før de generelle
-% rum præsenteres.
-
-% Hvor skal Coxeter-gruppe-halløjet ind? Muligvis allerede når man
-% snakker om stabilisering. Og bevise sætningen om hvad man
-% stabiliserer til.
 
 \include{kohomologiudregning} % Skal nok tages nogenlunde direkte fra
                               % del A-rapporten. Måske kan man smide
@@ -201,16 +189,10 @@
                   % kan henvise til H^1-halløjet for at vise hvorfor
                   % det er smart eller lignende.
 
-%\include{tre} % Specialiser til X_{3,n}-tilfældet og snak om
-               % stabilisering etc. Jeg er lidt usikker på præcis hvad
-               % der skal indgå her.
-
 \include{fremtid} % Noget om de ting vi ikke nåede og generel
-                    % spekulation. Hvad kan skidtet eventuelt bruges
-                    % til, fremtidigt arbejde (hah) og lignende.
+                  % spekulation. Hvad kan skidtet eventuelt bruges
+                  % til, fremtidigt arbejde (hah) og lignende.
 
-% Skal der noget som helst med om det andet jeg lavede med pi_1?
-% Sikkert ikke, men snak lige med Marcel.
 
 \appendix
 \include{sagecode}

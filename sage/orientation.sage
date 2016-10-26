@@ -1,7 +1,10 @@
 
 var('a','l','t','f','h','b','c','d', 'g')
 
-small = 10^(-10000)
+# The value of epsilon.
+# Has been tested to ensure it is small enough
+# for our purposes
+small = 10^(-10000) 
 
 print
 print "##########################"

@@ -1,13 +1,59 @@
 \chapter{Introduction}
+\label{chap:introduktion}
 
-\fixme{Skriv det der skal være før her. Snak med Marcel. Og få
-  indledningen til at give mening}
+The spaces we will be working with were originally introduced
+in a very different form, which will briefly be described here.
+Consider an $m$-dimensional subspace of $\C^{\gdim}$, which can be
+thought of as an element of the Grassmann-manifold
+\[ \mathrm{Gr}_m(\C^{\gdim}) = \set{V \subset \C^{\gdim} \mid
+  \dim_\C(V) = m}. \]
+We can define a map on the Grassmannian by
+choosing a basis for our subspace, $v_1,\dots,v_m \in V$, considering
+these as row vectors and calculating determinants of subsequent
+columns,
+\[
+\begin{pmatrix}
+  \matrow{v_1} \\
+  \matrow{v_2} \\
+  \vdots \\
+  \matrow{v_m} 
+\end{pmatrix} \mapsto \left(\det
+  \begin{pmatrix}
+    (v_1)_i & (v_1)_{i+1} & \dots  & (v_1)_{i+m-1} \\
+    (v_2)_i & (v_2)_{i+1} & \dots  & (v_2)_{i+m-1} \\
+    \vdots  & \vdots    & \ddots & \vdots       \\
+    (v_m)_i & (v_m)_{i+1} & \dots  & (v_m)_{i+m-1}
+  \end{pmatrix}
+\right)_{i \in \set{1,\dots,m+n+1}}. \]
+Since this involves a choice of basis, we get a map to
+projective space $\CP^{\pdim}$, as the basis can vary with an element of
+$\GL_m(\C)$ and
+hence the determinants can vary with a scalar given
+by the determinant of this matrix. By using this map, we can pull back
+the tautological line bundle on $\CP^\pdim$, which gives us a line
+bundle over $\Grass$. Inside $\CP^\pdim$ we have $\pdim+1$ copies of
+$\CP^{\pdimm}$, which are defined by requiring one of the coordinates
+to be zero. If we restrict to the complement $\CP^\pdim-\CP^\pdimm$,
+which is
+isomorphic with $\C^{\pdim}$, the line bundle becomes
+trivial so we also get a trivial pullback bundle. If we consider the
+intersection of all these complements, we can take the pre-image in
+the Grassmannian and get an open subset on which all the determinants
+are non-zero. For such a
+point, the first determinant being non-zero ensures that we can
+choose a basis $v_1,\dots,v_m$ where the matrix
+\[ \begin{pmatrix}
+  (v_1)_1 & (v_1)_{2} & \dots  & (v_1)_{m} \\
+  (v_2)_1 & (v_2)_{2} & \dots  & (v_2)_{m} \\
+  \vdots  & \vdots   & \ddots & \vdots   \\
+  (v_m)_1 & (v_m)_{2} & \dots  & (v_m)_{m}
+\end{pmatrix} \]
+is any prescribed invertible matrix, and all the $m\times m$
+submatrices given by $m$ subsequent columns are invertible. This leads
+to the definition of the spaces $Y_{m,n}(A,B)$ and $X_{m,n}(A,B)$
+in Definition \ref{def:rum} and \ref{def:kvotientrum} respectively.
 
-The spaces we will be workng with were originally introduced
-as... blah blah, nulsnit af v.b., et eller andet, blah, matricer.
-
-
-The spaces $X_{m,n}(\sigma)$ that we will be studying in the thesis
+The spaces
 were originally studied in a slightly simpler form by my advisor,
 Marcel B\"okstedt. He looked at sequences of vectors $(v_1,\dots,v_n)$
 in $\C^2$, with the requirement that $v_i$ and $v_{i+1}$ are linearly

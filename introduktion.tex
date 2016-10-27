@@ -2,56 +2,86 @@
 \label{chap:introduktion}
 
 The spaces we will be working with were originally introduced
-in a very different form, which will briefly be described here.
-Consider an $m$-dimensional subspace of $\C^{\gdim}$, which can be
-thought of as an element of the Grassmann-manifold
+in a very different form, which will briefly be described here. Though
+this is not used in the dissertation, it hints at a connection with
+algebraic geometry.
+Consider the Grassmann-manifold, consisting of $m$-dimensional
+subspaces of $\C^{\gdim}$,
 \[ \mathrm{Gr}_m(\C^{\gdim}) = \set{V \subset \C^{\gdim} \mid
   \dim_\C(V) = m}. \]
-We can define a map on the Grassmannian by
-choosing a basis for our subspace, $v_1,\dots,v_m \in V$, considering
-these as row vectors and calculating determinants of subsequent
-columns,
-\[
-\begin{pmatrix}
-  \matrow{v_1} \\
-  \matrow{v_2} \\
-  \vdots \\
-  \matrow{v_m} 
-\end{pmatrix} \mapsto \left(\det
-  \begin{pmatrix}
-    (v_1)_i & (v_1)_{i+1} & \dots  & (v_1)_{i+m-1} \\
-    (v_2)_i & (v_2)_{i+1} & \dots  & (v_2)_{i+m-1} \\
-    \vdots  & \vdots    & \ddots & \vdots       \\
-    (v_m)_i & (v_m)_{i+1} & \dots  & (v_m)_{i+m-1}
-  \end{pmatrix}
-\right)_{i \in \set{1,\dots,m+n+1}}. \]
-Since this involves a choice of basis, we get a map to
-projective space $\CP^{\pdim}$, as the basis can vary with an element of
-$\GL_m(\C)$ and
-hence the determinants can vary with a scalar given
-by the determinant of this matrix. By using this map, we can pull back
-the tautological line bundle on $\CP^\pdim$, which gives us a line
-bundle over $\Grass$. Inside $\CP^\pdim$ we have $\pdim+1$ copies of
-$\CP^{\pdimm}$, which are defined by requiring one of the coordinates
-to be zero. If we restrict to the complement $\CP^\pdim-\CP^\pdimm$,
-which is
-isomorphic with $\C^{\pdim}$, the line bundle becomes
-trivial so we also get a trivial pullback bundle. If we consider the
-intersection of all these complements, we can take the pre-image in
-the Grassmannian and get an open subset on which all the determinants
-are non-zero. For such a
-point, the first determinant being non-zero ensures that we can
-choose a basis $v_1,\dots,v_m$ where the matrix
-\[ \begin{pmatrix}
-  (v_1)_1 & (v_1)_{2} & \dots  & (v_1)_{m} \\
-  (v_2)_1 & (v_2)_{2} & \dots  & (v_2)_{m} \\
-  \vdots  & \vdots   & \ddots & \vdots   \\
-  (v_m)_1 & (v_m)_{2} & \dots  & (v_m)_{m}
-\end{pmatrix} \]
-is any prescribed invertible matrix, and all the $m\times m$
-submatrices given by $m$ subsequent columns are invertible. This leads
-to the definition of the spaces $Y_{m,n}(A,B)$ and $X_{m,n}(A,B)$
-in Definition \ref{def:rum} and \ref{def:kvotientrum} respectively.
+This has a natural map to the projective space
+\[ P = \mathbb{P}(\Lambda^m(\C^{m+n})), \]
+given by the Pl\"ucker embedding
+\begin{align*}
+  \imath : \Grass &\to P \\
+  \spa(v_1,v_2,\dots,v_m) &\mapsto v_1\wedge v_2\wedge \dots
+                            \wedge v_m.
+\end{align*}
+
+Over $P$ we have the tautological bundle $H^*\to P$, consisting of
+pairs $(L,v)$ with $L \in P$ a line in $\Lambda^m(\C^{m+n})$ and $v\in
+L$ a vector on the line. The dual of
+this bundle, $H$, consists of linear maps from $H^*$ to $\C$, and 
+this has global sections given by picking out one of the
+coordinates of $v$. In our case, a coordinate is given by choosing $m$
+numbers
+\[ (i_1 < i_2 < \dots < i_m) \subset \set{1,\dots,m+n}, \]
+and considering the coefficient of
+\[ e_{i_1}\wedge e_{i_2}\wedge \dots \wedge e_{i_m} \in
+\Lambda^m(\C^{m+n}) \]
+for the standard basis $e_1,\dots,e_{m+n}$ on $\C^{m+n}$. So each
+set of indices $I$ defines a section
+\[ \delta_I : P \to H. \]
+We will single out the coordinates defined by the index sets
+\[ (i < i+1 < \dots < i+m-1), \]
+$i \in \set{1,\dots,m+n}$, where we replace $k$ by $k-m-n$ if
+$k > m+n$. So we consider $m$ subseqeuent basis-vectors,
+taken cyclically. Each of these coordinates defines a section
+\[ \delta_i : P \to H, \]
+so by tensoring them all together we get a section $\delta$ of the
+tensor bundle $H^{\otimes(m+n)}$:
+\[ \delta = \delta_1\otimes\delta_2\otimes\dots\otimes\delta_{m+n} : P
+\to H^{\otimes(m+n)}. \]
+
+In $P$ we have subspaces $P_I$, given by considering the lines where
+the coordinate indexed by $I$ is zero. These are
+projective spaces, of dimension one less than $P$, and they
+exactly correspond to the inverse image $\delta_I^{-1}(0)$. We want to
+work with the open set $U=P-\delta^{-1}(0)$ where our chosen
+sections are all non-zero. If we use the Pl\"ucker embedding $\imath$,
+we get a vector bundle
+$E=\imath^{-1}(H^{\otimes(m+n)})$ on $\Grass$, a section
+$\imath^{-1}(\delta) : \Grass \to E$, and an open set
+$X=\imath^{-1}(U)$ in $\Grass$ that exactly corresponds to the points
+on which the section is non-zero. By considering how the embedding
+$\imath$ is defined, we can see that the elements of $X$ are
+the subspaces that have a basis $v_1,\dots,v_m$ such that if we
+consider
+them as row vectors and calculate the determinants of $m$ subsequent
+columns, repeated cyclically, we always get a non-zero number. In
+symbols, this means
+\[ D_i(v_1,\dots,v_m) = \det
+ \begin{pmatrix}
+   (v_1)_{i} & (v_1)_{i+1} & \dots  & (v_1)_{i+m-1} \\
+   (v_2)_{i} & (v_2)_{i+1} & \dots  & (v_2)_{i+m-1} \\
+   \vdots  & \vdots    & \ddots & \vdots       \\
+   (v_m)_{i} & (v_m)_{i+1} & \dots  & (v_m)_{i+m-1}
+ \end{pmatrix} \neq 0 \]
+for all $i \in \set{1,\dots,m+n}$. Since $D_1$ is non-zero, we can
+can choose a basis where the first $m$
+columns are the identity matrix without affecting the span. If we
+want to preserve this property, we
+can only change the basis by scaling each column by a scalar. So our
+space $X$ can be represented by sequences of $n$ vectors,
+\[ v_1,\dots,v_n \in \C^m, \]
+such that if
+we insert the identity matrix before and after the sequence,
+\[ e_1,\dots,e_m,v_1,\dots,v_n,e_1,\dots,e_m, \]
+any $m$ subsequent vectors in this new sequence are linearly
+independent, and we have quotiented out by an action of the torus
+$\T^n$ given by letting the $i$'th coordinate of the torus act on
+$v_i$. This is the space $X_{m,n}$ described in Definition
+\ref{def:kvotientrum}.
 
 The spaces
 were originally studied in a slightly simpler form by my advisor,

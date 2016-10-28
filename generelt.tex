@@ -87,11 +87,11 @@ More surprisingly, we can also find new maps
 that make these new groups into a chain complex, allowing us to form
 \[ E_3^{p,q} = \ker d_2 / \im d_2. \]
 This process can be continued, giving a sequence of groups and maps
-\[ \xymatrix{d_r : E_r^{p,q} \ar[r] & E_r^{p+r,q-r+1} } \]
+\[ \xymatrix{d_r : E_r^{p,q} \ar[r] & E_r^{p+r,q-r+1}, } \]
 where the composition $d_r \circ d_r$ is zero and
 $E_r^{p,q}$ is formed by taking the homology of $E_{r-1}^{p,q}$ with
 respect to the map $d_{r-1}$. Since we have $E_r^{p,q} = 0$ for $p <
-0$ or $p > k$, these maps will eventually always go either to or from
+0$ or $p > k$, these maps will always go either to or from
 a zero
 group when $r > k$, and hence the groups $E_r^{p,q}$ will not change
 when we
@@ -164,7 +164,7 @@ We will only worry about the case where $X$ is a Riemannian manifold,
 so it comes equipped with a Riemannian metric $g$ and an induced
 topological metric $d$. In this case, the compact-open topology is
 induced by the metric
-\[ d^*(\g,\g') = \max_t d(\g(t),\g'(t)), \]
+\[ d^*\!(\g,\g') = \max_t d(\g(t),\g'(t)), \]
 so two loops are close in $\Omega(X)$ when the points $\g(t)$ and
 $\g'(t)$ are close for each $t$.
 By \cite[Theorem 17.1]{milnor}, this is homotopy equivalent to the
@@ -242,7 +242,7 @@ Note that we could multiply any column of $A$ by a non-zero scalar and
 we would end up with the same flag. Likewise, if we replace $v_j$ by
 $v_j + \lambda v_i$ for a scalar $\lambda$ and indices $j > i$, we do not
 change the left flag of $A$. The right flag is unchanged by doing
-the same operation with $j < i$. In particular, these opeartions
+the same operation with $j < i$. In particular, these operations
 correspond to multiplying with a lower-triangular matrix $L$ for the
 right flag, or an upper-triangular matrix $U$ for the left flag,
 giving the identities
@@ -320,7 +320,7 @@ properties. The first is that the symmetric group is the Weyl group of
 $\GL_m(\C)$, which for our purposes means that it is a Coxeter group
 and if we let $\B^U$ denote the upper-triangular matrices in
 $\GL_m(\C)$, there is a \textit{Bruhat decomposition},
-\[ \GL_m(\C) = \bigcup_{\sigma \in S_m} \B^U \cdot \sigma \cdot \B^U. \]
+\[ \GL_m(\C) = \bigcup_{\sigma \in S_m} \B^U \!\cdot\, \sigma \cdot \B^U. \]
 Note that this is a disjoint union. For a proof of this, see
 \cite[Theorem 4.3]{hiller}. We
 would prefer to change this slightly, which is done by considering the
@@ -329,15 +329,18 @@ element $\sigma_0$ in $S_m$ defined by
 This element is its own inverse, which gives us
 \begin{align*}
   \GL_m(\C) = \sigma_0 \cdot \GL_m(\C) &= \bigcup_{\sigma\in S_m}
-                                         \sigma_0\cdot \B^U \cdot
+                                         \sigma_0\cdot \B^U \!\cdot\,
                                          \sigma\cdot \B^U \\
                                        &= \bigcup_{\sigma\in S_m}
-                                         \sigma_0\cdot \B^U \cdot
+                                         \sigma_0\cdot \B^U \!\cdot\,
                                          \sigma_0^2\cdot \sigma \cdot
                                          \B^U \\
                                        &= \bigcup_{\sigma\in S_m}
-                                         \B^L\cdot \sigma_0\cdot
-                                         \sigma\cdot \B^U.
+                                         \B^L\!\cdot\, \sigma_0\cdot
+                                         \sigma\cdot \B^U \\
+                                       &= \bigcup_{\sigma\in S_m}
+                                         B^L\!\cdot\,\sigma\cdot
+                                         B^U\!.
 \end{align*}
 This is essentially the same theorem, but we have replaced the first
 copy of the upper-triangular matrices $\B^U$ with lower-triangular

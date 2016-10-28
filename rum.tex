@@ -1,24 +1,5 @@
-
-
-
-% Skal der laves et intro-kapitel med baggrundsmateriale? Løkker
-% (Milnor), Bruhat, spektralfølger.
-% Ellers skal det nok ind her et sted, men måske spredt lidt ud over
-% kapitlet.
-
 \chapter{Spaces of linearly independent vectors}
 \label{chap:rum}
-
-% Introduktion til rum
-%% Ukvotienterede (Y_{m,n}) og de rigtige (X_{m,n} = Y_{m,n}/T^m)
-%%% Så introducer gruppevirkningen her. Og vis at Y \cong X x T
-%%% Bør nok også nævne virkningen på rækkerne, da den spiller ind i
-%%% spektralfølgen.
-%% Andre permutationer.
-%% Andre koefficienter: \R og \H. Disse dukker først op igen
-%% senere, men det meste af teorien i dette afsnit burde være
-%% uafhængigt af koefficienterne, op til at nogle skalarer flytter
-%% lidt rundt. Specielt kan vi lige så godt smide dem ind her.
 
 In this chapter we will introduce the spaces that will be studied in
 the rest of the document, and collect various useful
@@ -87,7 +68,7 @@ This shows that $Y_{m,n}(X,Y)$ is an open subset of
 $(\C^m)^n$. Another important
 feature of $Y_{m,n}(X,Y)$ is that it does not really depend on the
 particular matrices
-$X =\nobreak [x_1,\dots,x_m]$ and $Y = [y_1,\dots,y_m]$,
+$X$ and $Y$,
 but only on the two flags in $\C^{m}$ defined from the columns:
 \begin{alignat*}{5}
   \mathrm{Fl_R}(X)\, &&= \Big(&\spa(x_m) &&\subset \spa(x_{m-1},x_m)
@@ -126,7 +107,7 @@ following lemma shows.
   Bruhat-decomposition of $\GL_m(\C)$, as in Section \ref{sec:bruhat},
   we can write it uniquely as a product 
   \[ X^{-1}Y = L\sigma U, \]
-  where $L$ is lower-triangular, $U$ is upper-triangular and $\sigma$
+  where $L$ is lower-triangular, $U$ is upper-triangular, and $\sigma$
   is a permutation. Hence we get a homeomorphism,
   \[ Y_{m,n}(X,Y) \cong Y_{m,n}(L^{-1}, \sigma U). \]
   But by the remark above, the space $Y_{m,n}(L^{-1},\sigma U)$ only
@@ -136,7 +117,7 @@ following lemma shows.
     \mathrm{Fl_R}(L^{-1}) &= \mathrm{Fl_R}(\Id), \\
     \mathrm{Fl_L}(\sigma U) &= \mathrm{Fl_L}(\sigma).
   \end{align*}
-  So $Y_{m,n}(L^{-1},\sigma U)$ is the same as the space
+  So $Y_{m,n}(L^{-1},\sigma U)$ is the same space as
   $Y_{m,n}(\sigma)$.
 \end{proof}
 
@@ -279,8 +260,9 @@ cohomology.
   \end{align*}
   We will use Alexander duality to compute the cohomology. Consider
   the complement in $S^8$,
-  \[ S^8-\widetilde Z = \set{(b,c,d,e) \mid d = bc} \cup \set{(b,c,d,e)
-    \mid c = de} \cup \set{\infty}, \]
+  \[ S^8-\widetilde Z = \big(\set{(b,c,d,e) \mid d =
+      bc}\cup\set{\infty}\big) \cup \big(\set{(b,c,d,e)
+    \mid c = de} \cup \set{\infty}\big), \]
   and denote the two sets as $W_1$ and $W_2$. Then
   \begin{align*}
     W_1\cap W_2 &= \set{(b,c,d,e) \mid d=bc,c=de}\cup\set{\infty}.
@@ -289,23 +271,28 @@ cohomology.
   this is the same as either $d$ or $e$ being large. Hence there is a
   homeomorphism,
   \begin{align*}
-    W_1\cap W_2 &\cong \set{(b,d,e) \mid d=bde}\cup\set{\infty} \\
-                &= \set{(b,d,e)\mid 0 = (be-1)d}\cup\set{\infty} \\
-                &= \set{(b,d,e) \mid d = 0} \cup \set{(b,d,e) \mid
-                  be=1}\cup\set{\infty}.
+    W_1\cap W_2 &\cong \set{(b,de,d,e) \mid d=bde}\cup\set{\infty} \\
+                &= \set{(b,de,d,e)\mid 0 = (be-1)d}\cup\set{\infty} \\
+                &= \big(\set{(b,de,d,e) \mid d =
+                  0}\cup\set{\infty}\big) \cup \big(\set{(b,de,d,e) 
+                  \mid be=1}\cup\set{\infty}\big).
   \end{align*}
   
   These new spaces have computable homology, since they can be
   identified with spaces built from spheres. The first is relatively
   easy,
-  \[ Z_1 = \set{(b,d,e)\mid d = 0}\cup \set{\infty} =
+  \[ Z_1 = \set{(b,de,d,e)\mid d = 0}\cup \set{\infty} =
   \set{(b,0,0,d)}\cup\set{\infty} \cong S^4. \]
   The second is slightly harder.
-  \[ Z_2 =\set{(b,d,e)\mid be=1}\cup\set{\infty}=
+  \[ Z_2 =\set{(b,de,d,e)\mid be=1}\cup\set{\infty}=
   \set{\left(b,\frac{d}{b},d,\frac{1}{b} \right) }\cup\set{\infty}. \]
   This set is homeomorphic to the one-point compactification of
-  $\set{(b,d)\in \C^*\times \C}$. By \cite[Chapter~2.3]{dupontk}, this
+  \[ \set{\left(b,\frac{1}{b}\right) \sdel b\in\C^*} \times
+  \set{d\in\C}. \]
+  By \cite[Chapter~2.3]{dupontk}, this
   is given by the smash product of the one-point compactifications,
+  and since we already calculated the compactification of $\C^*$ in
+  Example \ref{ex:22} this is
   \[ Z_2\simeq (\C^*\times\C)^+ \cong (\C^*)^+\wedge\C^+ \cong (S^1\vee
   S^2) \wedge S^2 = S^3 \vee S^4. \]
   The intersection of these spaces is
@@ -401,7 +388,7 @@ that the choice of $X$ and $Y$ in $Y_{m,n}(X,Y)$ plays a role in
 determining when the spaces are empty. But as we shall now see, the
 spaces are non-empty as long as we are not in an obviously empty
 space. The exact meaning of ``obviously'' is given in the following
-lemma.
+theorem.
 
 \begin{theorem}
   \label{thm:ikke-tom}
@@ -468,7 +455,7 @@ lemma.
   become non-empty as
   soon as there are ``enough'' columns.
 \end{remark}
-It will occasionally be nice to have an explicit element of
+It would be nice to give an explicit element of
 $Y_{m,n}(\sigma)$, but to do this we will need a slight amount of
 setup. Hence it will be delayed until Theorem
 \ref{thm:eksplicit-element} in Section \ref{sec:rum-stabil}.
@@ -488,8 +475,8 @@ computations.
   This follows directly from defining $Y_{m,n}$ as
   $\Det_{\Id,\Id}^{-1}(\T^{m+n-1})$. When we compute the determinants
   of the matrix, we see that the important entries of
-  $(a_1,\dots,a_n)$ lie in a square submatrix which is unchanged under
-  transposition. So we get
+  $(a_1,\dots,a_n)$ lie in square submatrices which are transposed
+  along with the matrix. So we get
   \begin{align*}
     \Det_{\Id,\Id}(a_1,\dots,a_n) &= (d_1,\dots,d_{m+n-1}) \\
     &= \Det_{\Id,\Id}( (a_1,\dots,a_n)^T ).
@@ -502,7 +489,7 @@ As an example, we computed the cohomology of $Y_{3,2}$ in Example
 has the same cohomology groups.
 
 Since we are interested in linear independence of vectors in $\C^m$,
-the group of complex units, $\T=(\C)^*$, acts on the space 
+the group of complex units, $\T=\C^*$, acts on the space 
 in several ways. The 
 most important for our purposes is the following:
 \begin{definition}
@@ -522,7 +509,7 @@ most important for our purposes is the following:
 
 While all of these symmetries are nice
 to work with, the spaces as defined above have some issues. In
-particular, as we shall see in Theorem \ref{thm:forste}, the
+particular, as we shall see shortly, the
 fundamental group and the cohomology ring of
 $Y_{m,n}(\sigma)$ both become larger as $n$ grows. This complicates
 some of our arguments, but luckily it can be helped by taking the
@@ -533,10 +520,14 @@ actually interested in.
   \label{def:kvotientrum}
   For natural numbers $n$ and $m$ and invertible matrices $X$ and $Y$,
   we define the space $X_{m,n}(X,Y)$ as the quotient of $Y_{m,n}(X,Y)$
-  using the group action above,
+  using the group action of the torus,
   \[ X_{m,n}(X,Y) = Y_{m,n}(X,Y) / \T^n. \]
 \end{definition}
 
+We will generally not use coset notation to distinguish between
+$X_{m,n}(X,Y)$ and $Y_{m,n}(X,Y)$, but instead try to explicitly write
+out when we are considering the quotiented space and when we are
+working with the unquotiented space.
 Note that since matrix multiplication is linear, it commutes with the
 action of $\T^n$ on $Y_{m,n}(X,Y)$ and we get directly from Lemma
 \ref{lem:rum-perm} that for each choice of ${X,Y\in \GL_m(\C)}$ there
@@ -554,7 +545,7 @@ spaces $Y_{m,n}(X,Y)$. In particular, we have the following:
 \begin{proof}
   Define a map
   \[ X_{m,n}(X,Y) \to Y_{m,n}(X,Y) \]
-  by mapping $A\cdot \T^n$ to the unique representative
+  by mapping $A$ to the unique representative
   $\widetilde{A} \in Y_{m,n}(X,Y)$ with the last
   $n$ determinants all equal to one,
   \[ \Det_{X,Y}(\widetilde{A}) \in (\C^*)^{m-1} \times
@@ -565,22 +556,24 @@ spaces $Y_{m,n}(X,Y)$. In particular, we have the following:
   is the map that uses the group action of $\T^n$ to change the last
   $n$ coordinates of $\Det_{X,Y}(A)$ to 1 and this is a continuous
   map. More precisely, it is given by the formula
-  \[ (a_1,\dots,a_n) \mapsto \left(a_1,\dots,a_{m-1},\frac{1}{d_m}a_m,
-    \frac{d_m}{d_{m+1}} a_{m+1},\dots,\hat{d}a_n\right), \]
+  \[ (a_1,\dots,a_n) \mapsto \left(a_1,\dots,a_{m-1},\widehat{d}_ma_m,
+    \widehat{d}_{m+1} a_{m+1},\dots,
+    \frac{d_{m+n-1}}{d_{m+n-2}}a_{n-1}, \frac{1}{d_{m+n-1}}a_n\right), \]
   where $\Det_{X,Y}(a_1,\dots,a_n) = (d_1,\dots,d_{m+n-1})$ and the
-  number $\hat{d}$ is an expression consisting of products and
+  numbers $\widehat{d}_i$ are expressions consisting of products and
   quotients of the last $n$ of these
   determinants, the exact terms of which depends on $n$ and $m$. If
   $\Det_{X,Y}(A) = (d_1,\dots,d_{m+n-1})$ denotes the determinants as
   above, the homeomorphism is the map
   \begin{align*}
     Y_{m,n}(X,Y) &\to X_{m,n}(X,Y) \times \T^n\\
-    A &\mapsto (A\cdot \T^n, (d_m,\dots,d_{m+n-1})),
+    A &\mapsto (A, (d_m,\dots,d_{m+n-1})),
   \end{align*}
   with inverse
-  \[ (A\cdot \T^n, (d_m,\dots, d_{m+n-1})) \mapsto
-  \left(\overbrace{1,\dots,1}^{m-1},d_m,\frac{d_{m+1}}{d_m},\dots,
-    \frac{1}{\hat{d}}\right) \cdot f(A). \]
+  \[ (A, (d_m,\dots, d_{m+n-1})) \mapsto
+  \left(\overbrace{1,\dots,1}^{m-1}, \frac{1}{\widehat{d}_m},
+    \frac{1}{\widehat{d}_{m+1}},\dots,
+    d_{m+n-1}\right) \cdot f(A). \] 
 \end{proof}
 
 The above lemma is useful, since it oftens allows us to work with the
@@ -707,7 +700,7 @@ In the above, we only considered the spaces $X_{m,n}$ and $X_{m,n+1}$
 defined by the identity permutation $\Id\in S_m$,
 but there is a similar stabilisation for the other permutations. We
 will again start by considering the unreduced spaces
-$Y_{m,n}(\sigma)$. For
+$Y_{m,n+1}(\sigma)$. For
 any permutation $\sigma$, the space $Y_{m,n+1}(\sigma)$ is a union of
 spaces homeomorphic to a torus times $Y_{m,n}(\tau)$, for various
 permutations $\tau\in S_m$. The exact relation is given by the
@@ -780,7 +773,8 @@ following theorem.
   (\C^*)^{\size{I}}, \]
   we will proceed as in the previous case. The map to the torus
   $(\C^*)^{\size{I}}$ is given by remembering the non-zero entries of
-  $a_{n+1}$, so we can immediately reduce to the case where all
+  $a_{n+1}$, so we can immediately use the torus action to reduce to
+  the case where all
   entries of $a_{n+1}$ are either zero or one.
 
   An element of $Y_{m,n+1}^I(\sigma)$ consists of vectors
@@ -789,11 +783,11 @@ following theorem.
   invertible. It is this matrix that we want to factor as
   $L\cdot \varphi(I,\sigma)\cdot U$, where $L$ is an invertible,
   lower-triangular matrix and $U$ is an invertible, upper-triangular
-  matrix. To do this, we want to make row operations on the matrix
-  corresponding to multiplying with $L^{-1}$ until we end up with an
+  matrix. To do this, we want to make row operations on the matrix,
+  corresponding to multiplying with $L^{-1}$, until we end up with an
   upper-triangular matrix with permuted rows, corresponding to
-  $\varphi(I,\sigma) \cdot U$. Multiplying with $L^{-1}$ corresponds
-  to making row operations where each row is only allowed to affect
+  $\varphi(I,\sigma) \cdot U$. Multiplying with $L^{-1}$ is the same
+  as making row operations where each row is only allowed to affect
   the rows below it. We want to remove all non-zero entries in the
   first column except for one, and we want this single entry to have
   the lowest possible index. We also want to make the matrix as close
@@ -807,6 +801,7 @@ following theorem.
   condition gives us that
   \[ (a_1,\dots,a_n) \in Y_{m,n}(\tau), \]
   where $\tau$ is the permutation
+  $(\sigma_m,\sigma_1,\dots,\sigma_{m-1})$:
   \[ \tau(k) =
   \begin{cases}
     \sigma(k-1) & k > 1, \\
@@ -827,15 +822,19 @@ following theorem.
   Now consider the case $k > 0$, so $I = (i_1 < \dots < i_k)$. If $i_k
   > \sigma(m)$, we can write
   $(a_{n+1},\sigma_1,\dots,\sigma_{m-1})$ in block form as
-  \[
-  \begin{pmatrix}
+  \[\xy
+  (-8,4.5)*{\scriptstyle\sigma(m)\to};
+  (-6,-4)*{\scriptstyle i_k\to};
+  (5,0)*{\begin{pmatrix}
     I_1 & A \\
     1 & 0 \\
     I_2 & B \\
     1 & C \\
     0 & D
-  \end{pmatrix}.
+  \end{pmatrix},};
+  \endxy
   \]
+  where the arrows indicate row numbers.
   $I_1$ is a vector with ones on the entries corresponding
   to $\set{i_j \mid i_j < \sigma(m)}$ and zeroes elsewhere, while
   $I_2$ is similar except we consider indices greater than
@@ -844,14 +843,17 @@ following theorem.
   and $D$ are the matrices consisting of the corresponding rows from
   $(\sigma_1,\dots,\sigma_{m-1})$. But by multiplying with a
   lower-triangular matrix, we can reduce this matrix to
-  \[
-  \begin{pmatrix}
-    I_1 & A \\
-    1 & 0 \\
-    I_2 & B \\
-    0 & C \\
-    0 & D
-  \end{pmatrix}.
+  \[\xy
+  (-8,4.5)*{\scriptstyle\sigma(m)\to};
+  (-6,-4)*{\scriptstyle i_k\to};
+  (5,0)*{\begin{pmatrix}
+      I_1 & A \\
+      1 & 0 \\
+      I_2 & B \\
+      0 & C \\
+      0 & D
+    \end{pmatrix}.};
+  \endxy
   \]
   But this shows that $\varphi(I,\sigma) =
   \varphi\big((i_1<\dots<i_{k-1}),\sigma\big)$ when $i_k >
@@ -864,29 +866,37 @@ following theorem.
   there is a $j < k$ with $\widehat\sigma^{-1}(i_k) <
   \widehat\sigma^{-1}(i_j)$, then we can write
   $(a_{n+1},\sigma_1,\dots,\sigma_{m-1})$ as
-  \[
-  \begin{pmatrix}
-    \vdots & \\
-    1 & \dots & \dots & \dots & 1 & \dots\\
-    \vdots \\
-    1 & \dots & 1 & \dots & \dots & \dots\\
-    \vdots & \\
-    1 &  \dots & \dots & \dots & \dots & \dots\\
-    \vdots
-  \end{pmatrix}. \]
+  \[\xy
+  (-21,11)*{\scriptstyle i_j\to};
+  (-21,0.3)*{\scriptstyle i_k\to};
+  (-23,-10.5)*{\scriptstyle \sigma(m)\to};
+  (5,0)*{\begin{pmatrix}
+      \vdots & \\
+      1 & \dots & \dots & \dots & 1 & \dots\\
+      \vdots \\
+      1 & \dots & 1 & \dots & \dots & \dots\\
+      \vdots & \\
+      1 &  \dots & \dots & \dots & \dots & \dots\\
+      \vdots
+    \end{pmatrix}.};
+  \endxy\]
   In the above, only the $i_j$'th, $i_k$'th and $\sigma(m)$'th rows
   have been written out, and only the non-zero entries. But this
   matrix can be reduced to
-  \[
-  \begin{pmatrix}
-    \vdots & \\
-    1 & \dots & \dots & \dots & 1 & \dots\\
-    \vdots \\
-    0 & \dots & 1 & \dots & -1 & \dots\\
-    \vdots & \\
-    1 & \dots & \dots  & \dots & \dots & \dots\\
-    \vdots
-  \end{pmatrix}. \]
+  \[\xy
+  (-21,11)*{\scriptstyle i_j\to};
+  (-21,0.3)*{\scriptstyle i_k\to};
+  (-23,-10.5)*{\scriptstyle \sigma(m)\to};
+  (5,0)*{\begin{pmatrix}
+      \vdots & \\
+      1 & \dots & \dots & \dots & 1 & \dots\\
+      \vdots \\
+      0 & \dots & 1 & \dots & -1 & \dots\\
+      \vdots & \\
+      1 & \dots & \dots  & \dots & \dots & \dots\\
+      \vdots
+    \end{pmatrix}.};
+  \endxy\]
   We are now unable to change the middle row, row $i_k$, since there
   are no non-zero
   entries above the left-most one. The additional $-1$ that was
@@ -911,29 +921,37 @@ following theorem.
   this is the last non-zero entry in the first column. Hence
   $\widetilde{L}^{-1}$
   has the form
-  \[ \widetilde{L}^{-1} = 
-  \begin{pmatrix}
-    \vdots \\
-    * & \dots & * & 1 & \dots & \dots & \dots \\
-    \vdots \\
-    0 & \dots & \dots & \dots & \dots & 1 & \dots \\
-    \vdots
-  \end{pmatrix},
-  \]
+  \[ \xy
+  (-19,5)*{\scriptstyle i_k\to};
+  (-21,-5)*{\scriptstyle \sigma(m)\to};
+  (5,0)*{\widetilde{L}^{-1} = 
+    \begin{pmatrix}
+      \vdots \\
+      * & \dots & * & 1 & \dots & \dots & \dots \\
+      \vdots \\
+      0 & \dots & \dots & \dots & \dots & 1 & \dots \\
+      \vdots
+    \end{pmatrix},};
+  \endxy \]
   where we once again write out row $i_k$ and $\sigma(m)$, and use the
   stars to indicate entries that may be non-zero but that are not
   important.
   If we switch row $i_k$ and row $\sigma(m)$ along with column
   $i_k$ and column $\sigma(m)$, we get another lower-triangular
   matrix:
-  \[ (i_k \; \sigma(m)) \widetilde{L}^{-1} (i_k \; \sigma(m)) = 
-  \begin{pmatrix}
-    \vdots \\
-    0 & \dots & \dots & 1 & \dots & \dots & \dots \\
-    \vdots \\
-    * & \dots & * & \dots & \dots & 1 & \dots \\
-    \vdots
-  \end{pmatrix}.\]
+  \[ \xy
+  (-2.1,5.6)*{\scriptstyle i_k\to};
+  (-4.1,-5.5)*{\scriptstyle \sigma(m)\to};
+  (5,0)*{(i_k \; \sigma(m))\cdot \widetilde{L}^{-1}\cdot (i_k \;
+    \sigma(m)) = 
+    \begin{pmatrix}
+      \vdots \\
+      0 & \dots & \dots & 1 & \dots & \dots & \dots \\
+      \vdots \\
+      * & \dots & * & \dots & \dots & 1 & \dots \\
+      \vdots
+    \end{pmatrix}.}
+  \endxy\]
   Inserting in our original equation, we see
   \[ (i_k \; \sigma(m)) \varphi(I,\sigma) \cdot U = \widetilde{L}^{-1}
   \cdot (i_k \; \sigma(m)) \cdot \widehat{L} M. \]
@@ -959,7 +977,7 @@ show up are related in the Bruhat order, described in Section
 A different way of phrasing this is that as the indexing set becomes
 larger, we get closer to $\varphi\left((1 < 2 < \dots <
   m),\sigma\right)$ and further away from
-$\varphi\left((\sigma(m)),\sigma\right)$.
+$\varphi\left((\sigma(m)),\sigma\right)$ in the Bruhat order.
 \begin{proof}
   The proof is mostly checking cases. If $\varphi(J,\sigma) =
   \varphi(I,\sigma)$ we are done. We will start by considering the
@@ -968,13 +986,14 @@ $\varphi\left((\sigma(m)),\sigma\right)$.
   \varphi(J,\sigma). \]
   First we note that the two permutations are related in the Bruhat
   order, since
-  \[ \tau^{-1} \cdot \phi = \varphi(J,\sigma)^{-1} \cdot
+  \[ \varphi(J,\sigma)^{-1} \cdot
   (i_k\;\sigma(m)) \cdot \varphi(J,\sigma), \]
-  which is exactly the condition described in Definition
+  is exactly of the form described in Definition
   \ref{def:bruhat-def}. So
   we only need to count the number of inversions of each of the
   permutations, and
-  see that $\tau$ has fewer inversions than $\phi$.
+  see that $\varphi(I,\sigma)$ has fewer inversions than
+  $\varphi(J,\sigma)$.
   To simplify further, assume that all the indices $i_r$ in $I$ and
   $J$ satisfy the conditions $i_r < \sigma(m)$ and
   $\widehat{\sigma}^{-1}(i_r) > \widehat{\sigma}^{-1}(i_s)$ for all $s
@@ -1002,8 +1021,9 @@ $\varphi\left((\sigma(m)),\sigma\right)$.
   $\widehat{\sigma}^{-1}(i_{k-1})$.
 
   Note that by our previous assumption on the indices $i_r$, we have 
-  $\widehat{\sigma}^{-1}(i_{k-1}) < \widehat{\sigma}^{-1}(i_{k})$. So
-  we start by checking this pair.
+  \[ \widehat{\sigma}^{-1}(i_{k-1}) <
+  \widehat{\sigma}^{-1}(i_{k}). \]
+  We start by checking this pair. By direct calculation,
   \begin{align*}
     \tau(\widehat{\sigma}^{-1}(i_{k-1})) = i_k <\,& \sigma(m) =
     \tau(\widehat{\sigma}^{-1}(i_{k})), \\
@@ -1150,7 +1170,8 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   \[ p_{i,j} = { m-k-j+i-1 \choose i-1}. \] 
   We start with column $j=m-k$. This column is always $Le_1$, which we
   know consists of all ones, so the formula holds here since
-  \[ p_{i,m-k} = { m-k-(m-k)+i-1 \choose i-1} = {i-1\choose i-1}. \] 
+  \[ p_{i,m-k} = { m-k-(m-k)+i-1 \choose i-1} = {i-1\choose i-1} =
+  1. \]
   Now assume that the formula holds for column
   $j$, given as $L^{m-k-j+1}e_1$. Moving a column to the left is the
   same as multiplying with $L$, which corresponds to
@@ -1195,7 +1216,7 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
   \end{pmatrix} +
   \begin{pmatrix}
     3 & 1 & 0
-  \end{pmatrix} \]
+  \end{pmatrix}. \]
   
   We will prove that the matrix
   \[ R = 
@@ -1275,7 +1296,7 @@ $Y_{m,n}(\sigma)$, as was hinted at earlier.
     0 \\
     \vdots \\
     0
-  \end{pmatrix} \]
+  \end{pmatrix}, \]
   since we have shifted every row below the first one space to the
   left. By expanding the determinant using this column, we remove the
   first row and the last column, possibly introduce a sign, and
@@ -1306,7 +1327,7 @@ Using the stabilisation defined previously, we get a directed system
 of topological spaces,
 \[ \xymatrix{X_{m,1} \ar[r]^s & X_{m,2} \ar[r]^s & \dots \ar[r]^s &
   X_{m,n} \ar[r]^s & X_{m,n+1} \ar[r]^s & \dots } \]
-When considering such a system, it can sometimes be helpful to
+When considering such a system it can sometimes be helpful to
 take the limit as $n$ approaches infinity.
 
 \begin{definition}
@@ -1346,7 +1367,7 @@ acts on the left with a matrix and this map should be linear to give
 an induced map on the quotient $X^{\Hq}_{m,n}$, we will choose to act
 with scalars from the right. Once this is done, everything above
 carries out exactly as for the complex numbers, and we get
-stabilisation maps and limit spaces exactly as for the complex
+stabilisation maps and limit spaces as for the complex
 case. These will not be important in the next chapter, but will show
 up again in Chapter \ref{chap:loekker}.
 

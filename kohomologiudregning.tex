@@ -59,7 +59,7 @@ Note that if we define an indexing set ${I =
   \set{1,\dots,m}-\set{v_1,\dots,v_p}}$,
 these spaces correspond to the spaces in Theorem
 \ref{thm:permutation} by the formula
-\[ Y_{\set{v_1,\dots,v_p}} = Y_{m,n}^I, \]
+\[ Y_{\set{v_1,\dots,v_p}} = Y_{m,n}^I. \]
 Since $\Y$ is open, we
 can get an open set in $F_p$ by inserting a small disc on these
 zero-entries. More precisely, the set we get is
@@ -68,7 +68,7 @@ zero-entries. More precisely, the set we get is
     \size{((a_n)_{v_1},\dots,(a_n)_{v_p})} <
     \min_{i\not\in \set{v_1,\dots,v_p}} \size{(a_n)_i}, \\
     \left(a_1,\dots,a_{n-1},a_n-t\sum_{i} (a_n)_{v_i}e_{v_i}\right)\in
-    F_p \forall t \in [0,1]
+    F_p \;\forall t \in [0,1]
   \end{matrix} }. \]
 This is an open set in $F_p$, with $Y_{\emptyset} = F_0$, and it
 contains all points $(a_1,\dots,a_n)\in F_p$ where the entries of
@@ -290,7 +290,8 @@ An immediate consequence is the following result.
   \[ H^1(X_{m,n}) \oplus H^1(\T^n) \cong  H^1(Y_{m,n}) \cong
   \Z^{m+n-1}. \]
   Since any torsion in $H^1(X_{m,n})$ would show up in $H^1(Y_{m,n})$,
-  it must be free. We can calculate the rank from the above and get
+  it must be free. We can calculate the rank from the above formula
+  and get
   \[ H^1(X_{m,n}) \cong \Z^{m-1}. \]
 \end{proof}
 
@@ -310,7 +311,7 @@ form
   \vrule & \vrule & & \vrule
 \end{pmatrix},
 \]
-where $L$ is the lower triangular matrix that defines the
+where $L$ is the lower-triangular matrix that defines the
 stabilisation map, see Definition \ref{def:stabilisering}. Computing
 the determinants gives
 \[ \Det(s^{n-1}(v)) = (\pm v_1,\dots,\pm v_m, \pm 1, \dots,\pm 1), \]
@@ -319,9 +320,10 @@ $\T^{n}$ to change the last $n-1$ determinants as in the proof of
 Lemma \ref{lem:reduktion}, we can get an element of $Y_{m,n}$ with any
 prescribed
 determinant. Altogether this defines a lift, $f$, of the
-determinant map,
-\[ \xymatrix{ \T^{m+n-1} \ar[r]^f \ar@/_1.5pc/[rr]_\Id & Y_{m,n}
-  \ar[r]^<<<<<\Det & \T^{m+n-1}}. \]
+identity map over the determinant,
+\[ \xymatrix{ & Y_{m,n}
+  \ar[d]^\Det \\
+  \T^{m+n-1} \ar[ur]^f \ar[r]^\Id & \T^{m+n-1}.}\]
 By taking first cohomology, we get maps
 \[ \xymatrix{ H^1(Y_{m,n}) \ar@/^/[r]^{f^*} & H^1(\T^{m+n-1})
   \ar@/^/[l]^{\Det^*} }, \]
@@ -435,7 +437,7 @@ cohomology of $Y_{\set{1,2}}$:
 
 Since we know the product structure from the K\"unneth formula, we can
 name the generators and get the ring 
-\[ H^*(Y_{\set{1,2}}) = \bigwedge\nolimits^*[a_{00},d_{00},i_{00}]\otimes
+\[ H^*(Y_{\set{1,2}}) = \Lambda^*[a_{00},d_{00},i_{00}]\otimes
 H^*(Y). \]
 The two generators of $Y$ will be denoted $y_{00,1}$ for the degree
 one generator and $y_{00,2}$ for the degree two generator. All other
@@ -492,7 +494,7 @@ formula gives
 \end{cases} \] 
 As before, the ring structure is given by
 \[ H^*(Y_{\set{1}}) =
-\bigwedge\nolimits^*[a_{01},d_{01},f_{01},h_{01},i_{01}] \otimes H^*(Y).\]
+\Lambda^*[a_{01},d_{01},f_{01},h_{01},i_{01}] \otimes H^*(Y).\]
 
 \subsection{The cohomology of $Y_{\set{2}}$}
 
@@ -521,7 +523,7 @@ the homeomorphism
 Since we already know the cohomology of this space, we know
 \begin{align*}
   H^q(Y_{\set{2}}) = 
-  \left(\bigwedge\nolimits^*[a_{10},d_{10},f_{10},g_{10},i_{10}]\otimes
+  \left(\Lambda^*[a_{10},d_{10},f_{10},g_{10},i_{10}]\otimes
   H^*(Y)\right)^q &=
   \begin{cases}
     \Z & q = 0, \\
@@ -571,8 +573,8 @@ The space is homeomorphic to $(\C^*)^7\times \set{ (x,y,z)\in \C^3
 To get the cohomology, we refer back to Example \ref{ex:32}, where we
 computed the cohomology of
 \[ Z=\set{(x,y,z)\in\C^3 \mid y-z-xyz = 1}, \]
-and found it to be the same as the cohomology of $S^2$. The generator of
-$H^2(Z)$ will be called $z_{11}$ with $z_{11}^2 = 0$. If we apply
+and found it to be the same as the cohomology of $S^2$. The generator
+of $H^2(Z)$ will be called $z_{11}$, with $z_{11}^2 = 0$. If we apply
 this, we get
 \[ H^q(Y_{\emptyset}) =
 \begin{cases}
@@ -590,7 +592,7 @@ this, we get
   \end{cases} \] 
 and the generators are
 \[ H^*(Y_{\emptyset}) =
-\bigwedge\nolimits^*[a_{11},d_{11},g_{11},h_{11},i_{11},C_{11},D_{11}]
+\Lambda^*[a_{11},d_{11},g_{11},h_{11},i_{11},C_{11},D_{11}]
 \otimes H^*(Z). \]
 
 \subsubsection{A note on the cohomology of $Z$}
@@ -630,10 +632,11 @@ R\times(D-0)$. The isomorphism is given by excision, since $Z = NR
 \Z. \] 
 From the diagram, $j^*(1)$ gives us an element of $H^2(Z)$. To see
 that this is a generator, consider the torus 
-\[ \widehat \T = \set{(x,y,z)\in Z \mid \size{x} = \size{y} = 2 }
+\[ \widehat \T = \set{\left(x,y,z=\frac{y-1}{1+xy}\right)\in Z \sdel
+  \size{x} = \size{y} = 2 }
 \subset Z. \]
 This intersects $R$ in exactly one point, namely $p=(2,-2,1)$. By
-taking the intersection with $\widehat T$ we can extend the previous
+taking the intersection with $\widehat\T$ we can extend the previous
 diagram,
 \[ \xymatrix{ H^2(NR,NR_0) \ar[d]^-{i^*} & H^2(Z,Z-R) \ar[d]^-{i^*}
   \ar[l]_<<<<<\cong \ar[r]^>>>>>{j^*} & H^2(Z) \ar[d]^-{i^*} \\
@@ -655,8 +658,8 @@ $(Z,Z-R)$.
 There is a smiliar argument with the space $Y$ from before and the
 subspace ${R_Y = \set{(b,c) \in \R^2 \mid b > 0, c > 0, bc > 1}}$. In
 particular, the generator of $H_2(Y)$ can be taken as
-$i_*\left([\widehat T]\right)$, where $[\widehat
-  T]$ is a generator of $H_2(\widehat \T)$ for the torus 
+$i_*\left([\widehat \T]\right)$, where $[\widehat
+  \T]$ is a generator of $H_2(\widehat \T)$ for the torus 
 \[ {\widehat \T = \set{(b,c)\mid \size{b}=\size{c} = 2}} \subset
 R_Y. \]
 
@@ -827,7 +830,7 @@ This also intersects and preserves the orientation.
 \paragraph{$\mathbf{y_{01,2}}$:}
 This is calculated by the intersection points of the fundamental class
 of the torus in $Y$, which was mentioned earlier:
-\[ \widehat T = \set{(b,c) \in \C^2 \mid \size{b}=\size{c} = 2}
+\[ \widehat \T = \set{(b,c) \in \C^2 \mid \size{b}=\size{c} = 2}
 \subset Y. \]
 The map becomes
 \[ (b,c) \mapsto \left( bC, \frac{c}{C}-\frac{1}{\e C},\frac{c}{C}
@@ -1019,7 +1022,9 @@ We can now use the above to calculate the $E_2$-page. We have
 calculated the groups appearing on the first page and the
 differential. To get the second page, we need to compute the homology
 groups of $d_1$. This reduces to linear algebra over the integers, and
-is done using Sage. The result can be found in Figure \ref{fig:e2}.
+is done using the Sage code that can be found in Appendix
+\ref{sec:sageboundary}. The result can be found in Figure
+\ref{fig:e2}.
 
 \begin{figure}[ht]
   \[ \xy
@@ -1050,8 +1055,8 @@ For $r\geq 2$, this increases $p$ by at least 2. This means that
 the domain or codomain of $d_r$ will always be zero, so taking
 homology does not change anything. Hence $E_2 = E_\infty$, the
 spectral sequence collapses at the 2\textsuperscript{nd} term, and
-there are no extension problems since all the groups are free and
-abelian. This allows us to read off the cohomology of $Y_{3,3}$. Since
+there are no extension problems since all the groups are free. This
+allows us to read off the cohomology of $Y_{3,3}$. Since
 we are also interested in factoring out the $\T^3$ torus, we note this
 as well.
 \[ H^q(Y_{3,3}) = E_2^{0,q} \oplus E_2^{1,q-1} = 

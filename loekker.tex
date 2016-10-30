@@ -10,7 +10,7 @@ manifold $\GLB{m}$.
 \begin{definition}
   The loop space $\Omega = \Omega(\GLB{m})$ is the space
   \[ \Omega = \set{\g : [0,1] \to \GLB{m} \mid \g(0) = \g(1) =
-    [\Id]} \]
+    \Id} \]
   with the compact-open topology. This was briefly described in
   Section \ref{sec:ls}. Since $\GLB{m}$ is a Riemannian manifold, the
   loop space becomes a metric space where loops are close if they are
@@ -21,9 +21,9 @@ manifold $\GLB{m}$.
 
 As has been done before, we will start by considering $Y_{m,n}$ and
 then quotient out with the torus $\T^n$ afterwards.
-For $A = [a_1,\dots,a_n]\in Y_{m,n}$ we
+For $A = (a_1,\dots,a_n)\in Y_{m,n}$ we
 can define a path $ \g_A$ in $\GL_m(\C)$ by starting with
-$\g_A(0) = \Id$. Since the matrix $[e_2,\dots,e_m,a_1]$ is
+$\g_A(0) = \Id$. Since the matrix $(e_2,\dots,e_m,a_1)$ is
 invertible by the definition of $Y_{m,n}$, we know that $a_1$ is
 linearly independent of $e_2,\dots,e_m$. Hence it can be written as
 \[ a_1 = \sum_{i=1}^m c_i e_i, \]
@@ -31,26 +31,26 @@ with $c_1 \neq 0$. Rewriting the expression leads to the formula
 \[  \frac{1}{c_1} a_1= e_1 + \frac{1}{c_1} \left(\sum_{i=2}^m c_i
   e_i\right). \]
 This gives us a path in $\GL_m(\C)$ from the identity to
-$\left[\frac{1}{c_1} a_1,e_2,\dots,e_m\right]$:
-\[ [0,1]\ni t \mapsto \left[ e_1 + t\left(\sum_{i=2}^m
-    \frac{c_i}{c_1}e_i\right),e_2,\dots,e_m \right] \in \GL_m(\C). \]
+$\left(\frac{1}{c_1} a_1,e_2,\dots,e_m\right)$:
+\[ [0,1]\ni t \mapsto \left( e_1 + t\left(\sum_{i=2}^m
+    \frac{c_i}{c_1}e_i\right),e_2,\dots,e_m \right) \in \GL_m(\C). \]
 This process can be continued, since we can rewrite the similar
 expression for $a_2$ as
 \[ \frac{1}{d_2}a_2 = e_2 + \frac{1}{d_2}\left(\sum_{i=3}^m d_i
   e_i\right) + \frac{d_1}{d_2c_1}a_1, \]
 and get a path
-\[ t\mapsto \left[\frac{1}{c_1}a_1,e_2+t\left(\sum_{i=3}^m
+\[ t\mapsto \left(\frac{1}{c_1}a_1,e_2+t\left(\sum_{i=3}^m
     \frac{d_i}{d_2}e_i +
-    \frac{d_1}{d_2c_1}a_1\right),e_3,\dots,e_m\right] \]
+    \frac{d_1}{d_2c_1}a_1\right),e_3,\dots,e_m\right) \]
 that starts where the other path stopped. If we continue through the
 vectors in $A$, we will eventually end at a point,
-\[ [\l_i e_i,\dots,\l_me_m,\l_1e_1,\dots,\l_{i-1}e_{i-1}]\in \GL_m(\C), \]
+\[ (\l_i e_i,\dots,\l_me_m,\l_1e_1,\dots,\l_{i-1}e_{i-1})\in \GL_m(\C), \]
 which is diagonal, except the columns may have been
 permuted if $n$ is not divisible by $m$. Choosing a fixed path in
-$\GL_m(\C)$ from $[e_i,\dots,e_{i-1}]$ to $\Id$, scaling the columns and
+$\GL_m(\C)$ from $(e_i,\dots,e_{i-1})$ to $\Id$, scaling the columns and
 appending it to all the other paths then gives a path $ \g_A$ with
 \[  \g_A(0) = \Id, \qquad \g_A(1) =
-[\l_1e_1,\dots,\l_me_m]. \]
+(\l_1e_1,\dots,\l_me_m). \]
 
 If we consider this as a path in $\GLB{m}$ we
 get a loop, since $\g_A(1)\in\B_m$ is a diagonal matrix. The
@@ -106,17 +106,17 @@ We will show that the diagram
   & \Omega & } \]
 commutes up to homotopy. This is done by showing that the map $s^m$ is
 homotopic to the map $\widetilde s$ that inserts the identity on the
-last $m$ columns of $A \in X_{m,nm}$:
+last $m$ columns of $A \in X_{m,nm}$,
 \[ \widetilde s (a_1,\dots,a_{nm}) =
 (a_1,\dots,a_{nm},e_1,\dots,e_m). \]
 If we connect $\Id$ and $L^{-m}$ by a path $\g$ in the space of
-invertible lower triangular matrices, we get a homotopy
+invertible lower-triangular matrices, we get a homotopy
 \[ s_t(A) = (\g(t)L^mA,
 \g(t)L^me_1,\g(t)L^{m-1}e_1,\dots,\g(t)Le_1) \]
 which goes from $s_0 = s^m$ to the map
 \[ s_1 : A \mapsto (A,e_1,L^{-1}e_1,\dots,L^{-m+1}e_1). \]
-The matrix $T = [e_1,L^{-1}e_1,\dots,L^{-m+1}e_1]$ is upper
-triangular with entries given by the formula:
+The matrix $T = (e_1,L^{-1}e_1,\dots,L^{-m+1}e_1)$ is upper-triangular
+with entries given by the formula:
 \[ T_{ij} = (L^{-j+1}e_1)_i = (-1)^{i-1}\binom{j-1}{i-1} \quad
 \text{when } i \leq j. \]
 This is proven by considering negative powers of $L$ and showing the
@@ -147,7 +147,7 @@ this simplifies to
 Since we are considering only the first column, we get
 \[ T_{ij} = (L^{-j+1}e_1)_i = (L^{-j+1})_{i1} =
 (-1)^{i-1}\binom{j-1}{i-1}. \]
-As $T$ is an upper triangular matrix, it can be homotoped to
+As $T$ is an upper-triangular matrix, it can be homotoped to
 the identity without affecting the linear independence of the
 columns, and the maps $s^m$ and $\widetilde s$ are therefore
 homotopic. The composition
@@ -172,8 +172,9 @@ gives an isomorphism of homotopy groups, we will again follow
 geodesically convex open ball centered on $U$. Since $\SUT{m}$
 is compact, there is some $\e > 0$ such that any ball of radius $\e$
 or less is geodesically convex. By the same argument, we can also
-choose $\e$ so small that for any two points $A= [a_1,\dots, a_m]$ and
-$B=[b_1,\dots,b_m]$ in $\SUT{m}$, with the distance from $A$ to $B$ less
+choose $\e$ so small that for any two points $A= (a_1,\dots, a_m)$ and
+$B=(b_1,\dots,b_m)$ in $\SUT{m}$, with the distance from $A$ to $B$
+less
 than $\e$, any $m$ subsequent vectors in the sequence
 $(a_1,\dots,a_m,b_1,\dots,b_m)$ are linearly
 independent. 
@@ -186,9 +187,9 @@ radius $\e$:
 By the choice of $\e$ made above, we can define a map
 \begin{align*}
   \varphi_k : \Omega_k &\to X_{m,(2^k-1)m} \\
-  \g &\mapsto \left[ \g\left(\frac{1}{2^k}\right),
+  \g &\mapsto \left( \g\left(\frac{1}{2^k}\right),
     \g\left(\frac{2}{2^k}\right), \dots,
-    \g\left(\frac{2^k-1}{2^k}\right) \right].
+    \g\left(\frac{2^k-1}{2^k}\right) \right).
 \end{align*}
 The map is continuous since two paths being close in $\Omega_k$ means
 that the maximum distance between them is small. But this translates
@@ -205,17 +206,17 @@ and $\varphi_{k+1}$ are related in the following fashion:
 \begin{proof}
   The proof is by direct computation.
   \begin{align*}
-    \varphi_{k+1} &= \left( \g \mapsto \left[
+    \varphi_{k+1} &= \left( \g \mapsto \left(
         \g\left(\frac{1}{2^{k+1}}\right),
         \g\left(\frac{2}{2^{k+1}}\right), \dots,
-        \g\left(\frac{2^{k+1}-1}{2^{k+1}}\right) \right]\right) \\
-    &\simeq \left(\g \mapsto \left[ \g\left(\frac{2}{2^{k+1}}\right),
+        \g\left(\frac{2^{k+1}-1}{2^{k+1}}\right) \right)\right) \\
+    &\simeq \left(\g \mapsto \left( \g\left(\frac{2}{2^{k+1}}\right),
       \g\left(\frac{2}{2^{k+1}}\right),
       \g\left(\frac{4}{2^{k+1}}\right), \dots,
-      \g\left(\frac{2^{k+1}}{2^{k+1}}\right) \right]\right) \\
-    &\simeq \left(\g\mapsto \left[ \g\left(\frac{1}{2^{k}}\right),
+      \g\left(\frac{2^{k+1}}{2^{k+1}}\right) \right)\right) \\
+    &\simeq \left(\g\mapsto \left( \g\left(\frac{1}{2^{k}}\right),
       \g\left(\frac{2}{2^{k}}\right), \dots,
-      \g\left(\frac{2^k-1}{2^k}\right), \Id,\dots,\Id \right] \right)\\
+      \g\left(\frac{2^k-1}{2^k}\right), \Id,\dots,\Id \right) \right)\\
     &= s\circ \varphi_k.
   \end{align*}
   The first homotopy is given by sliding along the minimal geodesic
@@ -223,22 +224,22 @@ and $\varphi_{k+1}$ are related in the following fashion:
   $\e$. The second homotopy is somewhat similar: If $(a_1,\dots,a_m)$
   and $(b_1,\dots,b_m)$ are two elements of $\SUT{m}$ and we have an
   element of $X_{m,n}$ of the form
-  \[ \left[ \dots, a_1,\dots,a_m,a_1,\dots,a_m,b_1,\dots,b_m,\dots
-  \right], \]
+  \[ \left( \dots, a_1,\dots,a_m,a_1,\dots,a_m,b_1,\dots,b_m,\dots
+  \right), \]
   then we can change the middle columns one by one, as we did in
   the construction of $f$, and get a path in $X_{m,n}$ that changes
-  the middle from $[a_1,\dots,a_m]$ to $[b_1,\dots,b_m]$:
+  the middle from $(a_1,\dots,a_m)$ to $(b_1,\dots,b_m)$:
   \begin{align*}
-    \left[a_1,\dots,a_m,a_1,a_2,\dots,a_m,b_1,\dots,b_m \right] 
+    \left(a_1,\dots,a_m,a_1,a_2,\dots,a_m,b_1,\dots,b_m \right)
     &\leadsto
-    \left[a_1,\dots,a_m,b_1,a_2,\dots,a_m,b_1,\dots,b_m\right] \\ 
+    \left(a_1,\dots,a_m,b_1,a_2,\dots,a_m,b_1,\dots,b_m\right) \\ 
     &\leadsto
-    \left[a_1,\dots,a_m,b_1,b_2,\dots,a_m,b_1,\dots,b_m\right] \\  
+    \left(a_1,\dots,a_m,b_1,b_2,\dots,a_m,b_1,\dots,b_m\right) \\  
     &\leadsto
-    \left[a_1,\dots,a_m,b_1,b_2,\dots,b_m,b_1,\dots,b_m\right].  
+    \left(a_1,\dots,a_m,b_1,b_2,\dots,b_m,b_1,\dots,b_m\right).  
   \end{align*}
   This allows us to take all the repetitions
-  $\left[\dots,\g(t),\g(t),\dots\right]$ and move them to the end as
+  $\left(\dots,\g(t),\g(t),\dots\right)$ and move them to the end as
   diagonal matrices, which results in the stabilisation map $s$.
 \end{proof}
 
@@ -272,9 +273,9 @@ loop space map $f$. We are now ready to prove the result.
   $\Omega$. Consider the map 
   \[ \widetilde g = \varphi_k\circ g : W \to X_{m,(2^k-1)m}. \]
   Evaluating at a point $w\in W$ gives
-  \[ \widetilde g(w) = \varphi_k(\g_w) = \left[
+  \[ \widetilde g(w) = \varphi_k(\g_w) = \left(
     \g_w\left(\frac{1}{2^k}\right),\dots,
-    \g_w\left(\frac{2^k-1}{2^k}\right) \right]. \]
+    \g_w\left(\frac{2^k-1}{2^k}\right) \right). \]
   Evaluating $f$ on this gives a path connecting the points
   $\g_w\left(\frac{j}{2^k}\right)$. But by our choice of $\e$, any
   such path is homotopic to the path connecting these points with
@@ -297,9 +298,9 @@ loop space map $f$. We are now ready to prove the result.
   Since $f\circ g$ is null-homotopic, this function is
   null-homotopic. But by the same argument that was used in
   Lemma \ref{lem:com}, the map
-  \[ \varphi_k(f(g(w))) = \left[
+  \[ \varphi_k(f(g(w))) = \left(
     \g_w\left(\frac{1}{2^k}\right),\dots,\g_w\left(\frac{2^k-1}{2^k}
-    \right)\right] \] 
+    \right)\right) \] 
   is homotopic to the stabilisation map
   \[ s(g(w)) = \left[g(w),\Id,\dots,\Id\right], \]
   with the homotopy given by sliding along the path $\g_w=f(g(w))$.
@@ -324,7 +325,9 @@ is $2i$. By the above result, this is also the homology of
 $X_{m,\infty}$. The groups are finitely generated and torsion free, so
 by the Universal Coefficient Theorem the homology and cohomology
 groups are isomorphic as abelian groups. Note that the first
-cohomology group is the same as the first cohomology of $X_{m,n}$, as
+cohomology group, 
+\[ H^1(\SUT{m}) \cong \Z^{m-1}, \] 
+is the same as the first cohomology of $X_{m,n}$, as
 computed in Corollary \ref{cor:1-kohom}.
 
 \section{Other coefficients}
@@ -343,8 +346,7 @@ e.g. \cite[Example 6.7]{malle}.
   of the real flag manifold,
   $\Omega(\GL_m(\R)/\mathrm{B}_m) = \Omega(\SO_m/\mathrm{T}^{k})$, where
   $\SO_m$ are the $m \times m$ special orthogonal matrices and
-  $\mathrm{T^k}$ is a maximal torus in the special orthogonal group,
-  where $k$ is half of $m$ rounded down.
+  $\mathrm{T^k}$ is a maximal torus in the special orthogonal group.
   
   By \cite{grbic}, the Pontrjagin homology ring of this space depends
   on whether $m$ is odd or even. For odd $m$, it is
@@ -353,9 +355,9 @@ e.g. \cite[Example 6.7]{malle}.
   where $x_i$ is degree 1, the degree of $y_i$ and $2y_i$ is
   $2i$, and $I$ is generated by the relations
   \begin{align*}
-    x_1^2-y_1, x_i^2-x_{i+1}^2&,\quad 1 \leq i \leq k-1, \\
-    x_a x_b + x_b x_a&,\quad a \neq b, \\
-    y_i^2-2y_{i-1}y_{i+1}+\dots\pm 2y_{2i}&,\quad 1 \leq i \leq k-1.
+    x_1^2-y_1, x_i^2-x_{i+1}^2&\quad 1 \leq i \leq k-1, \\
+    x_a x_b + x_b x_a&\quad a \neq b, \\
+    y_i^2-2y_{i-1}y_{i+1}+\dots\pm 2y_{2i}&\quad 1 \leq i \leq k-1.
   \end{align*}
 
   For even $m$, the homology ring is
@@ -365,9 +367,9 @@ e.g. \cite[Example 6.7]{malle}.
   where $x_i$ is degree 1 and anything involving a $y_i$ is of degree
   $2i$. The relations are generated by
   \begin{align*}
-    x_1^2-y_1, x_i^2-x_{i+1}^2&, \quad 1 \leq i \leq k-1, \\
-    x_ax_b+x_bx_a&, \quad a\neq b, \\
-    y_i^2-2y_{i-1}y_{i+1}+\dots\pm 2y_{2i}&,\quad 1 \leq i \leq k-2,
+    x_1^2-y_1, x_i^2-x_{i+1}^2& \quad 1 \leq i \leq k-1, \\
+    x_ax_b+x_bx_a& \quad a\neq b, \\
+    y_i^2-2y_{i-1}y_{i+1}+\dots\pm 2y_{2i}&\quad 1 \leq i \leq k-2,
     \\
     (y_{n-1}+z)(y_{n-1}-z)-2y_{n-2}y_n+\dots\pm 2y_{2n-2}&. 
   \end{align*}
@@ -386,11 +388,11 @@ e.g. \cite[Example 6.7]{malle}.
   with $x_i$ of degree 1 and $y_i$ of degree $4i-2$. The relations are
   \begin{align*}
     x_i^2 = x_j^2&,\\
-    x_a x_b = -x_b x_a&, \quad a\neq b.
+    x_a x_b = -x_b x_a& \quad a\neq b.
   \end{align*}
 \end{theorem}
 
-This then also gives the homology of $X_{m,\infty}^\R$ and
+This gives the homology of $X_{m,\infty}^\R$ and
 $X_{m,\infty}^\Hq$.
 
 
@@ -398,7 +400,7 @@ $X_{m,\infty}^\Hq$.
 \label{sec:stabilitet}
 
 Now that we know the space $X_{m,\infty}$, we can consider different
-ways of reaching this space from the spaces $X_{m,n}(\sigma)$. The
+ways of reaching this space from $X_{m,n}(\sigma)$. The
 first thing to note is that the space $X_{m,\infty}$, so far described
 as sequences of linearly independent vectors $(v_1,v_2,\dots,v_k)$ in
 $\C^m$ of varying length, may as well be described as infinite
@@ -409,7 +411,7 @@ requirements for
 linear independence. We could also consider sequences that are
 infinite in the other direction, or
 doubly infinite sequences
-that start and end with the identity matrix
+that start and end with the identity matrix,
 and get the same space. Likewise, $X_{m,\infty}(\sigma)$ could be
 defined as doubly infinite series that start with the identity matrix
 and end with infinite copies of $\sigma$. The homeomorphisms between
@@ -429,8 +431,8 @@ filtration defined in Section \ref{sec:filtration},
 \[ F_0 \subset F_1 \subset \dots \subset X_{m,n}(\sigma), \]
 and hence defines a map between the spectral sequences of
 $X_{m,n}(\sigma)$ and $X_{m,\infty}(\sigma)$. These spectral sequences
-have not played a role so far, but are defined exactly as for
-$X_{m,n}$.
+have not played a role so far for $\sigma\neq \Id$, but are defined
+exactly as for $X_{m,n}$.
 
 We will be using $L_n$ to prove the following theorem.
 \begin{theorem}
@@ -458,7 +460,7 @@ found in the $(X_{3,\infty})_{\emptyset}$-part of $F_0 \cong
   The boundary map $d_1$ is an inclusion of spaces
   followed by the boundary map for the pair $(D,D-0)$,
   \[ d_1 = \delta \circ \imath^*, \]
-  and we would like to show that the inclusion map, $\imath^*$
+  and we would like to show that the inclusion map
   essentially does nothing. We know that for cohomology classes $r$
   and $t$, we have
   \[ \imath^*(r \otimes t) = \imath^*((r\otimes 1)\cdot (1\otimes t))
@@ -520,7 +522,7 @@ found in the $(X_{3,\infty})_{\emptyset}$-part of $F_0 \cong
   \end{align*}
   But the inclusions into $X_{3,\infty}(\Id)$ are homotopy
   equivalences, since they correspond to considering paths with a
-  different endpoint in the flag manifold and we know these are all
+  different endpoint in the loop formulation and we know these are all
   equivalent. Hence we must have $\imath$ a homotopy equivalence as
   well, and so it is an isomorphism on cohomology groups:
   \[ \imath^*(r\otimes 1) = r\otimes 1. \]
@@ -547,8 +549,7 @@ found in the $(X_{3,\infty})_{\emptyset}$-part of $F_0 \cong
     d_1(r \otimes 1) &= 0.
   \end{align*}
 
-  By doing the exact same thing for the second column, only including
-  the non-zero maps and leaving out
+  By doing the exact same thing for the second column, leaving out
   the class $[D,D-0]$ to ease on notation, we see
   \begin{align*}
     d_1( r_1\otimes t_2, r_2\otimes t_1) &= (r_1 + r_2) \otimes
@@ -563,36 +564,35 @@ found in the $(X_{3,\infty})_{\emptyset}$-part of $F_0 \cong
 
 \section{Cohomological stability}
 \label{sec:costa}
-Since we now know the space $X_{m,\infty}(\sigma)$ and its cohomology, it
-would be nice to relate this to the cohomology of
+
+Since we now know the space $X_{m,\infty}(\sigma)$ and its cohomology, we
+would like to relate it to the cohomology of
 $X_{m,n}(\sigma)$, for finite $n$. We once again specialise to the
 case $m = 3$ in
 everything that
 follows. First, we need an offset that depends on the permutation
-we are considering:
-\begin{definition}
-  Define a function $\lambda$ on the symmetric group of three elements
-  by
-  \begin{align*}
-    \lambda(\sigma) &=
-                      \begin{cases}
-                        0 & \sigma = \Id, \\
-                        1 & \sigma \in \set{(1\,2),(2\,3),(1\,2\,3)},
-                        \\
-                        2 & \sigma \in \set{(1\,3\,2), (1\,3)}.
-                      \end{cases}
-  \end{align*}
-\end{definition}
+we are considering.
+Define a function $\lambda$ on the symmetric group of three elements
+by
+\begin{align*}
+  \lambda(\sigma) &=
+                    \begin{cases}
+                      0 & \sigma = \Id, \\
+                      1 & \sigma \in \set{(1\,2),(2\,3),(1\,2\,3)},
+                      \\
+                      2 & \sigma \in \set{(1\,3\,2), (1\,3)}.
+                    \end{cases}
+\end{align*}
 
 We will need to distinguish the spectral sequences for various
-permutations. We will refer to the groups of the spectral sequence to
-compute the cohomology of $X_{3,n}(\sigma)$ as
+permutations. We will refer to the groups of the spectral sequence
+used to compute the cohomology of $X_{3,n}(\sigma)$ as
 $E_r^{p,q}(n,\sigma)$. We will also use the notation
 $\sigma_{\emptyset}$ for the permutation that shows up in the
 column $p=0$ when using the spectral sequence to compute cohomology,
 corresponding to
 \[X_{3,n}(\sigma)_{\emptyset} \cong
-X_{3,n-1}(\sigma_{\emptyset})\times \T,\]
+X_{3,n-1}(\sigma_{\emptyset})\times \T^2,\]
 and likewise for $\sigma_{\set{1}},
 \sigma_{\set{2}}$ and $\sigma_{\set{1,2}}$.
 
@@ -606,8 +606,8 @@ This section will prove the following theorem:
 
 \begin{proof}
   The proof will proceed by induction on $k$. Our induction hypothesis
-  is divided into two parts, were we require the stabilisation to be an
-  isomorphism when $n$ is greater than $k+\lambda(\sigma)$, and
+  is divided into two parts, we require the stabilisation to be an
+  isomorphism when $n$ is greater than $k+\lambda(\sigma)$ and
   injective when $n$ is $k+\lambda(\sigma)-1$. The exact statement we
   want to prove is the following:
   \begin{hypothesis}[$I_{k-1}$]
@@ -626,7 +626,27 @@ This section will prove the following theorem:
   By direct calculation, the
   groups $H^0(X_{3,n}(\sigma))$ are all $\Z$ when $n \geq
   \lambda(\sigma)$, so the isomorphism in $I_0$ is automatically
-  true.
+  true while the injectivity part does not make sense for this
+  case. To cover the injectivity part of the hypothesis we have
+  to start at $I_1$, where injectivity on $H^0$ has just been
+  covered. Computing $H^1(X_{3,n}(\sigma))$ to be $\Z^2$ is done
+  by computing the boundary map $d_1$, exactly as in the proof of
+  Theorem \ref{thm:forste}, and we get
+  \[ H^1(X_{3,n}(\sigma)) \cong H^1(X_{3,n-1}(\sigma_\emptyset)) \]
+  for $n \geq 1 + \lambda(\sigma)$. If $\lambda(\sigma) = 1$, we have
+  $\sigma_\emptyset = \Id$ and the above isomorphism gives
+  \[ H^1(X_{3,n}(\sigma)) \cong H^1(X_{3,n-1})\cong \Z^2 \quad n \geq
+  2 = 1 + \lambda(\sigma). \]
+  For $\lambda(\sigma) = 2$ we have $\sigma_\emptyset = (2\; 3)$, so
+  we get
+  \[ H^1(X_{3,n}(\sigma)) \cong H^1(X_{3,n-1}((2\; 3))) \cong \Z^2
+  \quad n \geq 3 = 1 + \lambda(\sigma). \]
+  As before, the isomorphism is given geometrically by the
+  determinant map
+  \[ \Det_{\Id,\sigma} : X_{3,n}(\sigma) \to \T^{n+2}\!\!/\T^n, \]
+  proven by noticing $\Det(s(A)) = \Det(A)\times \set{\pm 1}$. This is
+  also an isomorphism on $H^1(X_{3,\infty})$, so the claim that
+  $L_n^*$ is an isomorphism follows by seeing $\Det \circ L_n = \Det$.
   
   We now assume the hypothesis $I_{k-1}$ and want to prove $I_k$. Before
   we start, we consider the spectral sequence for $X_{3,n+1}(\sigma)$
@@ -673,11 +693,11 @@ This section will prove the following theorem:
   them induced by the stabilisation map $L^*_{n+1}$. This is
   summarised in the following diagram.
   \[ \xymatrix{ H^k(X_{3,\infty}(\sigma))
-    \ar@{^(->}[r]^-{i^*}\ar[d]^{L^*_{n+1}} & E_1^{0,k}(\infty,\sigma)
+    \ar@{^(->}[r]^-{\imath^*}\ar[d]^{L^*_{n+1}} & E_1^{0,k}(\infty,\sigma)
     \ar[r]^{d_1}\ar[d]^{A_0} & 
     E_1^{1,k}(\infty,\sigma) \ar[r]^{d_1}\ar[d]^{A_1} &
     E_1^{2,k}(\infty,\sigma) \ar[d]^{A_2} \\
-     H^k(X_{3,n+1}(\sigma)) \ar@{^(->}[r]^-{i^*} &
+     H^k(X_{3,n+1}(\sigma)) \ar@{^(->}[r]^-{\imath^*} &
     E_1^{0,k}(n+1,\sigma) \ar[r]^{d_1} & E_1^{1,k}(n+1,\sigma)
     \ar[r]^{d_1} & E_1^{2,k}(n+1,\sigma).
   } \]
@@ -778,8 +798,9 @@ This section will prove the following theorem:
   because everything except $H^k(X_{3,n}(\sigma_{\emptyset}))\otimes 1$ is
   isomorphic to the $X_{3,\infty}(\sigma)$-case, where the columns $p=1$
   and $p=2$ disappear on the second page, according to Theorem
-  \ref{thm:kollaps}. We then know
-  \[ H^k(X_{3,n+1}(\sigma)) = \ker d_1. \]
+  \ref{thm:kollaps}. We then know that
+  \[ H^k(X_{3,n+1}(\sigma)) = \ker d_1, \]
+  and the inclusion into $E_1^{0,k}(n+1,\sigma)$ is injective.
   The map $A_1$, defined in the diagram, is an isomorphism, since it
   is induced from the maps
   \[ L^*_{n} : H^{k-1}(X_{3,\infty}(\sigma_{\set{i}})) \to
@@ -796,15 +817,15 @@ This section will prove the following theorem:
   so $y = d_1(z)$ for some $z$ in $E_1^{0,k}(\infty,\sigma)$ by
   exactness. The element $x - A_0(z)$ is in the kernel of $d_1$,
   \[ d_1(x - A_0(z)) = d_1(x) - A_1(d_1(z)) = d_1(x) - A_1(y) = 0. \]
-  So there is a $w$ in $H^k(X_{3,n+1}(\sigma))$ with $i^*(w)$ equal to
-  $x-A_0(z)$. So we have found $w$ and $z$ with
-  \[ A_0(z) + i^*(w) = A_0(z) + x - A_0(z) = x, \]
+  So there is a $w$ in $H^k(X_{3,n+1}(\sigma))$ with $\imath^*(w)$
+  equal to $x-A_0(z)$. So we have found $w$ and $z$ with
+  \[ A_0(z) + \imath^*(w) = A_0(z) + x - A_0(z) = x, \]
   showing that
   \[ \xymatrix{ H^k(X_{3,n+1}(\sigma)) \oplus E_1^{0,k}(\infty,\sigma)
-    \ar[r]^-{i^* + A_0} & E_1^{0,k}(n+1,\sigma) } \]
-  is surjective. The map $s^*$ that we are considering is the
-  composition
-  \[ \xymatrix{ H^k(X_{3,n+1}(\sigma)) \ar[r]^-{i^*} &
+    \ar[r]^-{\imath^* + A_0} & E_1^{0,k}(n+1,\sigma) } \]
+  is surjective. The map $s^*$ that we want to show is surjective is
+  the composition
+  \[ \xymatrix{ H^k(X_{3,n+1}(\sigma)) \ar[r]^-{\imath^*} &
     E_1^{0,k}(n+1,\sigma) = H^k(X_{3,n}(\sigma_{\emptyset})\times T^2)
     \ar[r]^-{\pr} & H^k(X_{3,n}(\sigma_{\emptyset})). } \]
   The projection, which is induced from the inclusion of
@@ -822,8 +843,8 @@ This section will prove the following theorem:
   $L_n^*$. But the stabilisation map $L_n$ factors up to homotopy over
   $s$, $L_n \simeq L_{n+1}\circ s$, so we get that
   \[ \im(\pr\circ A_0) \subset \im L_n^* \subset \im s^*. \]
-  By applying the surjectivity of $\pr\circ (i^*+A_0)$ that was just
-  shown, we see that
+  By applying the surjectivity of $\pr\circ (\imath^*+A_0)$ that was
+  just shown, we see that
   \[  s^* : H^k(X_{3,n+1}(\sigma)) \to
   H^k(X_{3,n}(\sigma_{\emptyset})) \] 
   is surjective.
@@ -971,7 +992,7 @@ This section will prove the following theorem:
   By the previous case, the map on the right is injective and so the
   composition $s^* \circ L_{n}^*$ is as well. Since the diagram
   commutes, this means that the left vertical map, $L_n^*$ must be
-  injective as well, as desired.
+  injective, as desired.
   
   The last case has $\sigma_{\emptyset} = (2\;3)$ and proceeds exactly
   as the case $\lambda(\sigma) = 1$, using the injectivity that has
@@ -1093,12 +1114,17 @@ $X_{3,3}$, since this is a group we have previously calculated.
   this can be calculated by pure algebraic arguments. For example, if
   $n \geq 2$ we can compute $H^2(X_{n,3})$. The formula reduces to
   \[ H^2(X_{n,3}) \oplus \Z^{3n} \cong \Z^{2n+2+{n\choose 2}}. \]
-  So if $n$ is three, we get
-  \[ H^2(X_{3,3}) \cong \Z^{2\cdot 3 + 2 + {3\choose 2} - 3\cdot 3} =
-  \Z^{8+3-9} = \Z^2, \]
-  as expected. Likewise, we can compute
-  \[ H^2(X_{2,3}) \cong \Z^{2\cdot 2 + 2 + {2 \choose 2} - 3\cdot 2} =
-  \Z. \]
+  By manipulating this formula, we end up with
+  \begin{align*}
+    \rk_\Z H^2(X_{n,3}) &= 2 - n + {n\choose 2} \\
+                        &= 1 - (n-1) + {n-1 \choose 1} + {n-1 \choose
+                          2} \\
+                        &= 1 + {n-1 \choose 2}.
+  \end{align*}
+  This fits with our expectation, since the relations on
+  $H_2(\SUT{n})$
+  tells us that it is generated by the elements $y_1$ and $x_p x_q$
+  for $1\leq p<q\leq n-1$, so it has the same rank as $H^2(X_{n,3})$.
 \end{example}
 
 %%% Local Variables: 

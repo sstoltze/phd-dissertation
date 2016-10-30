@@ -90,20 +90,20 @@ $X_{m,n}(\sigma)$. For example, since $X_{m,\infty}$ is a
 loop space, it comes equipped with a product. This product can be
 defined in various very similar ways, and it could be interesting to
 see how they relate. One possible definition would be
-\[ (A,B) \mapsto [A,\Id, B], \]
+\[ (A,B) \mapsto \left(A,\Id, B\right), \]
 which is directly inspired by the product on the loop space being
 concatenation of loops. But we also have the other spaces
-$X_{m,n}(\sigma)$ which are also equivalent to a loop space, and for
-these the product is slightly harder to define. A possiblity would be
-to use Theorem \ref{thm:eksplicit-element} to define a map
+$X_{m,\infty}(\sigma)$ which are also equivalent to a loop space, and
+for these the product is slightly harder to define. A possiblity would
+be to use Theorem \ref{thm:eksplicit-element} to define a map
 \begin{align*}
   X_{m,\infty}(\sigma) \times X_{m,\infty}(\tau) \to
   X_{m,\infty}(\tau) \\
-  (A,B) \mapsto [A,\sigma,\widehat{L},\Id,B],
+  (A,B) \mapsto \left(A,\sigma,\widehat{L},\Id,B\right),
 \end{align*}
 where $\widehat{L}$ is the matrix $(L^m e_1,\dots,Le_1)$. Another way
 of doing it would be
-\[ (A,B) \mapsto [A,\sigma,\sigma\cdot B] \in
+\[ (A,B) \mapsto \left(A,\sigma,\sigma\cdot B\right) \in
 X_{m,\infty}(\sigma\cdot\tau). \]
 All of these possibilites could be used to give a coproduct in
 cohomology, and it would be interesting to see how this relates to the
@@ -120,7 +120,7 @@ spaces.
 Another avenue of study could be to consider all the spaces
 $X_{m,n}(\sigma)$ at the same time:
 \[ \widehat{X}_{m,n} = \bigcup_{A \in \GL_m(\C)} X_{m,n}(A,A). \]
-Since the space $X_{m,n}$ approximates the loop group when $n$ is
+Since the space $X_{m,n}$ approximates the loop space when $n$ is
 large, by having a sequence of vectors map to a loop at the identity,
 one could expect $\widehat{X}_{m,n}$ to approximate the free loop
 group of all maps from the circle to $\GL_m(\C)/\B_m$, by mapping a

@@ -577,10 +577,10 @@ by
 \begin{align*}
   \lambda(\sigma) &=
                     \begin{cases}
-                      0 & \sigma = \Id, \\
-                      1 & \sigma \in \set{(1\,2),(2\,3),(1\,2\,3)},
+                      1 & \sigma = \Id, \\
+                      2 & \sigma \in \set{(1\,2),(2\,3),(1\,2\,3)},
                       \\
-                      2 & \sigma \in \set{(1\,3\,2), (1\,3)}.
+                      3 & \sigma \in \set{(1\,3\,2), (1\,3)}.
                     \end{cases}
 \end{align*}
 
@@ -625,28 +625,9 @@ This section will prove the following theorem:
   
   By direct calculation, the
   groups $H^0(X_{3,n}(\sigma))$ are all $\Z$ when $n \geq
-  \lambda(\sigma)$, so the isomorphism in $I_0$ is automatically
-  true while the injectivity part does not make sense for this
-  case. To cover the injectivity part of the hypothesis we have
-  to start at $I_1$, where injectivity on $H^0$ has just been
-  covered. Computing $H^1(X_{3,n}(\sigma))$ to be $\Z^2$ is done
-  by computing the boundary map $d_1$, exactly as in the proof of
-  Theorem \ref{thm:forste}, and we get
-  \[ H^1(X_{3,n}(\sigma)) \cong H^1(X_{3,n-1}(\sigma_\emptyset)) \]
-  for $n \geq 1 + \lambda(\sigma)$. If $\lambda(\sigma) = 1$, we have
-  $\sigma_\emptyset = \Id$ and the above isomorphism gives
-  \[ H^1(X_{3,n}(\sigma)) \cong H^1(X_{3,n-1})\cong \Z^2 \quad n \geq
-  2 = 1 + \lambda(\sigma). \]
-  For $\lambda(\sigma) = 2$ we have $\sigma_\emptyset = (2\; 3)$, so
-  we get
-  \[ H^1(X_{3,n}(\sigma)) \cong H^1(X_{3,n-1}((2\; 3))) \cong \Z^2
-  \quad n \geq 3 = 1 + \lambda(\sigma). \]
-  As before, the isomorphism is given geometrically by the
-  determinant map
-  \[ \Det_{\Id,\sigma} : X_{3,n}(\sigma) \to \T^{n+2}\!\!/\T^n, \]
-  proven by noticing $\Det(s(A)) = \Det(A)\times \set{\pm 1}$. This is
-  also an isomorphism on $H^1(X_{3,\infty})$, so the claim that
-  $L_n^*$ is an isomorphism follows by seeing $\Det \circ L_n = \Det$.
+  \lambda(\sigma)-1$, so the isomorphism part of $I_0$ is
+  automatically true while the injective map also becomes an
+  isomorphism.
   
   We now assume the hypothesis $I_{k-1}$ and want to prove $I_k$. Before
   we start, we consider the spectral sequence for $X_{3,n+1}(\sigma)$
@@ -976,14 +957,17 @@ This section will prove the following theorem:
   the only possible lift to $H^k(X_{3,n+1})$ is zero, since $s^*$ is
   injective. Continuing like this, we see that the only element of
   $H^k(X_{3,\infty})$ that can project to zero is the zero element, and
-  hence $L_n^*$ is injective in this case.
+  hence $L_{n}^*$ is injective in this case.
   
-  \subsubsection{$\lambda(\sigma) \geq 1$}
+  \subsubsection{$\lambda(\sigma) \geq 2$}
   
-  If $\lambda(\sigma)=1$, we know $\sigma \in
+  If $\lambda(\sigma)=2$, we know $\sigma \in
   \set{(1\;2),(2\;3),(1\;2\;3)}$,
-  $\sigma_{\emptyset} = \Id$ and that $n \geq k + \lambda(\sigma) - 1 =
-  k$, giving $n-1\geq k-1$. Consider the following commutative diagram:
+  $\sigma_{\emptyset} = \Id$ and that 
+  \[ n \geq k + \lambda(\sigma) - 1 = k+1, \]
+  giving 
+  \[ n-1\geq k = k +\lambda(\Id)-1. \]
+  Consider the following commutative diagram:
   \[ \xymatrix{ H^k(X_{3,\infty}(\sigma)) \ar[r]^{s^*}_{\cong}
     \ar[d]^{L_n^*} & 
     H^k(X_{3,\infty}) \ar[d]^{L_{n-1}^*} \\
@@ -995,7 +979,7 @@ This section will prove the following theorem:
   injective, as desired.
   
   The last case has $\sigma_{\emptyset} = (2\;3)$ and proceeds exactly
-  as the case $\lambda(\sigma) = 1$, using the injectivity that has
+  as the case $\lambda(\sigma) = 2$, using the injectivity that has
   already been proved for this permutation and that $\lambda((2\;3))$ is
   $\lambda(\sigma)-1$.
   
@@ -1018,7 +1002,7 @@ This section will prove the following theorem:
   element of the inverse limit. Hence $L_n^*$ is surjective in this
   case.
   
-  \subsubsection{$\lambda(\sigma) \geq 1$}
+  \subsubsection{$\lambda(\sigma) \geq 2$}
   
   For the other permutations, define groups $C_n(\sigma)$ as the
   cokernel of the map $L_n^*$, giving a short exact sequence:
@@ -1036,9 +1020,10 @@ This section will prove the following theorem:
     0 \ar[r] & H^k(X_{3,n}(\sigma_{\emptyset})) \ar[r]^{L_{n-1}^*} &
     H^k(X_{3,n-1}(\sigma_{\emptyset})) \ar[r] &
     C_{n-1}(\sigma_{\emptyset}) \ar[r] &  0. } \]
-  If $\lambda(\sigma) = 1$, we know that $\sigma_{\emptyset} = \Id$, and
+  If $\lambda(\sigma) = 2$, we know that $\sigma_{\emptyset} = \Id$, and
   if we combine this with the inequality
-  \[ n \geq k+\lambda(\sigma) = k+1 \implies n-1 \geq k, \]
+  \[ n \geq k+\lambda(\sigma) = k+2 \implies n-1 \geq
+  k+\lambda(\Id), \]
   we conclude $C_{n-1}(\Id) = 0$ by the previous case. The
   maps not between cokernels are isomorphisms, since we have already
   proved
@@ -1048,12 +1033,12 @@ This section will prove the following theorem:
   \[ s^* : C_{n}(\sigma) \to C_{n-1}(\sigma_{\emptyset}) = 0 \]
   is an isomorphism by the 5-lemma, and so $L_n^*$ is surjective.
   
-  In the final cases, $\lambda(\sigma) = 2$, we apply the above
+  In the final cases, $\lambda(\sigma) = 3$, we apply the above
   argument, using
   \[ \sigma_{\emptyset} = (2\; 3),\quad \lambda(\sigma_{\emptyset}) =
   1. \]
   Since
-  \[ n \geq k+\lambda(\sigma) = k +2 \implies n-1 \geq k+1 = k +
+  \[ n \geq k+\lambda(\sigma) = k + 3 \implies n-1 \geq  k +
   \lambda((2\;3)), \]
   we conclude $C_{n-1}((2\;3))=0$ by the previous case, and the same
   arguments give us $C_{n}(\sigma) = 0$ and $L^*_n$ surjective.
@@ -1078,27 +1063,28 @@ $X_{3,3}$, since this is a group we have previously calculated.
     0 & \text{otherwise}.
   \end{cases} \]
   If we consider the above theorem, we have $n = 3$ and
-  $\lambda(\Id) = 0$, giving
-  \[ 3 = n \geq k +\lambda(\sigma) = k. \]
-  So the theorem tells us the first three cohomology groups of
-  $X_{3,3}$ are isomorphic to the corresponding ones for
+  $\lambda(\Id) = 1$, giving
+  \[ 3 = n \geq k +\lambda(\sigma) = k + 1. \]
+  So the theorem tells us the two groups $H^1(X_{3,3})$ and
+  $H^2(X_{3,3})$ are isomorphic to the corresponding
+  ones for
   $\Omega(\SU_3/\T^2)$.
   This fits with what is expected if we use the groups computed in
   \cite{grbic},
   \[ H_*(\Omega(\SU_3/\T^2)) \cong T(x_1,x_{2}) \otimes
   \Z[y_1,y_{2}]/I. \]
-  In degree one we get the elements $x_1$ and $x_2$, in degree two we
-  get $y_1$ and $x_1 x_2$ and in degree three we get $y_1 x_1$ and
-  $y_1 x_2$ as generators in the homology of the loop space, which
+  In degree one we get the elements $x_1$ and $x_2$, and in degree two
+  we get $y_1$ and $x_1 x_2$ as generators in the homology of the loop
+  space, which
   correspond to the right dimensions of the cohomology groups by the
   universal coefficient theorem. Since the theorem also works for $n >
-  3$, we conclude that for $q\in \set{1,2,3}$ and $n\geq 3$, we have
+  3$, we conclude that for $q\in \set{1,2}$ and $n\geq 3$, we have
   \[ H^q(X_{3,n}) \cong \Z^2. \]
 \end{example}
 
 \begin{example}
   Another application of this theorem allows us to compute
-  $H^k(X_{n,3})$ when $n \geq k$. We will do so inductively. We
+  $H^k(X_{n,3})$ when $n \geq k+1$. We will do so inductively. We
   already know $H^1(X_{n,3}) \cong \Z^{n-1}$. If we want to compute
   $H^k(X_{n,3})$, we can use Lemma \ref{lem:transponering}, Lemma
   \ref{lem:reduktion}, the K\"unneth formula, and Theorem
@@ -1112,7 +1098,7 @@ $X_{3,3}$, since this is a group we have previously calculated.
   \end{align*}
   By induction, all the groups are known except $H^k(X_{n,3})$, so
   this can be calculated by pure algebraic arguments. For example, if
-  $n \geq 2$ we can compute $H^2(X_{n,3})$. The formula reduces to
+  $n \geq 3$ we can compute $H^2(X_{n,3})$. The formula reduces to
   \[ H^2(X_{n,3}) \oplus \Z^{3n} \cong \Z^{2n+2+{n\choose 2}}. \]
   By manipulating this formula, we end up with
   \begin{align*}

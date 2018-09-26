@@ -1,12 +1,149 @@
 
-\chapter{Future work}
 
-% Slå sammen med sidste kapitel?
+\chapter{Conjectures and ideas}
+\label{chap:fremtid}
 
-% Se bagside af blok. Blah blah blah
-% Formodning om at s^* er surjektiv.
-% Erstat \C med \R eller \H
-% Se om rummene A....A approksimerer det frie løkkerum
+I will end with a brief discussion of possible future work that could
+be done to study the spaces $X_{m,n}(\sigma)$ and their relation to
+the loop space.
+
+\section{Stabilisation}
+
+An obvious first place to start would be to prove Theorem
+\ref{thm:kostab} for $m$ greater than $3$, giving something like the
+following.
+
+\begin{conjecture}
+  For each $m$, there is a function $\lambda$ from the symmetric
+  group $S_m$ to the integers, such that the stabilisation map
+  \[ L_n^* : H^k(X_{m,\infty}(\sigma)) \to H^k(X_{m,n}(\sigma)) \]
+  is an isomorphism for $n \geq k + \lambda(\sigma)$.
+\end{conjecture}
+
+The exact definition of $\lambda$ is probably one of the hard parts of
+this conjecture. It will need to satisfy something similar to the
+inequalities stated in the previous chapter, which would probably look
+like
+\begin{align*}
+  \lambda(\sigma) &\geq \lambda(\sigma_{\emptyset}), \\
+  \lambda(\sigma) &\geq \lambda(\sigma_{\set{1}}) - 1,\\
+  &\vdots \\
+  \lambda(\sigma) &\geq \lambda(\sigma_{\set{m}}) - 1,\\
+  \lambda(\sigma) &\geq \lambda(\sigma_{\set{1,2}}) - 2,\\
+  &\vdots \\
+  \lambda(\sigma) &\geq \lambda(\sigma_{\set{1,\dots,m}-\sigma(m)}) - m + 1.
+\end{align*}
+By considering the function defined on $S_3$ in the previous chapter,
+it seems like the definition should depend on $\sigma(1)$, but it may
+also be related to the Bruhat ordering on $S_m$, which means it
+depends on the minimum number of simple transpositions required to
+write $\sigma$ as a product.
+
+The diagram obtained by considering $L_n^*$ as a map of spectral
+sequences,
+\[ L_n^* : E_*^{*,*}(\infty,\sigma) \to E_*^{*,*}(n+1,\sigma), \]
+also played a role in the proof. The conjecture above will probably
+also require a study of this diagram in more generality than was
+considered here. There is a risk that the spectral sequence for
+$X_{m,\infty}(\sigma)$ does not collapse as readily for high $m$ as it
+does for $m=3$, in particular because increasing $m$ increases the
+number of non-zero columns on the first page of the spectral sequence,
+$E_1^{*,*}(\infty,\sigma)$. Likewise, the maps induced from $L_n^*$
+will also have to be well-behaved on the different columns of the
+spectral sequence if the proof is to carry over without too many
+changes. This, in particular, is where the choice of $\lambda$ plays
+a crucial role.
+
+\subsection{Inverse stabilisation}
+
+During the study of these spaces, computer programs were written
+to simplify some computations. By continuing to work with these, and
+applying some conjectures about the structure of the spectral
+sequence, it seems like there is a relation between the cohomology
+of $X_{3,n}$ and the cohomology of the double suspension
+$\Sigma^2(X_{3,n-1})$,
+when the degree of the cohomology group is larger than
+$n$. With some work, it might be possible to define
+a space $W_3$ that encodes this relation, giving a formula along the
+lines of
+\[ H^k(W_3) \cong H^{2n-k}(X_{3,n}), \quad k < n. \]
+This is the opposite situation to what was considered in
+Theorem \ref{thm:kostab}, so a proof of this would mean that we
+would know almost all the cohomology groups of $X_{3,n}(\sigma)$,
+without doing any explicit calculations.
+And like above, if this could be established it would seem natural to
+consider $m > 3$ and try to prove a similar theorem for
+$X_{m,n}(\sigma)$.
+
+\subsection{Other coefficients}
+
+In a similar fashion, it seems very natural to try and prove the
+stabilisation theorem for the other possible
+coefficient-groups. Nothing in the proof seems to rely on the
+coefficients being complex numbers, so the proof should be almost
+automatic if a suitable $\lambda$ could be defined.
+
+\section{Structure}
+
+There is also more structure to study on the spaces
+$X_{m,n}(\sigma)$. For example, since $X_{m,\infty}$ is a
+loop space, it comes equipped with a product. This product can be
+defined in various very similar ways, and it could be interesting to
+see how they relate. One possible definition would be
+\[ (A,B) \mapsto \left(A,\Id, B\right), \]
+which is directly inspired by the product on the loop space being
+concatenation of loops. But we also have the other spaces
+$X_{m,\infty}(\sigma)$ which are also equivalent to a loop space, and
+for these the product is slightly harder to define. A possiblity would
+be to use Theorem \ref{thm:eksplicit-element} to define a map
+\begin{align*}
+  X_{m,\infty}(\sigma) \times X_{m,\infty}(\tau) \to
+  X_{m,\infty}(\tau) \\
+  (A,B) \mapsto \left(A,\sigma,\widehat{L},\Id,B\right),
+\end{align*}
+where $\widehat{L}$ is the matrix $(L^m e_1,\dots,Le_1)$. Another way
+of doing it would be
+\[ (A,B) \mapsto \left(A,\sigma,\sigma\cdot B\right) \in
+X_{m,\infty}(\sigma\cdot\tau). \]
+All of these possibilites could be used to give a coproduct in
+cohomology, and it would be interesting to see how this relates to the
+usual coproduct on the cohomology of $\Omega(\SUT{m})$.
+
+Likewise, all of these maps have equivalents in the spaces
+$X_{m,n}(\sigma)$, $n < \infty$, except here we
+need to add on extra columns to the spaces. This gives various maps
+that could be used to probe the cohomology and structure of the
+spaces.
+
+\section{Generalised spaces}
+
+Another avenue of study could be to consider all the spaces
+$X_{m,n}(\sigma)$ at the same time:
+\[ \widehat{X}_{m,n} = \bigcup_{A \in \GL_m(\C)} X_{m,n}(A,A). \]
+Since the space $X_{m,n}$ approximates the loop space when $n$ is
+large, by having a sequence of vectors map to a loop at the identity,
+one could expect $\widehat{X}_{m,n}$ to approximate the free loop
+group of all maps from the circle to $\GL_m(\C)/\B_m$, by mapping a
+sequence of vectors starting and ending at $A$ to a loop at $A$. This
+would require a study of similarly defined stabilisation maps for
+these spaces and seeing what happens when we take a limit. This
+is summarised in the following conjecture.
+
+\begin{conjecture}
+  There are suitable stabilisations maps
+  \[ s : \widehat{X}_{m,n} \to \widehat{X}_{m,n+1}, \]
+  so that the space
+  \[ \widehat{X}_{m,\infty} = \varinjlim_n \widehat{X}_{m,n} \]
+  is homotopy equivalent to the free loop space
+  \[ \mathrm{L}(\GL_m(\C)/\B_m) = \set{ \gamma : S^1 \to
+    \GL_m(\C)/\B_m }. \]
+\end{conjecture}
+
+Like the spaces $X_{m,n}$ considered here, this would give another way
+to study a complicated space, $\mathrm{L}(\GL_m(\C)/\B_m)$, by working
+with
+simpler versions that consist of a finite sequence of points that we
+connect with nice paths.
 
 %%% Local Variables: 
 %%% mode: latex

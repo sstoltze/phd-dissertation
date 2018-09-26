@@ -1,0 +1,18 @@
+Overskrift: At approksimere løkker
+
+Tekst:
+Topologi er den gren af matematikken der handler om geometriske egenskaber som ikke ændrer sig ved kontinuerte deformationer. For eksemepel kan man bøje, strække og krympe et geometrisk objekt uden at ændre topologien, men man kan ikke rive det i stykker. Algebraisk topologi er en del af topologien der handler om at udregne invarianter for topologiske rum, f.eks. et tal eller et andet algebraisk objekt, som beskriver nogle af rummets topologiske egenskaber.
+
+I sin afhandling har Simon Stoltzes studeret de topologiske egenskaber for en bestemt familie af rum der består af følger af lineært uafhængige vektorer over de komplekse tal. Når man medtager flere vektorer i følgen kommer man tættere og tættere på at beskrive en kontinuert sti, og dette kan formuleres matematisk ved at tage en grænseværdi af rummene. Meget af afhandlingen fokuserer på dette grænserum og hvad det kan sige om rummene det kommer fra. Hovedresultaterne er en topologisk beskrivelse at grænserummet, som løkkerummet for den fuldstændige flagmangfoldighed over de komplekse tal, og derudover en formel der tillader at man udregner nogle af de topologiske invarianter for rummene, kohomologi-grupperne, ud fra de velkendte kohomologi-grupper for grænserummet.
+
+PhD graden er udarbejdet ved Institut for Matematik, Science and Technology, Aarhus Universitet.
+
+Dette résumé er udarbejdet af den PhD studerende.
+
+Afhandlingens titel: Approximations to the loop space of flag manifolds
+Kontakt: Simon Stoltze, e-mail: sstoltze@math.au.dk
+Hovedvejleder: Professor Marcel Bökstedt, Department of Mathematics, Aarhus University
+Sprog: PhD afhandlingen vil blive forsvaret på engelsk.
+
+Forsvaret er offentligt.
+Afhandlingen kan findes og læses ved Graduate School of Science and Technology/GSST, Ny Munkegade 120, bygning 1520, værelse 128-134, 8000 Aarhus C.

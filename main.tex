@@ -1,29 +1,52 @@
-\documentclass[a4paper,openbib,10pt]{memoir}
+\documentclass[a4paper,openbib,10pt,twosided]{memoir}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
+
 \usepackage{lmodern}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,shrink=10,stretch=10]{microtype}
+
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{mathtools}
-\usepackage{listings}
 \usepackage{enumerate}
 \usepackage{enumitem}
 \usepackage[dvips]{graphicx}
 \usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{fancybox}
+
+\usepackage[dvipsnames]{xcolor}
+
+\colorlet{isomorphism}{gray!60}
+\colorlet{injective}{lightgray!60}
+
+\usepackage{listings}
+\lstset{
+  breakatwhitespace=true,
+  breaklines=true,
+  frame=single,
+  postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+  showstringspaces=false,
+  stringstyle=\color{green}
+}
 
 
 \usepackage{csquotes}
 \usepackage[backend=bibtex,style=alphabetic]{biblatex}
 \addbibresource{phdbooks.bib}
 
-\usepackage[english, status=draft]{fixme}
+%\usepackage[english, status=draft]{fixme}
 
 \usepackage[all,cmtip]{xy}
 \entrymodifiers={+!!<0pt,\fontdimen22\textfont2>}
 
 \setlrmarginsandblock{*}{4cm}{*}
+%\setlxvchars[\normalfont]
+%\settypeblocksize{21cm}{1.38\lxvchars}{*}
+%\setlrmargins{*}{*}{1.33}
+%\setulmargins{*}{*}{1.3}
 \checkandfixthelayout
 
 \hyphenation{to-po-lo-gi-cal}
@@ -40,6 +63,7 @@
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
+\newtheorem*{hypothesis}{Hypothesis}
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
@@ -57,15 +81,18 @@
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\delim}{\:}
 \newcommand{\X}{X_{m,n}}
+\newcommand{\Y}{Y_{m,n}}
 \newcommand{\sdel}{\delim\Bigg\vert\delim}
-\newcommand{\SUT}[1]{\SU_{#1}/\mathrm{T}^{#1-1}}
-\newcommand{\GLB}[1]{\GL_{#1}/\mathrm{B}_{#1}}
-\newcommand{\UT}[1]{\U_{#1}/T^{#1}}
-\newcommand{\GL}{\mathrm{GL}}
-\newcommand{\U}{\mathrm{U}}
-\newcommand{\SU}{\mathrm{SU}}
-\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\SUT}[1]{\SU_{#1}/\T^{#1-1}}
+\newcommand{\GLB}[1]{\GL_{#1}(\C)/\B_{#1}}
+\newcommand{\UT}[1]{\U_{#1}/\T^{#1}}
+\DeclareMathOperator{\rk}{rank}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\U}{U}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\SL}{SL}
 \newcommand{\TT}[2]{\T^{#1}\!\!/\T^{#2}}
+\newcommand{\Hq}{\mathbb{H}}
 \DeclareMathOperator{\O}{O}
 \DeclareMathOperator{\SO}{SO}
 \DeclareMathOperator{\GS}{GS}
@@ -80,6 +107,11 @@
 \DeclareMathOperator{\inv}{inv}
 \DeclareMathOperator{\Det}{Det}
 \DeclareMathOperator{\T}{T}
+\DeclareMathOperator{\B}{B}
+
+\newcommand{\hmat}{\rule[.5ex]{2.5ex}{0.5pt}}
+\newcommand{\matrow}[1]{\hmat & \hspace{-0.75em} #1 & \hspace{-0.75em}
+  \hmat}
 
 \newcommand{\closure}[2][3]{{}\mkern#1mu\overline{\mkern-#1mu#2}}
 
@@ -95,12 +127,22 @@
 \renewcommand{\d}{\delta}
 \renewcommand{\l}{\lambda}
 
+% Til introduktionen
+\newcommand{\gdim}{{m+n}}
+%\newcommand{\pdim}{{m+n}}
+%\newcommand{\pdimm}{{m+n-1}}
+%\newcommand{\CP}{\mathbb{CP}}
+\newcommand{\Grass}{\mathrm{Gr}_m(\C^{\gdim})}
+
 \begin{document}
 
 \frontmatter
 
 \include{front}
+
+\microtypesetup{protrusion=false}
 \tableofcontents
+\microtypesetup{protrusion=true}
 
 
 % Ny struktur. Baseret på gamle studerendes afhandlinger.
@@ -126,29 +168,15 @@
                        % forklaring af hvad de går ud på.
 \mainmatter
 
-% Muligvis bør der også være et kapitel med en introduktion til
-% spektral-følger og andet generelt brugt teori, såsom lidt
-% Morse-teori fra Milnor, en introduktion til løkke-rum, måske lidt om
-% Coxeter-grupper? Det kan diskuteres om det skal i samme kapitel som
-% introduktionen til rummene.
-% Her inkluderer de gamle mennesker små beviser men lader store
-% sætninger stå urørte. Sikkert henvisen til sætninger man skal bruge
-% direkte og så vise nogle af de specialtilfælde der dukker op. Eller
-% nogle gange at give ideerne i de lange beviser.
+\include{generelt} % Lidt generelle restultater.
+                   % Løkkerum og spektralfølger, lidt om Coxeter
+                   % grupper og flag
 
 \include{rum} % Vis at rummene ikke er tomme (både
               % dimensions-argumentet og "stabilisering af de oplagte
               % elementer"-argumentet
               % skal nok være med. Kunne også beskrive
               % spektralfølgen.
-
-% Hvad med dimension 2 tilfældet? Dette kunne inddrages fra Marcels
-% noter og måske fylde et lille kapitel. Eventuelt før de generelle
-% rum præsenteres.
-
-% Hvor skal Coxeter-gruppe-halløjet ind? Muligvis allerede når man
-% snakker om stabilisering. Og bevise sætningen om hvad man
-% stabiliserer til.
 
 \include{kohomologiudregning} % Skal nok tages nogenlunde direkte fra
                               % del A-rapporten. Måske kan man smide
@@ -162,19 +190,16 @@
                   % kan henvise til H^1-halløjet for at vise hvorfor
                   % det er smart eller lignende.
 
-%\include{tre} % Specialiser til X_{3,n}-tilfældet og snak om
-               % stabilisering etc. Jeg er lidt usikker på præcis hvad
-               % der skal indgå her.
+\include{fremtid} % Noget om de ting vi ikke nåede og generel
+                  % spekulation. Hvad kan skidtet eventuelt bruges
+                  % til, fremtidigt arbejde (hah) og lignende.
 
-%\include{fremtiden} % Noget om de ting vi ikke nåede og generel
-                     % spekulation. Hvad kan skidtet eventuelt bruges
-                     % til, fremtidigt arbejde (hah) og lignende.
 
-% Skal der noget som helst med om det andet jeg lavede med pi_1?
-% Sikkert ikke, men snak lige med Marcel.
+\appendix
+\include{sagecode}
 
 \backmatter
-\nocite{*}
+%\nocite{*}
 \printbibliography{}
 
 \end{document}

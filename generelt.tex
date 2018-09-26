@@ -1,0 +1,397 @@
+% Her skal samles lidt generel information om SS og løkkerum
+
+\chapter{Preliminaries}
+\label{chap:generelt}
+
+The purpose of this chapter is to give a brief introduction to some
+important topics, most importantly spectral sequences
+and loop spaces. Spectral sequences are an important tool in algebraic
+topology and can be considered a generalisation of long exact
+sequences, while
+loop spaces are a class of spaces that appear naturally when
+considering the spaces that will be studied in this thesis. The
+following pages will collect some basic info and state the results
+that are of interest in next chapters, while providing references for
+proofs and further information. The chapter also includes a very brief
+introduction to flags and Coxeter groups, to give enough
+information for the small part these two subjects will play in the
+main text.
+
+\section{Spectral sequences}
+\label{sec:ss}
+
+A spectral sequence, as we will be using them, is a tool for computing
+the cohomology groups of a topological space, $X$, by considering an
+increasing sequence of subspaces
+\[ X_0 \subset X_1 \subset X_2 \subset \dots \subset X, \]
+with the union covering all of $X$,
+\[ X = \bigcup_{i} X_i. \]
+An example that most people should be familiar with is the long exact
+sequence of a pair, where
+we have a single subspace $A \subset X$ and try to compute the
+cohomology of $X$ from the cohomology of $A$ and the cohomology of the
+pair $(X,A)$. Another simple example
+is the case where there are two subspaces,
+\[ X = A \cup B, \]
+in which case the cohomology of $X$ can often be computed from the
+cohomology of $A$, $B$ and $A\cap B$ by using the Mayer-Vietoris
+sequence. This generalises to a spectral sequence to compute
+the cohomology of $X$ by working with an abitrary covering. As might
+be expected, since spectral sequences work more generally they also
+carry a corresponding increase in complexity when using them for
+calculations. In the following section we will focus on the specific
+case that 
+we will be using in this text. For a general introduction to the
+subject, see either \cite{hatcherss} or \cite{mccleary}.
+
+\subsection{The spectral sequence of a filtration}
+\label{sec:ss-filtration}
+
+Consider a space $X$ with a filtration, an increasing sequence
+of subspaces that cover $X$:
+\[ X_0 \subset X_1 \subset X_2 \subset
+\dots \subset X_k  = X. \]
+All of the following can be modified to work if the filtration is not
+finite, but we will not need this here. We will augment the filtration
+by defining additional subspaces,
+\[ X_s =
+\begin{cases}
+  \emptyset & s \leq -1, \\
+  X & s \geq k+1.
+\end{cases}. \]
+
+With such a sequence, we can
+consider the relative cohomology groups
+\[ E_1^{p,q} = H^{p+q}(X_p,X_{p-1}), \]
+and the differentials between them coming from the long exact sequence
+of the triple $(X_{p+1},X_p,X_{p-1})$:
+\[ d_1 : E_1^{p,q} = H^{p+q}(X_p,X_{p-1}) \to H^{p+q+1}(X_{p+1},X_p) =
+E_1^{p+1,q}. \]
+This map factors as the composition of an
+inclusion of $X_p$ into the pair $(X_p,X_{p-1})$ and the boundary map
+of the pair
+$(X_{p+1},X_p)$,
+\[ \xymatrix{ d_1 : H^{p+q}(X_p,X_{p-1}) \ar[r]^<<<<<{\jmath^*} &
+  H^{p+q}(X_p) \ar[r]^<<<<<{\delta} & H^{p+q+1}(X_{p+1},X_p),
+} \]
+and in particular we get that the composition of two such maps,
+\[ d_1 \circ d_1 = \delta \circ \jmath^* \circ \delta \circ
+\jmath^*, \]
+must be
+zero since the composition $\jmath^*\circ\delta$ is zero by the
+long exact seuqence of the pair $(X_{p+1},X_p)$. So we can compute the
+homology of these groups and get new groups,
+\[ E_2^{p,q} = \ker d_1 / \im d_1. \]
+More surprisingly, we can also find new maps
+\[ d_2 : E_2^{p,q} \to E_2^{p+2,q-1} \]
+that make these new groups into a chain complex, allowing us to form
+\[ E_3^{p,q} = \ker d_2 / \im d_2. \]
+This process can be continued, giving a sequence of groups and maps
+\[ \xymatrix{d_r : E_r^{p,q} \ar[r] & E_r^{p+r,q-r+1}, } \]
+where the composition $d_r \circ d_r$ is zero and
+$E_r^{p,q}$ is formed by taking the homology of $E_{r-1}^{p,q}$ with
+respect to the map $d_{r-1}$. Since we have $E_r^{p,q} = 0$ for $p <
+0$ or $p > k$, these maps will always go either to or from
+a zero
+group when $r > k$, and hence the groups $E_r^{p,q}$ will not change
+when we
+increase $r$. This allows us to
+define the stable groups $E_\infty^{p,q}$ as these $r$-independent
+groups. The following theorem relates them to the cohomology groups of
+$X$ that we are interested in calculating.
+
+\begin{theorem}
+  \label{thm:ss}
+  Given a filtration $\set{X_s}$ of a topological space $X$ as above,
+  there is a sequence of abelian groups $E_r^{p,q}$ and maps
+  \[ d_r : E_r^{p,q} \to E_r^{p+r,q-r+1} \]
+  that satisfy the following:
+  \begin{itemize}
+  \item The first groups are
+    \[ E_1^{p,q} = H^{p+q}(X_p,X_{p-1}) \]
+    and the map $d_1$ is the boundary map of the triples
+    $(X_{p+1},X_p,X_{p-1})$.
+  \item The composition $d_r \circ d_r$ is zero and
+    \[ E_{r+1}^{p,q} = \ker d_r / \im d_r, \]
+    computed at $E_r^{p,q}$.
+  \item There is a filtration of the $n\!$'th cohomology group of $X$,
+    \[ 0 \subset F_n^n \subset \dots \subset F_0^n = H^n(X), \]
+    with the limit groups $E_\infty^{p,n-p}$ isomorphic to the
+    quotients
+    \[ E_\infty^{p,n-p} \cong F_p^n / F_{p+1}^n. \]
+  \end{itemize}
+\end{theorem}
+
+This theorem is a combination of Proposition 1.2 and Theorem 1.14 in
+\cite{hatcherss}, and the proof can be found there as well. Assuming
+we can compute the spectral sequence, the group $H^n(X)$ can then be
+found by solving extension problems of the form
+\[ 0 \to F_{p+1}^n \to F_p^n \to E_\infty^{p,n-p} \to 0, \]
+starting from the short exact sequence
+\[ 0 \to E_\infty^{n,0} \to F_{n-1}^n \to E_\infty^{n-1,1} \to 0. \]
+For example, if we have that the groups $E_{\infty}^{p,n-p}$ are free
+for all $p$, the short exact sequences always split and $H^n(X)$ is
+isomorphic to the direct sum of these groups,
+\[ H^n(X) \cong \bigoplus_p E_\infty^{p,n-p}. \]
+
+\section{Loop spaces}
+\label{sec:ls}
+
+Throughout this section, every topological space will have a
+distinguished basepoint. We will be looking a spaces of loops,
+consiting of maps from the circle to a given space $X$, preserving the
+basepoint. For a general introduction to loop spaces, consult
+e.g. \cite[Part~3]{milnor} or \cite[Section~8.2]{may}. The results in
+this section are taken from \cite{milnor} and the proofs can be found
+there as well.
+
+\begin{definition}
+  If $X$ is a topological space with basepoint $*\in
+  X$, the loop space $\Omega(X)$ is the space of based maps from the
+  cicle to $X$,
+  \[ \Omega(X) = \set{ \g : (S^1,1)\to (X,*) } = \set{ \g : [0,1] \to X
+    \mid f(0) = f(1) = * }. \]
+
+  We equip this set with the compact-open topology, so for a compact
+  set $K \subset S^1$ and an open set $U \subset X$, we get an open
+  subset of the loop space consisting of functions mapping $K$ to $U$,
+  \[ V(K,U) = \set{ \g\in \Omega(X) \mid \g(K) \subset U }. \]
+  The collection of all such sets form a subbase for the compact-open
+  topology on $\Omega(X)$.
+\end{definition}
+
+We will only worry about the case where $X$ is a Riemannian manifold,
+so it comes equipped with a Riemannian metric $g$ and an induced
+topological metric $d$. In this case, the compact-open topology is
+induced by the metric
+\[ d^*\!(\g,\g') = \max_t d(\g(t),\g'(t)), \]
+so two loops are close in $\Omega(X)$ when the points $\g(t)$ and
+$\g'(t)$ are close for each $t$.
+By \cite[Theorem 17.1]{milnor}, this is homotopy equivalent to the
+space of piecewise smooth loops in $X$, and we will generally work
+with this space instead. The proof will not be repeated here, but
+there is a construction in the proof that deserves a mention. For an
+open cover $\set{X_\alpha}_{\a\in I}$ of $X$, we define subsets of the
+loop space by requiring that the loops are piecewise contained in a
+set in the cover,
+\[ \Omega_k(X) = \set{\g \in \Omega(X) \delim \Big\vert\delim
+  \text{For each } j \leq 2^k, \g_{\left|\left[
+        \frac{j-1}{2^k},\frac{j}{2^k} \right]\right.} \text{ is 
+    contained in $X_\alpha$ for some $\alpha$.} }. \]
+This gives an increasing sequence of open subsets of $\Omega(X)$
+that cover the entire space. In particular, a compact subset of
+$\Omega(X)$ will be contained in $\Omega_k(X)$ for some $k$. By
+defining a cover of $X$ with good properties, we will be able to work
+exclusively with loops where we have some control
+over their behaviour.
+
+
+% Nævne at vi ikke behøver køre * -> *, men også kan køre p -> q
+
+Note that instead of considering loops, we could also consider the
+space of paths between two points $p,q\in X$, given by
+\[ \Omega(X,p,q) = \set{ \g : [0,1] \to X \mid \g(0) = p, \g(1) = q
+}. \]
+But by composing such a path with a fixed path $\a$ from $q$ to $p$,
+we end up with a loop at $p$. If we compose a loop at $p$ with the
+path from $p$ to $q$ given by running $\a$ in reverse, we get a path
+from $p$ to $q$, and the composition of these two operations is
+homotopic to the identity. This shows that all such spaces 
+are homotopy equivalent, so we will not make a major distinction
+between them.
+
+\section{Flags}
+\label{sec:flags}
+
+To ease some arguments, we will need the concept of a flag in a finite
+dimensional vector space. In an
+$m$-dimensional vector space $V$, a flag is an increasing sequence of
+subspaces of $V$,
+\[ V_1 \subset V_2 \subset \dots \subset V_m = V, \]
+with the dimension of $V_i$ equal to $i$. So the dimension of each
+subspace is one greater than the last. Note that if we pick a non-zero
+vector $v_1$ in $V_1$, another (non-zero) vector $v_2$ in $V_2 - V_1$,
+and continue picking $v_i$ in $V_i - V_{i-1}$, we end up with $m$
+linearly independent vectors. This allows us to construct a matrix in
+$\GL(V)$ as
+\[ [v_1,\dots,v_m], \]
+and we can recover the flag from the matrix by taking
+\begin{align*}
+  V_1 =\, &\spa(v_1), \\
+  V_2 =\, &\spa(v_1,v_2), \\
+  \vdots\,\, & \\
+  V_m =\, &\spa(v_1,\dots,v_m).
+\end{align*}
+Likewise, we could take the span of the columns starting from $v_m$
+and working backwards to get another flag.
+\begin{definition}
+  Given an invertible matrix $A = [v_1,\dots,v_m]$, the \textit{left
+    flag} of $A$ is
+  \begin{alignat*}{5}
+    \mathrm{Fl_L}(A)\, &&= \Big(&\spa(v_1) &&\subset \spa(v_1,v_2)
+    &&\subset \dots &&\subset \spa(v_1,\dots,v_m) = V\Big).
+  \end{alignat*}
+  The \textit{right flag} of $A$ is defined similarly as
+  \begin{alignat*}{5}
+    \mathrm{Fl_R}(A)\, &&= \Big(&\spa(v_m) &&\subset
+    \spa(v_{m-1},v_m) &&\subset \dots &&\subset
+    \spa(v_1,\dots,v_m) = V\Big). 
+  \end{alignat*}
+\end{definition}
+Note that we could multiply any column of $A$ by a non-zero scalar and
+we would end up with the same flag. Likewise, if we replace $v_j$ by
+$v_j + \lambda v_i$ for a scalar $\lambda$ and indices $j > i$, we do not
+change the left flag of $A$. The right flag is unchanged by doing
+the same operation with $j < i$. In particular, these operations
+correspond to multiplying with a lower-triangular matrix $L$ for the
+right flag, or an upper-triangular matrix $U$ for the left flag,
+giving the identities
+\begin{align*}
+  \mathrm{Fl_R}(L\cdot A) &= \mathrm{Fl_R}(A), \\
+  \mathrm{Fl_L}(A \cdot U) &= \mathrm{Fl_L}(A).
+\end{align*}
+The cases that will be of most importance to us is when $A$ is a
+permutation matrix. Writing these out for future use, we get
+\[  \mathrm{Fl_R}(L) = \mathrm{Fl_R}(\Id) \]
+when $A$ is the identity, and
+\[  \mathrm{Fl_L}(\sigma \cdot U) = \mathrm{Fl_L}(\sigma) \]
+for a general permutation $\sigma\in S_m$.
+% $L$  is a
+% lower-triangular invertible matrix we can do the above operations one
+% column at a time, starting from the last, and see that
+% \[ \mathrm{Fl_R}(L) = \mathrm{Fl_R}(\Id). \]
+% And similarly, if $U$ is upper-triangular and invertible and $\sigma$
+% is a permutation matrix:
+% \[ \mathrm{Fl_L}(\sigma U) = \mathrm{Fl_L}(\sigma). \]
+% This is slightly harder to see, but $\sigma$ permutes the rows of $U$
+% by moving the first row to row $\sigma(1)$, the second row to row
+% $\sigma(2)$, and so on. By adding the first column to remaining ones,
+% with a suitable scalar multiplied on, we can ensure that the only
+% non-zero entry in row $\sigma(1)$ of $\sigma U$ is in the first
+% column, row $\sigma(1)$, just as it is in the matrix
+% $\sigma$. Continuing like this gives the desired identity.
+
+\section{Coxeter groups}
+\label{sec:bruhat}
+
+The final subject to be introduced is Coxeter groups and the Bruhat
+order. For a proper introduction, consult either \cite{bjorner} or
+\cite{hiller}.
+
+\begin{definition}
+  A \textit{Coxeter group} is a group $W$ along with a set of
+  generators $S$,
+  where all $s \in S$ have order two. The generators are only allowed
+  to have relations of the form
+  \[ (s s')^{m(s,s')} = \Id \]
+  for some function $m : S \times S \to \N\cup\set{\infty}$, with
+  $m(s,s) = 1$ and $m(s,s') \geq 2$ for $s\neq s'$.
+\end{definition}
+
+An important property of Coxeter groups is that any element $w \in W$
+can be written as a \textit{reduced product},
+\[ w = s_1 s_2 \dots s_k, \]
+where $k = \ell(w)$ is minimal. This number is called the
+\textit{length} of $w$. It is a theorem, see for example \cite[Chapter
+1.5]{bjorner}, that any two reduced products of $w$ can be obtained
+from each other by using \textit{braid moves} of the form
+\[ s s' s s' \dots s s' = s' s s' s \dots s' s, \]
+where each side of the equality has $m(s,s')$ elements. Another
+important property is that any expression of an element $w$ as a
+product of generators contains a reduced product for $w$, obtained by
+deleting an even number of the generators. With more
+work, it is possible to show that products of generators are unique up
+to using braid moves and inserting or deleting the identity in the
+product as $s^2$.
+
+Our primary example of a Coxeter group will be the
+symmetric group $S_m$.
+The generators of $S_m$ as a Coxeter group are the \textit{simple
+  transpositions}, which are the elements
+\[ \set{(1\; 2), (2\; 3), \dots, (m-1 \; m) }. \]
+The length of $\sigma$ is the minimal number of simple transpositions
+needed to write $\sigma$, which is the same as the number of
+\textit{inversions} of $\sigma$,
+\[ \ell(\sigma) = \size{\set{ (i,j) \mid 1\leq i < j\leq m, \sigma(i) >
+  \sigma(j)}}. \]
+
+Coxeter groups show up in various places, but we will require two
+properties. The first is that the symmetric group is the Weyl group of
+$\GL_m(\C)$, which for our purposes means that it is a Coxeter group
+and if we let $\B^U$ denote the upper-triangular matrices in
+$\GL_m(\C)$, there is a \textit{Bruhat decomposition},
+\[ \GL_m(\C) = \bigcup_{\sigma \in S_m} \B^U \!\cdot\, \sigma \cdot \B^U. \]
+Note that this is a disjoint union. For a proof of this, see
+\cite[Theorem 4.3]{hiller}. We
+would prefer to change this slightly, which is done by considering the
+element $\sigma_0$ in $S_m$ defined by
+\[ \sigma_0(k) = m+1-k. \]
+This element is its own inverse, which gives us
+\begin{align*}
+  \GL_m(\C) = \sigma_0 \cdot \GL_m(\C) &= \bigcup_{\sigma\in S_m}
+                                         \sigma_0\cdot \B^U \!\cdot\,
+                                         \sigma\cdot \B^U \\
+                                       &= \bigcup_{\sigma\in S_m}
+                                         \sigma_0\cdot \B^U \!\cdot\,
+                                         \sigma_0^2\cdot \sigma \cdot
+                                         \B^U \\
+                                       &= \bigcup_{\sigma\in S_m}
+                                         \B^L\!\cdot\, \sigma_0\cdot
+                                         \sigma\cdot \B^U \\
+                                       &= \bigcup_{\sigma\in S_m}
+                                         \B^L\!\cdot\,\sigma\cdot
+                                         \B^U\!.
+\end{align*}
+This is essentially the same theorem, but we have replaced the first
+copy of the upper-triangular matrices $\B^U$ with lower-triangular
+matrices $\B^L$, by
+conjugating with $\sigma_0$.
+
+The second property is that Coxeter groups come equipped with a
+partial order, called the Bruhat order.
+\begin{definition}
+  \label{def:bruhat-def}
+  The \textit{Bruhat order} on the Coxeter group $W$ with generators
+  $S$ is the transitive closure of the relation
+  \[ u \to v \iff \ell(u) < \ell(v) \text{ and } u^{-1}v \in
+  \bigcup_{w\in W} w
+  \cdot S \cdot w^{-1}. \]
+  So we say that $w \leq w'$ if there is a sequence of elements in $W$
+  with
+  \[ w \to w_1 \to w_2 \to \dots \to w_k \to w'. \]
+\end{definition}
+
+This ordering will show up in Theorem \ref{thm:bruhat-ord}. The
+condition on $u^{-1}v$ is usually the one to check when we want to
+find out if two elements are comparable, since if this is satisfied we
+only need to check the lengths of $u$ and $v$ to find out if $u \to v$
+or $v\to u$ holds. We will
+show a quick example to see how the order works. Take the two
+permutations $(1\;2\;3)$ and $(2\;3)$ in $S_3$. These are comparable,
+since
+\[ (2\;3)^{-1} \cdot (1\;2 \;3) = (1\;3) = (2\;3) (1\; 2) (2\; 3). \]
+The minimum number of simple transpositions needed to write $(1\;2\;3)$
+as a product is two, namely
+\[ (1\;2\;3) = (1\;2) \cdot (2\;3), \]
+while $(2\;3)$ is already written as a product with a single
+factor. This shows
+\[ \ell((2\;3)) = 1 < 2 = \ell((1\;2\;3)), \]
+and we get the relation $(2\;3) \to (1\;2\;3)$, showing $(2\;3) \leq
+(1\;2\;3)$ in the Bruhat order. On the other
+hand, $(1\;2)$ and $(2\;3)$ are not comparable since they are both of
+length one.
+
+To illustrate the ordering, we can draw a diagram of $S_3$ where the
+arrows denotes the relation $\sigma\to\tau$, and $\sigma\leq\tau$
+exactly when we can follow a path from $\sigma$ to $\tau$ in the
+diagram:
+\[ \xymatrix{
+  & (1\; 3) & \\
+  (1\; 2\; 3)\ar[ur] & & (1\; 3\; 2)\ar[ul] \\
+  (1\; 2)\ar[u]\ar[urr] & & (2\; 3) \ar[ull]\ar[u] \\
+  & \Id \ar[ul] \ar[ur] &} \]
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 

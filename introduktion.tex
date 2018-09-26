@@ -1,9 +1,208 @@
 \chapter{Introduction}
-\fixme{Referer til del a, sig at dele er taget derfra. Se
-  http://phd.au.dk/fileadmin/grads.au.dk/ST/Rules\_and\_regulations/GSST\_Rules\_and\_Regulations.pdf,
-  \$11.1}
-\fixme{Sørg for at $T$ er $\mathrm{T}$ hele vejen. Samme for
-  $\mathrm{B}$ og $\GL$ og $\SU$}
+\label{chap:introduktion}
+
+The spaces we will be working with were originally introduced
+in a very different form, which will briefly be described here. Though
+this is not used in the dissertation, it hints at a connection with
+algebraic geometry.
+Consider the Grassmann-manifold, consisting of $m$-dimensional
+subspaces of $\C^{\gdim}$:
+\[ \mathrm{Gr}_m(\C^{\gdim}) = \set{V \subset \C^{\gdim} \mid
+  \dim_\C(V) = m}. \]
+This has a natural map to the projective space
+\[ P = \mathbb{P}(\Lambda^m(\C^{m+n})), \]
+given by the Pl\"ucker embedding
+\begin{align*}
+  \imath : \Grass &\to P \\
+  \spa(v_1,v_2,\dots,v_m) &\mapsto v_1\wedge v_2\wedge \dots
+                            \wedge v_m.
+\end{align*}
+
+Over $P$ we have the tautological bundle $H^*\to P$, consisting of
+pairs $(L,v)$ with $L \in P$ a line in $\Lambda^m(\C^{m+n})$ and $v\in
+L$ a vector on the line. The dual of
+this bundle, $H$, consists of linear maps from $H^*$ to $\C$, and 
+this has global sections given by picking out one of the
+coordinates of $v$. In our case, a coordinate is given by choosing $m$
+numbers
+\[ (i_1 < i_2 < \dots < i_m) \subset \set{1,\dots,m+n}, \]
+and considering the coefficient of
+\[ e_{i_1}\wedge e_{i_2}\wedge \dots \wedge e_{i_m} \in
+\Lambda^m(\C^{m+n}), \]
+for the standard basis $e_1,\dots,e_{m+n}$ on $\C^{m+n}$. So each
+set of indices $I$ defines a section
+\[ \delta_I : P \to H. \]
+We will single out the coordinates defined by the index sets
+\[ (i < i+1 < \dots < i+m-1), \]
+$i \in \set{1,\dots,m+n}$, where we replace $k$ by $k-m-n$ if
+$k > m+n$. So we consider $m$ subseqeuent basis-vectors,
+taken cyclically. Each of these coordinates defines a section
+\[ \delta_i : P \to H, \]
+so by tensoring them all together we get a section $\delta$ of the
+tensor bundle $H^{\otimes(m+n)}$:
+\[ \delta = \delta_1\otimes\delta_2\otimes\dots\otimes\delta_{m+n} : P
+\to H^{\otimes(m+n)}. \]
+
+In $P$ we have subspaces $P_I$, given by considering the lines where
+the coordinate indexed by $I$ is zero. These are
+projective spaces, of dimension one less than $P$, and they
+exactly correspond to the inverse image $\delta_I^{-1}(0)$. We want to
+work with the open set $U=P-\delta^{-1}(0)$ where our chosen
+sections are all non-zero. If we use the Pl\"ucker embedding $\imath$,
+we get a vector bundle
+$E=\imath^{-1}(H^{\otimes(m+n)})$ on $\Grass$, a section
+$\imath^{-1}(\delta) : \Grass \to E$, and an open set
+$X=\imath^{-1}(U)$ in $\Grass$ that exactly corresponds to the points
+on which the section is non-zero. By considering how the embedding
+$\imath$ is defined, we can see that the elements of $X$ are
+the subspaces that have a basis $v_1,\dots,v_m$ such that if we
+consider
+them as row vectors and calculate the determinants of $m$ subsequent
+columns, repeated cyclically, we always get a non-zero number. In
+symbols, this means
+\[ D_i(v_1,\dots,v_m) = \det
+ \begin{pmatrix}
+   (v_1)_{i} & (v_1)_{i+1} & \dots  & (v_1)_{i+m-1} \\
+   (v_2)_{i} & (v_2)_{i+1} & \dots  & (v_2)_{i+m-1} \\
+   \vdots  & \vdots    & \ddots & \vdots       \\
+   (v_m)_{i} & (v_m)_{i+1} & \dots  & (v_m)_{i+m-1}
+ \end{pmatrix} \neq 0 \]
+for all $i \in \set{1,\dots,m+n}$. Since $D_1$ is non-zero, we can
+can choose a basis where the first $m$
+columns are the identity matrix without affecting the span. If we
+want to preserve this property, we
+can only change the basis by scaling each column by a scalar. So our
+space $X$ can be represented by sequences of $n$ vectors,
+\[ v_1,\dots,v_n \in \C^m, \]
+such that if
+we insert the identity matrix before and after the sequence,
+\[ e_1,\dots,e_m,v_1,\dots,v_n,e_1,\dots,e_m, \]
+any $m$ subsequent vectors in this new sequence are linearly
+independent, and we have quotiented out by an action of the torus
+$\T^n$ given by letting the $i$'th coordinate of the torus act on
+$v_i$. This is the space $X_{m,n}$ described in Definition
+\ref{def:kvotientrum}.
+
+The spaces
+were originally studied in a slightly simpler form by my advisor,
+Marcel B\"okstedt. He looked at sequences of vectors $(v_1,\dots,v_n)$
+in $\C^2$, with the requirement that $v_i$ and $v_{i+1}$ are linearly
+independent, that the first entry of $v_1$  is non-zero, and either
+the first or the second entry of $v_n$ is non-zero as well. Using the
+notation introduced in this thesis, these are the spaces $Y_{2,n}$ or
+$Y_{2,n}((1\;2))$ from Definition \ref{def:rum}. Taking a quotient
+of the action
+\begin{align*}
+  \T^n \times Y_{2,n}(\sigma) &\to Y_{2,n}(\sigma) \\
+  (\l_1,\dots,\l_n)\cdot (v_1,\dots,v_n) &= (\l_1v_1,\dots,\l_nv_n),
+\end{align*}
+we end up with the spaces referred to as $X_{2,n}(\sigma)$ in
+Definition \ref{def:kvotientrum}. He then showed that $Y_{2,n}$ was
+covered by the spaces $Y_{2,n-1}\times\T^2$ and $Y_{2,n-1}((1\; 2))\times
+\T$, giving inclusion maps
+\[ s : Y_{2,n-1} \cong Y_{2,n-1}\times\set{(1,1)} \to Y_{2,n}. \]
+By using the Mayer-Vietoris sequence for the cover, and the
+corresponding cover of $X_{2,n}$, he proved the
+following theorem.
+\begin{theorem}
+  The space $X_{2,n}$ has homology groups
+  \[ H_q(X_{2,n}) \cong
+  \begin{cases}
+    \Z & 0 \leq q \leq n, \\
+    0 & \text{otherwise.}
+  \end{cases} \]
+  The inclusion
+  \[ s : X_{2,n-1} \to X_{2,n} \]
+  is an isomorphism on homology when the degree is $\leq n-1$.
+\end{theorem}
+
+The homology of $X_{2,n}$ consists of a copy of the integers in all
+degrees up to $n$, so when $n$ is large it looks like the homology
+groups of the loop space
+$\Omega(\SU_2/\T)$, which has a copy of the integers in each
+degree. We can define a map from $X_{2,n}$ to the loop space
+by sending $(v_1,\dots,v_n)$ to
+the path given by connecting up the matrices
+\[ \Id \leadsto (e_2,v_1) \leadsto (v_1,v_2) \leadsto \dots \leadsto
+\Id, \]
+and it turns out that this map is an isomorphism on homology when the
+groups are non-zero.
+
+The aim of this dissertation is to extend some of
+these results to $X_{m,n}$, $m > 2$, with a focus on cohomology
+instead of homology. The cohomology groups become much harder to
+calculate when $m > 2$, since the Mayer-Vietoris sequence that was
+used for $X_{2,n}$
+does not give enough information. Instead we have to cover $X_{m,n}$
+with several subspaces, which means we have to use spectral
+sequences to compute the cohomology groups and this leads to increased
+complexity. However, it is still possible to prove that $X_{m,n}$
+approximates the loop space $\Omega(\SUT{m})$ when $n$ is large, which
+is the content of Theorem \ref{thm:loekker}. This approximation allows
+us to compute $H^q(X_{3,n})$ when $n \geq q$, as is done in Theorem
+\ref{thm:kostab}.
+
+The thesis starts with a short introduction to some of the tools and
+subjects that
+will be required in the following chapters, contained in Chapter
+\ref{chap:generelt}. Each section consists of a brief description of
+a subject, with references to
+important theorems needed for our purposes. The topics that are
+covered are spectral
+sequences, loop spaces, flags, and Coxeter groups, and since it is not
+possible to give a full overview of any of these in a couple of
+pages, every section also contain references to literature with a
+more extensive coverage.
+
+In Chapter \ref{chap:rum}, we give a description of the spaces we will
+be working with, first introducing subspaces $Y_{m,n}(\sigma)$ of
+$(\C^{m})^{n}$, which depend on permutations $\sigma\in S_m$, and
+then quotienting out with an action of the complex torus $\T^n =
+(\C^*)^n$, giving the spaces $X_{m,n}(\sigma)$ that we will mostly be
+working with. We show that these spaces are non-empty when $n$ is
+large enough, and we spend some time working out how the space
+$Y_{m,n}(\sigma)$ can be built from the spaces $Y_{m,n-1}(\tau)$, and
+exactly which permutations $\tau$ are necessary to do this in Theorem
+\ref{thm:permutation}. This
+allows us to take a limit, and gives us the spaces
+$Y_{m,\infty}(\sigma)$ and $X_{m,\infty}(\sigma)$. We end
+with a very brief discussion of the spaces we get when we replace the
+complex numbers with the reals or quaternions.
+
+Chapter \ref{chap:udregninger} starts with a description of a spectral
+sequence that will be used extensively. This allows us to compute the
+cohomology of the space $Y_{m,n}(\sigma)$ from the cohomology of the
+spaces $Y_{m,n-1}(\tau)$ that it is built from. We immediately use
+this spectral sequence to work out the first cohomology group of both
+$Y_{m,n}$ and $X_{m,n}$ for all $m$ and $n$. The rest of the
+chapter is spent doing computations with the spectral sequence for the
+spaces $Y_{3,3}$ and
+$X_{3,3}$, ending with a complete description of the cohomology
+groups for these spaces.
+
+The following chapter, Chapter \ref{chap:loekker}, studies the limit
+spaces $X_{m,\infty}(\sigma)$ in detail. We start by showing that they
+are homotopy equivalent to the loop space $\Omega(\SUT{m})$, which
+gives us the cohomology of the limit space. The proof does not depend
+on working over the complex numbers, so it easily carries over to the
+real and quaternionic cases. We then give a brief
+mention of other ways we could define the limit space, which are all
+equivalent from a homotopy theoretic standpoint. By working
+with one of these other stabilisations of $X_{3,n}(\sigma)$, we get
+Theorem \ref{thm:kostab}
+that tells us when the cohomology groups of
+$X_{3,n}(\sigma)$ stabilise to the cohomology groups of
+$X_{3,\infty}(\sigma)$.
+
+The thesis concludes with a brief description of the open questions
+still remaining, contained in Chapter \ref{chap:fremtid}. These are
+questions that have been raised during the last parts of the project
+and thus have not been studied in detail, as well as small ideas for
+how the results could be applied to the free loop space instead of
+the space of based loops considered in the thesis.
+
+
+
 % En introduktion til afhandlingen, inklusive kapitel-oversigt og
 % ideer bag. Her bør for eksempel indgå en forklaring af det der pjat
 % med vektorbundter som Marcel har forsøgt at forklare før.

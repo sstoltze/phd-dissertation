@@ -1,0 +1,6 @@
+# -*- coding: iso-8859-1 -*-
+PageProps = {
+ 24: {
+       'transition': PageTurn
+     },
+}

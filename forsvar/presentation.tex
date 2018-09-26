@@ -1,0 +1,653 @@
+\documentclass{beamer} %[handout]
+\usetheme{CambridgeUS}
+\usecolortheme{rose}
+
+\usepackage{etex}
+
+\usepackage{pgfpages}
+\usepackage{appendixnumberbeamer}
+
+\setbeamertemplate{items}[circle]
+\setbeamertemplate{navigation symbols}{}
+\setbeamercovered{dynamic} % dynamic - Se fremtidige ting på slides
+% invisible - Ikke se fremtidige ting på slides
+
+
+\mode
+<handout>
+\pgfpagesuselayout{8 on 1}[a4paper,border shrink=4mm]
+\setbeamertemplate{footline}[page number]
+\setbeameroption{hide notes} % no notes in handout
+\mode
+<presentation>
+%\setbeameroption{show notes on second screen=right} % right (default),
+% left, bottom, top
+\mode
+<all>
+
+\setcounter{MaxMatrixCols}{20}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{listings}
+
+\usepackage{mathtools}
+
+\usepackage[all,cmtip]{xy}
+\entrymodifiers={+!!<0pt,\fontdimen22\textfont2>}
+
+\usepackage[backend=bibtex,style=alphabetic]{biblatex}
+\addbibresource{phdbooks.bib}
+
+
+\hyphenation{to-po-lo-gi-cal}
+
+%\theoremstyle{plain}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{proposition}[theorem]{Proposition}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem*{conjecture}{Conjecture}
+\newtheorem*{hypothesis}{Hypothesis}
+
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+%\newtheorem{example}[theorem]{Example}
+
+%\theoremstyle{remark}
+%\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\ip}[2]{\left< #1, #2 \right>}
+\newcommand{\size}[1]{\left| #1 \right|}
+
+\let\O\undefined
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\delim}{\:}
+\newcommand{\X}{X_{m,n}}
+\newcommand{\sdel}{\delim\Bigg\vert\delim}
+\newcommand{\SUT}[1]{\SU_{#1}/T^{#1-1}}
+\newcommand{\GLB}[1]{\GL_{#1}/B_{#1}}
+\newcommand{\UT}[1]{\U_{#1}/T^{#1}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\U}{\mathrm{U}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\SL}{\mathrm{SL}}
+\DeclareMathOperator{\O}{O}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\GS}{GS}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\spa}{span}
+\DeclareMathOperator{\inv}{inv}
+\DeclareMathOperator{\Det}{Det}
+\newcommand{\T}{\mathrm{T}}
+
+\newcommand{\closure}[2][3]{{}\mkern#1mu\overline{\mkern-#1mu#2}}
+
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\com}[1]{\left[#1,#1\right]}
+
+\newcommand{\lie}[1]{\left[ #1 \right]}
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\newcommand{\e}{\varepsilon}
+\renewcommand{\d}{\delta}
+\renewcommand{\l}{\lambda}
+
+
+\author{Simon Stoltze} 
+\date{16. January, 2017} 
+\title[The loop space of flag manifolds]{\textsc{Approximations to the loop space of flag manifolds}}
+\institute[IMF]{Institut for Matematik\\Aarhus University}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{The spaces $Y_{m,n}$ and $X_{m,n}$}
+
+\begin{frame}
+  \frametitle{$Y_{m,n}(\sigma)$}
+  \begin{definition}
+    For a permutation $\sigma\in S_m\subset \GL_m(\C)$, we define an
+    open subset of $\C^{mn}$:
+    \[ Y_{m,n}(\sigma) = \set{(a_1,\dots,a_n) \in (\C^m)^n
+        \delim\Bigg\vert\delim
+        \begin{matrix}
+          \text{Any } m \text{ subsequent vectors in } \\
+          (e_1,\dots,e_m,a_1,\dots,a_n,\sigma_1,\dots,\sigma_m) \\
+          \text{ are linearly independent.}
+        \end{matrix} }. \]
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples}
+  \begin{example}
+    The space $Y_{m,1}=Y_{m,1}(\Id)$ is homeomorphic to $(\C^*)^m$,
+    since
+    \[ \begin{pmatrix}
+      1&0&\dots&0&0&\l_1&1&0&\dots&0&0 \\
+      0&1&\dots&0&0&\l_2&0&1&\dots&0&0 \\
+      \vdots&\vdots&\ddots&\vdots&\vdots&\vdots&\vdots&\vdots&\ddots&\vdots&\vdots
+      \\
+      0&0&\dots&1&0&\l_{m-1}&0&0&\dots&1&0 \\
+      0&0&\dots&0&1&\l_m&0&0&\dots&0&1
+    \end{pmatrix} \]
+    satisfies the condition iff $\l_i \neq 0$ for all $i$.
+  \end{example}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples}
+  \begin{example}
+    The space $Y_{2,2}$ is
+    \[ \set{
+      \begin{pmatrix}
+        a & b \\
+        c & d
+      \end{pmatrix} \delim\bigg\vert\delim a \neq 0, d \neq 0, ad-bc
+      \neq 0 }, \pause \]
+    which is homeomorphic to the space
+    \[ (\C^*)^2 \times \set{(b,c)\in\C^2 \delim\vert\delim
+      bc \neq 1}. \]
+  \end{example}
+\end{frame}
+
+\begin{frame}
+  \frametitle{$X_{m,n}$}
+  The torus $\T^n$ acts on the columns of $Y_{m,n}(\sigma)$,
+  \[ (\l_1,\dots,\l_n) \cdot (a_1,\dots,a_n) = (\l_1 a_1,\dots, \l_n
+  a_n). \]
+  \pause
+  \begin{definition}
+    The space $X_{m,n}(\sigma)$ is the quotient of this action,
+    \[ X_{m,n}(\sigma) = Y_{m,n}(\sigma) / \T^n. \]
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Identities}
+  We have the following identities:
+  \begin{align*}
+    X_{m,n}(\sigma) &\cong \set{ A \in Y_{m,n}(\sigma)
+                      \delim\Bigg\vert\delim
+                      \begin{matrix}
+                                  \text{The last } n \text{
+                                    determinants of } \\ 
+                                  (e_1,\dots,e_m,a_1,\dots,a_{n-1},a_n,
+                                  \sigma_1,\dots,\sigma_m) \\
+                                  \text{ are all equal to 1.}
+                      \end{matrix} }, \pause \\
+    Y_{m,n}(\sigma) &\cong X_{m,n}(\sigma)\times T^n,
+  \end{align*}
+  which gives us e.g.
+  \[ \pi_1(Y_{m,n}) \cong \pi_1(X_{m,n})\times \Z^n. \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples}
+    \begin{example}
+    The space $X_{m,1}$ is homeomorphic to $(\C^*)^{m-1}$,
+    since
+    \[ \begin{pmatrix}
+      1&0&\dots&0&0&\l_1&1&0&\dots&0&0 \\
+      0&1&\dots&0&0&\l_2&0&1&\dots&0&0 \\
+      \vdots&\vdots&\ddots&\vdots&\vdots&\vdots&\vdots&\vdots&
+      \ddots&\vdots&\vdots\\
+      0&0&\dots&1&0&\l_{m-1}&0&0&\dots&1&0 \\
+      0&0&\dots&0&1&1&0&0&\dots&0&1
+    \end{pmatrix} \]
+    satisfies the condition iff $\l_i \neq 0$ for all $i$.
+  \end{example}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples}
+  \begin{example}
+    The space $X_{2,2}$ is
+    \[ \set{
+      \begin{pmatrix}
+        1 & b \\
+        c & 1
+      \end{pmatrix} \delim\bigg\vert\delim bc \neq 1 }.\]
+  \end{example}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The limit}
+  We are interested in what happens when $n$ becomes large.
+  \begin{definition}
+    The limit space is
+    \begin{align*}
+      X_{m,\infty}(\sigma) &= \set{(a_i) \in (\C^m)^\Z
+                             \delim\Bigg\vert\delim
+                             \begin{matrix}\exists n: (a_1,\dots,a_n)\in
+                               X_{m,n}(\sigma), \\
+                               a_{n+1} = \sigma_1,
+                               a_{n+2}=\sigma_2,\dots,\\
+                               a_0 = e_m, a_{-1} = e_{m-1},\dots
+                             \end{matrix}} \pause\\
+      &=
+                     \varinjlim_{n} \left(
+                     \xymatrix{
+                       \dots \ar[r] & X_{m,n} \ar[r]^s & X_{m,n+1}
+                       \ar[r] & \dots
+                     } \right)
+    \end{align*}
+  \end{definition}
+\end{frame}
+
+% Frame med lidt mere?
+
+\section{The loop space}
+
+%\subsection{Equivalence}
+
+\begin{frame}
+  \frametitle{Equivalence}
+  \begin{theorem}
+    The limit space $X_{m,\infty}$ is homotopy equivalent to the loop
+    space $\Omega = \Omega(\SU_m/\T^{m-1})$.
+  \end{theorem}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Defining the map}
+  For $a_1,\dots,a_{mn} \in Y_{m,mn}:$
+  \begin{align*}
+    a_1 &= c_1 e_1 + c_2 e_2 + \dots + c_m e_m. \pause \\
+    \frac{1}{c_1}a_1 &= e_1 + \frac{c_2}{c_1}e_2 + \dots +
+                       \frac{c_m}{c_1}e_m. \pause
+  \end{align*}
+  Get a path in $\GL_m(\C)$ by
+  \[ t \mapsto \left(e_1 + t \cdot \left(\sum_{i=2}^m
+    \frac{c_i}{c_1}e_i\right), e_2,\dots,e_m\right) \]
+  from $\Id$ to $\left(\frac{1}{c_1}a_1,e_2,\dots,e_m\right)$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{The map, continued}
+  Repeat for the other columns,
+  \[ \frac{1}{d_2}a_2 = e_2 + \frac{d_1}{d_2}a_1 +
+  \frac{d_3}{d_2}e_3+\dots + \frac{d_m}{d_2}e_m.\pause \]
+  \[ t \mapsto \left(\frac{1}{c_1}{a_1}, e_2 +
+    t\cdot\left(\frac{d_1}{d_2} a_1 + \sum_{i=3}^m
+      \frac{d_i}{d_2}e_i\right),e_3,\dots,e_m \right). \pause\]
+  Piecing all of these paths together gives a path from $\Id$ to
+  $\mathrm{diag}(\l_1,\dots,\l_m)$. \pause If we quotient out, this
+  defines a map
+  \[ f : X_{m,\infty} \to \Omega. \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Loop space}
+  Since $\SU_m/\T^{m-1}$ is compact, we can find $\e > 0$ such that:
+  \begin{itemize}
+  \item $B_\e(A)$ is geodesically convex for any $A \in
+    \SU_m/\T^{m-1}.$
+  \item If $A$ and $B$ are both in $B_{\varepsilon}(U)$, then any $m$
+    subsequent columns
+    in $(a_1,\dots,a_m,b_1,\dots,b_m)$ are linearly independent.
+  \end{itemize} \pause
+  With this, we can require loops to be piecewise in some $B_\e$,
+  giving
+  \[ \Omega = \bigcup_k \Omega_k. \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Proof}
+  Now we can map
+  \begin{align*}
+    \Omega_k &\to X_{m,(2^k-1)m} \\
+    \g &\mapsto \left( \g\left(\frac{1}{2^k}\right),
+    \g\left(\frac{2}{2^k}\right), \dots,
+    \g\left(\frac{2^k-1}{2^k}\right) \right)
+  \end{align*} \pause
+  These maps are the ``inverses'' of the map $f$, and we can now prove
+  injectivity and surjectivity on cell complexes directly.
+\end{frame}
+
+\begin{frame}
+  \begin{corollary}
+    The homology of $X_{m,\infty}$ is
+    \[ T(x_1,\dots,x_{m-1}) \otimes \Z[y_1,\dots,y_{m-1}] / I, \]
+    where the degree of $x_i$ is one, the degree of $y_i$ is $2i$ and
+    with relations $x_k^2 = x_px_q + x_qx_p = 2y_1$, $p\neq q$. See
+    \cite[Thm~4.1]{grbic}.
+  \end{corollary}
+\end{frame}
+
+\section{Cohomological stability}
+
+\begin{frame}
+  \frametitle{Filtration}
+  From now on we only consider $m = 3$. We want to do calculations:
+  \begin{definition}
+    Let $F_p \subset X_{3,n}(\sigma)$, $p\in\set{0,1,2},$ be the set
+    \[ F_p = \set{ (a_1,\dots,a_n) \in X_{3,n}(\sigma) \mid a_n \text{
+        has at most } p \text{ zeroes}.}. \] \pause
+    Then $F_0 \subset F_1 \subset F_2 = X_{3,n}(\sigma)$ is an
+    increasing sequence of open subspaces, which gives us a spectral
+    sequence converging to the cohomology of $X_{3,n}(\sigma)$ with
+    terms
+    \[ E_1^{p,q} = H^{p+q}(F_p,F_{p-1}). \]
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{theorem}
+    For any permutation $\sigma$, there are permutations
+    $\sigma_{\emptyset},\sigma_{\set{1}},\sigma_{\set{2}},\sigma_{\set{1,2}}$
+    such that
+    \begin{align*}
+      H^*(F_0) &\cong H^*(X_{3,n-1}(\sigma_{\emptyset})\times\T^2) \\
+      H^*(F_1,F_0) &\cong H^*((X_{3,n-1}(\sigma_{\set{1}})\sqcup
+                     X_{3,n-1}(\sigma_{\set{2}}))\times \T\times
+                     (D,D-0)) \\
+      H^*(F_2,F_1) &\cong
+                     H^*(X_{3,n-1}(\sigma_{\set{1,2}})\times(D_2,D_2-0))
+    \end{align*}
+  \end{theorem} \pause
+  \[
+  \begin{array}{|c|cccc|}
+    \hline
+    \sigma & \multicolumn{1}{c|}{\sigma_\emptyset} 
+    & \multicolumn{1}{c|}{\sigma_{\set{1}}} 
+    & \multicolumn{1}{c|}{\sigma_{\set{2}}} & \sigma_{\set{1,2}} \\
+    \hline
+    \Id & \Id & (1\;2) & (2\;3) & (1\;3\;2) \\
+    (1\;2) & \Id & (1\;2\;3) & \Id & (1\;3) \\
+    (2\;3) & \Id & (1\;2) & \Id & (1\;2) \\
+    (1\;2\;3) & \Id & \Id & \Id & \Id \\
+    (1\;3\;2) & (2\;3) & (1\;2\;3) & (2\;3) & (1\;2\;3) \\
+    (1\;3) & (2\; 3) & (2\;3) & (2\;3) & (2\;3) \\
+    \hline
+  \end{array}
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Permutations}
+  \begin{definition}
+    Define a function $\l$ on $S_3$ by
+    \[ \l(\sigma) =
+    \begin{cases}
+      1 & \sigma = \Id, \\
+      2 & \sigma \in \set{(1\,2),(2\,3),(1\,2\,3)}, \\
+      3 & \sigma \in \set{(1\,3\,2), (1\,3)}.
+    \end{cases} \]
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Stabilisation}
+  \begin{definition}
+    The inclusion that considers an element $(a_1,\dots,a_n)$ in
+    $X_{3,n}(\sigma)$ as an element in $X_{3,\infty}(\sigma)$ will be
+    denoted
+    \[ L_n : X_{3,n}(\sigma) \to X_{3,\infty}(\sigma). \]
+  \end{definition}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Cohomological stability}
+  \begin{theorem}
+    If $n \geq k + \lambda(\sigma)$, the map
+    \[ L_n^* : H^k(X_{3,\infty}(\sigma)) \to H^k(X_{3,n}(\sigma)) \]
+    is an isomorphism.
+  \end{theorem}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Proof}
+  The proof is by induction. The induction hypothesis is:
+  \begin{hypothesis}[$I_{k-1}$]
+    For all $r \leq k-1$ and all $\sigma \in S_3$, the following two
+    statements hold:
+    \begin{itemize}
+    \item The map $L_{n}^* : H^r(X_{3,\infty}(\sigma)) \to
+      H^r(X_{3,n}(\sigma))$ is an isomorphism for $n \geq r +
+      \lambda(\sigma)$.
+    \item The map $L_{n}^* : H^r(X_{3,\infty}(\sigma)) \to
+      H^r(X_{3,n}(\sigma))$ is injective for $n \geq r +\lambda(\sigma)
+      -1$.
+    \end{itemize}
+  \end{hypothesis}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Proof}
+  First we show the theorem for the map
+  \[ s^* : H^k(X_{3,n+1}(\sigma)) \to
+  H^k(X_{3,n}(\sigma_{\emptyset})). \pause \]
+  Since $(\Id)_{\emptyset} = \Id$, this allows us to work out the
+  identity case explicitly.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Proof}
+  For $\sigma\neq\Id$, consider the diagram
+  \[ \xymatrix{
+    H^k(X_{3,\infty}(\sigma)) \ar[r]^-{s^*}_-{\cong} \ar[d]^{L_n^*} &
+    H^k(X_{3,\infty}(\sigma_{\emptyset})) \ar[d]^{L_{n-1}^*} \\
+    H^k(X_{3,n}(\sigma)) \ar[r]^-{s^*} & H^k(X_{3,n-1}(\sigma_{\emptyset})).
+  } \]
+  Use that we already know the theorem for $\sigma_{\emptyset}$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Example}
+  \begin{example}
+    For $n\geq k+1$, we can apply the theorem to compute
+    \begin{align*}
+      \bigoplus_{r=0}^k H^r(X_{n,3}) \otimes H^{k-r}(\T^3) 
+      &\cong H^k(Y_{n,3}) \pause \\
+      &\cong H^k(Y_{3,n}) \pause \\
+      &\cong \bigoplus_{r=0}^k H^r(X_{3,n}) \otimes H^{k-r}(\T^n)
+        \pause \\
+      &\cong \bigoplus_{r=0}^k H^r(X_{3,\infty}) \otimes H^{k-r}(\T^n)
+    \end{align*}
+  \end{example}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Example}
+  \begin{example}[$k=1$]
+    \begin{align*}
+      H^1(X_{n,3}) \oplus H^1(\T^3) &\cong H^1(X_{3,\infty}) \oplus
+                                      H^1(\T^n) \\
+      \implies H^1(X_{n,3}) &\cong \Z^{n-1}.
+    \end{align*}
+  \end{example}
+  \pause
+  \begin{example}[$k=2$]
+    \begin{align*}
+      H^2(X_{n,3})\oplus \Z^{3(n-1)}\oplus \Z^{3}
+      &\cong \Z^2 \oplus \Z^{2n} \oplus \Z^{n\choose 2}\\
+      \implies \mathrm{rank}_{\Z}H^2(X_{n,3}) &= 1 + {n-1 \choose 2}
+    \end{align*}
+  \end{example}
+\end{frame}
+
+\appendix
+
+\section{The cohomology of $X_{3,3}$}
+
+\begin{frame}
+  \frametitle{The spectral sequence}
+  \[ E_1^{p,q} = H^{p+q}(F_p,F_{p-1}) \pause\cong
+  \bigoplus_{\set{v_1,\dots,v_p}}
+  H^{p+q}\left(Y_{\set{v_1,\dots,v_p}} \times (D_p,D_p-0)\right)\] \pause
+  \[ d_1 : H^{p+q}(F_p,F_{p-1}) = E_1^{p,q} \to E_1^{p+1,q} =
+  H^{p+q+1}(F_{p+1},F_p) \]
+\end{frame}
+
+\begin{frame}[shrink]
+  \frametitle{The spectral sequence}
+  \[ \xy
+  (5,4); (5,-67); **\dir{-}; (5,4); *\dir{>};
+  (5,-67); (80,-67); **\dir{-}; *\dir{<};
+  (0,-69)*{q}; (4,-71)*{p};
+  (1,-71); (4,-68); **\dir{-};
+  (0,0)\xymatrix@R=0.2em@C=1.4em{
+    9 & H^{9}(F_0) \ar[r] & H^{10}(F_1,F_0) \ar[r] & H^{11}(F_2,F_1) \\
+    8 & H^{8}(F_0) \ar[r] & H^{9}(F_1,F_0) \ar[r] & H^{10}(F_2,F_1) \\
+    7 & H^{7}(F_0) \ar[r] & H^{8}(F_1,F_0) \ar[r] & H^{9}(F_2,F_1) \\
+    6 & H^{6}(F_0) \ar[r] & H^{7}(F_1,F_0) \ar[r] & H^{8}(F_2,F_1) \\
+    5 & H^{5}(F_0) \ar[r] & H^{6}(F_1,F_0) \ar[r] & H^{7}(F_2,F_1) \\
+    4 & H^{4}(F_0) \ar[r] & H^{5}(F_1,F_0) \ar[r] & H^{6}(F_2,F_1) \\
+    3 & H^{3}(F_0) \ar[r] & H^{4}(F_1,F_0) \ar[r] & H^{5}(F_2,F_1) \\
+    2 & H^{2}(F_0) \ar[r] & H^{3}(F_1,F_0) \ar[r] & H^{4}(F_2,F_1) \\
+    1 & H^{1}(F_0) \ar[r] & H^{2}(F_1,F_0) \ar[r] & H^{3}(F_2,F_1) \\
+    0 & H^{0}(F_0) \ar[r] & H^{1}(F_1,F_0) \ar[r] & H^{2}(F_2,F_1) \\
+    & 0 & 1 & 2
+  } \endxy \]
+\end{frame}
+
+
+\begin{frame}[shrink]  %O PageTurn
+  \frametitle{\only<1>{$E_1$}\only<2>{$E_2$}\only<3>{$E_2=E_\infty$}}
+  % \vspace{-0.4cm}
+  \[ \xy
+  (5,4); (5,-68); **\dir{-}; (5,4); *\dir{>};
+  (5,-68); (45,-68); **\dir{-}; *\dir{<};
+  (0,-70)*{q}; (4,-72)*{p};
+  (1,-72); (4,-69); **\dir{-};
+  (0,0)\xymatrix@R=0.5em@C=1.7em{
+    9 & \Z & 0 & 0 \\
+    8 & \only<1>{\Z^7}\only<2->{\Z^5} & \only<1>{\Z^{2}} \only<2->{0}&
+    0 \\
+    7 & \only<1>{\Z^{22}} \only<2->{\Z^{11}} &
+    \only<1>{\Z^{12}}\only<2->{0}
+    & \only<1>{\Z}\only<2->{0} \\
+    6 & 
+    \only<1>{\Z^{42}} \only<2->{\Z^{15}}
+    &
+    \only<1>{\Z^{32}} \only<2->{\Z} &
+    \only<1>{\Z^4}   \only<2->{0} \\
+    5 & 
+    \only<1>{\Z^{56}} \only<2->{\Z^{16}} &
+    \only<1>{\Z^{50}} \only<2->{\Z^3} &
+    \only<1>{\Z^7}   \only<2->{0} \\
+    4 & 
+    \only<1>{\Z^{56}} \only<2->{\Z^{16}} &
+    \only<1>{\Z^{50}} \only<2->{\Z^3} &
+    \only<1>{\Z^7}   \only<2->{0} \\
+    3 &
+    \only<1>{\Z^{42}} \only<2->{\Z^{15}} &
+    \only<1>{\Z^{32}} \only<2->{\Z} &
+    \only<1>{\Z^4}   \only<2->{0} \\
+    2 & 
+    \only<1>{\Z^{22}} \only<2->{\Z^{11}} &
+    \only<1>{\Z^{12}} \only<2->{0} &
+    \only<1>{\Z}   \only<2->{0} \\
+    1 & 
+    \only<1>{\Z^{7}} \only<2->{\Z^{5}} &
+    \only<1>{\Z^{2}} \only<2->{0} &
+    \only<1>{0}   \only<2->{0} \\
+    0 & 
+    \Z &
+    0 &
+    0 \\
+    & 0 & 1 & 2 \\
+    & \hphantom{\Z^{11}} & \hphantom{\Z^{11}} & \hphantom{\Z^{11}}
+  } \endxy \qquad
+  \xy
+  (0,-35)*{
+    \begin{matrix}
+      \\
+      \only<1>{E_1^{p,q} = H^{p+q}(F_p,F_{p-1})}
+      \only<2>{E_2^{p,q} = \ker d_1 / \im d_1} 
+      \only<3>{E_r^{p,q} = \ker d_{r-1} / \im d_{r-1}} 
+      \\
+      \\
+      \only<1>{ d_1 : E_1^{p,q} \to E_1^{p+1,q}} 
+      \only<2>{d_2 : E^{p,q}_2 \to E_2^{p+2,q-1}} 
+      \only<3>{d_r : E^{p,q}_r \to E_2^{p+r,q-r+1}} 
+      \\
+      \hphantom{E_r^{p,q} = \ker d_{r-1} / \im d_{r-1}}
+    \end{matrix}}
+  \endxy
+  \]
+  % Indsæt O PauseTurn her, hvis det er
+\end{frame}
+
+\begin{frame}
+  \frametitle{$H^*(X_{3,3})$}
+  \[ H^q(X_{3,3}) =
+  \begin{cases}
+    \Z & q=6 \\
+    \Z^{2} & q=5 \\
+    \Z^{3} & q=4 \\
+    \Z^{2} & q=3 \\
+    \Z^{2} & q=2 \\
+    \Z^{2} & q=1 \\
+    \Z & q = 0 \\
+    0 & \text{otherwise}
+  \end{cases}
+  \qquad 
+  H^q(Y_{3,3}) =
+  \begin{cases}
+    \Z & q = 9\\
+    \Z^{5} & q = 8\\
+    \Z^{12} & q = 7\\
+    \Z^{18} & q = 6\\
+    \Z^{19} & q = 5\\
+    \Z^{17} & q = 4\\
+    \Z^{15} & q = 3\\
+    \Z^{11} & q = 2\\
+    \Z^{5} & q = 1\\
+    \Z & q = 0 \\
+    0 & \text{otherwise}
+  \end{cases} \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Compare}
+  \[ H^q(X_{3,3}) =
+  \begin{cases}
+    \Z & q=6 \\
+    \Z^{2} & q=5 \\
+    \Z^{3} & q=4 \\
+    \Z^{2} & q=3 \\
+    \Z^{2} & q=2 \\
+    \Z^{2} & q=1 \\
+    \Z & q = 0
+  \end{cases}
+  \qquad 
+  H^q(\Omega(\SU_3/T^2)) =
+  \begin{cases}
+    \vdots & q > 5 \\
+    \Z^4 & q = 5 \\
+    \Z^3 & q = 4 \\
+    \Z^2 & q = 3 \\
+    \Z^2 & q = 2 \\
+    \Z^2 & q = 1 \\
+    \Z & q = 0 \\
+  \end{cases} \]
+\end{frame}
+
+\end{document}

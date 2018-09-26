@@ -1,0 +1,481 @@
+\documentclass{beamer} %[handout]
+\usetheme{CambridgeUS}
+\usecolortheme{rose}
+
+\usepackage{etex}
+
+\usepackage{pgfpages}
+
+\setbeamertemplate{items}[circle]
+\setbeamertemplate{navigation symbols}{}
+\setbeamercovered{dynamic} % dynamic - Se fremtidige ting på slides
+% invisible - Ikke se fremtidige ting på slides
+
+
+\mode
+<handout>
+\pgfpagesuselayout{8 on 1}[a4paper,border shrink=4mm]
+\setbeamertemplate{footline}[page number]
+\setbeameroption{hide notes} % no notes in handout
+\mode
+<presentation>
+%\setbeameroption{show notes on second screen=right} % right (default),
+% left, bottom, top
+\mode
+<all>
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{listings}
+
+\usepackage{mathtools}
+
+\usepackage[all,cmtip]{xy}
+\entrymodifiers={+!!<0pt,\fontdimen22\textfont2>}
+
+\hyphenation{to-po-lo-gi-cal}
+
+%\theoremstyle{plain}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{proposition}[theorem]{Proposition}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem*{conjecture}{Conjecture}
+
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+%\newtheorem{example}[theorem]{Example}
+
+%\theoremstyle{remark}
+%\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\ip}[2]{\left< #1, #2 \right>}
+\newcommand{\size}[1]{\left| #1 \right|}
+
+\let\O\undefined
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\delim}{\:}
+\newcommand{\X}{X_{m,n}}
+\newcommand{\sdel}{\delim\Bigg\vert\delim}
+\newcommand{\SUT}[1]{\SU_{#1}/T^{#1-1}}
+\newcommand{\GLB}[1]{\GL_{#1}/B_{#1}}
+\newcommand{\UT}[1]{\U_{#1}/T^{#1}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\U}{\mathrm{U}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\SL}{\mathrm{SL}}
+\DeclareMathOperator{\O}{O}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\GS}{GS}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\spa}{span}
+\DeclareMathOperator{\inv}{inv}
+\DeclareMathOperator{\Det}{Det}
+
+\newcommand{\closure}[2][3]{{}\mkern#1mu\overline{\mkern-#1mu#2}}
+
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\com}[1]{\left[#1,#1\right]}
+
+\newcommand{\lie}[1]{\left[ #1 \right]}
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\newcommand{\e}{\varepsilon}
+\renewcommand{\d}{\delta}
+\renewcommand{\l}{\lambda}
+
+
+\author{Simon Stoltze} 
+\date{30. January, 2015} 
+\title[The loop space of flag manifolds]{\textsc{Approximations to the loop space of flag manifolds}}
+\institute[IMF]{Institut for Matematik\\Aarhus University}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{The spaces $X_{m,n}$ and $Y_{m,n}$}
+
+\begin{frame}
+  \frametitle{Definitions}
+  \begin{definition}
+    \[ X_{m,n} = \set{(v_1,\dots,v_n) \in (\C^m)^n \delim\Bigg\vert\delim
+      \begin{matrix}
+        \text{Any } m \text{ subsequent vectors in } \\
+        (e_1,\dots,e_m,v_1,\dots,v_n,e_1,\dots,e_m) \\
+        \text{ are linearly independent.}
+      \end{matrix} } \]
+  \end{definition}
+  $T^n= (\C^*)^n$ acts by multiplication on the columns of
+  $X_{m,n}$. \pause
+  \begin{definition}
+    \[ Y_{m,n}  = X_{m,n}/T^n \]
+  \end{definition} \pause
+  \[ X_{m,n} \cong Y_{m,n} \times (\C^*)^n \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Example}
+  \[ X_{3,3} = \set{ 
+    \begin{pmatrix}
+      a & b & g \\
+      c & d & h \\
+      e & f & i
+    \end{pmatrix} \in \C^9\sdel
+    \begin{matrix}
+      a \neq 0, ad-bc \neq 0, \\
+      adi+beh+cfg-deg-bci-afh \neq 0, \\
+      di-fh \neq 0, i \neq 0
+    \end{matrix}
+  } \]
+  \pause
+  \[ Y_{3,3} \cong \set{
+    \begin{pmatrix}
+      a & b & g \\
+      c & d & h \\
+      e & f & i
+    \end{pmatrix} \in \C^9\sdel
+    \begin{matrix}
+      a \neq 0, ad-bc \neq 0, \\
+      adi+beh+cfg-deg-bci-afh = 1, \\
+      di-fh = 1, i = 1
+    \end{matrix} } \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Stabilization}
+  \begin{definition}
+    The map
+    \begin{align*}
+      s : X_{m,n} &\to X_{m,n+1} \\
+      (v_1,\dots,v_n) &\mapsto (Lv_1,\dots,Lv_n,Le_1)
+    \end{align*}
+    is injective and equivariant. The matrix is:
+    \[ L = 
+    \begin{pmatrix}
+      1 & 0 & \dots & 0 \\
+      \vdots & \ddots & \ddots & \vdots \\
+      \vdots &  & \ddots & 0 \\
+      1 & \dots & \dots & 1
+    \end{pmatrix} \in \GL_m \]
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The limit space}
+  \begin{definition}
+    \[ Y_{m,\infty} = \varinjlim_n Y_{m,n} \]
+    is the limit of
+    \[ \xymatrix{ \dots \ar[r]^s & Y_{m,n} \ar[r]^s & Y_{m,n+1} \ar[r]^s
+      & \dots } \]
+  \end{definition}
+\end{frame}
+
+% Frame med lidt mere?
+
+\section{The loop space}
+
+%\subsection{Equivalence}
+
+\begin{frame}
+  \frametitle{The main theorem}
+  \begin{theorem}
+    There is a collection of maps,
+    \[ Y_{m,n} \to \Omega(\SUT{m}), \]
+    that fit together to form a map
+    \[ f : Y_{m,\infty} \to \Omega(\SUT{m}). \]
+    This map is a (weak) homotopy equivalence.
+  \end{theorem}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Defining $f$}
+  
+  \begin{align*}
+    X_{m,n} \to P&(\GL_m) \\
+    f(v_1,\dots,v_n) = \bigg(&\left[e_1,e_2,e_3,\dots,e_m \right] \\
+    &\leadsto \left[d_1 v_1,e_2,e_3,\dots,e_m\right] \\
+    &\leadsto \left[
+      d_1 v_1,d_2 v_2,e_3,\dots,e_m\right] \\
+    &\leadsto \dots \\
+    &\leadsto \left[\l_i e_i, \l_{i+1}e_{i+1},\dots, \l_me_m,
+      \l_1e_1, \dots, \l_{i-1}e_{i-1} \right]\bigg)
+  \end{align*}
+  
+  % For $(v_1,\dots,v_n) \in X_{m,n}$, write $v_1$ in the basis
+  % $(e_1,\dots,e_m)$:
+  % \[ v_1 = \sum_{i=1}^m c_i e_i \pause \implies \frac{1}{c_1}v_1 =
+  % e_1 + \sum_{i=2}^m \frac{c_i}{c_1}e_i \] \pause
+  % This defines a path in $\GL_m$ from $\Id$ to
+  % $\left[\frac{1}{c_1}v_1,e_2,\dots,e_m\right]$:
+  % \[ t \mapsto \left[ e_1 + t\left(\sum_{i=2}^m
+  %     \frac{c_i}{c_1}e_i\right), e_2,\dots,e_m\right] \]
+\end{frame}
+
+% \begin{frame}
+%   \frametitle{Defining $f$}
+%   To continue the path, write $v_2$ in the basis
+%   $\left(e_2,\dots,e_m,\frac{1}{c_1}v_1\right)$:
+%   \[ \frac{1}{d_2} v_2 = e_2 + \sum_{i=3}^m \frac{d_i}{d_2}e_i +
+%   \frac{d_1}{d_2c_1} v_1 \] \pause
+%   And append the following path to the previous one:
+%   \[ t \mapsto \left[\frac{1}{c_1}v_1, e_2 + t \left( \sum_{i=3}^m
+%       \frac{d_i}{d_2}e_i + \frac{d_1}{d_2c_1} v_1
+%     \right),e_3,\dots,e_m\right] \]
+% \end{frame}
+
+% \begin{frame}
+%   \frametitle{Defining $f$}
+%   Continuing this process gives a path in $\GL_m$
+%   \[ \Id \leadsto [\l_i e_i, \l_{i+1}e_{i+1},\dots, \l_me_m, \l_1e_1,
+%   \dots, \l_{i-1}e_{i-1}] \] \pause
+%   If we connect this to $[\l_1e_1,\dots,\l_me_m]$, we get a loop
+%   in $\GLB{m}$.
+%   \newline \newline Equivalent matrices give the same loop, so we
+%   get a map:
+%   \[ Y_{m,n} \to \Omega(\GLB{m}) \] \pause
+%   Together, these maps define $f$:
+%   \[ f : Y_{m,\infty} \to \Omega(\GLB{m}) \]
+% \end{frame}
+
+\begin{frame}
+  \frametitle{Proof of theorem}
+  % By choosing a sufficiently fine cover of $\SUT{m}$, we get:
+  \begin{align*}
+    \Omega(\SUT{m}) = \bigcup_{k=1}^\infty \Omega_k
+  \end{align*} \pause
+  \[ \varphi_k : \Omega_k \to Y_{m,(2^k-1)m} \]
+  \[ \g \mapsto \left[\g\left(\frac{1}{2^k}\right),\dots,
+    \g\left(\frac{2^k-1}{2^k}\right) \right] \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Proof of surjectivity}
+  Take a finite complex,
+  \[ \sigma : W \to \Omega(\SUT{m}) \] \pause
+  $\sigma(W)$ is compact, so it is contained in $\Omega_k$ for some
+  $k$. \newline\pause
+  \[ \sigma \simeq f \circ \varphi_k \circ \sigma : W \to \Omega_k \to
+  Y_{m,(2^k-1)m} \to \Omega \] \newline\pause
+  Injectivity is similar, but slightly more ugly.
+%  \[ \xymatrix{ W \ar[r] & Y_{m,n} \ar@{^(->}[r] \ar[d]^s &
+%  Y_{m,\infty} \ar[d]^f \ar[dr]^f \\
+%    & Y_{m,(2^k-1)m} \ar@{^(->}[ur] & \ar[l]^{\varphi_k} \Omega_k
+%    \ar@{^(->}[r] & \Omega(\SUT{m})
+%  } \]
+\end{frame}
+
+\section{The cohomology of $X_{3,3}$}
+
+\begin{frame}
+  \frametitle{How do we get information from $Y_{m,n}$?}
+  \begin{definition}
+    For $0 \leq p \leq m-1$, define
+    \[ F_p = \set{(v_1,\dots,v_n) \in X_{m,n} \mid v_n \text{ has at
+        most } p \text{ zeroes.} } \]
+  \end{definition} \pause
+  \[ X_{m,n-1}\times (\C^*)^m \cong F_0 \subset F_1 \subset \dots
+  \subset F_{m-1} = X_{m,n} \]
+  
+\end{frame}
+
+% Noget med filtreringen, spektral-følger generelt...
+
+\begin{frame}[shrink]
+  \frametitle{The spectral sequence}
+  \[ \xy
+  (5,4); (5,-67); **\dir{-}; (5,4); *\dir{>};
+  (5,-67); (80,-67); **\dir{-}; *\dir{<};
+  (0,-69)*{q}; (4,-71)*{p};
+  (1,-71); (4,-68); **\dir{-};
+  (0,0)\xymatrix@R=0.2em@C=1.4em{
+    9 & H^{9}(F_0) \ar[r] & H^{10}(F_1,F_0) \ar[r] & H^{11}(F_2,F_1) \\
+    8 & H^{8}(F_0) \ar[r] & H^{9}(F_1,F_0) \ar[r] & H^{10}(F_2,F_1) \\
+    7 & H^{7}(F_0) \ar[r] & H^{8}(F_1,F_0) \ar[r] & H^{9}(F_2,F_1) \\
+    6 & H^{6}(F_0) \ar[r] & H^{7}(F_1,F_0) \ar[r] & H^{8}(F_2,F_1) \\
+    5 & H^{5}(F_0) \ar[r] & H^{6}(F_1,F_0) \ar[r] & H^{7}(F_2,F_1) \\
+    4 & H^{4}(F_0) \ar[r] & H^{5}(F_1,F_0) \ar[r] & H^{6}(F_2,F_1) \\
+    3 & H^{3}(F_0) \ar[r] & H^{4}(F_1,F_0) \ar[r] & H^{5}(F_2,F_1) \\
+    2 & H^{2}(F_0) \ar[r] & H^{3}(F_1,F_0) \ar[r] & H^{4}(F_2,F_1) \\
+    1 & H^{1}(F_0) \ar[r] & H^{2}(F_1,F_0) \ar[r] & H^{3}(F_2,F_1) \\
+    0 & H^{0}(F_0) \ar[r] & H^{1}(F_1,F_0) \ar[r] & H^{2}(F_2,F_1) \\
+    & 0 & 1 & 2
+  } \endxy \]
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{The spectral sequence}
+  \[ E_1^{p,q} = H^{p+q}(F_p,F_{p-1}) \pause\cong
+  \bigoplus_{\set{v_1,\dots,v_p}}
+  H^{p+q}\left(X_{\set{v_1,\dots,v_p}} \times (D_p,D_p-0)\right)\] \pause
+  \[ d_1 : H^{p+q}(F_p,F_{p-1}) = E_1^{p,q} \to E_1^{p+1,q} =
+  H^{p+q+1}(F_{p+1},F_p) \]
+  \newline \pause
+  The following slides show the computation for $X_{3,3}$.
+\end{frame}
+
+\begin{frame}[shrink]  %O PageTurn
+  \frametitle{\only<1>{$E_1$}\only<2>{$E_2$}\only<3>{$E_2=E_\infty$}}
+  % \vspace{-0.4cm}
+  \[ \xy
+  (5,4); (5,-68); **\dir{-}; (5,4); *\dir{>};
+  (5,-68); (45,-68); **\dir{-}; *\dir{<};
+  (0,-70)*{q}; (4,-72)*{p};
+  (1,-72); (4,-69); **\dir{-};
+  (0,0)\xymatrix@R=0.5em@C=1.7em{
+    9 & \Z & 0 & 0 \\
+    8 & \only<1>{\Z^7}\only<2->{\Z^5} & \only<1>{\Z^{2}} \only<2->{0}&
+    0 \\
+    7 & \only<1>{\Z^{22}} \only<2->{\Z^{11}} &
+    \only<1>{\Z^{12}}\only<2->{0}
+    & \only<1>{\Z}\only<2->{0} \\
+    6 & 
+    \only<1>{\Z^{42}} \only<2->{\Z^{15}}
+    &
+    \only<1>{\Z^{32}} \only<2->{\Z} &
+    \only<1>{\Z^4}   \only<2->{0} \\
+    5 & 
+    \only<1>{\Z^{56}} \only<2->{\Z^{16}} &
+    \only<1>{\Z^{50}} \only<2->{\Z^3} &
+    \only<1>{\Z^7}   \only<2->{0} \\
+    4 & 
+    \only<1>{\Z^{56}} \only<2->{\Z^{16}} &
+    \only<1>{\Z^{50}} \only<2->{\Z^3} &
+    \only<1>{\Z^7}   \only<2->{0} \\
+    3 &
+    \only<1>{\Z^{42}} \only<2->{\Z^{15}} &
+    \only<1>{\Z^{32}} \only<2->{\Z} &
+    \only<1>{\Z^4}   \only<2->{0} \\
+    2 & 
+    \only<1>{\Z^{22}} \only<2->{\Z^{11}} &
+    \only<1>{\Z^{12}} \only<2->{0} &
+    \only<1>{\Z}   \only<2->{0} \\
+    1 & 
+    \only<1>{\Z^{7}} \only<2->{\Z^{5}} &
+    \only<1>{\Z^{2}} \only<2->{0} &
+    \only<1>{0}   \only<2->{0} \\
+    0 & 
+    \Z &
+    0 &
+    0 \\
+    & 0 & 1 & 2 \\
+    & \hphantom{\Z^{11}} & \hphantom{\Z^{11}} & \hphantom{\Z^{11}}
+  } \endxy \qquad
+  \xy
+  (0,-35)*{
+    \begin{matrix}
+      \\
+      \only<1>{E_1^{p,q} = H^{p+q}(F_p,F_{p-1})}
+      \only<2>{E_2^{p,q} = \ker d_1 / \im d_1} 
+      \only<3>{E_r^{p,q} = \ker d_{r-1} / \im d_{r-1}} 
+      \\
+      \\
+      \only<1>{ d_1 : E_1^{p,q} \to E_1^{p+1,q}} 
+      \only<2>{d_2 : E^{p,q}_2 \to E_2^{p+2,q-1}} 
+      \only<3>{d_r : E^{p,q}_r \to E_2^{p+r,q-r+1}} 
+      \\
+      \hphantom{E_r^{p,q} = \ker d_{r-1} / \im d_{r-1}}
+    \end{matrix}}
+  \endxy
+  \]
+  % Indsæt O PauseTurn her, hvis det er
+\end{frame}
+
+\begin{frame}
+  \frametitle{$H^*(X_{3,3})$}
+  \[ H^q(Y_{3,3}) =
+  \begin{cases}
+    \Z & q=6 \\
+    \Z^{2} & q=5 \\
+    \Z^{3} & q=4 \\
+    \Z^{2} & q=3 \\
+    \Z^{2} & q=2 \\
+    \Z^{2} & q=1 \\
+    \Z & q = 0 \\
+    0 & \text{otherwise}
+  \end{cases}
+  \qquad 
+  H^q(X_{3,3}) =
+  \begin{cases}
+    \Z & q = 9\\
+    \Z^{5} & q = 8\\
+    \Z^{12} & q = 7\\
+    \Z^{18} & q = 6\\
+    \Z^{19} & q = 5\\
+    \Z^{17} & q = 4\\
+    \Z^{15} & q = 3\\
+    \Z^{11} & q = 2\\
+    \Z^{5} & q = 1\\
+    \Z & q = 0 \\
+    0 & \text{otherwise}
+  \end{cases} \]
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Compare}
+  \[ H^q(Y_{3,3}) =
+  \begin{cases}
+    \Z & q=6 \\
+    \Z^{2} & q=5 \\
+    \Z^{3} & q=4 \\
+    \Z^{2} & q=3 \\
+    \Z^{2} & q=2 \\
+    \Z^{2} & q=1 \\
+    \Z & q = 0
+  \end{cases}
+  \qquad 
+  H^q(\Omega(\SU_3/T^2)) =
+  \begin{cases}
+    \vdots & q > 5 \\
+    \Z^4 & q = 5 \\
+    \Z^3 & q = 4 \\
+    \Z^2 & q = 3 \\
+    \Z^2 & q = 2 \\
+    \Z^2 & q = 1 \\
+    \Z & q = 0 \\
+  \end{cases} \]
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ideas for future work}
+  \begin{itemize}
+  \item Show that $s : Y_{m,n} \to Y_{m,n+1}$ is:\pause
+    \begin{itemize}
+    \item Injective on homology.
+    \item Surjective on cohomology.
+    \end{itemize} \pause
+  \item Compute $\pi_1(Y_{m,n})$. We already know $H_1(Y_{m,n}) \cong
+    \Z^{m-1}$. \pause
+  \item Consider the space,
+    \[ Y_{m,n}' = \bigcup_{A\in \GL_m} Y_{m,n}(A,A) \]
+    See if this approximates the free loop space $L(\SUT{m})$. \pause
+  \item Replace $\C$ by $\R$ or $\mathbb{H}$.
+  \end{itemize}
+\end{frame}
+
+\end{document}

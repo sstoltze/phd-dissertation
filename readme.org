@@ -1,0 +1,8 @@
+#+AUTHOR: Simon Stoltze
+#+EMAIL: sstoltze@gmail.com
+#+DATE: 2018-11-22
+#+OPTIONS: toc:nil title:nil author:nil email:nil date:nil creator:nil
+* Ph.D. dissertation
+
+This repository contains my Ph.D., along with a copy of my part A exam and the slides from my presentation. The Ph.D. can be found [[./aflevering/sstoltze-dissertation.pdf][here]], the part A is [[./sstoltze-progress-report.pdf][here]] and the slides are available [[./forsvar/presentation.pdf][here]].
+Everything is written in LaTeX, using Beamer for the slides.

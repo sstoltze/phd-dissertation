@@ -3,14 +3,14 @@ Headline: Approximating loops
 Text:
 Topology is a branch of mathematics that deals with geometric properties that are unchanged under continuous deformations. In particular a geometric object can be bent, stretched, and shrunk without changing the topology of the object, but it cannot be torn apart. Algebraic topology is a part of topology that deals with computing invariants of topological spaces, such as numbers or other algebraic objects that describe some of these topological properties.
 
-In his dissertation, Simon Stoltze has studied the topological properties of a particular family of spaces that are built from sequences of linearly independent vectors of complex numbers. When we increase the number of vectors in a sequence it gets closer and closer to a continuous path, and this can be formalised by forming a limit space. Much of the dissertation focuses on this limit space and the connection it has to the spaces it is built from. The main results of the thesis are firstly a topological description of the limit as the loop space of the complete flag manifold, and secondly a formula for computing topological invariants of the spaces, the cohomology groups, by considering the well known cohomology groups of the limit space.
+In her dissertation, Sarah Stoltze has studied the topological properties of a particular family of spaces that are built from sequences of linearly independent vectors of complex numbers. When we increase the number of vectors in a sequence it gets closer and closer to a continuous path, and this can be formalised by forming a limit space. Much of the dissertation focuses on this limit space and the connection it has to the spaces it is built from. The main results of the thesis are firstly a topological description of the limit as the loop space of the complete flag manifold, and secondly a formula for computing topological invariants of the spaces, the cohomology groups, by considering the well known cohomology groups of the limit space.
 
 The PhD degree was completed at the Department of Mathematics, Science and Technology, Aarhus University.
 
 This résumé was prepared by the PhD student.
 
 Title of dissertation: Approximations to the loop space of flag manifolds
-Contact information: Simon Stoltze, e-mail: sstoltze@math.au.dk
+Contact information: Sarah Stoltze, e-mail: sstoltze@math.au.dk
 Main supervisor: Professor Marcel Bökstedt, Department of Mathematics, Aarhus University
 Language: The PhD dissertation will be defended in English
 
